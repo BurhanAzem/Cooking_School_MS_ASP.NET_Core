@@ -1,0 +1,19 @@
+﻿using Cooking_School_ASP.NET.Dtos.UserDto;
+using Cooking_School_ASP.NET.Models;
+using System.ComponentModel.DataAnnotations;
+
+namespace Cooking_School_ASP.NET.Dtos.TraineeDto
+{
+    public class CreateTraineeDto : CreateUserDto
+    {
+
+        [Required]
+        public Level Level { get; set; }
+        [Required]
+        [DataType(DataType.CreditCard)]
+        public int CardN { get; set; }
+        public int PhoneNumber { get; set; }
+        public byte image { get; set; }
+
+    }
+}

@@ -1,0 +1,53 @@
+﻿using Backend_Controller_Burhan.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
+using Cooking_School_ASP.NET.Models;
+
+namespace Cooking_School_ASP.NET.ConfigurationsEntities
+{
+    public class CookClassConfigurations : IEntityTypeConfiguration<CookClass>
+    {
+        public void Configure(EntityTypeBuilder<CookClass> builder)
+        {
+            builder.HasData(
+                new CookClass
+                {
+                    Id = 1,
+                    StartingAt = new DateTime().AddHours(10),
+                    EndingAt = new DateTime().AddHours(11),
+                    Created = DateTime.Now,
+                    ChefId = 1,
+                    CourseId = 2,
+                },
+                new CookClass
+                {
+                    Id = 2,
+                    StartingAt = new DateTime().AddHours(8),
+                    EndingAt = new DateTime().AddHours(9),
+                    Created = DateTime.Now,
+                    ChefId = 1,
+                    CourseId = 1,
+                },
+                new CookClass
+                {
+                    Id = 3,
+                    StartingAt = new DateTime().AddHours(11),
+                    EndingAt = new DateTime().AddHours(12),
+                    Created = DateTime.Now,
+                    ChefId = 3,
+                    CourseId = 4,
+                },
+                new CookClass
+                {
+                    Id = 4,
+                    StartingAt = new DateTime().AddHours(9),
+                    EndingAt = new DateTime().AddHours(10),
+                    Created = DateTime.Now,
+                    ChefId = 2,
+                    CourseId = 4,
+                }
+                );
+        }
+    }
+}
