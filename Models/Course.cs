@@ -1,7 +1,7 @@
 ﻿using Cooking_School_ASP.NET.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace Backend_Controller_Burhan.Models
+namespace Cooking_School_ASP.NET.Models
 {
     public class Course : Audit
     {

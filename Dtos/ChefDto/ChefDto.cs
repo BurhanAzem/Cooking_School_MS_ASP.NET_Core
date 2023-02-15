@@ -3,7 +3,7 @@ using Cooking_School_ASP.NET.Models;
 
 namespace Cooking_School_ASP.NET.Dtos.ChefDto
 {
-    public class ChefDto : CreateChefDto
+    public class ChefDTO : CreateChefDto
     {
         public int Id { get; set; }
 

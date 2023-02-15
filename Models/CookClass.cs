@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Backend_Controller_Burhan.Models
+namespace Cooking_School_ASP.NET.Models
 {
     public class CookClass : Audit
     {
@@ -17,6 +17,7 @@ namespace Backend_Controller_Burhan.Models
         public DateTime EndingAt { get; set; }
         public virtual ICollection<Project> Projects { get; set; }
         public virtual ICollection<ApplicationT> Applications { get; set; }
+        public virtual ICollection<ClassDays> ClassDays { get; set; }
 
     }
 }

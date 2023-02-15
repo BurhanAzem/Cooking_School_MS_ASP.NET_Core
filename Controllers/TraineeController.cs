@@ -1,13 +1,23 @@
 ﻿using AutoMapper;
+using Backend_Controller_Burhan.Models;
+using Cooking_School_ASP.NET.Dtos.ChefDto;
 using Cooking_School_ASP.NET.Dtos.TraineeDto;
 using Cooking_School_ASP.NET.Dtos.UserDto;
+using Cooking_School_ASP.NET.Models;
+using Cooking_School_ASP.NET.ModelUsed;
 using Cooking_School_ASP.NET.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using Serilog;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Web.WebPages;
+using System.Net.Http;
 
 namespace Cooking_School_ASP.NET_.Controllers
 {
@@ -19,17 +29,18 @@ namespace Cooking_School_ASP.NET_.Controllers
         private readonly ILogger<TraineeController> _logger;
         private readonly IAuthentication _authentication;
         private readonly ITraineeService _traineeService;
-
-        public TraineeController(ILogger<TraineeController> logger, IAuthentication authentication, ITraineeService traineeService)
+        private readonly IMapper _mapper;
+        public TraineeController(ILogger<TraineeController> logger, IAuthentication authentication, ITraineeService traineeService, IMapper mapper)
         {
             _logger = logger;
             _authentication = authentication;
             _traineeService = traineeService;
+            _mapper = mapper;
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> LogIn([FromBody] UserLoginDto traineeDto)
-        { 
+        {
 
             _logger.LogInformation($"Login Attempt for {nameof(traineeDto)} ");
             if (!ModelState.IsValid)
@@ -37,33 +48,39 @@ namespace Cooking_School_ASP.NET_.Controllers
                 return BadRequest(ModelState);
             }
 
-            try
+
+            if (await _authentication.IsAuthenticate(traineeDto))
             {
-                if (await _authentication.IsAuthenticate(traineeDto))
-                {
-                    var token = await _authentication.GenerateToken();
-                    return Ok(token);
-                }
-                return null;
+                string token = await _authentication.GenerateToken();
+                var refreshToken = await _authentication.GenerateRefreshToken();
+                var user = await _traineeService.GetUserById(traineeDto.Id);
+                var trainee = _mapper.Map<Trainee>(user.TraineeDto);
+                SetRefreshToken(refreshToken, trainee);
+                return Accepted(new TokenRequest { Token = token, RefreshToken = refreshToken.Token });
             }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Something Went Wrong in the ");
-                return Problem($"Something Went Wrong in the ", statusCode: 500);
-            }
+            return null;
+
         }
+        
 
         [HttpPost("logout")]
         public async Task<IActionResult> LogOut()
         {
             var result = await _traineeService.LogOut(HttpContext);
-            return Ok(result);
+            if (result.Exception is not null)
+            {
+                var code = result.StatusCode;
+                throw new StatusCodeException(code.Value, result.Exception);
+            }
+            return Ok(result.TraineeDto);
         }
 
 
-        [HttpPost("signup")]
-        public async Task<IActionResult> SignUp([FromBody] CreateTraineeDto traineeDto)
+        [HttpPost()]
+        public async Task<IActionResult> SignUp([FromForm] CreateTraineeDto traineeDto)
         {
+            if (traineeDto.image == null || traineeDto.image.Length == 0)
+                return Content("file not selected");
 
             _logger.LogInformation($" Attempt Sinup for {traineeDto} ");
             if (!ModelState.IsValid)
@@ -71,13 +88,38 @@ namespace Cooking_School_ASP.NET_.Controllers
                 _logger.LogError($"Invalid POST attempt in {nameof(traineeDto)}");
                 return BadRequest(ModelState);
             }
-            var result = _traineeService.RegisterUser(traineeDto);
-            return Ok(result);
+            var result = await _traineeService.RegisterUser(traineeDto);
+            if (result.Exception is not null)
+            {
+                var code = result.StatusCode;
+                throw new StatusCodeException(code.Value, result.Exception);
+            }
+            return Ok(result.TraineeDto);
         }
 
+        [HttpPost("refresh-token"), Authorize(Roles = "Admin")]
+        public async Task<IActionResult> RefreshToken()
+        {
+            var user = await _authentication.GetCurrentUser(HttpContext);
+            var refreshToken = Request.Cookies["refreshToken"];
 
-        [HttpPut("IdTrainee")]
-        public async Task<IActionResult> UpdateTrainee(int IdTrainee, [FromBody] UpdateTraineeDto updateTraineeDto)
+            if (!user.RefreshToken.Equals(refreshToken))
+            {
+                return Unauthorized("Invalid Refresh Token.");
+            }
+            else if (user.ExpireRefreshToken < DateTime.Now)
+            {
+                return Unauthorized("Token expired.");
+            }
+            var token = _authentication.GenerateToken();
+            var newRefreshToken = await _authentication.GenerateRefreshToken();
+            SetRefreshToken(newRefreshToken, (Trainee)user);
+
+            return Ok(token);
+        }
+
+        [HttpPut("{traineeId}")]
+        public async Task<IActionResult> UpdateTrainee(int traineeId, [FromBody] UpdateTraineeDto updateTraineeDto)
         {
             _logger.LogInformation($" Attempt Update for {updateTraineeDto} ");
             if (!ModelState.IsValid)
@@ -85,15 +127,21 @@ namespace Cooking_School_ASP.NET_.Controllers
                 _logger.LogError($"Invalid Update attempt in {nameof(updateTraineeDto)}");
                 return BadRequest(ModelState);
             }
-            var result = _traineeService.UpdateUser(IdTrainee, updateTraineeDto);
-            return Ok(result);
+            var result = await _traineeService.UpdateUser(traineeId, updateTraineeDto);
+            if (result.Exception is not null)
+            {
+                var code = result.StatusCode;
+                throw new StatusCodeException(code.Value, result.Exception);
+            }
+            return Ok(result.TraineeDto);
         }
 
 
         [HttpPost("current")]
         public async Task<IActionResult> LogIn()
         {
-            return Ok();
+            var result = await _authentication.GetCurrentUser(HttpContext);
+            return Ok(result);
         }
 
 
@@ -106,7 +154,12 @@ namespace Cooking_School_ASP.NET_.Controllers
         {
             var currentUser = await _authentication.GetCurrentUser(HttpContext);
             var result = await _traineeService.AddMealToFovarite(mealId, currentUser);
-            return Ok(result);
+            if (result.Exception is not null)
+            {
+                var code = result.StatusCode;
+                throw new StatusCodeException(code.Value, result.Exception);
+            }
+            return Ok(result.TraineeDto);
         }
 
 
@@ -116,10 +169,29 @@ namespace Cooking_School_ASP.NET_.Controllers
         public async Task<IActionResult> DeleteMealFromFovariteTrainee(int mealId)
         {
             var result = await _traineeService.DeleteMealFromFovarite(mealId);
-            return Ok(result);
+            if (result.Exception is not null)
+            {
+                var code = result.StatusCode;
+                throw new StatusCodeException(code.Value, result.Exception);
+            }
+            return Ok(result.TraineeDto);
         }
 
+        private void SetRefreshToken(RefreshToken newRefreshToken, Trainee user)
+        {
+            var cookieOptions = new CookieOptions
+            {
+                HttpOnly = true,
+                Expires = newRefreshToken.Expire
+            };
+            Response.Cookies.Append("refreshToken", newRefreshToken.Token, cookieOptions);
 
+            user.RefreshToken = newRefreshToken.Token;
+            user.CreatedRefreshToken = newRefreshToken.Created;
+            user.ExpireRefreshToken = newRefreshToken.Expire;
+            var traineeDto = _mapper.Map<UpdateTraineeDto>(user);
+            _traineeService.UpdateUser(user.Id, traineeDto);
+        }
     }
 
 

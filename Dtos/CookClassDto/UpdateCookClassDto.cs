@@ -1,6 +1,6 @@
 ﻿namespace Cooking_School_ASP.NET.Dtos.CookClassDto
 {
-    public class UpdateCookClassDto
+    public class UpdateCookClassDto : CreateCookClassDto
     {
     }
 }

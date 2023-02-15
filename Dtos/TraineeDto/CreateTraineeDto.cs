@@ -8,12 +8,12 @@ namespace Cooking_School_ASP.NET.Dtos.TraineeDto
     {
 
         [Required]
-        public Level Level { get; set; }
+        public string Level { get; set; }
         [Required]
         [DataType(DataType.CreditCard)]
         public int CardN { get; set; }
         public int PhoneNumber { get; set; }
-        public byte image { get; set; }
+        public IFormFile? image { get; set; }
 
     }
 }

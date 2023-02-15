@@ -1,8 +1,11 @@
-﻿namespace Cooking_School_ASP.NET.Dtos.ChefDto
+﻿using System.Net;
+
+namespace Cooking_School_ASP.NET.Dtos.ChefDto
 {
     public class ResponsChefDto
     {
-        public ChefDto? ChefDto { get; set; } 
-        public string Message { get; set; }
+        public ChefDTO? ChefDto { get; set; }
+        public HttpStatusCode? StatusCode { get; set; }
+        public Exception? Exception { get; set; }
     }
 }

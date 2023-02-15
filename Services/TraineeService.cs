@@ -6,10 +6,14 @@ using Cooking_School_ASP.NET.Dtos.UserDto;
 using Cooking_School_ASP.NET.IRepository;
 using Cooking_School_ASP.NET.Models;
 using Cooking_School_ASP.NET.Repository;
-using E_Commerce_System.Hash;
+using Cooking_School_ASP.NET.Hash;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using System.Drawing;
+using Cooking_School_ASP.NET.Dtos.ChefDto;
+using Cooking_School_ASP.NET.Dtos.AdminDto;
+using System.Data;
 
 namespace Cooking_School_ASP.NET.Services
 {
@@ -18,11 +22,13 @@ namespace Cooking_School_ASP.NET.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IHashPassword _hash;
-        public TraineeService(IUnitOfWork unitOfWork, IMapper mapper, IHashPassword hash)
+        private readonly IWebHostEnvironment _hostingEnvironment;
+        public TraineeService(IUnitOfWork unitOfWork, IMapper mapper, IHashPassword hash, IWebHostEnvironment hostingEnvironment)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _hash = hash;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         public async Task<ResponsTraineeDto> AddMealToFovarite(int idMeal, User currentUser)
@@ -31,9 +37,9 @@ namespace Cooking_School_ASP.NET.Services
             favoritMeal.TraineeId = currentUser.Id;
             favoritMeal.MealId = idMeal;
             await _unitOfWork.FavoriteMeal_Trainees.Insert(favoritMeal);
+            await _unitOfWork.Save();
             return new ResponsTraineeDto
             {
-                Message = "Done"
             };
         }
 
@@ -44,28 +50,33 @@ namespace Cooking_School_ASP.NET.Services
             {
                 return new ResponsTraineeDto
                 {
-                    Message = "Failed, Meal Not Exist"
+                    Exception = new Exception($"Failed, Meal Not Exist"),
+                    StatusCode = System.Net.HttpStatusCode.BadRequest
                 };
             }
             await _unitOfWork.FavoriteMeal_Trainees.Delete(idMeal);
+            await _unitOfWork.Save();
             return new ResponsTraineeDto
             {
-                Message = "Done"
             };
         }
 
-        //[FromQuery] RequestParams requestParams
-        public async Task<IList<TraineeDto>> GetAllUser(RequestParam requestParams = null)
+        public Task<ResponsTraineeDto> DeleteUser(int traineeId)
         {
+            throw new NotImplementedException();
+        }
 
+        //[FromQuery] RequestParams requestParams
+        public async Task<IList<TraineeDTO>> GetAllUsers(RequestParam requestParams = null)
+        {
             if (requestParams == null)
             {
-                var trainees = await _unitOfWork.Users.GetAll(x => x.Discriminator == "Tarinee");
-                var traineeDto = _mapper.Map<IList<TraineeDto>>(trainees);
+                var trainees = await _unitOfWork.Users.GetAll(x => x.Discriminator == Convert.ToString(Roles.Trainee));
+                var traineeDto = _mapper.Map<IList<TraineeDTO>>(trainees);
                 return traineeDto;
             }
-            var traineesPag = await _unitOfWork.Users.GetPagedList(requestParams, x => x.Discriminator == "Tarinee", include: x => x.Include(s => s.TraineeCourses));
-            var traineeDtoPag = _mapper.Map<IList<TraineeDto>>(traineesPag);
+            var traineesPag = await _unitOfWork.Users.GetPagedList(requestParams, x => x.Discriminator == Convert.ToString(Roles.Trainee) , include: x => x.Include(s => s.TraineeCourses));
+            var traineeDtoPag = _mapper.Map<IList<TraineeDTO>>(traineesPag);
             return traineeDtoPag;
         }
 
@@ -78,51 +89,98 @@ namespace Cooking_School_ASP.NET.Services
             {
                 return new ResponsTraineeDto
                 {
-                    Message = $"Failed, this User with {id} Is Not Exist"
+                    Exception = new Exception($"Failed, this User with {id} Is Not Exist"),
+                    StatusCode = System.Net.HttpStatusCode.BadRequest
                 };
             }
 
-            var traineeDto = _mapper.Map<TraineeDto>(trainee);
+            var traineeDto = _mapper.Map<TraineeDTO>(trainee);
             return new ResponsTraineeDto
             {
                 TraineeDto = traineeDto,
-                Message = "Done"
             };
         }
 
         public async Task<ResponsTraineeDto> LogOut(HttpContext httpContext)
         {
             var identity = httpContext.User.Identity as ClaimsIdentity;
-            await httpContext.SignOutAsync();
             while (identity.Claims != null)
             {
                 identity.RemoveClaim(identity.Claims.FirstOrDefault());
             }
             return new ResponsTraineeDto
             {
-                Message = "Done"
             };
         }
 
         public async Task<ResponsTraineeDto> RegisterUser(CreateTraineeDto createTraineeDto)
         {
             if (await _unitOfWork.Users.Get(c => c.Email == createTraineeDto.Email) is not null)
+            {
                 return new ResponsTraineeDto
                 {
-                    Message = "Failed, User Is Already Exists",
+                    Exception = new Exception($"Failed, Useing Email Is Already Exists"),
+                    StatusCode = System.Net.HttpStatusCode.BadRequest
+
                 };
+            }
+
             var trainee = _mapper.Map<Trainee>(createTraineeDto);
             trainee.Created = DateTime.Now;
+
+            
+
+            string fileName = createTraineeDto.image.FileName;
+
+            fileName = Path.GetFileName(fileName);
+
+            string uploadpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
+
+            var stream = new FileStream(uploadpath, FileMode.Create);
+
+            await createTraineeDto.image.CopyToAsync(stream);
+            trainee.ImagePath = uploadpath;
+
             _hash.createHashPassword(createTraineeDto.Password, out byte[] hashedPass, out byte[] hashedSlot);
             trainee.PasswordHashed = hashedPass;
             trainee.PasswordSlot = hashedSlot;
+            Roles role;
+            try
+            {
+
+                role = (Roles)Enum.Parse(typeof(Roles), createTraineeDto.Discriminator);
+            }
+            catch (Exception ex)
+            {
+                return new ResponsTraineeDto
+                {
+                    Exception = new Exception($"Failed, Invaild Input Role"),
+                    StatusCode = System.Net.HttpStatusCode.BadRequest
+                };
+            }
+            trainee.Discriminator =  Convert.ToString(role);
+            Levels level;
+            try
+            {
+                level = (Levels)Enum.Parse(typeof(Levels), createTraineeDto.Level);
+            }
+            catch (Exception ex)
+            {
+                return new ResponsTraineeDto
+                {
+                    Exception = new Exception($"Failed, Invaild Input Role"),
+                    StatusCode = System.Net.HttpStatusCode.BadRequest
+                };
+            }
+            trainee.Level = level;
+
             await _unitOfWork.Users.Insert(trainee);
             await _unitOfWork.Save();
-            var traineeDto = _mapper.Map<TraineeDto>(trainee);
+
+            var traineeDto = _mapper.Map<TraineeDTO>(trainee);
             return new ResponsTraineeDto
             {
                 TraineeDto = traineeDto,
-                Message = "Done",
             };
         }
 
@@ -132,7 +190,8 @@ namespace Cooking_School_ASP.NET.Services
             if (await _unitOfWork.Users.Get(c => c.Email == updateTraineeDto.Email) is not null)
                 return new ResponsTraineeDto
                 {
-                    Message = "Failed, User Is Not Exists",
+                    Exception = new Exception("Failed, User Is Not Exists"),
+                    StatusCode = System.Net.HttpStatusCode.BadRequest
                 };
 
             var trainee = await _unitOfWork.Users.Get(x => x.Id == id);
@@ -140,17 +199,18 @@ namespace Cooking_School_ASP.NET.Services
 
             updatedTrainee.Created = trainee.Created;
             updatedTrainee.Updated = DateTime.Now;
+
             _hash.createHashPassword(updateTraineeDto.Password, out byte[] hashedPass, out byte[] hashedSlot);
             updatedTrainee.PasswordHashed = hashedPass;
             updatedTrainee.PasswordSlot = hashedSlot;
 
             _unitOfWork.Users.Update(updatedTrainee);
             await _unitOfWork.Save();
-            var traineeDto = _mapper.Map<TraineeDto>(trainee);
+
+            var traineeDto = _mapper.Map<TraineeDTO>(trainee);
             return new ResponsTraineeDto
             {
                 TraineeDto = traineeDto,
-                Message = "Done",
             };
         }
         

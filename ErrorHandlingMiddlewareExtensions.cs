@@ -1,12 +1,13 @@
-﻿using Backend_Controller_Burhan.Models.GlobalErrorHandling.Models;
+﻿using Cooking_School_ASP.NET.ModelUsed;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
 using System.Net;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace Backend_Controller_Burhan
+namespace Cooking_School_ASP.NET
 {
     public class ErrorHandlingMiddlewareExtensions
     {
@@ -21,15 +22,17 @@ namespace Backend_Controller_Burhan
             {
                 await _next(context);
             }
-            catch (Exception ex)
+            catch (StatusCodeException ex)
             {
                 await HandleExceptionAsync(context, ex);
             }
         }
-        private static Task HandleExceptionAsync(HttpContext context, Exception exception)
-        { 
-            var code = HttpStatusCode.InternalServerError; // 500 if unexpected
-            var result = JsonConvert.SerializeObject(new { error = "Internal Server Error" });
+        private static Task HandleExceptionAsync(HttpContext context, StatusCodeException exception)
+        {
+            var code = exception.StatusCode; // 500 if unexpected
+            string message = exception.Exception.Message;
+            if (exception.Message.Length == 0) message = "Internal Server Error";
+            var result = JsonConvert.SerializeObject( new { message });
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)code;
             return context.Response.WriteAsync(result);

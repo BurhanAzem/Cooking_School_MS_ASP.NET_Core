@@ -6,7 +6,7 @@ namespace Cooking_School_ASP.NET.Models
     public class Chef : User
     {
 
-        public byte[] Cv { get; set; }
+        public string CvPath { get; set; }
         public decimal Salary { get; set; }
         public int FavoriteN { get; set; } = 0;
         public virtual ICollection<CookClass> CookClasses { get; set; }

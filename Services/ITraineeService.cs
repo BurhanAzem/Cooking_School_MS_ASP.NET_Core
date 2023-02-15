@@ -13,7 +13,10 @@ namespace Cooking_School_ASP.NET.Services
         Task<ResponsTraineeDto> LogOut(HttpContext httpContext);
         Task<ResponsTraineeDto> UpdateUser(int id, UpdateTraineeDto updateTraineeDto);
         Task<ResponsTraineeDto> GetUserById(int id);
-        Task<IList<TraineeDto>> GetAllUser(RequestParam requestParams);
+        Task<IList<TraineeDTO>> GetAllUsers(RequestParam requestParams = null);
+        Task<ResponsTraineeDto> DeleteUser(int traineeId);
+
+
 
     }
 }

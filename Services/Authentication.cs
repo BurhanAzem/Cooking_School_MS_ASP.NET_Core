@@ -2,11 +2,17 @@
 using Cooking_School_ASP.NET.Dtos.UserDto;
 using Cooking_School_ASP.NET.IRepository;
 using Cooking_School_ASP.NET.Models;
-using E_Commerce_System.Hash;
+using Cooking_School_ASP.NET.Hash;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Cooking_School_ASP.NET.Dtos.TraineeDto;
+using Cooking_School_ASP.NET.ModelUsed;
+using System.Security.Cryptography;
+using Azure.Core;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Cooking_School_ASP.NET.Services
 {
@@ -15,7 +21,7 @@ namespace Cooking_School_ASP.NET.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IConfiguration _configuration;
         private readonly IHashPassword _hash;
-        private  User _user;
+        private User _user;
         public Authentication(IUnitOfWork unitOfWork, IConfiguration configuration, IHashPassword hash)
         {
             _unitOfWork = unitOfWork;
@@ -24,10 +30,13 @@ namespace Cooking_School_ASP.NET.Services
         }
         public async Task<bool> IsAuthenticate(UserLoginDto userLoginDto)
         {
-            var res = false;
-            var _user = await _unitOfWork.Users.Get(q => userLoginDto.Id == q.Id && _hash.verifyPassword(userLoginDto.Password, q.PasswordHashed, q.PasswordSlot));
-            if (_user != null) res = true;
-                return res;
+            _user = await _unitOfWork.Users.Get(q => userLoginDto.Id == q.Id);
+            if (_user != null && _hash.verifyPassword(userLoginDto.Password, _user.PasswordHashed, _user.PasswordSlot))
+            {
+                return true;
+            }
+            _user = null;
+            return false;
         }
         public async Task<string> GenerateToken()
         {
@@ -55,7 +64,7 @@ namespace Cooking_School_ASP.NET.Services
             var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, _user.FullName),
-                    new Claim(ClaimTypes.Role, _user.Discriminator),
+                    new Claim(ClaimTypes.Role, Convert.ToString(_user.Discriminator)),
                     new Claim(ClaimTypes.Email, _user.Email),
                     new Claim(ClaimTypes.StreetAddress, _user.Address),
                 };
@@ -65,14 +74,19 @@ namespace Cooking_School_ASP.NET.Services
 
         public SigningCredentials GetSigningCredentials()
         {
-            var key = Environment.GetEnvironmentVariable("key");
-            var hashed = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+            var hashed = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:key"]));
             return new SigningCredentials(hashed, SecurityAlgorithms.HmacSha256);
         }
-        public Task<string> GenerateRefreshToken()
+        public async Task<RefreshToken> GenerateRefreshToken()
         {
-            throw new NotImplementedException();
+            return new RefreshToken
+            {
+                Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64)),
+                Expire = DateTime.Now.AddDays(7),
+                Created = DateTime.Now
+            };
         }
+
 
         public async Task<User> GetCurrentUser(HttpContext httpContext)
         {
@@ -86,6 +100,16 @@ namespace Cooking_School_ASP.NET.Services
                 return CurrentUser;
             }
             return null;
+        }
+
+        public async Task<string> LogOut(HttpContext httpContext)
+        {
+            var current = GetCurrentUser(httpContext);
+            var user = await _unitOfWork.Users.Get(x => x.Id == current.Id);
+            user.Token = null;
+            _unitOfWork.Users.Update(user);
+            await _unitOfWork.Save();
+            return "Done";            
         }
     }
 }

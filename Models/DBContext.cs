@@ -13,7 +13,7 @@ using System.Reflection.Emit;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace Backend_Controller_Burhan.Models
+namespace Cooking_School_ASP.NET.Models
 {
     public class DBContext : DbContext
     {
@@ -67,6 +67,12 @@ namespace Backend_Controller_Burhan.Models
             .HasForeignKey(x => x.CookClassId).
             OnDelete(DeleteBehavior.Restrict);
 
+            builder.Entity<ProjectFile>()
+            .HasOne(x => x.Project)
+            .WithMany(z => z.projectFiles)
+            .HasForeignKey(x => x.ProjectId).
+            OnDelete(DeleteBehavior.Restrict);
+
 
             builder
            .Entity<ClassDays>()
@@ -80,7 +86,7 @@ namespace Backend_Controller_Burhan.Models
             .Property(c => c.Level)
             .HasConversion(
             g => g.ToString(),
-            g => (Level)Enum.Parse(typeof(Level), g));
+            g => (Levels)Enum.Parse(typeof(Levels), g));
 
             builder
             .Entity<ProjectFile>()

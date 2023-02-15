@@ -7,11 +7,13 @@ namespace Cooking_School_ASP.NET_.Models
 {
     public class ProjectFile : Audit
     {
-        public DateTime? SubmitedDate { get; set; }
         [ForeignKey(nameof(Trainee))]
         public int TraineeId { get; set; }
+        [ForeignKey(nameof(Project))]
+        public int ProjectId { get; set; }
+        public virtual Project Project { get; set; }
         public virtual Trainee Trainee { get; set; }
-        public byte[] content { get; set; }
+        public string ContentPath { get; set; }
         public decimal? Evalution { get; set; }
         public status_project status { get; set; } = status_project.notSubmited;
     }

@@ -13,9 +13,8 @@ namespace Cooking_School_ASP.NET.ConfigurationsEntities
                 new ProjectFile
                 {
                     Id = 1,
-                    content = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
+                    ContentPath = "uujv9e8g9839vh9h39vhrvr39vj3r9vh",
                     status = status_project.submited,
-                    SubmitedDate = DateTime.Now,
                     Evalution = 90,
                     TraineeId = 6,
                     Created = DateTime.Now,
@@ -23,7 +22,7 @@ namespace Cooking_School_ASP.NET.ConfigurationsEntities
                 new ProjectFile
                 {
                     Id = 2,
-                    content = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
+                    ContentPath = "uujv9e8g9839vh9h39vhrvr39vj3r9vh",
                     status = status_project.notSubmited,
                     TraineeId = 7,
                     Created = DateTime.Now,
@@ -31,9 +30,8 @@ namespace Cooking_School_ASP.NET.ConfigurationsEntities
                 new ProjectFile
                 {
                     Id = 3,
-                    content = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
+                    ContentPath = "uujv9e8g9839vh9h39vhrvr39vj3r9vh",
                     status = status_project.submitedLate,
-                    SubmitedDate = DateTime.Now,
                     Evalution = 60,
                     TraineeId = 8,
                     Created = DateTime.Now,
@@ -41,9 +39,8 @@ namespace Cooking_School_ASP.NET.ConfigurationsEntities
                 new ProjectFile
                 {
                     Id = 4,
-                    content = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
+                    ContentPath = "uujv9e8g9839vh9h39vhrvr39vj3r9vh",
                     status = status_project.submited,
-                    SubmitedDate = DateTime.Now,
                     Evalution = 75,
                     TraineeId = 9,
                     Created = DateTime.Now,

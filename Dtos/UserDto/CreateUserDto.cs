@@ -5,12 +5,12 @@ namespace Cooking_School_ASP.NET.Dtos.UserDto
 {
     public class CreateUserDto
     {
-        [StringLength(maximumLength: 50, ErrorMessage = "Name Is Too Long")]
-        [Required]
-        public string LastName { get; set; }
         [Required]
         [StringLength(maximumLength: 50, ErrorMessage = "Name Is Too Long")]
         public string FirstName { get; set; }
+        [StringLength(maximumLength: 50, ErrorMessage = "Name Is Too Long")]
+        [Required]
+        public string LastName { get; set; }
         [Required]
         public string Discriminator { get; set; }
         [Required]

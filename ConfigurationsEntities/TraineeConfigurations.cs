@@ -19,12 +19,12 @@ namespace Cooking_School_ASP.NET.ConfigurationsEntities
                     Address = "Palestain - Nablus - Amman Street",
                     BirthDate = new DateTime(2000, 1, 1),
                     Created = DateTime.Now,
-                    Level = Models.Level.Mid,
+                    Level = Models.Levels.Mid,
                     PhoneNumber = 0598722898,
                     PasswordHashed = new byte[] { 0x20, 0x20 },
                     PasswordSlot = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
                     CardN = 94994,
-                    Discriminator = "Trainee"
+                    Discriminator = Convert.ToString(Roles.Trainee)
                 },
                 new Trainee
                 {
@@ -35,12 +35,12 @@ namespace Cooking_School_ASP.NET.ConfigurationsEntities
                     Address = "Palestain - Nablus - Amman Street",
                     BirthDate = new DateTime(2000, 9, 1),
                     Created = DateTime.Now,
-                    Level = Models.Level.Mid,
+                    Level = Models.Levels.Mid,
                     PhoneNumber = 0598722898,
                     PasswordHashed = new byte[] { 0x20, 0x20 },
                     PasswordSlot = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
                     CardN = 94994,
-                    Discriminator = "Trainee"
+                    Discriminator = Convert.ToString(Roles.Trainee)
                 },
                 new Trainee
                 {
@@ -51,12 +51,12 @@ namespace Cooking_School_ASP.NET.ConfigurationsEntities
                     Address = "Palestain - Nablus - Amman Street",
                     BirthDate = new DateTime(2000, 2, 1),
                     Created = DateTime.Now,
-                    Level = Models.Level.Mid,
+                    Level = Models.Levels.Mid,
                     PhoneNumber = 0598722898,
                     PasswordHashed = new byte[] { 0x20, 0x20 },
                     PasswordSlot = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
                     CardN = 94994,
-                    Discriminator = "Trainee"
+                    Discriminator = Convert.ToString(Roles.Trainee)
                 },
                 new Trainee
                 {
@@ -67,12 +67,12 @@ namespace Cooking_School_ASP.NET.ConfigurationsEntities
                     Address = "Palestain - Nablus - Amman Street",
                     BirthDate = new DateTime(2001, 11, 11),
                     Created = DateTime.Now,
-                    Level = Models.Level.Mid,
+                    Level = Models.Levels.Mid,
                     PhoneNumber = 0598722898,
                     PasswordHashed = new byte[] { 0x20, 0x20 },
                     PasswordSlot = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
                     CardN = 94994,
-                    Discriminator = "Trainee"
+                    Discriminator = Convert.ToString(Roles.Trainee)
                 },
                 new Trainee
                 {
@@ -83,14 +83,14 @@ namespace Cooking_School_ASP.NET.ConfigurationsEntities
                     Address = "Palestain - Nablus - Amman Street",
                     BirthDate = new DateTime(2000, 12, 12),
                     Created = DateTime.Now,
-                    Level = Models.Level.Mid,
+                    Level = Models.Levels.Mid,
                     PhoneNumber = 0598722898,
                     PasswordHashed = new byte[] { 0x20, 0x20 },
                     PasswordSlot = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
                     CardN = 94994,
-                    Discriminator = "Trainee"
+                    Discriminator = Convert.ToString(Roles.Trainee)
                 }
-                );
+                ); ;
         }
 
     }

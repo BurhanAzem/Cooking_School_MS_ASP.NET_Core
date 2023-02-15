@@ -1,4 +1,4 @@
-﻿namespace E_Commerce_System.Hash
+﻿namespace Cooking_School_ASP.NET.Hash
 {
     public interface IHashPassword
     {

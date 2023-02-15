@@ -1,8 +1,11 @@
-﻿namespace Cooking_School_ASP.NET.Dtos.TraineeDto
+﻿using System.Net;
+
+namespace Cooking_School_ASP.NET.Dtos.TraineeDto
 {
     public class ResponsTraineeDto
     {
-        public TraineeDto? TraineeDto { get; set; } 
-        public string Message { get; set; }
+        public TraineeDTO? TraineeDto { get; set; } 
+        public HttpStatusCode? StatusCode { get; set; }
+        public Exception? Exception { get; set; }
     }
 }

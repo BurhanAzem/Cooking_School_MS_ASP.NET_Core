@@ -1,4 +1,4 @@
-﻿using Backend_Controller_Burhan.Models;
+﻿using Cooking_School_ASP.NET.Models;
 using Cooking_School_ASP.NET.Dtos;
 using Cooking_School_ASP.NET.IRepository;
 using Microsoft.EntityFrameworkCore;
@@ -58,12 +58,20 @@ namespace Cooking_School_ASP.NET.Repository
             return await qurey.AsNoTracking().ToListAsync();
         }
 
-        public async Task<X.PagedList.IPagedList<T>> GetPagedList(RequestParam requsetParam, Expression<Func<T, bool>> expression = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
+        public async Task<X.PagedList.IPagedList<T>> GetPagedList(RequestParam requsetParam, Expression<Func<T, bool>> expression = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
         {
             IQueryable<T> qurey = _db; 
             if (include != null)
             {
                 qurey = include(qurey);
+            }
+            if (orderBy != null)
+            {
+                qurey = orderBy(qurey);
+            }
+            if (expression != null)
+            {
+                qurey = qurey.Where(expression);
             }
             return await qurey.AsNoTracking().ToPagedListAsync(requsetParam.PageNumber, requsetParam.PageSize);
         }

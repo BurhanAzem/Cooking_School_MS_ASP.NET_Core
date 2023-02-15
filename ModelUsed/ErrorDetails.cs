@@ -3,7 +3,7 @@
     using System.Text.Json;
     namespace GlobalErrorHandling.Models
     {
-        public class ErrorDetails
+        public class ErrorDetails : Exception
         {
             public int StatusCode { get; set; }
             public string Message { get; set; }

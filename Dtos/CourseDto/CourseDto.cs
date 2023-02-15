@@ -1,8 +1,8 @@
-﻿using Backend_Controller_Burhan.Models;
+﻿using Cooking_School_ASP.NET.Models;
 
 namespace Cooking_School_ASP.NET.Dtos.CourseDto
 {
-    public class CourseDto
+    public class CourseDTO
     {
         public int Id { get; set; }
         public int FavoriteN { get; set; }  

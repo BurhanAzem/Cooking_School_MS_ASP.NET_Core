@@ -2,12 +2,12 @@
 using Cooking_School_ASP.NET_.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace Backend_Controller_Burhan.Models
-{
+namespace Cooking_School_ASP.NET.Models
+{ 
     public class Trainee : User
     {
-        public Level Level { get; set; }
-        public byte? image { get; set; }
+        public Levels Level { get; set; }
+        public string? ImagePath { get; set; }
         public int CardN { get; set; }
     }
 }

@@ -3,11 +3,11 @@ using Cooking_School_ASP.NET_.Models;
 
 namespace Cooking_School_ASP.NET.Dtos.CookClassDto
 {
-    public class ProjectDto
+    public class ProjectDTO : CreateProjectDto
     {
         public int Id { get; set; }
-        public CookClass CookClass { get; set; }
-        public ICollection<ProjectFile> projectFiles { get; set; }
+        public CookClassDTO CookClass { get; set; }
+        public ICollection<ProjectFileDTO> projectFiles { get; set; }
 
     }
 }

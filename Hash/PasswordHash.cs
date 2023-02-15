@@ -1,9 +1,9 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace E_Commerce_System.Hash
+namespace Cooking_School_ASP.NET.Hash
 {
-    public class PasswordHash : IHashPassword
+    public class HashPassword : IHashPassword
     {
         public void createHashPassword(string password, out byte[] passswordHash, out byte[] passwordSlot)
         {
@@ -14,6 +14,16 @@ namespace E_Commerce_System.Hash
                 passwordSlot = _hash.Key;
             }
         }
+
+        //public string returnPassword(in byte[] passswordHash, in byte[] passwordSlot)
+        //{
+        //    using (var _hash = new HMACSHA512())
+        //    {
+
+        //        passswordHash = _hash.ComputeHash(Encoding.UTF8.GetBytes(password));
+        //        passwordSlot = _hash.Key;
+        //    }
+        //}
 
         public bool verifyPassword(string password, byte[] passwordHash, byte[] passwordSlot)
         {

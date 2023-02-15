@@ -22,7 +22,7 @@ namespace Cooking_School_ASP.NET.ConfigurationsEntities
                     PhoneNumber = 0598722898,
                     PasswordHashed = new byte[] { 0x20, 0x20 },
                     PasswordSlot = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
-                    Cv = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
+                    CvPath = "khfisdncivnh5645yh45h3",
                     FavoriteN = 2,
                     Salary = 7000,
                     Discriminator = "Chef"
@@ -39,7 +39,7 @@ namespace Cooking_School_ASP.NET.ConfigurationsEntities
                     PhoneNumber = 0598722898,
                     PasswordHashed = new byte[] { 0x20, 0x20 },
                     PasswordSlot = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
-                    Cv = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
+                    CvPath = "khfisdncivnh5645yh45h3",
                     FavoriteN = 5,
                     Salary = 6000,
                     Discriminator = "Chef"
@@ -56,7 +56,7 @@ namespace Cooking_School_ASP.NET.ConfigurationsEntities
                     PhoneNumber = 0598722898,
                     PasswordHashed = new byte[] { 0x20, 0x20 },
                     PasswordSlot = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
-                    Cv = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
+                    CvPath = "khfisdncivnh5645yh45h3",
                     FavoriteN = 22,
                     Salary = 7000,
                     Discriminator = "Chef"
@@ -73,7 +73,7 @@ namespace Cooking_School_ASP.NET.ConfigurationsEntities
                     PhoneNumber = 0598722898,
                     PasswordHashed = new byte[] { 0x20, 0x20 },
                     PasswordSlot = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
-                    Cv = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
+                    CvPath = "khfisdncivnh5645yh45h3",
                     FavoriteN = 76,
                     Salary = 9000,
                     Discriminator = "Chef"
@@ -90,7 +90,7 @@ namespace Cooking_School_ASP.NET.ConfigurationsEntities
                     PhoneNumber = 0598722898,
                     PasswordHashed = new byte[] { 0x20, 0x20 },
                     PasswordSlot = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
-                    Cv = new byte[] { 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20 },
+                    CvPath = "khfisdncivnh5645yh45h3",
                     FavoriteN = 3,
                     Salary = 4000,
                     Discriminator = "Chef"

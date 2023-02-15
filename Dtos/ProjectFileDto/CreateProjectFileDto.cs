@@ -10,6 +10,8 @@ namespace Cooking_School_ASP.NET.Dtos.CookClassDto
         [Required]
         public int TraineeId { get; set; }
         [Required]
+        public int ProjectId { get; set; }
+        [Required]
         [DataType(DataType.Upload)]
         public IFormFile content { get; set; }
     }
