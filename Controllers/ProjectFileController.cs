@@ -28,6 +28,7 @@ namespace Cooking_School_ASP.NET.Controllers
 
 
         [HttpPost("~/api/chefs/{chefId}/cook-classes/{classsId}/projects/{projectId}/project-files/fileId/evaluate")]
+        [Authorize(Roles = "Chef")]
         public async Task<IActionResult> EvaluateTraineeProject([FromBody] decimal mark, int projectFileId)
         {
             _logger.LogInformation($"Attempt To Evaluate Id of {nameof(ProjectFile)}");
@@ -46,6 +47,7 @@ namespace Cooking_School_ASP.NET.Controllers
         }
 
         [HttpPut("~/api/trainees/{traineeId}/project-files")]
+        [Authorize(Roles = "Trainee")]
         public async Task<IActionResult> UploudProjectFile([FromForm] CreateProjectFileDto projectFilesDto)
         {
             _logger.LogInformation($"Attempt To Uploud of {nameof(ProjectFile)}");
@@ -64,6 +66,7 @@ namespace Cooking_School_ASP.NET.Controllers
         }
 
         [HttpGet("~/api/trainees/{traineeId}/project-files")]
+        [Authorize(Roles = "Trainee")]
         public async Task<IActionResult> GetAllProjectFile()
         {
             var result = await _projectFileService.GetAllProjectFile();
@@ -71,6 +74,7 @@ namespace Cooking_School_ASP.NET.Controllers
         }
 
         [HttpDelete("~/api/trainees/{traineeId}/project-files/{projectFileId}")]
+        [Authorize(Roles = "Trainee")]
         public async Task<IActionResult> DeleteProjectFile(int projectFileId)
         {
             _logger.LogInformation($"Attempt To Delete {nameof(ProjectFile)}");

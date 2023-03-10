@@ -26,7 +26,8 @@ namespace Cooking_School_ASP.NET.Controllers
             _applicationSevice = applicationSevice;
         }
 
-        [HttpGet("~/api/chefs/{cheefId}/applications")]
+        [HttpGet("~/api/chefs/{chefId}/applications")]
+        [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> GetAllApplicationsToChef(int chefId)
         {
             _logger.LogInformation($"Attempt To GetAll {nameof(Application)}");
@@ -41,12 +42,12 @@ namespace Cooking_School_ASP.NET.Controllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.applicationDTOs);
+            return Ok(result.ListDto);
         }
 
 
         [HttpPost("~/api/chefs/{cheefId}/cook-classes/{classsId}/applications/{applicationId}/accept")]
-        [Authorize]
+        [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> AcceptApplication(int applicationId,[FromForm] RequestParam requestParams = null)
         {
             _logger.LogInformation($"Attempt To Accept Application {nameof(Application)}");
@@ -66,7 +67,7 @@ namespace Cooking_School_ASP.NET.Controllers
         
 
         [HttpPost("~/api/chefs/{cheefId}/cook-classes/{classsId}/applications/{applicationId}/reject")]
-        [Authorize]
+        [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> RejectApplication(int applicationId)
         {
             _logger.LogInformation($"Attempt To Reject Application {nameof(Application)}");
@@ -85,6 +86,7 @@ namespace Cooking_School_ASP.NET.Controllers
         }
 
         [HttpGet("~api/cook-classes/{classId}/applications")]
+        [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> GetAllApplicationToClass(int classId)
         {
             _logger.LogInformation($"Attempt To Accept Application {nameof(Application)}");
@@ -99,11 +101,12 @@ namespace Cooking_School_ASP.NET.Controllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.applicationDTOs);
+            return Ok(result.Dto);
         }
 
 
         [HttpPost("~api/cook-classes/{classId}/applications")]
+        [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> ApplayTraineeToclass([FromBody] CreateApplicationDto applicationDto, int classId)
         {
             _logger.LogInformation($"Attempt Sinup for {nameof(Application)} ");

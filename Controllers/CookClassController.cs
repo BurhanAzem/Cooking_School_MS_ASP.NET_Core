@@ -21,9 +21,10 @@ namespace Cooking_School_ASP.NET_.Controllers
             _logger = logger;
             _cookClassService = cookClassService;
         }
-    ///pi/chefs/{chefId}/cook-classes
-    [HttpPost("~/api/chefs/{chefId}/cook-classes")]
-    public async Task<IActionResult> CreateClass([FromBody] CreateCookClassDto classDto)
+        ///pi/chefs/{chefId}/cook-classes
+        [HttpPost("~/api/chefs/{chefId}/cook-classes")]
+        [Authorize(Roles = "Administrator, Chef")]
+        public async Task<IActionResult> CreateClass([FromBody] CreateCookClassDto classDto)
         {
             _logger.LogInformation($" Attempt Sinup for {classDto} ");
             if (!ModelState.IsValid)
@@ -37,10 +38,11 @@ namespace Cooking_School_ASP.NET_.Controllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.CookClassDto);
+            return Ok(result.Dto);
         }
 
         [HttpPut("~/api/chefs/{chefId}/cook-classes/{classId}")]
+        [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> UpdateClass(int classId, [FromBody] UpdateCookClassDto classDto)
         {
             _logger.LogInformation($" Attempt Update for {classDto} ");
@@ -55,10 +57,11 @@ namespace Cooking_School_ASP.NET_.Controllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.CookClassDto);
+            return Ok(result.Dto);
         }
 
         [HttpDelete("~/api/chefs/{chefId}/cook-classes/{classId}")]
+        [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> DleteClass(int classId)
         {
             _logger.LogInformation($" Attempt Delete CookClass {classId} ");
@@ -73,7 +76,7 @@ namespace Cooking_School_ASP.NET_.Controllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.CookClassDto);
+            return Ok(result.Dto);
         }
     }
 

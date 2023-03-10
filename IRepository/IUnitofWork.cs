@@ -15,6 +15,9 @@ namespace Cooking_School_ASP.NET.IRepository
         IGenericRepository<ClassDays> ClassDays { get; }
         IGenericRepository<Project> Projects { get; }   
         IGenericRepository<ProjectFile> ProjectFiles { get; }
+        IGenericRepository<RefreshToken> RefreshTokens { get; }
+        IGenericRepository<BlackList> BlackLists { get; }
+
         IGenericRepository<ApplicationT> Applications { get; }
         IGenericRepository<FavoriteMeal_chef> FavoriteMeal_Chefs { get; }
         IGenericRepository<FavoriteMeal_Trainee> FavoriteMeal_Trainees { get; }  

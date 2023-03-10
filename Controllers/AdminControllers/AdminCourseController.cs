@@ -29,8 +29,8 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
     {
         private readonly ILogger<AdminCourseController> _logger;
         private readonly ICourseService _courseService;
-        private readonly IAuthentication _authentication;
-        public AdminCourseController(ILogger<AdminCourseController> logger, ICourseService courseService, IAuthentication authentication)
+        private readonly IAuthenticationServices _authentication;
+        public AdminCourseController(ILogger<AdminCourseController> logger, ICourseService courseService, IAuthenticationServices authentication)
         {
             _logger = logger;
             _courseService = courseService;
@@ -38,6 +38,7 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> CreateProject([FromBody] CreateCourseDto courseDto)
         {
             _logger.LogInformation($"Attempt Sinup for {nameof(courseDto)} ");
@@ -46,18 +47,19 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
                 _logger.LogError($"Invalid POST attempt for {nameof(courseDto)}");
                 return BadRequest(ModelState);
             }
-            var adminId = _authentication.GetCurrentUser(HttpContext).Id;
-            var result = await _courseService.CreateCourse(courseDto, adminId);
+            //var adminId = await _authentication.GetCurrentUser(HttpContext).Id;
+            var result = await _courseService.CreateCourse(courseDto);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.CourseDTO);
+            return Ok(result.Dto);
         }
 
 
         [HttpPut("{CourseId}")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> UpdateProject([FromBody] UpdateCourseDto courseDto, int CourseId)
         {
             _logger.LogInformation($"Attempt Sinup for {nameof(courseDto)} ");
@@ -72,11 +74,12 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.CourseDTO);
+            return Ok(result.Dto);
         }
 
 
         [HttpDelete("{courseId}")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteProject(int courseId)
         {
             _logger.LogInformation($"Attempt Delete for {nameof(Project)} ");
@@ -91,6 +94,7 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
 
 
         [HttpGet()]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> GetAllCourses([FromQuery] RequestParam requestParams)
         {
             _logger.LogInformation($"Attempt GetAll of {nameof(Project)} ");
@@ -100,11 +104,12 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.Courses);
+            return Ok(result.ListDto);
         }
 
 
         [HttpGet("{courseId}")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> GetCourseById(int courseId)
         {
             _logger.LogInformation($"Attempt GetBy Id of {nameof(Course)}");
@@ -114,11 +119,12 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.CourseDTO);
+            return Ok(result.Dto);
         }
 
 
         [HttpGet("favorite")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> GetAllFavoriteCourses()
         {
             _logger.LogInformation($"Attempt GetBy Id of {nameof(Course)}");
@@ -128,7 +134,7 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.Courses);
+            return Ok(result.ListDto);
         }
 
     }

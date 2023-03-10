@@ -1,7 +1,9 @@
 ﻿using Cooking_School_ASP.NET.Dtos;
+using Cooking_School_ASP.NET.Models;
 using Cooking_School_ASP.NET.ModelUsed;
 using Cooking_School_ASP.NET.Services;
 using Cooking_School_ASP.NET_.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,10 +27,11 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
         public async Task<IActionResult> GetAllTrainees([FromQuery] RequestParam requestParams)
         {
             var result = await _traineeService.GetAllUsers(requestParams);
-            return Ok(result);
+            return Ok(result.ListDto);
         }
 
         [HttpDelete("{traineeId}")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteTrainee(int traineeId)
         {
             _logger.LogInformation($"Attempt To Delete {nameof(ProjectFile)}");

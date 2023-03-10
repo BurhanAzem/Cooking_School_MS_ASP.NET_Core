@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using System.Web.WebPages;
+using Cooking_School_ASP.NET.Dtos.AdminDto;
 
 namespace Cooking_School_ASP.NET_.Controllers
 {
@@ -20,20 +21,23 @@ namespace Cooking_School_ASP.NET_.Controllers
     public class ChefController : ControllerBase
     {
         private readonly ILogger<ChefController> _logger;
-        private readonly IAuthentication _authentication;
+        private readonly IAuthenticationServices _authenticationServices;
+        private readonly IRefreshTokenService _refreshTokenService;
         private readonly IChefService _chefService;
         private readonly IMapper _mapper;
-        public ChefController(ILogger<ChefController> logger, IAuthentication authentication, IChefService chefService, IMapper mapper)
+        public ChefController(ILogger<ChefController> logger, IAuthenticationServices authentication, IChefService chefService, IMapper mapper, IRefreshTokenService refreshTokenService)
         {
             _logger = logger;
-            _authentication = authentication;
+            _authenticationServices = authentication;
             _chefService = chefService;
             _mapper = mapper;
+            _refreshTokenService = refreshTokenService;
         }
 
 
 
         [HttpPost("login")]
+        [Authorize(Roles = "Chef")]
         public async Task<IActionResult> LogIn([FromBody] UserLoginDto chefDto)
         {
             _logger.LogInformation($"Login Attempt for {nameof(chefDto)} ");
@@ -41,64 +45,66 @@ namespace Cooking_School_ASP.NET_.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-
-            if (await _authentication.IsAuthenticate(chefDto))
+            if (await _authenticationServices.IsAuthenticate(chefDto))
             {
-                string token = await _authentication.GenerateToken();
-                var refreshToken = await _authentication.GenerateRefreshToken();
-                var user = await _chefService.GetUserById(chefDto.Id);
-                var chef = _mapper.Map<Chef>(user.ChefDto);
-                SetRefreshToken(refreshToken, chef);
+                string token = await _authenticationServices.GenerateToken(chefDto.Id);
+                var refreshToken = await _refreshTokenService.GenerateRefreshToken();
+                refreshToken.UserId = chefDto.Id;
+                await SetRefreshToken(refreshToken);
                 return Accepted(new TokenRequest { Token = token, RefreshToken = refreshToken.Token });
             }
-            return Problem("Not Authenticated");
+            return null;
         }
 
 
-
-        [HttpGet("logout")]
         public async Task<IActionResult> LogOut()
         {
-            var result = await _chefService.LogOut(HttpContext);
-            if (result.Exception is not null)
+            _logger.LogInformation($"Attempt to logout ");
+            string authorizationHeader = Request.Headers["Authorization"];
+
+            if (!string.IsNullOrEmpty(authorizationHeader) && authorizationHeader.StartsWith("Bearer "))
             {
-                var code = result.StatusCode;
-                throw new StatusCodeException(code.Value, result.Exception);
+                string token = authorizationHeader.Substring("Bearer ".Length);
+                var result = await _chefService.LogOut(token);
+                if (result.Exception is not null)
+                {
+                    throw new StatusCodeException(result.StatusCode.Value, result.Exception);
+                }
+                return Ok("Done");
             }
-            return Ok(result.ChefDto);
+            _logger.LogInformation($"fail Attempt to logout ");
+            throw new StatusCodeException(System.Net.HttpStatusCode.BadRequest, new Exception("there is problem in the token"));
         }
 
         [HttpPost("refresh-token")]  //Authorize(Roles = "Admin")
         [Authorize]
-
         public async Task<IActionResult> RefreshToken()
         {
-            var user = await _authentication.GetCurrentUser(HttpContext);
+            var user = await _authenticationServices.GetCurrentUser(HttpContext);
             var refreshToken = Request.Cookies["refreshToken"];
-
-            if (!user.RefreshToken.Equals(refreshToken))
+            RefreshToken userRefreshToken = await _refreshTokenService.GetRefrshToken(user.Id);
+            if (!userRefreshToken.Token.Equals(refreshToken))
             {
                 return Unauthorized("Invalid Refresh Token.");
             }
-            else if (user.ExpireRefreshToken < DateTime.Now)
+            else if (userRefreshToken.ExpirationDate < DateTime.Now)
             {
                 return Unauthorized("Token expired.");
             }
-            var token = _authentication.GenerateToken();
-            var newRefreshToken = await _authentication.GenerateRefreshToken();
-            SetRefreshToken(newRefreshToken, (Chef)user);
-
-            return Ok(token);
+            var token = await _authenticationServices.GenerateToken(user.Id);
+            var newRefreshToken = await _refreshTokenService.GenerateRefreshToken();
+            newRefreshToken.UserId = user.Id;
+            await SetRefreshToken(newRefreshToken);
+            return Accepted(new TokenRequest { Token = token, RefreshToken = newRefreshToken.Token });
         }
-
+        
 
 
 
         
 
         [HttpGet("current")]
-
+        [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> CurrentChef()
         {
             return Ok();
@@ -106,36 +112,38 @@ namespace Cooking_School_ASP.NET_.Controllers
 
 
         [HttpPost("meals/{mealId}/fovarite")]
+        [Authorize(Roles = "Chef")]
         public async Task<IActionResult> AddMealToFovariteChef(int mealId)
         {
-            var currentUser = await _authentication.GetCurrentUser(HttpContext);
+            var currentUser = await _authenticationServices.GetCurrentUser(HttpContext);
             var result = await _chefService.AddMealToFovarite(mealId, currentUser);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.ChefDto);
+            return Ok(result.Dto);
         }
 
         [HttpDelete("meals/{mealId}/fovarite")]
+        [Authorize(Roles = "Chef")]
         public async Task<IActionResult> DeleteMealFromFovariteChef(int mealId)
         {
-            var currentUser = await _authentication.GetCurrentUser(HttpContext);
+            var currentUser = await _authenticationServices.GetCurrentUser(HttpContext);
             var result = await _chefService.DeleteMealFromFovarite(mealId, currentUser);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.ChefDto);
+            return Ok(result.Dto);
 
 
 
         }
 
         [HttpPost("~/api/trainees/{traineeId}/chefs/{chefId}/favorite")]
-
+        [Authorize(Roles = "Trainee")]
         public async Task<IActionResult> FavoriteChef(int traineeId, int chefId)
         {
             var result = await _chefService.FavoriteChef(chefId, traineeId);
@@ -144,12 +152,12 @@ namespace Cooking_School_ASP.NET_.Controllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.ChefDto);
+            return Ok(result.Dto);
         }
 
 
         [HttpDelete("~/api/trainees/{traineeId}/chefs/{chefId}/favorite")]
-
+        [Authorize(Roles = "Trainee")]
         public async Task<IActionResult> UnFavoriteChef(int traineeId, int chefId)
         {
             var result = await _chefService.UnFavoriteChef(chefId, traineeId);
@@ -158,27 +166,19 @@ namespace Cooking_School_ASP.NET_.Controllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.ChefDto);
+            return Ok(result.Dto);
         }
 
-        private void SetRefreshToken(RefreshToken newRefreshToken, Chef user)
+        private async Task SetRefreshToken(RefreshToken newRefreshToken)
         {
+            await _refreshTokenService.SetRefreshToken(newRefreshToken);
             var cookieOptions = new CookieOptions
             {
                 HttpOnly = true,
-                Expires = newRefreshToken.Expire
+                Expires = newRefreshToken.ExpirationDate
             };
             Response.Cookies.Append("refreshToken", newRefreshToken.Token, cookieOptions);
-
-            user.RefreshToken = newRefreshToken.Token;
-            user.CreatedRefreshToken = newRefreshToken.Created;
-            user.ExpireRefreshToken = newRefreshToken.Expire;
-            var chefDto = _mapper.Map<UpdateChefDto>(user);
-            _chefService.UpdateUser(user.Id, chefDto);
         }
-        
     }
-
-
-    
+  
 }

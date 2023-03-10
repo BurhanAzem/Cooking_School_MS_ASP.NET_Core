@@ -7,6 +7,7 @@ using Cooking_School_ASP.NET.Dtos.ProjectDto;
 using Cooking_School_ASP.NET.Dtos.TraineeDto;
 using Cooking_School_ASP.NET.IRepository;
 using Cooking_School_ASP.NET.Models;
+using Cooking_School_ASP.NET.ModelUsed;
 using Cooking_School_ASP.NET.Repository;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,11 +22,11 @@ namespace Cooking_School_ASP.NET.Services
             _mapper = mapper;
             _unitOfWork = unitOfWork;
         }
-        public async Task<ResponsProjectDto> CreateProject(CreateProjectDto createProjectDto, int chefId)
+        public async Task<ResponsDto<ProjectDTO>> CreateProject(CreateProjectDto createProjectDto, int chefId)
         {
             if (await _unitOfWork.CookClasses.Get(x => x.Id == createProjectDto.CookClassId) is not null)
             {
-                return new ResponsProjectDto()
+                return new ResponsDto<ProjectDTO>()
                 {
                     Exception = new Exception("Failed, CookClass Entered Not Exist"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
@@ -33,7 +34,7 @@ namespace Cooking_School_ASP.NET.Services
             }
             if (await _unitOfWork.Users.Get(x => x.Id == chefId) is not null)
             {
-                return new ResponsProjectDto()
+                return new ResponsDto<ProjectDTO>()
                 {
                     Exception = new Exception("Failed, Chef Entered Not Exist"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
@@ -44,17 +45,17 @@ namespace Cooking_School_ASP.NET.Services
             await _unitOfWork.Projects.Insert(project);
             await _unitOfWork.Save();
             var projectDto = _mapper.Map<ProjectDTO>(project);
-            return new ResponsProjectDto()
+            return new ResponsDto<ProjectDTO>()
             {
-                projectDto = projectDto,
+                Dto = projectDto,
             };
         }
 
-        public async Task<ResponsProjectDto> DeleteProject(int projectId, int classId)
+        public async Task<ResponsDto<ProjectDTO>> DeleteProject(int projectId, int classId)
         {
             if (await _unitOfWork.Projects.Get(x => x.Id == projectId) is null)
             {
-                return new ResponsProjectDto()
+                return new ResponsDto<ProjectDTO>()
                 {
                     Exception = new Exception("Failed, This Project Is Not Exist"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
@@ -62,30 +63,36 @@ namespace Cooking_School_ASP.NET.Services
             }
             await _unitOfWork.CookClasses.Delete(projectId);
             await _unitOfWork.Save();
-            return new ResponsProjectDto()
+            return new ResponsDto<ProjectDTO>()
             {
             };
         }
 
-        public async Task<IList<ProjectDTO>> GetAllProject(RequestParam requestParams)
+        public async Task<ResponsDto<ProjectDTO>> GetAllProject(RequestParam requestParams)
         {
             if (requestParams == null)
             {
                 var projects = await _unitOfWork.Projects.GetAll();
                 var projectDto = _mapper.Map<IList<ProjectDTO>>(projects);
-                return projectDto;
+                return new ResponsDto<ProjectDTO>
+                {
+                    ListDto = projectDto
+                };
             }
             var projectsPag = await _unitOfWork.Projects.GetPagedList(requestParams, include: x => x.Include(s => s.projectFiles));
             var projectDtoPag = _mapper.Map<IList<ProjectDTO>>(projectsPag);
-            return projectDtoPag;
+            return new ResponsDto<ProjectDTO>
+            {
+               ListDto = projectDtoPag
+            };
         }
 
-        public async Task<ResponsProjectDto> GetProjectById(int projectId)
+        public async Task<ResponsDto<ProjectDTO>> GetProjectById(int projectId)
         {
             var project = await _unitOfWork.Projects.Get(x => x.Id == projectId);
             if (project == null)
             {
-                return new ResponsProjectDto
+                return new ResponsDto<ProjectDTO>
                 {
                     Exception = new Exception($"Failed, this Project with {projectId} Is Not Exist"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
@@ -93,29 +100,39 @@ namespace Cooking_School_ASP.NET.Services
             }
 
             var projectDto = _mapper.Map<ProjectDTO>(project);
-            return new ResponsProjectDto
+            return new ResponsDto<ProjectDTO>
             {
-                projectDto = projectDto,
+                Dto = projectDto,
             };
         }
 
-        public async Task<ResponsProjectDto> UpdateProject(int projectId, UpdateProjectDto updateProjectDto)
+        public async Task<ResponsDto<ProjectDTO>> UpdateProject(int projectId, UpdateProjectDto updateProjectDto)
         {
-            if (await _unitOfWork.Projects.Get(x => x.Id == projectId) is null)
+            var project = await _unitOfWork.Projects.Get(x => x.Id == projectId);
+            if (project is null)
             {
-                return new ResponsProjectDto()
+                return new ResponsDto<ProjectDTO>()
                 {
                     Exception = new Exception($"Failed, This Project Is Not Exist"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
                 };
             }
 
-            var updatedCookClass = _mapper.Map<Project>(updateProjectDto);
-            updatedCookClass.Updated = DateTime.Now;
-            _unitOfWork.Projects.Update(updatedCookClass);
+            if (updateProjectDto.CookClassId != 0) { project.CookClassId = (int)updateProjectDto.CookClassId; }
+            if (updateProjectDto.ProjectName is not null) { project.ProjectName = updateProjectDto.ProjectName; }
+            if (updateProjectDto.ExpirDate != null) { project.ExpirDate = (DateTime)updateProjectDto.ExpirDate; }
+            if (updateProjectDto.Description is not null) { project.Description = updateProjectDto.Description; }
+
+            project.Updated = DateTime.Now;
+
+
+            _unitOfWork.Projects.Update(project);
             await _unitOfWork.Save();
-            return new ResponsProjectDto()
+            var projectDTO = _mapper.Map<ProjectDTO>(project);
+
+            return new ResponsDto<ProjectDTO>()
             {
+                Dto = projectDTO,
             };
         }
     }

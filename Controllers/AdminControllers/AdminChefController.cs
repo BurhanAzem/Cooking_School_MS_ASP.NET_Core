@@ -26,6 +26,7 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> RegisterChef([FromForm] CreateChefDto createChefDto)
         {
             if (createChefDto.Cv == null || createChefDto.Cv.Length == 0)
@@ -43,12 +44,12 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.ChefDto);
+            return Ok(result.Dto);
         }
 
         [HttpPut("{chefId}")]
-
-        public async Task<IActionResult> UpdateChef(int chefId, [FromBody] UpdateChefDto updateChefDto)
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> UpdateChef(int chefId, [FromForm] UpdateChefDto updateChefDto)
         {
             _logger.LogInformation($" Attempt Update for {nameof(updateChefDto)} ");
             if (!ModelState.IsValid)
@@ -62,10 +63,11 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.ChefDto);
+            return Ok(result.Dto);
         }
 
         [HttpDelete("{chefId}")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteChef(int chefId)
         {
             _logger.LogInformation($"Attempt To Delete {nameof(ProjectFile)}");
@@ -83,18 +85,20 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
             return Ok("Done");
         }
 
-        [HttpGet()]
+        [Authorize(Roles = "Administrator")]
+        [HttpGet]
         public async Task<IActionResult> GetAllChefs([FromQuery] RequestParam requestParams)
         {
             var result = await _chefService.GetAllUser(requestParams);
-            return Ok(result);
+            return Ok(result.ListDto);
         }
 
         [HttpGet("favorite")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> GetAllFavoriteChef()
         {
             var result = await _chefService.GetAllFavoriteChefs();
-            return Ok(result);
+            return Ok(result.ListDto);
         }
     }
 }

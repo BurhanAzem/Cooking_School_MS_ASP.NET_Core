@@ -24,6 +24,7 @@ namespace Cooking_School_ASP.NET.Controllers
 
 
         [HttpPost("~/api/trainees/{traineeId}/courses/{courseId}/favorite")]
+        [Authorize(Roles = "Trainee")]
         public async Task<IActionResult> FavoriteCourse(int courseId, int traineeId)
         {
             var result = await _courseServer.FavoriteCourse(courseId, traineeId);
@@ -32,11 +33,12 @@ namespace Cooking_School_ASP.NET.Controllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.CourseDTO);
+            return Ok(result.Dto);
         }
 
 
         [HttpDelete("~/api/trainees/{traineeId}/courses/{courseId}/favorite")]
+        [Authorize(Roles = "Trainee")]
         public async Task<IActionResult> UnFavoriteCourse(int courseId, int traineeId)
         {
             var result = await _courseServer.UnFavoriteCourse(courseId, traineeId);
@@ -45,7 +47,7 @@ namespace Cooking_School_ASP.NET.Controllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.CourseDTO);
+            return Ok(result.Dto);
         }
     }
 }

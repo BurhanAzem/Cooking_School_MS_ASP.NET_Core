@@ -6,6 +6,7 @@ using Cooking_School_ASP.NET.Dtos.CookClassDto;
 using Cooking_School_ASP.NET.Dtos.ProjectFileDto;
 using Cooking_School_ASP.NET.IRepository;
 using Cooking_School_ASP.NET.Models;
+using Cooking_School_ASP.NET.ModelUsed;
 using Cooking_School_ASP.NET_.Models;
 using CookingSchoolASP.NET.Migrations;
 using Microsoft.EntityFrameworkCore;
@@ -21,27 +22,45 @@ namespace Cooking_School_ASP.NET.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<ResponsPrpjectFileDto> DeleteProjectFile(int projectFileId)
+        public async Task<ResponsDto<ProjectFileDTO>> DeleteProjectFile(int projectFileId)
         {
-            if (await _unitOfWork.ProjectFiles.Get(x => x.Id == projectFileId) is null)
+            var projectFile = await _unitOfWork.ProjectFiles.Get(x => x.Id == projectFileId);
+            if (projectFile is null)
             {
-                return new ResponsPrpjectFileDto()
+                return new ResponsDto<ProjectFileDTO>()
                 {
                     Exception = new Exception("Failed, This projectFile Is Not Exist"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
                 };
             }
+            //string fileName;
+
+            //fileName = Path.GetFileName(projectFile.ContentPath);
+            // Delete exiting file
+            try
+            {
+                System.IO.File.Delete(Path.Combine(Directory.GetCurrentDirectory(), projectFile.ContentPath));
+            }catch(Exception ex)
+            {
+                return new ResponsDto<ProjectFileDTO>()
+                {
+                    Exception = new Exception("Failed", ex),
+                    StatusCode = System.Net.HttpStatusCode.BadRequest
+                };
+            }
+            // Save new file
+            //string fileName = Guid.NewGuid() + Path.GetFileName(UploadImage.FileName);
             await _unitOfWork.ProjectFiles.Delete(projectFileId);
             await _unitOfWork.Save();
-            return new ResponsPrpjectFileDto();
+            return new ResponsDto<ProjectFileDTO>();
         }
 
-        public async Task<ResponsPrpjectFileDto> EvaluateTraineeProject(decimal mark, int projectFileId)
+        public async Task<ResponsDto<ProjectFileDTO>> EvaluateTraineeProject(decimal mark, int projectFileId)
         {
             var projectFile = await _unitOfWork.ProjectFiles.Get(x => x.Id == projectFileId);
             if (projectFile is null)
             {
-                return new ResponsPrpjectFileDto()
+                return new ResponsDto<ProjectFileDTO>()
                 {
                     StatusCode = System.Net.HttpStatusCode.BadRequest,
                     Exception = new Exception("Failed, This projectFile Is Not Exist")
@@ -50,7 +69,7 @@ namespace Cooking_School_ASP.NET.Services
             }
             if (projectFile.status == Models.status_project.notSubmited)
             {
-                return new ResponsPrpjectFileDto()
+                return new ResponsDto<ProjectFileDTO>()
                 {
                     Exception = new Exception("Failed, This projectFile Is Not Submited"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
@@ -67,24 +86,30 @@ namespace Cooking_School_ASP.NET.Services
 
             _unitOfWork.ProjectFiles.Update(projectFile);
             await _unitOfWork.Save();
-            return new ResponsPrpjectFileDto();
+            return new ResponsDto<ProjectFileDTO>();
         }
 
-        public async Task<IList<ProjectFileDTO>> GetAllProjectFile(RequestParam requestParams = null)
+        public async Task<ResponsDto<ProjectFileDTO>> GetAllProjectFile(RequestParam requestParams = null)
         {
 
             if (requestParams == null)
             {
                 var projectFils = await _unitOfWork.Projects.GetAll();
                 var projectFilsDto = _mapper.Map<IList<ProjectFileDTO>>(projectFils);
-                return projectFilsDto;
+                return new ResponsDto<ProjectFileDTO>()
+                {
+                    ListDto = projectFilsDto,
+                };
             }
             var projectFilsPag = await _unitOfWork.Projects.GetPagedList(requestParams);
             var projectFilsDtoPag = _mapper.Map<IList<ProjectFileDTO>>(projectFilsPag);
-            return projectFilsDtoPag;
+            return new ResponsDto<ProjectFileDTO>()
+            {
+                ListDto = projectFilsDtoPag,
+            };
         }
 
-        public async Task<ResponsPrpjectFileDto> UploadeProjectFile(CreateProjectFileDto projectFilesDto)
+        public async Task<ResponsDto<ProjectFileDTO>> UploadeProjectFile(CreateProjectFileDto projectFilesDto)
         {
             var projectFile = _mapper.Map<ProjectFile>(projectFilesDto);
 
@@ -113,7 +138,7 @@ namespace Cooking_School_ASP.NET.Services
             _unitOfWork.ProjectFiles.Update(projectFile);
             await _unitOfWork.Save();
 
-            return new ResponsPrpjectFileDto();
+            return new ResponsDto<ProjectFileDTO>();
         }
     }
 }

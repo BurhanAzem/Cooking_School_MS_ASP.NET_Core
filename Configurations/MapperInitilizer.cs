@@ -44,6 +44,7 @@ namespace Cooking_School_ASP.NET.Configurations
             CreateMap<CreateCourseDto, Course>()
                 .ForMember(t => t.Created, option => option.Ignore());
             CreateMap<UpdateCourseDto, CourseDTO>().ReverseMap();
+            CreateMap<UpdateCourseDto, Course>().ReverseMap();
 
             CreateMap<CookClassDTO, CookClass>().ReverseMap();
             CreateMap<CreateCookClassDto, CookClass>()
@@ -74,7 +75,7 @@ namespace Cooking_School_ASP.NET.Configurations
 
             CreateMap<CreateAdminDto, Admin>()
             .ForMember(t => t.Created, option => option.Ignore());
-            CreateMap<Admin, AdminDTO>();
+            CreateMap<Admin, AdminDTO>().ReverseMap();
             CreateMap<Admin, UpdateAdminDto>();
         }
     }

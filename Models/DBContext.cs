@@ -159,6 +159,8 @@ namespace Cooking_School_ASP.NET.Models
         public DbSet<ClassDays> ClassDays { get; set; } 
         public DbSet<Project> Projects { get; set; }
         public DbSet<ProjectFile> ProjectFiles { get; set; }
+        public DbSet<BlackList> BlackLists { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<Trainee_Course> Trainee_Courses { get; set; }
         public DbSet<Favorite_Chef> Favorite_chefs { get; set; }
         public DbSet<Favorite_Course> Favorite_Courses { get; set; }

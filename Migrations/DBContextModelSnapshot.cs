@@ -22,7 +22,103 @@ namespace CookingSchoolASP.NET.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Backend_Controller_Burhan.Models.CookClass", b =>
+            modelBuilder.Entity("Cooking_School_ASP.NET.Models.ApplicationT", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CookClassId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateOfApplay")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Deleted")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TraineeId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("Updated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CookClassId");
+
+                    b.HasIndex("TraineeId");
+
+                    b.ToTable("Application", (string)null);
+                });
+
+            modelBuilder.Entity("Cooking_School_ASP.NET.Models.BlackList", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Deleted")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Invalid_Token")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("Updated")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BlackLists");
+                });
+
+            modelBuilder.Entity("Cooking_School_ASP.NET.Models.ClassDays", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CookClassId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Day")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Deleted")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("Updated")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CookClassId");
+
+                    b.ToTable("ClassDays", (string)null);
+                });
+
+            modelBuilder.Entity("Cooking_School_ASP.NET.Models.CookClass", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -70,7 +166,7 @@ namespace CookingSchoolASP.NET.Migrations
                     b.ToTable("CookClass", (string)null);
                 });
 
-            modelBuilder.Entity("Backend_Controller_Burhan.Models.Course", b =>
+            modelBuilder.Entity("Cooking_School_ASP.NET.Models.Course", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -104,76 +200,6 @@ namespace CookingSchoolASP.NET.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Course", (string)null);
-                });
-
-            modelBuilder.Entity("Cooking_School_ASP.NET.Models.ApplicationT", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CookClassId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateOfApplay")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Deleted")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TraineeId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("Updated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CookClassId");
-
-                    b.HasIndex("TraineeId");
-
-                    b.ToTable("Application", (string)null);
-                });
-
-            modelBuilder.Entity("Cooking_School_ASP.NET.Models.ClassDays", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CookClassId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Day")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Deleted")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("Updated")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CookClassId");
-
-                    b.ToTable("ClassDays", (string)null);
                 });
 
             modelBuilder.Entity("Cooking_School_ASP.NET.Models.FavoriteMeal_Trainee", b =>
@@ -372,6 +398,34 @@ namespace CookingSchoolASP.NET.Migrations
                     b.ToTable("Project", (string)null);
                 });
 
+            modelBuilder.Entity("Cooking_School_ASP.NET.Models.RefreshToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("ExpirationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("IssuedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("RefreshTokens");
+                });
+
             modelBuilder.Entity("Cooking_School_ASP.NET.Models.Trainee_Course", b =>
                 {
                     b.Property<int>("Id")
@@ -435,9 +489,6 @@ namespace CookingSchoolASP.NET.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("CreatedRefreshToken")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("Deleted")
                         .HasColumnType("int");
 
@@ -448,9 +499,6 @@ namespace CookingSchoolASP.NET.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ExpireRefreshToken")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -470,12 +518,6 @@ namespace CookingSchoolASP.NET.Migrations
 
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
-
-                    b.Property<string>("RefreshToken")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Token")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("Updated")
                         .HasColumnType("datetime2");
@@ -519,9 +561,6 @@ namespace CookingSchoolASP.NET.Migrations
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("SubmitedDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("TraineeId")
                         .HasColumnType("int");
 
@@ -543,23 +582,6 @@ namespace CookingSchoolASP.NET.Migrations
                     b.HasIndex("TraineeId");
 
                     b.ToTable("ProjectFile", (string)null);
-                });
-
-            modelBuilder.Entity("Backend_Controller_Burhan.Models.Trainee", b =>
-                {
-                    b.HasBaseType("Cooking_School_ASP.NET.Models.User");
-
-                    b.Property<int>("CardN")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ImagePath")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Level")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasDiscriminator().HasValue("Trainee");
                 });
 
             modelBuilder.Entity("Cooking_School_ASP.NET.Models.Admin", b =>
@@ -586,42 +608,32 @@ namespace CookingSchoolASP.NET.Migrations
                     b.HasDiscriminator().HasValue("Chef");
                 });
 
-            modelBuilder.Entity("Backend_Controller_Burhan.Models.CookClass", b =>
+            modelBuilder.Entity("Cooking_School_ASP.NET.Models.Trainee", b =>
                 {
-                    b.HasOne("Cooking_School_ASP.NET.Models.Admin", null)
-                        .WithMany("CookClasses")
-                        .HasForeignKey("AdminId");
+                    b.HasBaseType("Cooking_School_ASP.NET.Models.User");
 
-                    b.HasOne("Cooking_School_ASP.NET.Models.Chef", "Chef")
-                        .WithMany("CookClasses")
-                        .HasForeignKey("ChefId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("CardN")
+                        .HasColumnType("int");
 
-                    b.HasOne("Backend_Controller_Burhan.Models.Course", "Course")
-                        .WithMany("CookClasses")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasOne("Backend_Controller_Burhan.Models.Trainee", null)
-                        .WithMany("CookClasses")
-                        .HasForeignKey("TraineeId");
+                    b.Property<string>("Level")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Navigation("Chef");
-
-                    b.Navigation("Course");
+                    b.HasDiscriminator().HasValue("Trainee");
                 });
 
             modelBuilder.Entity("Cooking_School_ASP.NET.Models.ApplicationT", b =>
                 {
-                    b.HasOne("Backend_Controller_Burhan.Models.CookClass", "CookClass")
+                    b.HasOne("Cooking_School_ASP.NET.Models.CookClass", "CookClass")
                         .WithMany("Applications")
                         .HasForeignKey("CookClassId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Backend_Controller_Burhan.Models.Trainee", "Trainee")
+                    b.HasOne("Cooking_School_ASP.NET.Models.Trainee", "Trainee")
                         .WithMany()
                         .HasForeignKey("TraineeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -634,13 +646,40 @@ namespace CookingSchoolASP.NET.Migrations
 
             modelBuilder.Entity("Cooking_School_ASP.NET.Models.ClassDays", b =>
                 {
-                    b.HasOne("Backend_Controller_Burhan.Models.CookClass", "CookClass")
+                    b.HasOne("Cooking_School_ASP.NET.Models.CookClass", "CookClass")
                         .WithMany("ClassDays")
                         .HasForeignKey("CookClassId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("CookClass");
+                });
+
+            modelBuilder.Entity("Cooking_School_ASP.NET.Models.CookClass", b =>
+                {
+                    b.HasOne("Cooking_School_ASP.NET.Models.Admin", null)
+                        .WithMany("CookClasses")
+                        .HasForeignKey("AdminId");
+
+                    b.HasOne("Cooking_School_ASP.NET.Models.Chef", "Chef")
+                        .WithMany("CookClasses")
+                        .HasForeignKey("ChefId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Cooking_School_ASP.NET.Models.Course", "Course")
+                        .WithMany("CookClasses")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Cooking_School_ASP.NET.Models.Trainee", null)
+                        .WithMany("CookClasses")
+                        .HasForeignKey("TraineeId");
+
+                    b.Navigation("Chef");
+
+                    b.Navigation("Course");
                 });
 
             modelBuilder.Entity("Cooking_School_ASP.NET.Models.FavoriteMeal_Trainee", b =>
@@ -653,7 +692,7 @@ namespace CookingSchoolASP.NET.Migrations
                         .WithMany("FavoriteMealTrainees")
                         .HasForeignKey("ChefId");
 
-                    b.HasOne("Backend_Controller_Burhan.Models.Trainee", "Trainee")
+                    b.HasOne("Cooking_School_ASP.NET.Models.Trainee", "Trainee")
                         .WithMany("FavoriteMealTrainees")
                         .HasForeignKey("TraineeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -693,7 +732,7 @@ namespace CookingSchoolASP.NET.Migrations
                         .WithMany("FavoriteChefs")
                         .HasForeignKey("ChefId1");
 
-                    b.HasOne("Backend_Controller_Burhan.Models.Trainee", "Trainee")
+                    b.HasOne("Cooking_School_ASP.NET.Models.Trainee", "Trainee")
                         .WithMany("FavoriteChefs")
                         .HasForeignKey("TraineeId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -714,13 +753,13 @@ namespace CookingSchoolASP.NET.Migrations
                         .WithMany("FavoriteCourses")
                         .HasForeignKey("ChefId");
 
-                    b.HasOne("Backend_Controller_Burhan.Models.Course", "Course")
+                    b.HasOne("Cooking_School_ASP.NET.Models.Course", "Course")
                         .WithMany("FavoriteCourse")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Backend_Controller_Burhan.Models.Trainee", "Trainee")
+                    b.HasOne("Cooking_School_ASP.NET.Models.Trainee", "Trainee")
                         .WithMany("FavoriteCourses")
                         .HasForeignKey("TraineeId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -733,13 +772,24 @@ namespace CookingSchoolASP.NET.Migrations
 
             modelBuilder.Entity("Cooking_School_ASP.NET.Models.Project", b =>
                 {
-                    b.HasOne("Backend_Controller_Burhan.Models.CookClass", "CookClass")
+                    b.HasOne("Cooking_School_ASP.NET.Models.CookClass", "CookClass")
                         .WithMany("Projects")
                         .HasForeignKey("CookClassId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("CookClass");
+                });
+
+            modelBuilder.Entity("Cooking_School_ASP.NET.Models.RefreshToken", b =>
+                {
+                    b.HasOne("Cooking_School_ASP.NET.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Cooking_School_ASP.NET.Models.Trainee_Course", b =>
@@ -752,13 +802,13 @@ namespace CookingSchoolASP.NET.Migrations
                         .WithMany("TraineeCourses")
                         .HasForeignKey("ChefId");
 
-                    b.HasOne("Backend_Controller_Burhan.Models.Course", "Course")
+                    b.HasOne("Cooking_School_ASP.NET.Models.Course", "Course")
                         .WithMany("TraineeCourse")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Backend_Controller_Burhan.Models.Trainee", "Trainee")
+                    b.HasOne("Cooking_School_ASP.NET.Models.Trainee", "Trainee")
                         .WithMany("TraineeCourses")
                         .HasForeignKey("TraineeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -785,7 +835,7 @@ namespace CookingSchoolASP.NET.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Backend_Controller_Burhan.Models.Trainee", "Trainee")
+                    b.HasOne("Cooking_School_ASP.NET.Models.Trainee", "Trainee")
                         .WithMany("ProjectFiles")
                         .HasForeignKey("TraineeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -796,7 +846,7 @@ namespace CookingSchoolASP.NET.Migrations
                     b.Navigation("Trainee");
                 });
 
-            modelBuilder.Entity("Backend_Controller_Burhan.Models.CookClass", b =>
+            modelBuilder.Entity("Cooking_School_ASP.NET.Models.CookClass", b =>
                 {
                     b.Navigation("Applications");
 
@@ -805,7 +855,7 @@ namespace CookingSchoolASP.NET.Migrations
                     b.Navigation("Projects");
                 });
 
-            modelBuilder.Entity("Backend_Controller_Burhan.Models.Course", b =>
+            modelBuilder.Entity("Cooking_School_ASP.NET.Models.Course", b =>
                 {
                     b.Navigation("CookClasses");
 
@@ -822,21 +872,6 @@ namespace CookingSchoolASP.NET.Migrations
             modelBuilder.Entity("Cooking_School_ASP.NET.Models.User", b =>
                 {
                     b.Navigation("FavoriteMealchefs");
-                });
-
-            modelBuilder.Entity("Backend_Controller_Burhan.Models.Trainee", b =>
-                {
-                    b.Navigation("CookClasses");
-
-                    b.Navigation("FavoriteChefs");
-
-                    b.Navigation("FavoriteCourses");
-
-                    b.Navigation("FavoriteMealTrainees");
-
-                    b.Navigation("ProjectFiles");
-
-                    b.Navigation("TraineeCourses");
                 });
 
             modelBuilder.Entity("Cooking_School_ASP.NET.Models.Admin", b =>
@@ -867,6 +902,21 @@ namespace CookingSchoolASP.NET.Migrations
                     b.Navigation("FavoriteMealTrainees");
 
                     b.Navigation("FavoriteMealchef");
+
+                    b.Navigation("ProjectFiles");
+
+                    b.Navigation("TraineeCourses");
+                });
+
+            modelBuilder.Entity("Cooking_School_ASP.NET.Models.Trainee", b =>
+                {
+                    b.Navigation("CookClasses");
+
+                    b.Navigation("FavoriteChefs");
+
+                    b.Navigation("FavoriteCourses");
+
+                    b.Navigation("FavoriteMealTrainees");
 
                     b.Navigation("ProjectFiles");
 

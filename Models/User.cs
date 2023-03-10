@@ -24,11 +24,6 @@ namespace Cooking_School_ASP.NET.Models
         public byte[] PasswordHashed { get; set; }
         public byte[] PasswordSlot { get; set; }
         public int PhoneNumber { get; set; }
-        public string? RefreshToken { get; set; }
-        public string? Token { get; set; }
-
-        public DateTime? CreatedRefreshToken { get; set; }
-        public DateTime? ExpireRefreshToken { get; set; }
         public virtual IList<Trainee_Course> TraineeCourses { get; set; }
         public virtual ICollection<ProjectFile> ProjectFiles { get; set; }
         public virtual ICollection<FavoriteMeal_Trainee> FavoriteMealTrainees { get; set; }

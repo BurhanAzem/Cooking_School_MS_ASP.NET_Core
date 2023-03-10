@@ -14,6 +14,7 @@ using System.Drawing;
 using Cooking_School_ASP.NET.Dtos.ChefDto;
 using Cooking_School_ASP.NET.Dtos.AdminDto;
 using System.Data;
+using Cooking_School_ASP.NET.ModelUsed;
 
 namespace Cooking_School_ASP.NET.Services
 {
@@ -31,24 +32,24 @@ namespace Cooking_School_ASP.NET.Services
             _hostingEnvironment = hostingEnvironment;
         }
 
-        public async Task<ResponsTraineeDto> AddMealToFovarite(int idMeal, User currentUser)
+        public async Task<ResponsDto<TraineeDTO>> AddMealToFovarite(int idMeal, User currentUser)
         {
             FavoriteMeal_Trainee favoritMeal = new FavoriteMeal_Trainee();
             favoritMeal.TraineeId = currentUser.Id;
             favoritMeal.MealId = idMeal;
             await _unitOfWork.FavoriteMeal_Trainees.Insert(favoritMeal);
             await _unitOfWork.Save();
-            return new ResponsTraineeDto
+            return new ResponsDto<TraineeDTO>
             {
             };
         }
 
-        public async Task<ResponsTraineeDto> DeleteMealFromFovarite(int idMeal)
+        public async Task<ResponsDto<TraineeDTO>> DeleteMealFromFovarite(int idMeal)
         {
             var meal = await _unitOfWork.FavoriteMeal_Trainees.Get(x => x.Id == idMeal);
             if (meal == null)
             {
-                return new ResponsTraineeDto
+                return new ResponsDto<TraineeDTO>
                 {
                     Exception = new Exception($"Failed, Meal Not Exist"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
@@ -56,38 +57,54 @@ namespace Cooking_School_ASP.NET.Services
             }
             await _unitOfWork.FavoriteMeal_Trainees.Delete(idMeal);
             await _unitOfWork.Save();
-            return new ResponsTraineeDto
+            return new ResponsDto<TraineeDTO>
             {
             };
         }
 
-        public Task<ResponsTraineeDto> DeleteUser(int traineeId)
+        public async Task<ResponsDto<TraineeDTO>> DeleteUser(int traineeId)
         {
-            throw new NotImplementedException();
+            if (await _unitOfWork.Users.Get(x => x.Id == traineeId) is null)
+            {
+                return new ResponsDto<TraineeDTO>()
+                {
+                    Exception = new Exception("Failed, This User Is Not Exist"),
+                    StatusCode = System.Net.HttpStatusCode.BadRequest
+                };
+            }
+            await _unitOfWork.Users.Delete(traineeId);
+            await _unitOfWork.Save();
+            return new ResponsDto<TraineeDTO>();
         }
 
         //[FromQuery] RequestParams requestParams
-        public async Task<IList<TraineeDTO>> GetAllUsers(RequestParam requestParams = null)
+        public async Task<ResponsDto<TraineeDTO>> GetAllUsers(RequestParam requestParams = null)
         {
             if (requestParams == null)
             {
                 var trainees = await _unitOfWork.Users.GetAll(x => x.Discriminator == Convert.ToString(Roles.Trainee));
                 var traineeDto = _mapper.Map<IList<TraineeDTO>>(trainees);
-                return traineeDto;
+                return new ResponsDto<TraineeDTO>
+                {
+                    ListDto = traineeDto,
+                };
             }
             var traineesPag = await _unitOfWork.Users.GetPagedList(requestParams, x => x.Discriminator == Convert.ToString(Roles.Trainee) , include: x => x.Include(s => s.TraineeCourses));
             var traineeDtoPag = _mapper.Map<IList<TraineeDTO>>(traineesPag);
-            return traineeDtoPag;
+            return new ResponsDto<TraineeDTO>
+            {
+                ListDto = traineeDtoPag,
+            };
         }
 
 
 
-        public async Task<ResponsTraineeDto> GetUserById(int id)
+        public async Task<ResponsDto<TraineeDTO>> GetUserById(int id)
         {
             var trainee = await _unitOfWork.Users.Get(x => x.Id == id);
             if (trainee == null)
             {
-                return new ResponsTraineeDto
+                return new ResponsDto<TraineeDTO>
                 {
                     Exception = new Exception($"Failed, this User with {id} Is Not Exist"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
@@ -95,29 +112,27 @@ namespace Cooking_School_ASP.NET.Services
             }
 
             var traineeDto = _mapper.Map<TraineeDTO>(trainee);
-            return new ResponsTraineeDto
+            return new ResponsDto<TraineeDTO>
             {
-                TraineeDto = traineeDto,
+                Dto = traineeDto,
             };
         }
 
-        public async Task<ResponsTraineeDto> LogOut(HttpContext httpContext)
+        public async Task<ResponsDto<TraineeDTO>> LogOut(string token)
         {
-            var identity = httpContext.User.Identity as ClaimsIdentity;
-            while (identity.Claims != null)
+            if (await _unitOfWork.BlackLists.Get(l => l.Invalid_Token == token) is not null)
             {
-                identity.RemoveClaim(identity.Claims.FirstOrDefault());
+                return new ResponsDto<TraineeDTO> { };
             }
-            return new ResponsTraineeDto
-            {
-            };
+            await _unitOfWork.BlackLists.Insert(new BlackList() { Created = DateTime.Now, Invalid_Token = token });
+            return new ResponsDto<TraineeDTO> { };
         }
 
-        public async Task<ResponsTraineeDto> RegisterUser(CreateTraineeDto createTraineeDto)
+        public async Task<ResponsDto<TraineeDTO>> RegisterUser(CreateTraineeDto createTraineeDto)
         {
             if (await _unitOfWork.Users.Get(c => c.Email == createTraineeDto.Email) is not null)
             {
-                return new ResponsTraineeDto
+                return new ResponsDto<TraineeDTO>
                 {
                     Exception = new Exception($"Failed, Useing Email Is Already Exists"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
@@ -152,7 +167,7 @@ namespace Cooking_School_ASP.NET.Services
             }
             catch (Exception ex)
             {
-                return new ResponsTraineeDto
+                return new ResponsDto<TraineeDTO>
                 {
                     Exception = new Exception($"Failed, Invaild Input Role"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
@@ -166,7 +181,7 @@ namespace Cooking_School_ASP.NET.Services
             }
             catch (Exception ex)
             {
-                return new ResponsTraineeDto
+                return new ResponsDto<TraineeDTO>
                 {
                     Exception = new Exception($"Failed, Invaild Input Role"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
@@ -178,39 +193,67 @@ namespace Cooking_School_ASP.NET.Services
             await _unitOfWork.Save();
 
             var traineeDto = _mapper.Map<TraineeDTO>(trainee);
-            return new ResponsTraineeDto
+            return new ResponsDto<TraineeDTO>
             {
-                TraineeDto = traineeDto,
+                Dto = traineeDto,
             };
         }
 
 
-        public async Task<ResponsTraineeDto> UpdateUser(int id, UpdateTraineeDto updateTraineeDto)
+        public async Task<ResponsDto<TraineeDTO>> UpdateUser(int id, UpdateTraineeDto updateTraineeDto)
         {
-            if (await _unitOfWork.Users.Get(c => c.Email == updateTraineeDto.Email) is not null)
-                return new ResponsTraineeDto
+            Trainee trainee = (Trainee)await _unitOfWork.Users.Get(c => c.Id == id);
+            if (trainee is not null)
+                return new ResponsDto<TraineeDTO>
                 {
                     Exception = new Exception("Failed, User Is Not Exists"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
                 };
 
-            var trainee = await _unitOfWork.Users.Get(x => x.Id == id);
-            var updatedTrainee = _mapper.Map<User>(updateTraineeDto);
 
-            updatedTrainee.Created = trainee.Created;
-            updatedTrainee.Updated = DateTime.Now;
+            if (updateTraineeDto.FirstName is not null) { trainee.FirstName = updateTraineeDto.FirstName; }
+            if (updateTraineeDto.LastName is not null) { trainee.LastName = updateTraineeDto.LastName; }
+            if (updateTraineeDto.BirthDate != null) { trainee.BirthDate = updateTraineeDto.BirthDate; }
+            if (updateTraineeDto.Password is not null)
+            {
+                _hash.createHashPassword(updateTraineeDto.Password, out byte[] hashedPass, out byte[] hashedSlot);
+                trainee.PasswordHashed = hashedPass;
+                trainee.PasswordSlot = hashedSlot;
+            }
+            if (updateTraineeDto.Address is not null) { trainee.Address = updateTraineeDto.Address; }
+            if (updateTraineeDto.PhoneNumber != 0) { trainee.PhoneNumber = (int)updateTraineeDto.PhoneNumber; }
+            if (updateTraineeDto.CardN != 0) { trainee.CardN = (int)updateTraineeDto.CardN; }
+            if (updateTraineeDto.image is not null)
+            {
+                string fileName = updateTraineeDto.image.FileName;
 
-            _hash.createHashPassword(updateTraineeDto.Password, out byte[] hashedPass, out byte[] hashedSlot);
-            updatedTrainee.PasswordHashed = hashedPass;
-            updatedTrainee.PasswordSlot = hashedSlot;
+                fileName = Path.GetFileName(fileName);
+                // Delete exiting file
+                System.IO.File.Delete(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName));
+                // Save new file
+                //string fileName = Guid.NewGuid() + Path.GetFileName(UploadImage.FileName);
+                string uploadpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
+                var stream = new FileStream(uploadpath, FileMode.Create);
 
-            _unitOfWork.Users.Update(updatedTrainee);
+                await updateTraineeDto.image.CopyToAsync(stream);
+
+                //chef.CvPath = uploadpath;
+            }
+            if (updateTraineeDto.Level is not null) { trainee.Level = (Levels)Enum.Parse(typeof(Levels), updateTraineeDto.Level); }
+
+            trainee.Updated = DateTime.Now;
+
+            trainee.Created = trainee.Created;
+            trainee.Updated = DateTime.Now;
+
+
+            _unitOfWork.Users.Update(trainee);
             await _unitOfWork.Save();
 
             var traineeDto = _mapper.Map<TraineeDTO>(trainee);
-            return new ResponsTraineeDto
+            return new ResponsDto<TraineeDTO>
             {
-                TraineeDto = traineeDto,
+                Dto = traineeDto,
             };
         }
         

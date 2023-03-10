@@ -4,6 +4,7 @@ using Cooking_School_ASP.NET.Dtos.CookClassDto;
 using Cooking_School_ASP.NET.Dtos.TraineeDto;
 using Cooking_School_ASP.NET.IRepository;
 using Cooking_School_ASP.NET.Models;
+using Cooking_School_ASP.NET.ModelUsed;
 
 namespace Cooking_School_ASP.NET.Services
 {
@@ -16,11 +17,11 @@ namespace Cooking_School_ASP.NET.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<ResponsCookClass> CreateCookClass(CreateCookClassDto createCookClassDto)
+        public async Task<ResponsDto<CookClassDTO>> CreateCookClass(CreateCookClassDto createCookClassDto)
         {
             if (await _unitOfWork.Courses.Get(x => x.Id == createCookClassDto.CourseId) is null)
             {
-                return new ResponsCookClass()
+                return new ResponsDto<CookClassDTO>()
                 {
                     Exception = new Exception($"Faild, Entered Course Not Exist"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
@@ -29,7 +30,7 @@ namespace Cooking_School_ASP.NET.Services
             }
             if (await _unitOfWork.Users.Get(x => x.Id == createCookClassDto.ChefId) is null)
             {
-                return new ResponsCookClass()
+                return new ResponsDto<CookClassDTO>()
                 {
                     Exception = new Exception($"Faild, Entered Chef Not Exist"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
@@ -50,16 +51,16 @@ namespace Cooking_School_ASP.NET.Services
                 });
             }
             await _unitOfWork.ClassDays.InsertRange(classDays);
-            return new ResponsCookClass()
+            return new ResponsDto<CookClassDTO>()
             {
             };
         }
 
-        public async Task<ResponsCookClass> DeleteCookClass(int cookClassId)
+        public async Task<ResponsDto<CookClassDTO>> DeleteCookClass(int cookClassId)
         {
             if (await _unitOfWork.CookClasses.Get(x => x.Id ==cookClassId) is null)
             {
-                return new ResponsCookClass()
+                return new ResponsDto<CookClassDTO>()
                 {
                     Exception = new Exception($"Failed, This CookClass Is Not Exist"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
@@ -67,28 +68,36 @@ namespace Cooking_School_ASP.NET.Services
             }
             await _unitOfWork.CookClasses.Delete(cookClassId);
             await _unitOfWork.Save();
-            return new ResponsCookClass()
+            return new ResponsDto<CookClassDTO>()
             {
             };
         }
 
-        public async Task<ResponsCookClass> UpdateCookClass(int cookClassId, UpdateCookClassDto updateCookClassDto)
+        public async Task<ResponsDto<CookClassDTO>> UpdateCookClass(int cookClassId, UpdateCookClassDto updateCookClassDto)
         {
-            if (await _unitOfWork.CookClasses.Get(x => x.Id == cookClassId) is null)
+            var cookClass = await _unitOfWork.CookClasses.Get(x => x.Id == cookClassId);
+            if (cookClass is null)
             {
-                return new ResponsCookClass()
+                return new ResponsDto<CookClassDTO>()
                 {
                     Exception = new Exception($"Failed, This CookClass Is Not Exist"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
                 };
             }
 
-            var updatedCookClass = _mapper.Map<CookClass>(updateCookClassDto);
-            updatedCookClass.Updated = DateTime.Now;
-            _unitOfWork.CookClasses.Update(updatedCookClass);
+            if (updateCookClassDto.ChefId != 0) { cookClass.ChefId = (int)updateCookClassDto.ChefId; }
+            if (updateCookClassDto.CourseId != 0) { cookClass.CourseId = (int)updateCookClassDto.CourseId; }
+            if (updateCookClassDto.EndingAt != null) { cookClass.EndingAt = (DateTime)updateCookClassDto.EndingAt; }
+            if (updateCookClassDto.StartingAt != null) { cookClass.StartingAt = (DateTime)updateCookClassDto.StartingAt; }
+
+
+            cookClass.Updated = DateTime.Now;
+            _unitOfWork.CookClasses.Update(cookClass);
             await _unitOfWork.Save();
-            return new ResponsCookClass()
+            var cookClassDTO = _mapper.Map<CookClassDTO>(cookClass);
+            return new ResponsDto<CookClassDTO>()
             {
+                Dto = cookClassDTO
             };
         }
     }

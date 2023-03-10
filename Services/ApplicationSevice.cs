@@ -7,6 +7,7 @@ using Cooking_School_ASP.NET.Dtos.ProjectDto;
 using Cooking_School_ASP.NET.Dtos.ProjectFileDto;
 using Cooking_School_ASP.NET.IRepository;
 using Cooking_School_ASP.NET.Models;
+using Cooking_School_ASP.NET.ModelUsed;
 using Microsoft.EntityFrameworkCore;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -21,12 +22,12 @@ namespace Cooking_School_ASP.NET.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<ResponsApplicationDto> AcceptApplication(int applicationId)
+        public async Task<ResponsDto<ApplicationDTO>> AcceptApplication(int applicationId)
         {
             var application = await _unitOfWork.Applications.Get(x => x.Id == applicationId);
             if (application is null)
             {
-                return new ResponsApplicationDto()
+                return new ResponsDto<ApplicationDTO>()
                 {
                     Exception = new Exception("Failed, This applicationId Is Not Exist"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
@@ -40,13 +41,13 @@ namespace Cooking_School_ASP.NET.Services
             trainee_Course.Created = DateTime.Now;
             await _unitOfWork.Trainee_Courses.Insert(trainee_Course);
             await _unitOfWork.Save();
-            return new ResponsApplicationDto();
+            return new ResponsDto<ApplicationDTO>();
         }
-            public async Task<ResponsApplicationDto> CreateApplication(CreateApplicationDto applicationDto)
+            public async Task<ResponsDto<ApplicationDTO>> CreateApplication(CreateApplicationDto applicationDto)
         {
             if (await _unitOfWork.CookClasses.Get(x => x.Id == applicationDto.CookClassId) is not null)
             {
-                return new ResponsApplicationDto()
+                return new ResponsDto<ApplicationDTO>()
                 {
                     Exception = new Exception($"Failed, CookClass {applicationDto.CookClassId} Entered Not Exist"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
@@ -54,7 +55,7 @@ namespace Cooking_School_ASP.NET.Services
             }
             if (await _unitOfWork.Users.Get(x => x.Id == applicationDto.TraineeId) is not null)
             {
-                return new ResponsApplicationDto()
+                return new ResponsDto<ApplicationDTO>()
                 {
                     Exception = new Exception($"Failed, Trainee {applicationDto.TraineeId} Entered Not Exist"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
@@ -64,16 +65,24 @@ namespace Cooking_School_ASP.NET.Services
             await _unitOfWork.Applications.Insert(application);
             await _unitOfWork.Save();
             var projectDto = _mapper.Map<ApplicationDTO>(application);
-            return new ResponsApplicationDto()
+            return new ResponsDto<ApplicationDTO>()
             {
-                ApplicationDto = projectDto,
+                Dto = projectDto,
             };
         }
 
-        public async Task<ResponsApplicationDto> GetAllApplicationsToChef(int cheefId)
+        public async Task<ResponsDto<ApplicationDTO>> GetAllApplicationsToChef(int cheefId)
         {
-            User chef = await _unitOfWork.Users.Get(x => x.Id == cheefId, include: x => x.Include(s => s.CookClasses));
+            Chef chef = (Chef)await _unitOfWork.Users.Get(x => x.Id == cheefId, include: x => x.Include(s => ((Chef)s).CookClasses));
             var cookClasses = chef.CookClasses;
+            if(cookClasses is null)
+            {
+                return new ResponsDto<ApplicationDTO>()
+                {
+                    Exception = new Exception("Chef dose not have CookClasses"),
+                    StatusCode = System.Net.HttpStatusCode.BadRequest
+                };
+            }
             IList<ApplicationT> applications = new List<ApplicationT>();    
             foreach(var cookClass in cookClasses)
             {
@@ -83,13 +92,13 @@ namespace Cooking_School_ASP.NET.Services
                 }
             }
             var applicationsDto = _mapper.Map<IList<ApplicationDTO>>(applications);
-            return new ResponsApplicationDto()
+            return new ResponsDto<ApplicationDTO>()
             {
-                applicationDTOs = applicationsDto
+                ListDto = applicationsDto
             };
         }
 
-        public async Task<ResponsApplicationDto> GetAllApplicationToClass(int classId)
+        public async Task<ResponsDto<ApplicationDTO>> GetAllApplicationToClass(int classId)
         {
             CookClass cookClass = await _unitOfWork.CookClasses.Get(x => x.Id == classId, include: x => x.Include(s => s.Applications));
             IList<ApplicationT> applications = new List<ApplicationT>();
@@ -99,18 +108,18 @@ namespace Cooking_School_ASP.NET.Services
 
             }
             var applicationsDto = _mapper.Map<IList<ApplicationDTO>>(applications);
-            return new ResponsApplicationDto()
+            return new ResponsDto<ApplicationDTO>()
             {
-                applicationDTOs = applicationsDto
+                ListDto = applicationsDto
             };
         }
 
-        public async Task<ResponsApplicationDto> RejectApplication(int applicationId)
+        public async Task<ResponsDto<ApplicationDTO>> RejectApplication(int applicationId)
         {
             var application = await _unitOfWork.Applications.Get(x => x.Id == applicationId);
             if (application is null)
             {
-                return new ResponsApplicationDto()
+                return new ResponsDto<ApplicationDTO>()
                 {
                     Exception = new Exception("Failed, This applicationId Is Not Exist"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
@@ -119,7 +128,7 @@ namespace Cooking_School_ASP.NET.Services
             application.status = status_apply.rejected;
             _unitOfWork.Applications.Update(application);
             await _unitOfWork.Save();
-            return new ResponsApplicationDto();
+            return new ResponsDto<ApplicationDTO>();
         }
     }
 }

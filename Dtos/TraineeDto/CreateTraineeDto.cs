@@ -12,7 +12,6 @@ namespace Cooking_School_ASP.NET.Dtos.TraineeDto
         [Required]
         [DataType(DataType.CreditCard)]
         public int CardN { get; set; }
-        public int PhoneNumber { get; set; }
         public IFormFile? image { get; set; }
 
     }

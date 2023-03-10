@@ -25,6 +25,7 @@ namespace Cooking_School_ASP.NET.Controllers
         }
 
         [HttpPost("~/api/chefs/{chefId}/cook-classes/{classsId}/projects")]
+        [Authorize(Roles = "Chef")]
         public async Task<IActionResult> CreateProject([FromBody] CreateProjectDto projectDto, int classId, int chefId)
         {
             _logger.LogInformation($"Attempt Sinup for {nameof(projectDto)} ");
@@ -39,11 +40,12 @@ namespace Cooking_School_ASP.NET.Controllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.projectDto);
+            return Ok(result.Dto);
         }
 
 
         [HttpPut("~/api/chefs/{chefId}/cook-classes/{classsId}/projects/{projectId}")]
+        [Authorize(Roles = "Chef")]
         public async Task<IActionResult> UpdateProject([FromBody] UpdateProjectDto projectDto, int projectId)
         {
             _logger.LogInformation($"Attempt Sinup for {nameof(projectDto)} ");
@@ -58,10 +60,11 @@ namespace Cooking_School_ASP.NET.Controllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.projectDto);
+            return Ok(result.Dto);
         }
 
         [HttpDelete("~/api/chefs/{chefId}/cook-classes/{classsId}/projects/{projectId}")]
+        [Authorize(Roles = "Chef")]
         public async Task<IActionResult> DeleteProject(int classId, int projectId)
         {
             _logger.LogInformation($"Attempt Delete for {nameof(Project)} ");
@@ -71,19 +74,21 @@ namespace Cooking_School_ASP.NET.Controllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.projectDto);
+            return Ok(result.Dto);
         }
 
         [HttpGet("~/api/trainees/{traineeId}/courses/{coursesId}/cook-classes/{cookclassId}/projects")]
+        [Authorize(Roles = "Chef, Trainee")]
         public async Task<IActionResult> GetAllProjectTrainee([FromQuery] RequestParam requestParams)
         {
             _logger.LogInformation($"Attempt GetAll of {nameof(Project)} ");
             var result = await _projectService.GetAllProject(requestParams);
-            return Ok(result);
+            return Ok(result.ListDto);
         }
 
 
         [HttpGet("~/api/trainees/{traineeId}/courses/{coursesId}/cook-classes/{cookclassId}/projects/{projectId}")]
+        [Authorize(Roles = "Chef, Trainee")]
         public async Task<IActionResult> GetProjectById(int projectId)
         {
             _logger.LogInformation($"Attempt GetBy Id of {nameof(Project)}");
@@ -93,7 +98,7 @@ namespace Cooking_School_ASP.NET.Controllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.projectDto);
+            return Ok(result.Dto);
         }
     }
 }

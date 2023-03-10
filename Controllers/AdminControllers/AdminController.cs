@@ -10,8 +10,11 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using System.Web.Helpers;
 using Newtonsoft.Json.Linq;
-using RestSharp;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
+using System.Linq;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Cooking_School_ASP.NET.Controllers.AdminControllers
 {
@@ -21,18 +24,20 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
     {
         private readonly ILogger<AdminCookClassController> _logger;
         private readonly IAdminService _adminService;
-        private readonly IAuthentication _authentication;
+        private readonly IRefreshTokenService _refreshTokenService;
+        private readonly IAuthenticationServices _authenticationServices;
         private readonly IMapper _mapper;
-        public AdminController(ILogger<AdminCookClassController> logger, IAdminService adminService, IAuthentication authentication, IMapper mapper)
+        public AdminController(ILogger<AdminCookClassController> logger, IAdminService adminService, IAuthenticationServices authentication, IMapper mapper, IRefreshTokenService refreshTokenService)
         {
             _logger = logger;
             _adminService = adminService;
-            _authentication = authentication;
+            _authenticationServices = authentication;
             _mapper = mapper;
+            _refreshTokenService = refreshTokenService;
         }
 
-        [HttpPost("signup")]
-        public async Task<IActionResult> RegisterAdmin([FromBody] CreateAdminDto createAdminDto)
+        [HttpPost("")]
+        public async Task<IActionResult> RegisterAdmin([FromForm] CreateAdminDto createAdminDto)
         {
 
             _logger.LogInformation($" Attempt Sinup for {createAdminDto}");
@@ -47,7 +52,7 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.AdminDTO);
+            return Ok(result.Dto);
         }
 
         [HttpPost("login")]
@@ -58,24 +63,67 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
             {
                 return BadRequest(ModelState);
             }
-
-
-            if (await _authentication.IsAuthenticate(adminLoginDto))
+            if (await _authenticationServices.IsAuthenticate(adminLoginDto))
             {
-                string token = await _authentication.GenerateToken();
-                var refreshToken = await _authentication.GenerateRefreshToken();
-                var user = await _adminService.GetUserById(adminLoginDto.Id);
-                var trainee = _mapper.Map<Admin>(user.AdminDTO);
-                SetRefreshToken(refreshToken, trainee);
+                string token = await _authenticationServices.GenerateToken(adminLoginDto.Id);
+                var refreshToken = await _refreshTokenService.GenerateRefreshToken();
+                refreshToken.UserId = adminLoginDto.Id;
+                await SetRefreshToken(refreshToken);
                 return Accepted(new TokenRequest { Token = token, RefreshToken = refreshToken.Token });
             }
             return null;
         }
 
-        [HttpGet("favorite-meal")]
+        [HttpPost("logout")]
+        [Authorize(Roles = "Administrator, Trainee")]
+        public async Task<IActionResult> LogOut()
+        {
+            _logger.LogInformation($"Attempt to logout ");
+            string authorizationHeader = Request.Headers["Authorization"];
+
+            if (!string.IsNullOrEmpty(authorizationHeader) && authorizationHeader.StartsWith("Bearer "))
+            {
+                string token = authorizationHeader.Substring("Bearer ".Length);
+                var result = await _adminService.LogOut(token);
+                if (result.Exception is not null)
+                {
+                    throw new StatusCodeException(result.StatusCode.Value, result.Exception);
+                }
+                return Ok("Done");
+            }
+            _logger.LogInformation($"fail Attempt to logout ");
+            throw new StatusCodeException(System.Net.HttpStatusCode.BadRequest, new Exception("there is problem in the token"));
+        }
+
+
+        [HttpPost("refresh-token")]  //Authorize(Roles = "Admin")
+        [Authorize]
+        public async Task<IActionResult> RefreshToken()
+        {
+            var user = await _authenticationServices.GetCurrentUser(HttpContext);
+            var refreshToken = Request.Cookies["refreshToken"];
+            RefreshToken userRefreshToken = await _refreshTokenService.GetRefrshToken(user.Id);
+            if (!userRefreshToken.Token.Equals(refreshToken))
+            {
+                return Unauthorized("Invalid Refresh Token.");
+            }
+            else if (userRefreshToken.ExpirationDate < DateTime.Now)
+            {
+                return Unauthorized("Token expired.");
+            }
+            var token = await _authenticationServices.GenerateToken(user.Id);
+            var newRefreshToken = await _refreshTokenService.GenerateRefreshToken();
+            newRefreshToken.UserId = user.Id;
+            await SetRefreshToken(newRefreshToken);
+            return Accepted(new TokenRequest { Token = token, RefreshToken = newRefreshToken.Token });
+        }
+
+
+        [HttpGet("favorite-meals")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> GetAllFavoriteMeals()
         {
-            _logger.LogInformation($"Attempt GetAllFavoriteMeals  of Meal");
+            _logger.LogInformation($"Attempt GetAllFavoriteMeals of Meal");
             using var client = new HttpClient();
             var response = await client.GetAsync("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood");
             var content = await response.Content.ReadAsStringAsync();
@@ -86,20 +134,16 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
         }
 
 
-        private void SetRefreshToken(RefreshToken newRefreshToken, Admin admin)
+        private async Task SetRefreshToken(RefreshToken newRefreshToken)
         {
+            await _refreshTokenService.SetRefreshToken(newRefreshToken);
             var cookieOptions = new CookieOptions
             {
                 HttpOnly = true,
-                Expires = newRefreshToken.Expire
+                Expires = newRefreshToken.ExpirationDate
             };
             Response.Cookies.Append("refreshToken", newRefreshToken.Token, cookieOptions);
-
-            admin.RefreshToken = newRefreshToken.Token;
-            admin.CreatedRefreshToken = newRefreshToken.Created;
-            admin.ExpireRefreshToken = newRefreshToken.Expire;
-            var adminDto = _mapper.Map<UpdateAdminDto>(admin);
-            _adminService.UpdateUser(admin.Id, adminDto);
         }
+
     }
 }

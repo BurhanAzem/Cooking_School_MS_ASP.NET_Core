@@ -37,7 +37,7 @@ namespace Cooking_School_ASP.NET.Repository
             {
                 qurey = include(qurey);
             }
-            return await qurey.AsNoTracking().FirstOrDefaultAsync(expression);
+            return await qurey.FirstOrDefaultAsync(expression);
         }
 
         public async Task<IList<T>> GetAll(Expression<Func<T, bool>> expression = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
@@ -88,8 +88,7 @@ namespace Cooking_School_ASP.NET.Repository
 
         public void Update(T entity)
         {
-            _db.Attach(entity);
-            _dBContext.Entry(entity).State = EntityState.Modified;
+            _db.Update(entity);
         }
     }
 }

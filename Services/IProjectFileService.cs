@@ -1,15 +1,16 @@
 ﻿using Cooking_School_ASP.NET.Dtos;
 using Cooking_School_ASP.NET.Dtos.CookClassDto;
 using Cooking_School_ASP.NET.Dtos.ProjectFileDto;
+using Cooking_School_ASP.NET.ModelUsed;
 
 namespace Cooking_School_ASP.NET.Services
 {
     public interface IProjectFileService
     {
-        Task<ResponsPrpjectFileDto> EvaluateTraineeProject(decimal mark, int projectFileId);
-        Task<ResponsPrpjectFileDto> UploadeProjectFile(CreateProjectFileDto projectFileId);
-        Task<IList<ProjectFileDTO>> GetAllProjectFile(RequestParam requestParams = null);
-        Task<ResponsPrpjectFileDto> DeleteProjectFile(int projectFileDto);
+        Task<ResponsDto<ProjectFileDTO>> EvaluateTraineeProject(decimal mark, int projectFileId);
+        Task<ResponsDto<ProjectFileDTO>> UploadeProjectFile(CreateProjectFileDto projectFileId);
+        Task<ResponsDto<ProjectFileDTO>> GetAllProjectFile(RequestParam requestParams = null);
+        Task<ResponsDto<ProjectFileDTO>> DeleteProjectFile(int projectFileDto);
 
     }
 }

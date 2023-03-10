@@ -1,8 +1,9 @@
-﻿using Cooking_School_ASP.NET.Models;
+﻿using Cooking_School_ASP.NET.Dtos.CookClassDto;
+using Cooking_School_ASP.NET.Models;
 
 namespace Cooking_School_ASP.NET.Dtos.CourseDto
 {
-    public class CourseDTO
+    public class CourseDTO : CreateCourseDto
     {
         public int Id { get; set; }
         public int FavoriteN { get; set; }  
