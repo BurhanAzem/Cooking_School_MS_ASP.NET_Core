@@ -13,12 +13,23 @@ using Microsoft.Extensions.Configuration;
 using System.Reflection;
 using Cooking_School_ASP.NET.IRepository;
 using Cooking_School_ASP.NET.Repository;
-using Cooking_School_ASP.NET.Services;
 using HotelListing.Core;
 using Microsoft.AspNetCore.Hosting;
 using Cooking_School_ASP.NET.Hash;
 //using Swashbuckle.AspNetCore.Filters;
 using Cooking_School_ASP.NET.MiddlewareHandlingEx;
+using Cooking_School_ASP.NET.Services.AdminService;
+using Cooking_School_ASP.NET.Services.ApplicationService;
+using Cooking_School_ASP.NET.Services.AuthenticationServices;
+using Cooking_School_ASP.NET.Services.ChefService;
+using Cooking_School_ASP.NET.Services.CookClassService;
+using Cooking_School_ASP.NET.Services.CourseService;
+using Cooking_School_ASP.NET.Services.RefreshService;
+using Cooking_School_ASP.NET.Services.ProjectFileService;
+using Cooking_School_ASP.NET.Services.ProjectService;
+using Cooking_School_ASP.NET.Services.TraineeService;
+using Cooking_School_ASP.NET.Services.FilesService;
+using Cooking_School_ASP.NET.Services.SubmitedFileService;
 
 var builder = WebApplication.CreateBuilder(args);
 var logger = new LoggerConfiguration()
@@ -95,13 +106,15 @@ builder.Services.AddScoped<IChefService, ChefService>();
 builder.Services.AddScoped<ITraineeService, TraineeService>();
 builder.Services.AddScoped<IHashPassword, HashPassword>();
 builder.Services.AddScoped<ICookClassService, CookClassService>();
-builder.Services.AddScoped<IProjectFileService, ProjectFileService>();
+builder.Services.AddScoped<ISubmitedFileService, SubmitedFileService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<ICourseService, CourseService>();
-builder.Services.AddScoped<IProjectFileService, ProjectFileService>();
+builder.Services.AddScoped<ISubmitedFileService, SubmitedFileService>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IApplicationSevice, ApplicationSevice>();
 builder.Services.AddScoped<IRefreshTokenService, RefreshTokenServicse>();
+builder.Services.AddScoped<IFileService, FileService>();
+
 
 builder.Services.AddRazorPages();
 builder.Services.AddCors();

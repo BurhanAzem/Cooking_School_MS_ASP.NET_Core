@@ -4,7 +4,6 @@ using Cooking_School_ASP.NET.Dtos.AdminDto;
 using Cooking_School_ASP.NET.Dtos.TraineeDto;
 using Cooking_School_ASP.NET.Dtos.UserDto;
 using Cooking_School_ASP.NET.ModelUsed;
-using Cooking_School_ASP.NET.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
@@ -15,6 +14,9 @@ using Microsoft.AspNetCore.Authorization;
 using System.Data;
 using System.Linq;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Cooking_School_ASP.NET.Services.AdminService;
+using Cooking_School_ASP.NET.Services.AuthenticationServices;
+using Cooking_School_ASP.NET.Services.RefreshService;
 
 namespace Cooking_School_ASP.NET.Controllers.AdminControllers
 {
@@ -36,7 +38,7 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
             _refreshTokenService = refreshTokenService;
         }
 
-        [HttpPost("")]
+        [HttpPost]
         public async Task<IActionResult> RegisterAdmin([FromForm] CreateAdminDto createAdminDto)
         {
 
@@ -71,11 +73,11 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
                 await SetRefreshToken(refreshToken);
                 return Accepted(new TokenRequest { Token = token, RefreshToken = refreshToken.Token });
             }
-            return null;
+            return BadRequest("User not authenticate");
         }
 
         [HttpPost("logout")]
-        [Authorize(Roles = "Administrator, Trainee")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> LogOut()
         {
             _logger.LogInformation($"Attempt to logout ");

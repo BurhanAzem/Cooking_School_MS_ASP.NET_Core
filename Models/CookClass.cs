@@ -13,8 +13,8 @@ namespace Cooking_School_ASP.NET.Models
         [ForeignKey (nameof(Chef))]
         public int ChefId { get; set; } 
         public virtual Chef Chef { get; set; }
-        public DateTime StartingAt { get; set; }
-        public DateTime EndingAt { get; set; }
+        public TimeOnly StartingAt { get; set; }
+        public TimeOnly EndingAt { get; set; }
         public virtual ICollection<Project> Projects { get; set; }
         public virtual ICollection<ApplicationT> Applications { get; set; }
         public virtual ICollection<ClassDays> ClassDays { get; set; }

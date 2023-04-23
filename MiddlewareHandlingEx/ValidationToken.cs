@@ -1,5 +1,14 @@
 ﻿using Azure.Core;
-using Cooking_School_ASP.NET.Services;
+using Cooking_School_ASP.NET.IRepository;
+using Cooking_School_ASP.NET.ModelUsed;
+using Cooking_School_ASP.NET.Services.AdminService;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Routing;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Net;
 
 namespace Cooking_School_ASP.NET.MiddlewareHandlingEx
 {
@@ -7,23 +16,42 @@ namespace Cooking_School_ASP.NET.MiddlewareHandlingEx
     public class ValidationToken
     {
         private readonly RequestDelegate _next;
-        private readonly IAdminService _adminService;
+        private IUnitOfWork _unitOfWork;
 
-        public ValidationToken(RequestDelegate next, IAdminService adminService)
+        public ValidationToken(RequestDelegate next)
         {
             _next = next;
-            _adminService = adminService;
         }
 
-        public async Task Invoke(HttpContext context)
+        public async Task InvokeAsync(HttpContext context, IUnitOfWork unitOfWork)
         {
-            string token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+            string authorizationHeader = context.Request.Headers["Authorization"];
+            string route = context.Request.Path.Value; // Get the request path as a string
 
-            if (!string.IsNullOrEmpty(token))
+            if (!IsLogin(route) && !string.IsNullOrEmpty(authorizationHeader) && authorizationHeader.StartsWith("Bearer "))
             {
-                await _adminService.LogOut(token);
+                string token = authorizationHeader.Substring("Bearer ".Length);
+                var Invalid = await unitOfWork.BlackLists.Get(t => t.Invalid_Token == token);
+                if (Invalid is not null)
+                {
+                    context.Response.StatusCode = 400;
+                    context.Response.ContentType = "application/json";
+                    string message = "You have invalid token (Logged Out)";
+                    await context.Response.WriteAsync(JsonConvert.SerializeObject(new { message }));
+                    return; // Stop the request processing
+                }
             }
             await _next(context);
+        }
+
+        private bool IsLogin(string route)
+        {
+            if (route.Equals("/api/admins/login") ||
+                route.Equals("/api/trainees/login") ||
+                route.Equals("/api/chefs/login"))
+                return true;
+            else
+                return false;
         }
     }
 }

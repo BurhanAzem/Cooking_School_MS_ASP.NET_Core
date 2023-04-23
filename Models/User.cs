@@ -25,7 +25,7 @@ namespace Cooking_School_ASP.NET.Models
         public byte[] PasswordSlot { get; set; }
         public int PhoneNumber { get; set; }
         public virtual IList<Trainee_Course> TraineeCourses { get; set; }
-        public virtual ICollection<ProjectFile> ProjectFiles { get; set; }
+        public virtual ICollection<SubmitedFile> ProjectFiles { get; set; }
         public virtual ICollection<FavoriteMeal_Trainee> FavoriteMealTrainees { get; set; }
         public virtual ICollection<Favorite_Course> FavoriteCourses { get; set; }
         public virtual ICollection<Favorite_Chef> FavoriteChefs { get; set; }

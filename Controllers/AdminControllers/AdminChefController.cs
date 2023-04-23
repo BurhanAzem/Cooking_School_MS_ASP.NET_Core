@@ -2,7 +2,8 @@
 using Cooking_School_ASP.NET.Dtos.ChefDto;
 using Cooking_School_ASP.NET.Models;
 using Cooking_School_ASP.NET.ModelUsed;
-using Cooking_School_ASP.NET.Services;
+using Cooking_School_ASP.NET.Services.AdminService;
+using Cooking_School_ASP.NET.Services.ChefService;
 using Cooking_School_ASP.NET_.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -70,10 +71,10 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteChef(int chefId)
         {
-            _logger.LogInformation($"Attempt To Delete {nameof(ProjectFile)}");
+            _logger.LogInformation($"Attempt To Delete {nameof(Chef)}");
             if (chefId < 0)
             {
-                _logger.LogInformation($"Invalid Attempt To Delete {nameof(ProjectFile)}");
+                _logger.LogInformation($"Invalid Attempt To Delete {nameof(Chef)}");
                 return BadRequest();
             }
             var result = await _chefService.DeleteUser(chefId);

@@ -2,7 +2,6 @@
 using Cooking_School_ASP.NET.Dtos.ChefDto;
 using Cooking_School_ASP.NET.Dtos.TraineeDto;
 using Cooking_School_ASP.NET.Dtos.UserDto;
-using Cooking_School_ASP.NET.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +12,10 @@ using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using System.Web.WebPages;
 using Cooking_School_ASP.NET.Dtos.AdminDto;
+using Cooking_School_ASP.NET.Services.AuthenticationServices;
+using Cooking_School_ASP.NET.Services.ChefService;
+using Cooking_School_ASP.NET.Services.RefreshService;
+using Cooking_School_ASP.NET.Dtos;
 
 namespace Cooking_School_ASP.NET_.Controllers
 {
@@ -37,7 +40,6 @@ namespace Cooking_School_ASP.NET_.Controllers
 
 
         [HttpPost("login")]
-        [Authorize(Roles = "Chef")]
         public async Task<IActionResult> LogIn([FromBody] UserLoginDto chefDto)
         {
             _logger.LogInformation($"Login Attempt for {nameof(chefDto)} ");
@@ -53,18 +55,18 @@ namespace Cooking_School_ASP.NET_.Controllers
                 await SetRefreshToken(refreshToken);
                 return Accepted(new TokenRequest { Token = token, RefreshToken = refreshToken.Token });
             }
-            return null;
+            return BadRequest("User not authenticate");
         }
 
-
+        [HttpPost("logout")]
+        [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> LogOut()
         {
             _logger.LogInformation($"Attempt to logout ");
-            string authorizationHeader = Request.Headers["Authorization"];
+            string token = Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
 
-            if (!string.IsNullOrEmpty(authorizationHeader) && authorizationHeader.StartsWith("Bearer "))
+            if (!string.IsNullOrEmpty(token))
             {
-                string token = authorizationHeader.Substring("Bearer ".Length);
                 var result = await _chefService.LogOut(token);
                 if (result.Exception is not null)
                 {
@@ -103,12 +105,12 @@ namespace Cooking_School_ASP.NET_.Controllers
 
         
 
-        [HttpGet("current")]
-        [Authorize(Roles = "Administrator, Chef")]
-        public async Task<IActionResult> CurrentChef()
-        {
-            return Ok();
-        }
+        //[HttpGet("current")]
+        //[Authorize(Roles = "Administrator, Chef")]
+        //public async Task<IActionResult> CurrentChef()
+        //{
+        //    return Ok();
+        //}
 
 
         [HttpPost("meals/{mealId}/fovarite")]
@@ -142,11 +144,12 @@ namespace Cooking_School_ASP.NET_.Controllers
 
         }
 
-        [HttpPost("~/api/trainees/{traineeId}/chefs/{chefId}/favorite")]
+        [HttpPost("~/api/chefs/{chefId}/favorite")]
         [Authorize(Roles = "Trainee")]
-        public async Task<IActionResult> FavoriteChef(int traineeId, int chefId)
+        public async Task<IActionResult> FavoriteChef(int chefId)
         {
-            var result = await _chefService.FavoriteChef(chefId, traineeId);
+            var user = await _authenticationServices.GetCurrentUser(HttpContext);
+            var result = await _chefService.FavoriteChef(chefId, user.Id);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;
@@ -156,11 +159,12 @@ namespace Cooking_School_ASP.NET_.Controllers
         }
 
 
-        [HttpDelete("~/api/trainees/{traineeId}/chefs/{chefId}/favorite")]
+        [HttpDelete("~/api/chefs/{chefId}/favorite")]
         [Authorize(Roles = "Trainee")]
         public async Task<IActionResult> UnFavoriteChef(int traineeId, int chefId)
         {
-            var result = await _chefService.UnFavoriteChef(chefId, traineeId);
+            var user = await _authenticationServices.GetCurrentUser(HttpContext);
+            var result = await _chefService.UnFavoriteChef(chefId, user.Id);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;
@@ -179,6 +183,7 @@ namespace Cooking_School_ASP.NET_.Controllers
             };
             Response.Cookies.Append("refreshToken", newRefreshToken.Token, cookieOptions);
         }
+
     }
   
 }

@@ -3,9 +3,11 @@ using Cooking_School_ASP.NET.Dtos.ApplicationDto;
 using Cooking_School_ASP.NET.Dtos.CookClassDto;
 using Cooking_School_ASP.NET.Models;
 using Cooking_School_ASP.NET.ModelUsed;
-using Cooking_School_ASP.NET.Services;
+using Cooking_School_ASP.NET.Services.ApplicationService;
+using Cooking_School_ASP.NET.Services.AuthenticationServices;
 using Cooking_School_ASP.NET_.Controllers;
 using Cooking_School_ASP.NET_.Models;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,23 +22,27 @@ namespace Cooking_School_ASP.NET.Controllers
     {
         private readonly ILogger<ApplicationController> _logger;
         private readonly IApplicationSevice _applicationSevice;
-        public ApplicationController(ILogger<ApplicationController> logger, IApplicationSevice applicationSevice)
+        private readonly IAuthenticationServices _authenticationService;
+        public ApplicationController(ILogger<ApplicationController> logger, IApplicationSevice applicationSevice, IAuthenticationServices authenticationService)
         {
             _logger = logger;
             _applicationSevice = applicationSevice;
+            _authenticationService = authenticationService;
         }
 
-        [HttpGet("~/api/chefs/{chefId}/applications")]
+        [HttpGet("applications")]
         [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> GetAllApplicationsToChef(int chefId)
         {
+
             _logger.LogInformation($"Attempt To GetAll {nameof(Application)}");
-            if (chefId < 0)
+            var res = await _authenticationService.GetCurrentUser(HttpContext);
+            if (res.Id < 0)
             {
-                _logger.LogInformation($"Invalid Attempt To Delete {nameof(Application)}");
+                _logger.LogInformation($"Invalid chefId");
                 return BadRequest();
             }
-            var result = await _applicationSevice.GetAllApplicationsToChef(chefId);
+            var result = await _applicationSevice.GetAllApplicationsToChef(res.Id);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;
@@ -46,17 +52,18 @@ namespace Cooking_School_ASP.NET.Controllers
         }
 
 
-        [HttpPost("~/api/chefs/{cheefId}/cook-classes/{classsId}/applications/{applicationId}/accept")]
+        [HttpPost("~/api/cook-classes/{classsId}/applications/{applicationId}/accept")]
         [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> AcceptApplication(int applicationId,[FromForm] RequestParam requestParams = null)
         {
             _logger.LogInformation($"Attempt To Accept Application {nameof(Application)}");
-            if (applicationId < 0)
+            var user = await _authenticationService.GetCurrentUser(HttpContext);
+            if (user.Id < 0)
             {
-                _logger.LogInformation($"Invalid Attempt To Accept Application {nameof(Application)}");
+                _logger.LogInformation($"Invalid Attempt To Accept Application {nameof(Application)} - {user.Id}");
                 return BadRequest();
             }
-            var result = await _applicationSevice.AcceptApplication(applicationId);
+            var result = await _applicationSevice.AcceptApplication(user.Id);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;
@@ -66,17 +73,18 @@ namespace Cooking_School_ASP.NET.Controllers
         }
         
 
-        [HttpPost("~/api/chefs/{cheefId}/cook-classes/{classsId}/applications/{applicationId}/reject")]
+        [HttpPost("~/api/cook-classes/{classsId}/applications/{applicationId}/reject")]
         [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> RejectApplication(int applicationId)
         {
             _logger.LogInformation($"Attempt To Reject Application {nameof(Application)}");
-            if (applicationId < 0)
+            var res = await _authenticationService.GetCurrentUser(HttpContext);
+            if (res.Id < 0)
             {
                 _logger.LogInformation($"Invalid Reject To Accept Application {nameof(Application)}");
                 return BadRequest();
             }
-            var result = await _applicationSevice.RejectApplication(applicationId);
+            var result = await _applicationSevice.RejectApplication(res.Id);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;

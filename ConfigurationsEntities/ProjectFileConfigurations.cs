@@ -5,12 +5,12 @@ using Cooking_School_ASP.NET_.Models;
 
 namespace Cooking_School_ASP.NET.ConfigurationsEntities
 {
-    public class ProjectFileConfigurations : IEntityTypeConfiguration<ProjectFile>
+    public class ProjectFileConfigurations : IEntityTypeConfiguration<SubmitedFile>
     {
-        public void Configure(EntityTypeBuilder<ProjectFile> builder)
+        public void Configure(EntityTypeBuilder<SubmitedFile> builder)
         {
             builder.HasData(
-                new ProjectFile
+                new SubmitedFile
                 {
                     Id = 1,
                     ContentPath = "uujv9e8g9839vh9h39vhrvr39vj3r9vh",
@@ -19,7 +19,7 @@ namespace Cooking_School_ASP.NET.ConfigurationsEntities
                     TraineeId = 6,
                     Created = DateTime.Now,
                 },
-                new ProjectFile
+                new SubmitedFile
                 {
                     Id = 2,
                     ContentPath = "uujv9e8g9839vh9h39vhrvr39vj3r9vh",
@@ -27,7 +27,7 @@ namespace Cooking_School_ASP.NET.ConfigurationsEntities
                     TraineeId = 7,
                     Created = DateTime.Now,
                 },
-                new ProjectFile
+                new SubmitedFile
                 {
                     Id = 3,
                     ContentPath = "uujv9e8g9839vh9h39vhrvr39vj3r9vh",
@@ -36,7 +36,7 @@ namespace Cooking_School_ASP.NET.ConfigurationsEntities
                     TraineeId = 8,
                     Created = DateTime.Now,
                 },
-                new ProjectFile
+                new SubmitedFile
                 {
                     Id = 4,
                     ContentPath = "uujv9e8g9839vh9h39vhrvr39vj3r9vh",

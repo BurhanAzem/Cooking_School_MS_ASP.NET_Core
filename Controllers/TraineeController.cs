@@ -5,10 +5,10 @@ using Cooking_School_ASP.NET.Dtos.TraineeDto;
 using Cooking_School_ASP.NET.Dtos.UserDto;
 using Cooking_School_ASP.NET.Models;
 using Cooking_School_ASP.NET.ModelUsed;
-using Cooking_School_ASP.NET.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Cooking_School_ASP.NET.Services.TraineeService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +19,8 @@ using System.Security.Claims;
 using System.Web.WebPages;
 using System.Net.Http;
 using Cooking_School_ASP.NET.Dtos.AdminDto;
+using Cooking_School_ASP.NET.Services.AuthenticationServices;
+using Cooking_School_ASP.NET.Services.RefreshService;
 
 namespace Cooking_School_ASP.NET_.Controllers
 {
@@ -58,18 +60,18 @@ namespace Cooking_School_ASP.NET_.Controllers
                 await SetRefreshToken(refreshToken);
                 return Accepted(new TokenRequest { Token = token, RefreshToken = refreshToken.Token });
             }
-            return null;
+            return BadRequest("User not authenticate");
         }
 
-
+        [HttpPost("logout")]
+        [Authorize(Roles = "Administrator, Trainee")]
         public async Task<IActionResult> LogOut()
         {
             _logger.LogInformation($"Attempt to logout ");
-            string authorizationHeader = Request.Headers["Authorization"];
+            string token = Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
 
-            if (!string.IsNullOrEmpty(authorizationHeader) && authorizationHeader.StartsWith("Bearer "))
-            {
-                string token = authorizationHeader.Substring("Bearer ".Length);
+            if (!string.IsNullOrEmpty(token))
+            { 
                 var result = await _traineeService.LogOut(token);
                 if (result.Exception is not null)
                 {
@@ -82,7 +84,7 @@ namespace Cooking_School_ASP.NET_.Controllers
         }
 
 
-        [HttpPost()]
+        [HttpPost]
         public async Task<IActionResult> SignUp([FromForm] CreateTraineeDto traineeDto)
         {
             if (traineeDto.image == null || traineeDto.image.Length == 0)

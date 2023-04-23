@@ -4,7 +4,6 @@ using Cooking_School_ASP.NET.Dtos;
 using Cooking_School_ASP.NET.Dtos.ChefDto;
 using Cooking_School_ASP.NET.Dtos.CookClassDto;
 using Cooking_School_ASP.NET.ModelUsed;
-using Cooking_School_ASP.NET.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -20,6 +19,8 @@ using System.Security.Claims;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using Cooking_School_ASP.NET.Services.AuthenticationServices;
+using Cooking_School_ASP.NET.Services.CourseService;
 
 namespace Cooking_School_ASP.NET.Controllers.AdminControllers
 {
@@ -39,7 +40,7 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
 
         [HttpPost]
         [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> CreateProject([FromBody] CreateCourseDto courseDto)
+        public async Task<IActionResult> CreateCourse([FromBody] CreateCourseDto courseDto)
         {
             _logger.LogInformation($"Attempt Sinup for {nameof(courseDto)} ");
             if (!ModelState.IsValid)
@@ -60,7 +61,7 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
 
         [HttpPut("{CourseId}")]
         [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> UpdateProject([FromBody] UpdateCourseDto courseDto, int CourseId)
+        public async Task<IActionResult> UpdateCourse([FromBody] UpdateCourseDto courseDto, int CourseId)
         {
             _logger.LogInformation($"Attempt Sinup for {nameof(courseDto)} ");
             if (!ModelState.IsValid)
@@ -80,7 +81,7 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
 
         [HttpDelete("{courseId}")]
         [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> DeleteProject(int courseId)
+        public async Task<IActionResult> DeleteCourse(int courseId)
         {
             _logger.LogInformation($"Attempt Delete for {nameof(Project)} ");
             var result = await _courseService.DeleteCourse(courseId);
@@ -93,7 +94,7 @@ namespace Cooking_School_ASP.NET.Controllers.AdminControllers
         }
 
 
-        [HttpGet()]
+        [HttpGet]
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> GetAllCourses([FromQuery] RequestParam requestParams)
         {

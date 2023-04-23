@@ -7,7 +7,8 @@ namespace Cooking_School_ASP.NET.Dtos.CookClassDto
     {
         public int? CourseId { get; set; }
         public int? ChefId { get; set; }
-        public DateTime? StartingAt { get; set; }
-        public DateTime? EndingAt { get; set; }
+        public TimeOnly? StartingAt { get; set; }
+        public TimeOnly? EndingAt { get; set; }
+        public List<string>? ClassDays { get; set; }
     }
 }

@@ -13,7 +13,9 @@ namespace Cooking_School_ASP.NET.Models
         public CookClass CookClass { get; set; }
         public string ProjectName { get; set; }
         public string? Description { get; set; }
+        public string ContentPath { get; set; }
         public DateTime ExpirDate { get; set; }
-        public virtual ICollection<ProjectFile> projectFiles { get; set; }  
+        public virtual ICollection<SubmitedFile> SubmitedFiles { get; set; }
+        public virtual ICollection<ProjectFile> ProjectFiles { get; set; }
     }
 }

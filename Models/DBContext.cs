@@ -6,6 +6,7 @@ using Cooking_School_ASP.NET.Models;
 using Cooking_School_ASP.NET_.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Common;
@@ -67,9 +68,9 @@ namespace Cooking_School_ASP.NET.Models
             .HasForeignKey(x => x.CookClassId).
             OnDelete(DeleteBehavior.Restrict);
 
-            builder.Entity<ProjectFile>()
+            builder.Entity<SubmitedFile>()
             .HasOne(x => x.Project)
-            .WithMany(z => z.projectFiles)
+            .WithMany(z => z.SubmitedFiles)
             .HasForeignKey(x => x.ProjectId).
             OnDelete(DeleteBehavior.Restrict);
 
@@ -89,7 +90,7 @@ namespace Cooking_School_ASP.NET.Models
             g => (Levels)Enum.Parse(typeof(Levels), g));
 
             builder
-            .Entity<ProjectFile>()
+            .Entity<SubmitedFile>()
             .Property(c => c.status)
             .HasConversion(
             g => g.ToString(),
@@ -136,9 +137,21 @@ namespace Cooking_School_ASP.NET.Models
             .WithOne(t => t.Chef)
             .HasForeignKey(t => t.ChefId);
 
+            var timeOnlyConverter = new ValueConverter<TimeOnly, DateTime>(
+                timeOnly => DateTime.Today.Add(timeOnly.ToTimeSpan()),
+                dateTime => TimeOnly.FromDateTime(dateTime)
+            );
+
+            builder.Entity<CookClass>()
+                .Property(c => c.EndingAt)
+                .HasConversion(timeOnlyConverter);
+            builder.Entity<CookClass>()
+                .Property(c => c.StartingAt)
+                .HasConversion(timeOnlyConverter);
+
             builder.Entity<User>().ToTable("User");
             builder.Entity<Course>().ToTable("Course");
-            builder.Entity<ProjectFile>().ToTable("ProjectFile");
+            builder.Entity<SubmitedFile>().ToTable("SubmitedFile");
             builder.Entity<Project>().ToTable("Project");
             builder.Entity<Trainee_Course>().ToTable("Trainee_Course");
             builder.Entity<FavoriteMeal_Trainee>().ToTable("FavoriteMeal_Trainee");
@@ -148,17 +161,20 @@ namespace Cooking_School_ASP.NET.Models
             builder.Entity<ApplicationT>().ToTable("Application");
             builder.Entity<ClassDays>().ToTable("ClassDays");
             builder.Entity<CookClass>().ToTable("CookClass");
+            builder.Entity<ProjectFile>().ToTable("ProjectFile");
         }
         public DbSet<User> Users { get; set; }
-        //public DbSet<Trainee> Trainees { get; set; }
-        //public DbSet<Chef> Chefs { get; set; }
-        //public DbSet<Admin> Admins { get; set; }
+        public DbSet<Trainee> Trainees { get; set; }
+        public DbSet<Chef> Chefs { get; set; }
+        public DbSet<Admin> Admins { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<CookClass> CookClasses { get; set; }
         public DbSet<ApplicationT> Applications { get; set; }
         public DbSet<ClassDays> ClassDays { get; set; } 
         public DbSet<Project> Projects { get; set; }
         public DbSet<ProjectFile> ProjectFiles { get; set; }
+
+        public DbSet<SubmitedFile> SubmitedFiles { get; set; }
         public DbSet<BlackList> BlackLists { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<Trainee_Course> Trainee_Courses { get; set; }
@@ -169,43 +185,3 @@ namespace Cooking_School_ASP.NET.Models
 
     }
 }
-
-
-//protected override void OnConfiguring(DbContextOptionsBuilder options)
-//=> options.UseSqlite(@"Data Source = D:\Temp\Demo.db");
-
-
-//modelBuilder.Entity<ChefTrainee>().HasKey(ap => new { ap.username, ap.slug });
-//modelBuilder.Entity<Tag>().HasKey(t => new { t.tag, t.articleslug });
-
-
-////modelBuilder.Entity<ProfileFollow>().HasKey(pf => new { pf.usernamefollower, pf.usernamefollow });
-////modelBuilder
-////.Entity<Tag>(
-////    eb =>
-////    {
-////        eb.HasNoKey();
-////    });
-
-//modelBuilder.Entity<Course>()
-//.HasOne<Trainee>(p => p.User)
-//.WithOne(ad => ad.profile)
-//.HasForeignKey<Trainee>(u => u.profileusername);
-
-//modelBuilder.Entity<Article>()
-//.HasOne<Course>(p => p.author)
-//.WithOne(a => a.article)
-//.HasForeignKey<Course>(p => p.articleslug);
-
-//modelBuilder.Entity<Course>()
-//.HasMany(c => c.ProfileFollowing)
-//.WithMany(c => c.ProfileFolloweres);
-
-//modelBuilder.Entity<Article>()
-//.HasMany<Tag>(a => a.tagList)
-//    .WithOne(t => t.article);
-//modelBuilder.Entity<Article>().Navigation(a => a.author).AutoInclude();
-//modelBuilder.Entity<Course>().Navigation(p => p.article).AutoInclude();
-////delBuilder.Entity<Article>().Navigation(a => a.favorite).AutoInclude();
-////odelBuilder.Entity<Article>().Navigation(a => a.comment).AutoInclude();
-//modelBuilder.Entity<Trainee>().Navigation(u => u.profile).AutoInclude();

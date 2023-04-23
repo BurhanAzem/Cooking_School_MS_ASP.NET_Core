@@ -369,6 +369,10 @@ namespace CookingSchoolASP.NET.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("ContentPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("CookClassId")
                         .HasColumnType("int");
 
@@ -396,6 +400,37 @@ namespace CookingSchoolASP.NET.Migrations
                     b.HasIndex("CookClassId");
 
                     b.ToTable("Project", (string)null);
+                });
+
+            modelBuilder.Entity("Cooking_School_ASP.NET.Models.ProjectFile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ContentPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Deleted")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("Updated")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("ProjectFile", (string)null);
                 });
 
             modelBuilder.Entity("Cooking_School_ASP.NET.Models.RefreshToken", b =>
@@ -531,7 +566,7 @@ namespace CookingSchoolASP.NET.Migrations
                     b.UseTphMappingStrategy();
                 });
 
-            modelBuilder.Entity("Cooking_School_ASP.NET_.Models.ProjectFile", b =>
+            modelBuilder.Entity("Cooking_School_ASP.NET_.Models.SubmitedFile", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -581,7 +616,7 @@ namespace CookingSchoolASP.NET.Migrations
 
                     b.HasIndex("TraineeId");
 
-                    b.ToTable("ProjectFile", (string)null);
+                    b.ToTable("SubmitedFile", (string)null);
                 });
 
             modelBuilder.Entity("Cooking_School_ASP.NET.Models.Admin", b =>
@@ -781,6 +816,17 @@ namespace CookingSchoolASP.NET.Migrations
                     b.Navigation("CookClass");
                 });
 
+            modelBuilder.Entity("Cooking_School_ASP.NET.Models.ProjectFile", b =>
+                {
+                    b.HasOne("Cooking_School_ASP.NET.Models.Project", "Project")
+                        .WithMany("ProjectFiles")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+                });
+
             modelBuilder.Entity("Cooking_School_ASP.NET.Models.RefreshToken", b =>
                 {
                     b.HasOne("Cooking_School_ASP.NET.Models.User", "User")
@@ -819,7 +865,7 @@ namespace CookingSchoolASP.NET.Migrations
                     b.Navigation("Trainee");
                 });
 
-            modelBuilder.Entity("Cooking_School_ASP.NET_.Models.ProjectFile", b =>
+            modelBuilder.Entity("Cooking_School_ASP.NET_.Models.SubmitedFile", b =>
                 {
                     b.HasOne("Cooking_School_ASP.NET.Models.Admin", null)
                         .WithMany("ProjectFiles")
@@ -830,7 +876,7 @@ namespace CookingSchoolASP.NET.Migrations
                         .HasForeignKey("ChefId");
 
                     b.HasOne("Cooking_School_ASP.NET.Models.Project", "Project")
-                        .WithMany("projectFiles")
+                        .WithMany("SubmitedFiles")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -866,7 +912,9 @@ namespace CookingSchoolASP.NET.Migrations
 
             modelBuilder.Entity("Cooking_School_ASP.NET.Models.Project", b =>
                 {
-                    b.Navigation("projectFiles");
+                    b.Navigation("ProjectFiles");
+
+                    b.Navigation("SubmitedFiles");
                 });
 
             modelBuilder.Entity("Cooking_School_ASP.NET.Models.User", b =>

@@ -1,8 +1,10 @@
 ﻿using Cooking_School_ASP.NET.Controllers;
+using Cooking_School_ASP.NET.Dtos;
 using Cooking_School_ASP.NET.Dtos.CookClassDto;
 using Cooking_School_ASP.NET.Dtos.TraineeDto;
 using Cooking_School_ASP.NET.ModelUsed;
-using Cooking_School_ASP.NET.Services;
+using Cooking_School_ASP.NET.Services.AuthenticationServices;
+using Cooking_School_ASP.NET.Services.CookClassService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,23 +18,27 @@ namespace Cooking_School_ASP.NET_.Controllers
     {
         private readonly ILogger<CookClassController> _logger;
         private readonly ICookClassService _cookClassService;
-        public CookClassController(ILogger<CookClassController> logger, ICookClassService cookClassService)
+        private readonly IAuthenticationServices _authenticationServices;
+
+        public CookClassController(ILogger<CookClassController> logger, ICookClassService cookClassService, IAuthenticationServices authenticationServices)
         {
             _logger = logger;
             _cookClassService = cookClassService;
+            _authenticationServices = authenticationServices;
         }
         ///pi/chefs/{chefId}/cook-classes
-        [HttpPost("~/api/chefs/{chefId}/cook-classes")]
+        [HttpPost("~/api/cook-classes")]
         [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> CreateClass([FromBody] CreateCookClassDto classDto)
         {
+            var user = await _authenticationServices.GetCurrentUser(HttpContext);
             _logger.LogInformation($" Attempt Sinup for {classDto} ");
             if (!ModelState.IsValid)
             {
                 _logger.LogError($"Invalid POST attempt for {nameof(classDto)}");
                 return BadRequest(ModelState);
             }
-            var result = await _cookClassService.CreateCookClass(classDto);
+            var result = await _cookClassService.CreateCookClass(classDto, user.Id);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;
@@ -41,7 +47,7 @@ namespace Cooking_School_ASP.NET_.Controllers
             return Ok(result.Dto);
         }
 
-        [HttpPut("~/api/chefs/{chefId}/cook-classes/{classId}")]
+        [HttpPut("~/api/cook-classes/{classId}")]
         [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> UpdateClass(int classId, [FromBody] UpdateCookClassDto classDto)
         {
@@ -60,7 +66,7 @@ namespace Cooking_School_ASP.NET_.Controllers
             return Ok(result.Dto);
         }
 
-        [HttpDelete("~/api/chefs/{chefId}/cook-classes/{classId}")]
+        [HttpDelete("~/api/cook-classes/{classId}")]
         [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> DleteClass(int classId)
         {
@@ -77,6 +83,20 @@ namespace Cooking_School_ASP.NET_.Controllers
                 throw new StatusCodeException(code.Value, result.Exception);
             }
             return Ok(result.Dto);
+        }
+
+        [HttpGet("~/api/cook-classes")]
+        [Authorize(Roles = "Chef")]
+        public async Task<IActionResult> GetAllCookClasses([FromQuery]RequestParam requestParam)
+        {
+            var chef = await _authenticationServices.GetCurrentUser(HttpContext);
+            var result = await _cookClassService.GetAllCookClassesForChef(chef.Id, requestParam);
+            if (result.Exception is not null)
+            {
+                var code = result.StatusCode;
+                throw new StatusCodeException(code.Value, result.Exception);
+            }
+            return Ok(result.ListDto);
         }
     }
 

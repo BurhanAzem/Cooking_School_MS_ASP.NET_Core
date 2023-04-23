@@ -46,9 +46,14 @@ namespace Cooking_School_ASP.NET.Configurations
             CreateMap<UpdateCourseDto, CourseDTO>().ReverseMap();
             CreateMap<UpdateCourseDto, Course>().ReverseMap();
 
-            CreateMap<CookClassDTO, CookClass>().ReverseMap();
+            CreateMap<CookClassDTO, CookClass>();
+            CreateMap<CookClass, CookClassDTO>()
+                .ForMember(t => t.ClassDays, option => option.Ignore());
             CreateMap<CreateCookClassDto, CookClass>()
-                .ForMember(t => t.Created, option => option.Ignore());
+                .ForMember(t => t.Created, option => option.Ignore())
+                .ForMember(t => t.ClassDays, option => option.Ignore());
+
+
 
             CreateMap<ApplicationDTO, ApplicationT>().ReverseMap();
             CreateMap<CreateApplicationDto, ApplicationT>()
@@ -59,8 +64,8 @@ namespace Cooking_School_ASP.NET.Configurations
             CreateMap<CreateProjectDto, Project>()
                 .ForMember(t => t.Created, option => option.Ignore());
 
-            CreateMap<ProjectFileDTO, ProjectFile>().ReverseMap();
-            CreateMap<CreateProjectFileDto, ProjectFile>()
+            CreateMap<SubmitedFileDto, SubmitedFile>().ReverseMap();
+            CreateMap<CreateSubmitedFileDto, SubmitedFile>()
                 .ForMember(t => t.Created, option => option.Ignore());
 
             CreateMap<User, UserDTO>().ReverseMap();
@@ -69,7 +74,8 @@ namespace Cooking_School_ASP.NET.Configurations
             CreateMap<FavoriteChefDto, User>().ReverseMap();
 
 
-            CreateMap<ClassDays, ClassDaysDTO>().ReverseMap();
+            CreateMap<ClassDays, ClassDaysDTO>()
+                .ForMember(t => t.Days, option => option.Ignore());
             CreateMap<CreateClassDaysDto, ClassDays>()
                 .ForMember(t => t.Created, option => option.Ignore());
 

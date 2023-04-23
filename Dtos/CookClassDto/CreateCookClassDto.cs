@@ -12,13 +12,11 @@ namespace Cooking_School_ASP.NET.Dtos.CookClassDto
         [Required]
         public int CourseId { get; set; }
         [Required]
-        public int ChefId { get; set; }
+        public TimeOnly StartingAt { get; set; }
         [Required]
-        public DateTime StartingAt { get; set; }
+        public TimeOnly EndingAt { get; set; }
         [Required]
-        public DateTime EndingAt { get; set; }
-        [Required]
-        public virtual ICollection<ClassDaysDTO> ClassDays { get; set; }
+        public List<string> ClassDays { get; set; }
 
     }
 }

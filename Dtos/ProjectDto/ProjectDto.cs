@@ -7,7 +7,7 @@ namespace Cooking_School_ASP.NET.Dtos.CookClassDto
     {
         public int Id { get; set; }
         public CookClassDTO CookClass { get; set; }
-        public ICollection<ProjectFileDTO> projectFiles { get; set; }
+        public ICollection<SubmitedFileDto> projectFiles { get; set; }
 
     }
 }

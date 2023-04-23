@@ -2,12 +2,13 @@
 using Cooking_School_ASP.NET.Dtos.CookClassDto;
 using Cooking_School_ASP.NET.Models;
 using Cooking_School_ASP.NET.ModelUsed;
-using Cooking_School_ASP.NET.Services;
 using Cooking_School_ASP.NET_.Controllers;
+using Cooking_School_ASP.NET.Services.ProjectService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Web.WebPages;
+using Cooking_School_ASP.NET.Services.AuthenticationServices;
 
 namespace Cooking_School_ASP.NET.Controllers
 {
@@ -18,15 +19,17 @@ namespace Cooking_School_ASP.NET.Controllers
 
         private readonly ILogger<TraineeController> _logger;
         private readonly IProjectService _projectService;
-        public ProjectController(ILogger<TraineeController> logger, IProjectService projectService)
+        private readonly IAuthenticationServices _authenticationServices;
+        public ProjectController(ILogger<TraineeController> logger, IProjectService projectService, IAuthenticationServices authenticationServices)
         {
-            _logger = logger;   
+            _logger = logger;
             _projectService = projectService;
+            _authenticationServices = authenticationServices;
         }
 
-        [HttpPost("~/api/chefs/{chefId}/cook-classes/{classsId}/projects")]
+        [HttpPost("~/api/cook-classes/{classId}/projects")]
         [Authorize(Roles = "Chef")]
-        public async Task<IActionResult> CreateProject([FromBody] CreateProjectDto projectDto, int classId, int chefId)
+        public async Task<IActionResult> CreateProject([FromBody] CreateProjectDto projectDto, int classId)
         {
             _logger.LogInformation($"Attempt Sinup for {nameof(projectDto)} ");
             if (!ModelState.IsValid)
@@ -34,7 +37,8 @@ namespace Cooking_School_ASP.NET.Controllers
                 _logger.LogError($"Invalid POST attempt for {nameof(projectDto)}");
                 return BadRequest(ModelState);
             }
-            var result = await _projectService.CreateProject(projectDto, chefId);
+            var chef = await _authenticationServices.GetCurrentUser(HttpContext);
+            var result = await _projectService.CreateProject(projectDto, chef.Id);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;
@@ -44,7 +48,7 @@ namespace Cooking_School_ASP.NET.Controllers
         }
 
 
-        [HttpPut("~/api/chefs/{chefId}/cook-classes/{classsId}/projects/{projectId}")]
+        [HttpPut("~/api/cook-classes/{classId}/projects/{projectId}")]
         [Authorize(Roles = "Chef")]
         public async Task<IActionResult> UpdateProject([FromBody] UpdateProjectDto projectDto, int projectId)
         {
@@ -63,7 +67,7 @@ namespace Cooking_School_ASP.NET.Controllers
             return Ok(result.Dto);
         }
 
-        [HttpDelete("~/api/chefs/{chefId}/cook-classes/{classsId}/projects/{projectId}")]
+        [HttpDelete("~/api/cook-classes/{classId}/projects/{projectId}")]
         [Authorize(Roles = "Chef")]
         public async Task<IActionResult> DeleteProject(int classId, int projectId)
         {
@@ -77,7 +81,7 @@ namespace Cooking_School_ASP.NET.Controllers
             return Ok(result.Dto);
         }
 
-        [HttpGet("~/api/trainees/{traineeId}/courses/{coursesId}/cook-classes/{cookclassId}/projects")]
+        [HttpGet("~/api/courses/{coursesId}/cook-classes/{cookclassId}/projects")]
         [Authorize(Roles = "Chef, Trainee")]
         public async Task<IActionResult> GetAllProjectTrainee([FromQuery] RequestParam requestParams)
         {
@@ -87,7 +91,7 @@ namespace Cooking_School_ASP.NET.Controllers
         }
 
 
-        [HttpGet("~/api/trainees/{traineeId}/courses/{coursesId}/cook-classes/{cookclassId}/projects/{projectId}")]
+        [HttpGet("~/api/courses/{coursesId}/cook-classes/{cookclassId}/projects/{projectId}")]
         [Authorize(Roles = "Chef, Trainee")]
         public async Task<IActionResult> GetProjectById(int projectId)
         {

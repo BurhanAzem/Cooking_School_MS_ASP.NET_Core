@@ -2,6 +2,6 @@
 {
     public enum WeekDays
     {
-        Satarday, Sunday, Monday, Tuesday, Wednesday, Thursday, Friday
+        Saturday, Sunday, Monday, Tuesday, Wednesday, Thursday, Friday
     }
 }
