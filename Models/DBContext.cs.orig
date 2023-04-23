@@ -6,7 +6,10 @@ using Cooking_School_ASP.NET.Models;
 using Cooking_School_ASP.NET_.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+<<<<<<< HEAD
+=======
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+>>>>>>> second
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Common;
@@ -14,7 +17,11 @@ using System.Reflection.Emit;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using static System.Net.Mime.MediaTypeNames;
 
+<<<<<<< HEAD
+namespace Backend_Controller_Burhan.Models
+=======
 namespace Cooking_School_ASP.NET.Models
+>>>>>>> second
 {
     public class DBContext : DbContext
     {
@@ -68,12 +75,15 @@ namespace Cooking_School_ASP.NET.Models
             .HasForeignKey(x => x.CookClassId).
             OnDelete(DeleteBehavior.Restrict);
 
+<<<<<<< HEAD
+=======
             builder.Entity<SubmitedFile>()
             .HasOne(x => x.Project)
             .WithMany(z => z.SubmitedFiles)
             .HasForeignKey(x => x.ProjectId).
             OnDelete(DeleteBehavior.Restrict);
 
+>>>>>>> second
 
             builder
            .Entity<ClassDays>()
@@ -87,10 +97,17 @@ namespace Cooking_School_ASP.NET.Models
             .Property(c => c.Level)
             .HasConversion(
             g => g.ToString(),
+<<<<<<< HEAD
+            g => (Level)Enum.Parse(typeof(Level), g));
+
+            builder
+            .Entity<ProjectFile>()
+=======
             g => (Levels)Enum.Parse(typeof(Levels), g));
 
             builder
             .Entity<SubmitedFile>()
+>>>>>>> second
             .Property(c => c.status)
             .HasConversion(
             g => g.ToString(),
@@ -116,7 +133,7 @@ namespace Cooking_School_ASP.NET.Models
             .WithOne(t => t.Trainee)
             .HasForeignKey(t => t.TraineeId);
             builder.Entity<Trainee>()
-            .HasMany(t => t.SubmitedFiles)
+            .HasMany(t => t.ProjectFiles)
             .WithOne(t => t.Trainee)
             .HasForeignKey(t => t.TraineeId);
             builder.Entity<Trainee>()
@@ -137,6 +154,11 @@ namespace Cooking_School_ASP.NET.Models
             .WithOne(t => t.Chef)
             .HasForeignKey(t => t.ChefId);
 
+<<<<<<< HEAD
+            builder.Entity<User>().ToTable("User");
+            builder.Entity<Course>().ToTable("Course");
+            builder.Entity<ProjectFile>().ToTable("ProjectFile");
+=======
             var timeOnlyConverter = new ValueConverter<TimeOnly, DateTime>(
                 timeOnly => DateTime.Today.Add(timeOnly.ToTimeSpan()),
                 dateTime => TimeOnly.FromDateTime(dateTime)
@@ -152,6 +174,7 @@ namespace Cooking_School_ASP.NET.Models
             builder.Entity<User>().ToTable("User");
             builder.Entity<Course>().ToTable("Course");
             builder.Entity<SubmitedFile>().ToTable("SubmitedFile");
+>>>>>>> second
             builder.Entity<Project>().ToTable("Project");
             builder.Entity<Trainee_Course>().ToTable("Trainee_Course");
             builder.Entity<FavoriteMeal_Trainee>().ToTable("FavoriteMeal_Trainee");
@@ -161,22 +184,33 @@ namespace Cooking_School_ASP.NET.Models
             builder.Entity<ApplicationT>().ToTable("Application");
             builder.Entity<ClassDays>().ToTable("ClassDays");
             builder.Entity<CookClass>().ToTable("CookClass");
+<<<<<<< HEAD
+        }
+        public DbSet<User> Users { get; set; }
+        //public DbSet<Trainee> Trainees { get; set; }
+        //public DbSet<Chef> Chefs { get; set; }
+        //public DbSet<Admin> Admins { get; set; }
+=======
             builder.Entity<ProjectFile>().ToTable("ProjectFile");
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Trainee> Trainees { get; set; }
         public DbSet<Chef> Chefs { get; set; }
         public DbSet<Admin> Admins { get; set; }
+>>>>>>> second
         public DbSet<Course> Courses { get; set; }
         public DbSet<CookClass> CookClasses { get; set; }
         public DbSet<ApplicationT> Applications { get; set; }
         public DbSet<ClassDays> ClassDays { get; set; } 
         public DbSet<Project> Projects { get; set; }
         public DbSet<ProjectFile> ProjectFiles { get; set; }
+<<<<<<< HEAD
+=======
 
         public DbSet<SubmitedFile> SubmitedFiles { get; set; }
         public DbSet<BlackList> BlackLists { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
+>>>>>>> second
         public DbSet<Trainee_Course> Trainee_Courses { get; set; }
         public DbSet<Favorite_Chef> Favorite_chefs { get; set; }
         public DbSet<Favorite_Course> Favorite_Courses { get; set; }
@@ -185,3 +219,46 @@ namespace Cooking_School_ASP.NET.Models
 
     }
 }
+<<<<<<< HEAD
+
+
+//protected override void OnConfiguring(DbContextOptionsBuilder options)
+//=> options.UseSqlite(@"Data Source = D:\Temp\Demo.db");
+
+
+//modelBuilder.Entity<ChefTrainee>().HasKey(ap => new { ap.username, ap.slug });
+//modelBuilder.Entity<Tag>().HasKey(t => new { t.tag, t.articleslug });
+
+
+////modelBuilder.Entity<ProfileFollow>().HasKey(pf => new { pf.usernamefollower, pf.usernamefollow });
+////modelBuilder
+////.Entity<Tag>(
+////    eb =>
+////    {
+////        eb.HasNoKey();
+////    });
+
+//modelBuilder.Entity<Course>()
+//.HasOne<Trainee>(p => p.User)
+//.WithOne(ad => ad.profile)
+//.HasForeignKey<Trainee>(u => u.profileusername);
+
+//modelBuilder.Entity<Article>()
+//.HasOne<Course>(p => p.author)
+//.WithOne(a => a.article)
+//.HasForeignKey<Course>(p => p.articleslug);
+
+//modelBuilder.Entity<Course>()
+//.HasMany(c => c.ProfileFollowing)
+//.WithMany(c => c.ProfileFolloweres);
+
+//modelBuilder.Entity<Article>()
+//.HasMany<Tag>(a => a.tagList)
+//    .WithOne(t => t.article);
+//modelBuilder.Entity<Article>().Navigation(a => a.author).AutoInclude();
+//modelBuilder.Entity<Course>().Navigation(p => p.article).AutoInclude();
+////delBuilder.Entity<Article>().Navigation(a => a.favorite).AutoInclude();
+////odelBuilder.Entity<Article>().Navigation(a => a.comment).AutoInclude();
+//modelBuilder.Entity<Trainee>().Navigation(u => u.profile).AutoInclude();
+=======
+>>>>>>> second

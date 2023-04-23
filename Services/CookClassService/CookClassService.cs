@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Backend_Controller_Burhan.Models;
 using Cooking_School_ASP.NET.Dtos;
-using Cooking_School_ASP.NET.Dtos.ClassDaysDto;
 using Cooking_School_ASP.NET.Dtos.CookClassDto;
 using Cooking_School_ASP.NET.Dtos.TraineeDto;
 using Cooking_School_ASP.NET.IRepository;
@@ -106,18 +105,18 @@ namespace Cooking_School_ASP.NET.Services.CookClassService
             var cookclasses = await _unitOfWork.CookClasses.GetPagedList(requestParam, x => x.ChefId == chefId, include: q => q.Include(x => ((CookClass)x).ClassDays));
             var cookclassesDto = _mapper.Map<List<CookClassDTO>>(cookclasses);
             int i = 0;
-            foreach (var cookClass in cookclasses)
-            {
-                List<string> classDays = new List<string>();
-                foreach (var day in cookClass.ClassDays)
-                {
-                    classDays.Add(day.Day.ToString());
-                }
-                ClassDaysDTO classDaysDto = new ClassDaysDTO();
-                classDaysDto.Days = classDays;
-                cookclassesDto[i].ClassDays = classDaysDto;
-                i++;
-            }
+            //foreach (var cookClass in cookclasses)
+            //{
+            //    List<string> classDays = new List<string>();
+            //    foreach (var day in cookClass.ClassDays)
+            //    {
+            //        classDays.Add(day.Day.ToString());
+            //    }
+            //    ClassDaysDTO classDaysDto = new ClassDaysDTO();
+            //    classDaysDto.Days = classDays;
+            //    cookclassesDto[i].ClassDays = classDaysDto;
+            //    i++;
+            //}
             return new ResponsDto<CookClassDTO>()
             {
                 ListDto = cookclassesDto
@@ -140,12 +139,12 @@ namespace Cooking_School_ASP.NET.Services.CookClassService
             if (updateCookClassDto.CourseId != 0) { cookClass.CourseId = (int)updateCookClassDto.CourseId; }
             if (updateCookClassDto.EndingAt != null) { cookClass.EndingAt = (TimeOnly)updateCookClassDto.EndingAt; }
             if (updateCookClassDto.StartingAt != null) { cookClass.StartingAt = (TimeOnly)updateCookClassDto.StartingAt; }
-            if(updateCookClassDto.UpdateClassDays.Days != null)
+            if(updateCookClassDto.ClassDays != null)
             {
                 var classDays = await _unitOfWork.ClassDays.GetAll(x => x.Id == cookClassId); 
                 _unitOfWork.ClassDays.DeleteRange(classDays);
                 List<ClassDays> classDaysUpdated = new List<ClassDays>();
-                foreach (var day in updateCookClassDto.UpdateClassDays.Days)
+                foreach (var day in updateCookClassDto.ClassDays)
                 {
                     WeekDays _day = (WeekDays)Enum.Parse(typeof(WeekDays), day);
                     classDaysUpdated.Add(new ClassDays()

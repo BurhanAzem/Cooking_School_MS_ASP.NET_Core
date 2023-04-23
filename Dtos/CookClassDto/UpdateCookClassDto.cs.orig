@@ -1,4 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+<<<<<<< HEAD
+﻿namespace Cooking_School_ASP.NET.Dtos.CookClassDto
+{
+    public class UpdateCookClassDto
+    {
+=======
+﻿using Cooking_School_ASP.NET.Dtos.ClassDaysDto;
+using System.ComponentModel.DataAnnotations;
 
 namespace Cooking_School_ASP.NET.Dtos.CookClassDto
 {
@@ -9,5 +16,6 @@ namespace Cooking_School_ASP.NET.Dtos.CookClassDto
         public TimeOnly? StartingAt { get; set; }
         public TimeOnly? EndingAt { get; set; }
         public List<string>? ClassDays { get; set; }
+>>>>>>> second
     }
 }

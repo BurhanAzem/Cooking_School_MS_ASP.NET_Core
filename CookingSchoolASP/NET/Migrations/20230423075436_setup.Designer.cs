@@ -822,7 +822,7 @@ namespace CookingSchoolASP.NET.Migrations
             modelBuilder.Entity("Cooking_School_ASP.NET.Models.ProjectFile", b =>
                 {
                     b.HasOne("Cooking_School_ASP.NET.Models.Project", "Project")
-                        .WithMany("ProjectFiles")
+                        .WithMany("SubmitedFiles")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -871,11 +871,11 @@ namespace CookingSchoolASP.NET.Migrations
             modelBuilder.Entity("Cooking_School_ASP.NET_.Models.SubmitedFile", b =>
                 {
                     b.HasOne("Cooking_School_ASP.NET.Models.Admin", null)
-                        .WithMany("ProjectFiles")
+                        .WithMany("SubmitedFiles")
                         .HasForeignKey("AdminId");
 
                     b.HasOne("Cooking_School_ASP.NET.Models.Chef", null)
-                        .WithMany("ProjectFiles")
+                        .WithMany("SubmitedFiles")
                         .HasForeignKey("ChefId");
 
                     b.HasOne("Cooking_School_ASP.NET.Models.Project", "Project")
@@ -885,7 +885,7 @@ namespace CookingSchoolASP.NET.Migrations
                         .IsRequired();
 
                     b.HasOne("Cooking_School_ASP.NET.Models.Trainee", "Trainee")
-                        .WithMany("ProjectFiles")
+                        .WithMany("SubmitedFiles")
                         .HasForeignKey("TraineeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -915,7 +915,7 @@ namespace CookingSchoolASP.NET.Migrations
 
             modelBuilder.Entity("Cooking_School_ASP.NET.Models.Project", b =>
                 {
-                    b.Navigation("ProjectFiles");
+                    b.Navigation("SubmitedFiles");
 
                     b.Navigation("SubmitedFiles");
                 });
@@ -935,7 +935,7 @@ namespace CookingSchoolASP.NET.Migrations
 
                     b.Navigation("FavoriteMealTrainees");
 
-                    b.Navigation("ProjectFiles");
+                    b.Navigation("SubmitedFiles");
 
                     b.Navigation("TraineeCourses");
                 });
@@ -954,7 +954,7 @@ namespace CookingSchoolASP.NET.Migrations
 
                     b.Navigation("FavoriteMealchef");
 
-                    b.Navigation("ProjectFiles");
+                    b.Navigation("SubmitedFiles");
 
                     b.Navigation("TraineeCourses");
                 });
@@ -969,7 +969,7 @@ namespace CookingSchoolASP.NET.Migrations
 
                     b.Navigation("FavoriteMealTrainees");
 
-                    b.Navigation("ProjectFiles");
+                    b.Navigation("SubmitedFiles");
 
                     b.Navigation("TraineeCourses");
                 });

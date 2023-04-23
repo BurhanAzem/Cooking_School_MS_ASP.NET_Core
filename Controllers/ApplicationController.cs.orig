@@ -1,0 +1,183 @@
+<<<<<<< HEAD
+﻿using Cooking_School_ASP.NET.Dtos.ApplicationDto;
+using Cooking_School_ASP.NET_.Controllers;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+=======
+﻿using Cooking_School_ASP.NET.Dtos;
+using Cooking_School_ASP.NET.Dtos.ApplicationDto;
+using Cooking_School_ASP.NET.Dtos.CookClassDto;
+using Cooking_School_ASP.NET.Models;
+using Cooking_School_ASP.NET.ModelUsed;
+using Cooking_School_ASP.NET.Services.ApplicationService;
+using Cooking_School_ASP.NET.Services.AuthenticationServices;
+using Cooking_School_ASP.NET_.Controllers;
+using Cooking_School_ASP.NET_.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using static System.Net.Mime.MediaTypeNames;
+>>>>>>> second
+
+namespace Cooking_School_ASP.NET.Controllers
+{
+    [Route("api/applications")]
+    [ApiController]
+    public class ApplicationController : ControllerBase
+    {
+        private readonly ILogger<ApplicationController> _logger;
+<<<<<<< HEAD
+        public ApplicationController(ILogger<ApplicationController> logger)
+        {
+            _logger = logger;
+        }
+
+        [HttpGet("~/api/chefs/{cheefId}/applications")]
+        public async Task<IActionResult> GetAllApplicationsToChef()
+        {
+            return Ok();
+        }
+
+
+        [HttpPost("~/api/chefs/{cheefId}/cook-classes/{classsId}/applications/{applicationId}/accept")]
+        [Authorize]
+        public async Task<IActionResult> AcceptApplication(int classId, int applicationId)
+        {
+        return Ok();
+        }
+        
+
+        [HttpPost("~/api/chefs/{cheefId}/cook-classes/{classsId}/applications/{applicationId}/reject")]
+        [Authorize]
+        public async Task<IActionResult> RejectApplication(int classId, int applicationId)
+        {
+            return Ok();
+        }
+
+        [HttpGet("~api/cook-classes/{classId}/applications")]
+        public async Task<IActionResult> GetAllApplicationToClass()
+        {
+            return Ok();
+=======
+        private readonly IApplicationSevice _applicationSevice;
+        private readonly IAuthenticationServices _authenticationService;
+        public ApplicationController(ILogger<ApplicationController> logger, IApplicationSevice applicationSevice, IAuthenticationServices authenticationService)
+        {
+            _logger = logger;
+            _applicationSevice = applicationSevice;
+            _authenticationService = authenticationService;
+        }
+
+        [HttpGet("applications")]
+        [Authorize(Roles = "Administrator, Chef")]
+        public async Task<IActionResult> GetAllApplicationsToChef(int chefId)
+        {
+
+            _logger.LogInformation($"Attempt To GetAll {nameof(Application)}");
+            var res = await _authenticationService.GetCurrentUser(HttpContext);
+            if (res.Id < 0)
+            {
+                _logger.LogInformation($"Invalid chefId");
+                return BadRequest();
+            }
+            var result = await _applicationSevice.GetAllApplicationsToChef(res.Id);
+            if (result.Exception is not null)
+            {
+                var code = result.StatusCode;
+                throw new StatusCodeException(code.Value, result.Exception);
+            }
+            return Ok(result.ListDto);
+        }
+
+
+        [HttpPost("~/api/cook-classes/{classsId}/applications/{applicationId}/accept")]
+        [Authorize(Roles = "Administrator, Chef")]
+        public async Task<IActionResult> AcceptApplication(int applicationId,[FromForm] RequestParam requestParams = null)
+        {
+            _logger.LogInformation($"Attempt To Accept Application {nameof(Application)}");
+            var user = await _authenticationService.GetCurrentUser(HttpContext);
+            if (user.Id < 0)
+            {
+                _logger.LogInformation($"Invalid Attempt To Accept Application {nameof(Application)} - {user.Id}");
+                return BadRequest();
+            }
+            var result = await _applicationSevice.AcceptApplication(user.Id);
+            if (result.Exception is not null)
+            {
+                var code = result.StatusCode;
+                throw new StatusCodeException(code.Value, result.Exception);
+            }
+            return Ok("Done");
+        }
+        
+
+        [HttpPost("~/api/cook-classes/{classsId}/applications/{applicationId}/reject")]
+        [Authorize(Roles = "Administrator, Chef")]
+        public async Task<IActionResult> RejectApplication(int applicationId)
+        {
+            _logger.LogInformation($"Attempt To Reject Application {nameof(Application)}");
+            var res = await _authenticationService.GetCurrentUser(HttpContext);
+            if (res.Id < 0)
+            {
+                _logger.LogInformation($"Invalid Reject To Accept Application {nameof(Application)}");
+                return BadRequest();
+            }
+            var result = await _applicationSevice.RejectApplication(res.Id);
+            if (result.Exception is not null)
+            {
+                var code = result.StatusCode;
+                throw new StatusCodeException(code.Value, result.Exception);
+            }
+            return Ok("Done");
+        }
+
+        [HttpGet("~api/cook-classes/{classId}/applications")]
+        [Authorize(Roles = "Administrator, Chef")]
+        public async Task<IActionResult> GetAllApplicationToClass(int classId)
+        {
+            _logger.LogInformation($"Attempt To Accept Application {nameof(Application)}");
+            if (classId < 0)
+            {
+                _logger.LogInformation($"Invalid Attempt To Accept Application {nameof(Application)}");
+                return BadRequest();
+            }
+            var result = await _applicationSevice.GetAllApplicationToClass(classId);
+            if (result.Exception is not null)
+            {
+                var code = result.StatusCode;
+                throw new StatusCodeException(code.Value, result.Exception);
+            }
+            return Ok(result.Dto);
+>>>>>>> second
+        }
+
+
+        [HttpPost("~api/cook-classes/{classId}/applications")]
+<<<<<<< HEAD
+        public async Task<IActionResult> ApplayTraineeToclass([FromBody] CreateApplicationDto applicationDto)
+        {
+            return Ok();
+=======
+        [Authorize(Roles = "Administrator, Chef")]
+        public async Task<IActionResult> ApplayTraineeToclass([FromBody] CreateApplicationDto applicationDto, int classId)
+        {
+            _logger.LogInformation($"Attempt Sinup for {nameof(Application)} ");
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError($"Invalid POST attempt for {nameof(Application)}");
+                return BadRequest(ModelState);
+            }
+            var result = await _applicationSevice.CreateApplication(applicationDto);
+            if (result.Exception is not null)
+            {
+                var code = result.StatusCode;
+                throw new StatusCodeException(code.Value, result.Exception);
+            }
+            return Ok("Done");
+>>>>>>> second
+        }
+    }
+}
