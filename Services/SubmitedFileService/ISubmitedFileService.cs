@@ -7,6 +7,7 @@ namespace Cooking_School_ASP.NET.Services.ProjectFileService
 {
     public interface ISubmitedFileService
     {
+        Task<ResponsDto<BlobFile>> DownloadSubmitedFile(string FileName);
         Task<ResponsDto<SubmitedFileDto>> EvaluateTraineeProject(decimal mark, int projectFileId);
         Task<ResponsDto<SubmitedFileDto>> UploadSubmitedFile(CreateSubmitedFileDto projectFileId);
         Task<ResponsDto<SubmitedFileDto>> GetAllSubmitedFile(RequestParam requestParams = null);

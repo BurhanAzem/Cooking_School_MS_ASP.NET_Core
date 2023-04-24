@@ -59,6 +59,23 @@ namespace Cooking_School_ASP.NET.Services.SubmitedFileService
             return new ResponsDto<SubmitedFileDto>();
         }
 
+        public async Task<ResponsDto<BlobFile>> DownloadSubmitedFile(string FileName)
+        {
+            BlobFile blobFile = await _fileService.DownloadAsync(FileName);
+            if(blobFile is null)
+            {
+                return new ResponsDto<BlobFile> 
+                {
+                    Exception = new Exception($"there is problem with download {FileName} "),
+                    StatusCode = System.Net.HttpStatusCode.InternalServerError
+                };
+            }
+            return new ResponsDto<BlobFile>()
+            {
+                Dto = blobFile
+            };
+        }
+
         public async Task<ResponsDto<SubmitedFileDto>> EvaluateTraineeProject(decimal mark, int submitedFileId)
         {
             var submitedFile = await _unitOfWork.SubmitedFiles.Get(x => x.Id == submitedFileId);
@@ -101,10 +118,10 @@ namespace Cooking_School_ASP.NET.Services.SubmitedFileService
             };
         }
 
-        public async Task<ResponsDto<SubmitedFileDto>> UpdateSubmitedFile(UpdateSubmitedFileDto submitedFileDto)
+        public async Task<ResponsDto<SubmitedFileDto>> UpdateSubmitedFile(UpdateSubmitedFileDto submitedFilesDto)
         {
-            var projectFile = await _unitOfWork.SubmitedFiles.Get(x => x.ProjectId == submitedFileDto.ProjectId);
-            if(projectFile == null)
+            var submitedFiles = await _unitOfWork.SubmitedFiles.GetAll(x => x.ProjectId == submitedFilesDto.ProjectId);
+            if (submitedFiles.Count == 0)
             {
                 return new ResponsDto<SubmitedFileDto>()
                 {
@@ -113,29 +130,36 @@ namespace Cooking_School_ASP.NET.Services.SubmitedFileService
 
                 };
             }
-            var resDelete = await _fileService.DeleteBlob(submitedFileDto.content.FileName);
-            if (resDelete.error == false)
+            _unitOfWork.SubmitedFiles.DeleteRange(submitedFiles);
+            foreach(var file in submitedFilesDto.Files)
             {
-                return new ResponsDto<SubmitedFileDto>()
+                var resDelete = await _fileService.DeleteBlob(file.FileName);
+                if (resDelete.error == false)
                 {
-                    Exception = new Exception(resDelete.Status),
-                };
-            }
-            var res = await _fileService.UploadAsync(submitedFileDto.content);
+                    return new ResponsDto<SubmitedFileDto>()
+                    {
+                        Exception = new Exception(resDelete.Status),
+                    };
+                }
+                var res = await _fileService.UploadAsync(file);
 
-            if (res.error == false)
-            {
-                return new ResponsDto<SubmitedFileDto>()
+                if (res.error == false)
                 {
-                    Exception = new Exception(res.Status),
-                    StatusCode = System.Net.HttpStatusCode.InternalServerError,
-                };
+                    return new ResponsDto<SubmitedFileDto>()
+                    {
+                        Exception = new Exception(res.Status),
+                        StatusCode = System.Net.HttpStatusCode.InternalServerError,
+                    };
+                }
+                SubmitedFile submitedFile = new SubmitedFile();
+                submitedFile.ContentPath = res.Blob.Uri;
+                submitedFile.ProjectId = submitedFile.ProjectId;
+                submitedFile.TraineeId = submitedFile.TraineeId;
+                submitedFile.Created = DateTime.Now;
+
+                await _unitOfWork.SubmitedFiles.Insert(submitedFile);
+                await _unitOfWork.Save();
             }
-            //string uploadpath = Path.Combine(Directory.GetCurrentDirectory(), _configuration.GetConnectionString("Azure:StorageAccount"), fileName);
-
-
-            projectFile.ContentPath = res.Blob.Uri;
-            await _unitOfWork.Save();
 
             return new ResponsDto<SubmitedFileDto>()
             {
@@ -145,40 +169,42 @@ namespace Cooking_School_ASP.NET.Services.SubmitedFileService
 
         public async Task<ResponsDto<SubmitedFileDto>> UploadSubmitedFile(CreateSubmitedFileDto submitedFilesDto)
         {
-            var submitedFile = _mapper.Map<SubmitedFile>(submitedFilesDto);
 
-            submitedFile.Created = DateTime.Now;
-
-            string fileName = submitedFilesDto.content.FileName;
-
-            fileName = Path.GetFileName(fileName);
-
-            var res = await _fileService.UploadAsync(submitedFilesDto.content);
-
-            if(res.error == false)
+            foreach(var file in submitedFilesDto.Files)
             {
-                return new ResponsDto<SubmitedFileDto>()
+                string fileName = file.FileName;
+
+                fileName = Path.GetFileName(fileName);
+
+                var res = await _fileService.UploadAsync(file);
+
+                if (res.error == false)
                 {
-                    Exception = new Exception(res.Status),
-                    StatusCode = System.Net.HttpStatusCode.InternalServerError,
-                };
-            }
-            //string uploadpath = Path.Combine(Directory.GetCurrentDirectory(), _configuration.GetConnectionString("Azure:StorageAccount"), fileName);
+                    return new ResponsDto<SubmitedFileDto>()
+                    {
+                        Exception = new Exception(res.Status),
+                        StatusCode = System.Net.HttpStatusCode.InternalServerError,
+                    };
+                }
+                SubmitedFile submitedFile = new SubmitedFile();
+                submitedFile.ContentPath = res.Blob.Uri;
+                submitedFile.ProjectId = submitedFile.ProjectId;
+                submitedFile.TraineeId = submitedFile.TraineeId;
+                submitedFile.Created = DateTime.Now;
 
-
-            submitedFile.ContentPath = res.Blob.Uri;
-            var project = await _unitOfWork.Projects.Get(x => x.Id == submitedFile.ProjectId);
-            if (submitedFile.Created > project.ExpirDate)
-            {
-                submitedFile.status = status_project.submitedLate;
+                var project = await _unitOfWork.Projects.Get(x => x.Id == submitedFile.ProjectId);
+                if (submitedFile.Created > project.ExpirDate)
+                {
+                    submitedFile.status = status_project.submitedLate;
+                }
+                else
+                {
+                    submitedFile.status = status_project.submited;
+                }
+                await _unitOfWork.SubmitedFiles.Insert(submitedFile);
+                await _unitOfWork.Save();
             }
-            else
-            {
-                submitedFile.status = status_project.submited;
-            }
-            _unitOfWork.SubmitedFiles.Update(submitedFile);
-            await _unitOfWork.Save();
-
+            
             return new ResponsDto<SubmitedFileDto>()
             {
                 StatusCode = System.Net.HttpStatusCode.OK,

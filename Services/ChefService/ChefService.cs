@@ -75,11 +75,23 @@ namespace Cooking_School_ASP.NET.Services.ChefService
 
         public async Task<ResponsDto<ChefDTO>> DeleteUser(int chefId)
         {
-            if (await _unitOfWork.Users.Get(x => x.Id == chefId) is null)
+            var chef = await _unitOfWork.Chefs.Get(x => x.Id == chefId);
+            if (chef is null)
             {
                 return new ResponsDto<ChefDTO>()
                 {
                     Exception = new Exception("Failed, This User Is Not Exist"),
+                    StatusCode = System.Net.HttpStatusCode.BadRequest
+                };
+            }
+            var fileName = chef.CvPath.Split('/')[0];
+
+            var res = await _fileService.DeleteBlob(fileName);
+            if (res.error == true)
+            {
+                return new ResponsDto<ChefDTO>()
+                {
+                    Exception = new Exception(res.Status),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
                 };
             }

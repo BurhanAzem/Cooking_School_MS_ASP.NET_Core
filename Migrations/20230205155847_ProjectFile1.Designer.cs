@@ -527,7 +527,7 @@ namespace CookingSchoolASP.NET.Migrations
                     b.Property<DateTime?>("Updated")
                         .HasColumnType("datetime2");
 
-                    b.Property<byte[]>("content")
+                    b.Property<byte[]>("Files")
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
 

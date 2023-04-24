@@ -5,7 +5,7 @@ namespace Cooking_School_ASP.NET.Dtos.ProjectFileDto
 {
     public class ResponsPrpjectFileDto
     {
-        public SubmitedFileDto? ProjectFileDto { get; set; }
+        public SubmitedFileDto? SubmitedFileDto { get; set; }
         public HttpStatusCode? StatusCode { get; set; } 
         public Exception? Exception { get; set; }   
     }

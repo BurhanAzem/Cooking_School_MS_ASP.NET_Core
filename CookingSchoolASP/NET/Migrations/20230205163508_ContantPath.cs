@@ -11,7 +11,7 @@ namespace CookingSchoolASP.NET.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "content",
+                name: "Files",
                 table: "ProjectFile");
 
             migrationBuilder.AddColumn<string>(
@@ -30,7 +30,7 @@ namespace CookingSchoolASP.NET.Migrations
                 table: "ProjectFile");
 
             migrationBuilder.AddColumn<byte[]>(
-                name: "content",
+                name: "Files",
                 table: "ProjectFile",
                 type: "varbinary(max)",
                 nullable: false,

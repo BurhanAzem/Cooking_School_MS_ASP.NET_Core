@@ -16,6 +16,8 @@ using Cooking_School_ASP.NET.Dtos.AdminDto;
 using System.Data;
 using Cooking_School_ASP.NET.ModelUsed;
 using Cooking_School_ASP.NET.Services.FilesService;
+using Cooking_School_ASP.NET.Dtos.CookClassDto;
+using Cooking_School_ASP.NET_.Models;
 
 namespace Cooking_School_ASP.NET.Services.TraineeService
 {
@@ -67,7 +69,8 @@ namespace Cooking_School_ASP.NET.Services.TraineeService
 
         public async Task<ResponsDto<TraineeDTO>> DeleteUser(int traineeId)
         {
-            if (await _unitOfWork.Users.Get(x => x.Id == traineeId) is null)
+            var trainee = await _unitOfWork.Trainees.Get(x => x.Id == traineeId);
+            if (trainee is null)
             {
                 return new ResponsDto<TraineeDTO>()
                 {
@@ -75,7 +78,18 @@ namespace Cooking_School_ASP.NET.Services.TraineeService
                     StatusCode = System.Net.HttpStatusCode.BadRequest
                 };
             }
-            await _unitOfWork.Users.Delete(traineeId);
+            var fileName = trainee.ImagePath.Split('/')[0];
+
+            var res = await _fileService.DeleteBlob(fileName);
+            if (res.error == true)
+            {
+                return new ResponsDto<TraineeDTO>()
+                {
+                    Exception = new Exception(res.Status),
+                    StatusCode = System.Net.HttpStatusCode.BadRequest
+                };
+            }
+            await _unitOfWork.Trainees.Delete(traineeId);
             await _unitOfWork.Save();
             return new ResponsDto<TraineeDTO>();
         }
@@ -84,14 +98,14 @@ namespace Cooking_School_ASP.NET.Services.TraineeService
         {
             if (requestParams == null)
             {
-                var trainees = await _unitOfWork.Users.GetAll(x => x.Discriminator == Convert.ToString(Roles.Trainee));
+                var trainees = await _unitOfWork.Trainees.GetAll(x => x.Discriminator == Convert.ToString(Roles.Trainee));
                 var traineesDto = _mapper.Map<IList<TraineeDTO>>(trainees);
                 return new ResponsDto<TraineeDTO>
                 {
                     ListDto = traineesDto,
                 };
             }                                                                                              
-            var traineesPag = await _unitOfWork.Users.GetPagedList(requestParams, x => x.Discriminator == Convert.ToString(Roles.Trainee), include: x => x.Include(s => ((Trainee)s).TraineeCourses));
+            var traineesPag = await _unitOfWork.Trainees.GetPagedList(requestParams, x => x.Discriminator == Convert.ToString(Roles.Trainee), include: x => x.Include(s => ((Trainee)s).TraineeCourses));
             var traineeDtoPag = _mapper.Map<IList<TraineeDTO>>(traineesPag);
             return new ResponsDto<TraineeDTO>
             {
@@ -103,7 +117,7 @@ namespace Cooking_School_ASP.NET.Services.TraineeService
 
         public async Task<ResponsDto<TraineeDTO>> GetUserById(int id)
         {
-            var trainee = await _unitOfWork.Users.Get(x => x.Id == id);
+            var trainee = await _unitOfWork.Trainees.Get(x => x.Id == id);
             if (trainee == null)
             {
                 return new ResponsDto<TraineeDTO>
@@ -132,7 +146,7 @@ namespace Cooking_School_ASP.NET.Services.TraineeService
 
         public async Task<ResponsDto<TraineeDTO>> RegisterUser(CreateTraineeDto createTraineeDto)
         {
-            if (await _unitOfWork.Users.Get(c => c.Email == createTraineeDto.Email) is not null)
+            if (await _unitOfWork.Trainees.Get(c => c.Email == createTraineeDto.Email) is not null)
             {
                 return new ResponsDto<TraineeDTO>
                 {
@@ -148,11 +162,6 @@ namespace Cooking_School_ASP.NET.Services.TraineeService
 
 
             string fileName = createTraineeDto.image.FileName;
-
-            //fileName = Path.GetFileName(fileName);
-            //string uploadpath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", fileName);
-            //var stream = new FileStream(uploadpath, FileMode.Create);
-            //await createTraineeDto.image.CopyToAsync(stream);
 
             var res = await _fileService.UploadAsync(createTraineeDto.image);
             if (res.error == true)
@@ -198,7 +207,7 @@ namespace Cooking_School_ASP.NET.Services.TraineeService
             }
             trainee.Level = level;
 
-            await _unitOfWork.Users.Insert(trainee);
+            await _unitOfWork.Trainees.Insert(trainee);
             await _unitOfWork.Save();
 
             var traineeDto = _mapper.Map<TraineeDTO>(trainee);
@@ -211,7 +220,7 @@ namespace Cooking_School_ASP.NET.Services.TraineeService
 
         public async Task<ResponsDto<TraineeDTO>> UpdateUser(int id, UpdateTraineeDto updateTraineeDto)
         {
-            Trainee trainee = (Trainee)await _unitOfWork.Users.Get(c => c.Id == id);
+            Trainee trainee = (Trainee)await _unitOfWork.Trainees.Get(c => c.Id == id);
             if (trainee is null)
                 return new ResponsDto<TraineeDTO>
                 {

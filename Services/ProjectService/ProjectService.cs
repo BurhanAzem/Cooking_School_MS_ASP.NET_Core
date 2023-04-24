@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Backend_Controller_Burhan.Models;
 using Cooking_School_ASP.NET.Dtos;
+using Cooking_School_ASP.NET.Dtos.ChefDto;
 using Cooking_School_ASP.NET.Dtos.CookClassDto;
 using Cooking_School_ASP.NET.Dtos.CourseDto;
 using Cooking_School_ASP.NET.Dtos.ProjectDto;
@@ -9,7 +10,10 @@ using Cooking_School_ASP.NET.IRepository;
 using Cooking_School_ASP.NET.Models;
 using Cooking_School_ASP.NET.ModelUsed;
 using Cooking_School_ASP.NET.Repository;
+using Cooking_School_ASP.NET.Services.FilesService;
+using Cooking_School_ASP.NET_.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.ConstrainedExecution;
 
 namespace Cooking_School_ASP.NET.Services.ProjectService
 {
@@ -17,10 +21,12 @@ namespace Cooking_School_ASP.NET.Services.ProjectService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        public ProjectService(IUnitOfWork unitOfWork, IMapper mapper)
+        private readonly IFileService _fileService;
+        public ProjectService(IUnitOfWork unitOfWork, IMapper mapper, IFileService fileService)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
+            _fileService = fileService;
         }
         public async Task<ResponsDto<ProjectDTO>> CreateProject(CreateProjectDto createProjectDto, int chefId)
         {
@@ -40,10 +46,25 @@ namespace Cooking_School_ASP.NET.Services.ProjectService
                     StatusCode = System.Net.HttpStatusCode.BadRequest
                 };
             }
-
             var project = _mapper.Map<Project>(createProjectDto);
             await _unitOfWork.Projects.Insert(project);
             await _unitOfWork.Save();
+            foreach (var file in createProjectDto.Files)
+            {
+                BlobResponse res = await _fileService.UploadAsync(file);
+                if (res.error == false)
+                {
+                    return new ResponsDto<ProjectDTO>()
+                    {
+                        Exception = new Exception(res.Status),
+                        StatusCode = System.Net.HttpStatusCode.InternalServerError,
+                    };
+                }
+                ProjectFile projectFile = new ProjectFile();
+                projectFile.ProjectId = project.Id;
+                projectFile.ContentPath = res.Blob.Uri; ;
+                await _unitOfWork.ProjectFiles.Insert(projectFile);
+            }
             var projectDto = _mapper.Map<ProjectDTO>(project);
             return new ResponsDto<ProjectDTO>()
             {
@@ -61,6 +82,23 @@ namespace Cooking_School_ASP.NET.Services.ProjectService
                     StatusCode = System.Net.HttpStatusCode.BadRequest
                 };
             }
+            var projectFiles = await _unitOfWork.ProjectFiles.GetAll(x => x.Id == projectId);
+            _unitOfWork.ProjectFiles.DeleteRange(projectFiles);
+            foreach (var file in projectFiles)
+            {
+                var fileName = file.ContentPath.Split('/')[0];
+
+                var res = await _fileService.DeleteBlob(fileName);
+                if (res.error == true)
+                {
+                    return new ResponsDto<ProjectDTO>()
+                    {
+                        Exception = new Exception(res.Status),
+                        StatusCode = System.Net.HttpStatusCode.BadRequest
+                    };
+                }
+            }
+
             await _unitOfWork.CookClasses.Delete(projectId);
             await _unitOfWork.Save();
             return new ResponsDto<ProjectDTO>()
@@ -126,13 +164,49 @@ namespace Cooking_School_ASP.NET.Services.ProjectService
             project.Updated = DateTime.Now;
 
 
-            _unitOfWork.Projects.Update(project);
-            await _unitOfWork.Save();
-            var projectDTO = _mapper.Map<ProjectDTO>(project);
+            var projectFiles = await _unitOfWork.ProjectFiles.GetAll(x => x.ProjectId == projectId);
+            if (projectFiles.Count == 0)
+            {
+                return new ResponsDto<ProjectDTO>()
+                {
+                    StatusCode = System.Net.HttpStatusCode.BadRequest,
+                    Exception = new Exception("Failed, This submitedFile Is Not Exist")
+
+                };
+            }
+            _unitOfWork.ProjectFiles.DeleteRange(projectFiles);
+            foreach (var file in updateProjectDto.Files)
+            {
+                var resDelete = await _fileService.DeleteBlob(file.FileName);
+                if (resDelete.error == false)
+                {
+                    return new ResponsDto<ProjectDTO>()
+                    {
+                        Exception = new Exception(resDelete.Status),
+                    };
+                }
+                var res = await _fileService.UploadAsync(file);
+
+                if (res.error == false)
+                {
+                    return new ResponsDto<ProjectDTO>()
+                    {
+                        Exception = new Exception(res.Status),
+                        StatusCode = System.Net.HttpStatusCode.InternalServerError,
+                    };
+                }
+                ProjectFile projectFile = new ProjectFile();
+                projectFile.ContentPath = res.Blob.Uri;
+                projectFile.ProjectId = projectFile.ProjectId;
+                projectFile.Created = DateTime.Now;
+
+                await _unitOfWork.ProjectFiles.Insert(projectFile);
+                await _unitOfWork.Save();
+            }
 
             return new ResponsDto<ProjectDTO>()
             {
-                Dto = projectDTO,
+                StatusCode = System.Net.HttpStatusCode.OK,
             };
         }
     }

@@ -29,7 +29,7 @@ namespace Cooking_School_ASP.NET.Controllers
 
         [HttpPost("~/api/cook-classes/{classId}/projects")]
         [Authorize(Roles = "Chef")]
-        public async Task<IActionResult> CreateProject([FromBody] CreateProjectDto projectDto, int classId)
+        public async Task<IActionResult> CreateProject([FromForm] CreateProjectDto projectDto, int classId)
         {
             _logger.LogInformation($"Attempt Sinup for {nameof(projectDto)} ");
             if (!ModelState.IsValid)

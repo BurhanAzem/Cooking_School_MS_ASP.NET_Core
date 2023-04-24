@@ -19,15 +19,37 @@ namespace Cooking_School_ASP.NET.Controllers
     public class SubmitedFileController : ControllerBase
     {
         private readonly ILogger<SubmitedFileController> _logger;
-        private readonly ISubmitedFileService _projectFileService;
+        private readonly ISubmitedFileService _submitedFileService;
         public SubmitedFileController(ILogger<SubmitedFileController> logger, ISubmitedFileService projectFileService)
         {
             _logger = logger;
-            _projectFileService = projectFileService;
+            _submitedFileService = projectFileService;
         }
 
 
-        [HttpPost("~/api/cook-classes/{classsId}/projects/{projectId}/project-files/fileId/evaluate")]
+
+        [HttpPost("~/api/submited-files/download")]
+        [Authorize(Roles = "Trainee, Chef")]
+        public async Task<IActionResult> UploudSubmitedFile([FromBody] string fileName)
+        {
+            _logger.LogInformation($"Attempt To Download  {nameof(SubmitedFile)}");
+            if (!ModelState.IsValid)
+            {
+                _logger.LogInformation($"Invalid Attempt To Download {nameof(SubmitedFile)}");
+                return BadRequest();
+            }
+            var result = await _submitedFileService.DownloadSubmitedFile(fileName);
+            if (result.Exception is not null)
+            {
+                var code = result.StatusCode;
+                throw new StatusCodeException(code.Value, result.Exception);
+            }
+            return File(result.Dto.Contant, result.Dto.ContantType, result.Dto.Name);
+        }
+
+
+
+        [HttpPost("~/api/cook-classes/{classsId}/projects/{projectId}/submited-files/fileId/evaluate")]
         [Authorize(Roles = "Chef")]
         public async Task<IActionResult> EvaluateTraineeProject([FromBody] decimal mark, int projectFileId)
         {
@@ -37,7 +59,7 @@ namespace Cooking_School_ASP.NET.Controllers
                 _logger.LogInformation($"Mark Out of Range");
                 return BadRequest("Mark Out of Range");
             }
-            var result = await _projectFileService.EvaluateTraineeProject(mark, projectFileId);
+            var result = await _submitedFileService.EvaluateTraineeProject(mark, projectFileId);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;
@@ -46,9 +68,9 @@ namespace Cooking_School_ASP.NET.Controllers
             return Ok("Done");
         }
 
-        [HttpPost("~/api/project-files")]
+        [HttpPost("~/api/submited-files")]
         [Authorize(Roles = "Trainee, Chef")]
-        public async Task<IActionResult> UploudProjectFile([FromForm] CreateSubmitedFileDto submitedFilesDto)
+        public async Task<IActionResult> UploudSubmitedFile([FromForm] CreateSubmitedFileDto submitedFilesDto)
         {
             _logger.LogInformation($"Attempt To Uploud of {nameof(SubmitedFile)}");
             if (!ModelState.IsValid)
@@ -56,7 +78,7 @@ namespace Cooking_School_ASP.NET.Controllers
                 _logger.LogInformation($"Invalid Attempt To Uploud of {nameof(SubmitedFile)}");
                 return BadRequest();
             }
-            var result = await _projectFileService.UploadSubmitedFile(submitedFilesDto);
+            var result = await _submitedFileService.UploadSubmitedFile(submitedFilesDto);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;
@@ -65,9 +87,9 @@ namespace Cooking_School_ASP.NET.Controllers
             return Ok("Done");
         }
 
-        [HttpPut("~/api/project-files")]
+        [HttpPut("~/api/submited-files")]
         [Authorize(Roles = "Trainee, Chef")]
-        public async Task<IActionResult> UpdateProjectFile([FromForm] UpdateSubmitedFileDto submitedFilesDto)
+        public async Task<IActionResult> UpdateSubmitedFile([FromForm] UpdateSubmitedFileDto submitedFilesDto)
         {
             _logger.LogInformation($"Attempt To Update of {nameof(SubmitedFile)}");
             if (!ModelState.IsValid)
@@ -75,7 +97,7 @@ namespace Cooking_School_ASP.NET.Controllers
                 _logger.LogInformation($"Invalid Attempt To Update of {nameof(SubmitedFile)}");
                 return BadRequest();
             }
-            var result = await _projectFileService.UpdateSubmitedFile(submitedFilesDto);
+            var result = await _submitedFileService.UpdateSubmitedFile(submitedFilesDto);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;
@@ -84,17 +106,17 @@ namespace Cooking_School_ASP.NET.Controllers
             return Ok("Done");
         }
 
-        [HttpGet("~/api/project-files")]
+        [HttpGet("~/api/submited-files")]
         [Authorize(Roles = "Trainee, Chef")]
-        public async Task<IActionResult> GetAllProjectFile()
+        public async Task<IActionResult> GetAllSubmitedFile()
         {
-            var result = await _projectFileService.GetAllSubmitedFile();
+            var result = await _submitedFileService.GetAllSubmitedFile();
             return Ok(result);
         }
 
-        [HttpDelete("~/api/project-files/{projectFileId}")]
+        [HttpDelete("~/api/submited-files/{projectFileId}")]
         [Authorize(Roles = "Trainee, Chef")]
-        public async Task<IActionResult> DeleteProjectFile(int submitedFileId)
+        public async Task<IActionResult> DeleteSubmitedFile(int submitedFileId)
         {
             _logger.LogInformation($"Attempt To Delete {nameof(SubmitedFile)}");
             if (submitedFileId < 0)
@@ -102,7 +124,7 @@ namespace Cooking_School_ASP.NET.Controllers
                 _logger.LogInformation($"Invalid Attempt To Delete {nameof(SubmitedFile)}");
                 return BadRequest();
             }
-            var result = await _projectFileService.DeleteSubmitedFile(submitedFileId);
+            var result = await _submitedFileService.DeleteSubmitedFile(submitedFileId);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;
