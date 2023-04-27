@@ -13,5 +13,7 @@ namespace Cooking_School_ASP.NET.Dtos.CookClassDto
         public string Description { get; set; }
         [Required]
         public decimal Price { get; set; }
+        [Required]
+        public string CourseLevel { get; set; }  
     }
 }

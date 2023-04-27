@@ -3,7 +3,7 @@ using Backend_Controller_Burhan.Models;
 using Cooking_School_ASP.NET.Dtos;
 using Cooking_School_ASP.NET.Dtos.ApplicationDto;
 using Cooking_School_ASP.NET.Dtos.CookClassDto;
-using Cooking_School_ASP.NET.Dtos.ProjectDto;
+using Cooking_School_ASP.NET.Dtos.ProjectFileDto;
 using Cooking_School_ASP.NET.Dtos.ProjectFileDto;
 using Cooking_School_ASP.NET.IRepository;
 using Cooking_School_ASP.NET.Models;
@@ -104,12 +104,10 @@ namespace Cooking_School_ASP.NET.Services.ApplicationService
         public async Task<ResponsDto<ApplicationDTO>> GetAllApplicationToClass(int classId)
         {
             CookClass cookClass = await _unitOfWork.CookClasses.Get(x => x.Id == classId, include: x => x.Include(s => s.Applications));
-            IList<ApplicationT> applications = new List<ApplicationT>();
-            foreach (var application in cookClass.Applications)
-            {
-                applications.Add(application);
+            List<ApplicationT> applications = new List<ApplicationT>();
 
-            }
+            applications = cookClass.Applications.ToList();
+
             var applicationsDto = _mapper.Map<IList<ApplicationDTO>>(applications);
             return new ResponsDto<ApplicationDTO>()
             {

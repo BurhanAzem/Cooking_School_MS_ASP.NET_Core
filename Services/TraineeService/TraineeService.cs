@@ -18,6 +18,7 @@ using Cooking_School_ASP.NET.ModelUsed;
 using Cooking_School_ASP.NET.Services.FilesService;
 using Cooking_School_ASP.NET.Dtos.CookClassDto;
 using Cooking_School_ASP.NET_.Models;
+using System.Collections.Generic;
 
 namespace Cooking_School_ASP.NET.Services.TraineeService
 {
@@ -92,6 +93,38 @@ namespace Cooking_School_ASP.NET.Services.TraineeService
             await _unitOfWork.Trainees.Delete(traineeId);
             await _unitOfWork.Save();
             return new ResponsDto<TraineeDTO>();
+        }
+
+        public async Task<ResponsDto<CookClassDTO>> GetAllCookClassesForTrainee(int traineeId, RequestParam requestParam = null)
+        {
+            var cookclasses = await _unitOfWork.CookClasses.GetPagedList(requestParam, include: q => q.Include(x => ((CookClass)x).ClassDays));
+
+            List<CookClass> cookClassesForTrainee = new List<CookClass>();
+            foreach (var cookclass in cookclasses)
+            {
+                var course = await _unitOfWork.Courses.Get(x => x.Id == cookclass.CourseId);
+                var trainee = await _unitOfWork.Trainees.Get(x => x.Id == traineeId);
+                if(course.CourseLevel == trainee.Level)
+                {
+                    cookClassesForTrainee.Add(cookclass);
+                }
+            }
+            var cookclassesDto = _mapper.Map<List<CookClassDTO>>(cookClassesForTrainee);
+            int i = 0;
+            foreach (var cookClass in cookclasses)
+            {
+                List<string> classDays = new List<string>();
+                foreach (var day in cookClass.ClassDays)
+                {
+                    classDays.Add(day.Day.ToString());
+                }
+                cookclassesDto[i].ClassDays = classDays;
+                i++;
+            }
+            return new ResponsDto<CookClassDTO>()
+            {
+                ListDto = cookclassesDto
+            };
         }
 
         public async Task<ResponsDto<TraineeDTO>> GetAllUsers(RequestParam requestParams = null)

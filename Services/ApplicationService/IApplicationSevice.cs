@@ -9,9 +9,9 @@ namespace Cooking_School_ASP.NET.Services.ApplicationService
 {
     public interface IApplicationSevice
     {
-        Task<ResponsDto<ApplicationT>> GetAllApplicationsToChef(int chefId);
+        Task<ResponsDto<ApplicationDTO>> GetAllApplicationsToChef(int chefId);
         Task<ResponsDto<ApplicationDTO>> AcceptApplication(int applicationId);
-        Task<ResponsDto<ApplicationT>> GetAllApplicationToClass(int classId);
+        Task<ResponsDto<ApplicationDTO>> GetAllApplicationToClass(int classId);
         Task<ResponsDto<ApplicationDTO>> RejectApplication(int applicationId);
         Task<ResponsDto<ApplicationDTO>> CreateApplication(int traineeId, int classId);
     }

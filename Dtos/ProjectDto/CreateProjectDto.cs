@@ -8,8 +8,6 @@ namespace Cooking_School_ASP.NET.Dtos.CookClassDto
     public class CreateProjectDto
     {
         [Required]
-        public int CookClassId { get; set; }
-        [Required]
         [StringLength(maximumLength: 50, ErrorMessage = "Name Is Too Long")]
         public string ProjectName { get; set; }
         public string Description { get; set; }

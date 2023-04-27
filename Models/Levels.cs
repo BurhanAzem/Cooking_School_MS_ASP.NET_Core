@@ -4,6 +4,6 @@ namespace Cooking_School_ASP.NET.Models
 {
     public enum Levels 
     {
-         Beginner, Mid, Advance
+         Beginner, intermediate, Advanced
     }
 }

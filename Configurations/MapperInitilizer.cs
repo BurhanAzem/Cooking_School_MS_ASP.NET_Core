@@ -6,6 +6,7 @@ using Cooking_School_ASP.NET.Dtos.ApplicationDto;
 using Cooking_School_ASP.NET.Dtos.ChefDto;
 using Cooking_School_ASP.NET.Dtos.CookClassDto;
 using Cooking_School_ASP.NET.Dtos.CourseDto;
+using Cooking_School_ASP.NET.Dtos.ProjectFileDto;
 using Cooking_School_ASP.NET.Dtos.TraineeDto;
 using Cooking_School_ASP.NET.Dtos.UserDto;
 using Cooking_School_ASP.NET.Models;
@@ -18,8 +19,9 @@ namespace Cooking_School_ASP.NET.Configurations
     {
         public MapperInitilizer()
         {
-            CreateMap<ChefDTO, Chef>().ReverseMap()
-                .ForMember(c => c.Cv, option => option.Ignore());
+            CreateMap<ChefDTO, Chef>()
+                .ForMember(c => c.CvPath, option => option.Ignore());
+            CreateMap<Chef, ChefDTO>();
             CreateMap<Chef, UpdateChefDto>()
                 .ForMember(c => c.Cv, option => option.Ignore())
                 .ForMember(c => c.Password, option => option.Ignore());
@@ -62,6 +64,8 @@ namespace Cooking_School_ASP.NET.Configurations
             CreateMap<ProjectDTO, Project>().ReverseMap();
             CreateMap<CreateProjectDto, Project>()
                 .ForMember(t => t.Created, option => option.Ignore());
+
+            CreateMap<ProjectFileDTO, ProjectFile>().ReverseMap();
 
             CreateMap<SubmitedFileDto, SubmitedFile>().ReverseMap();
             CreateMap<CreateSubmitedFileDto, SubmitedFile>()

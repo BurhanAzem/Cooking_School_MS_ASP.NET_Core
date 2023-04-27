@@ -113,7 +113,7 @@ namespace Cooking_School_ASP.NET_.Controllers
         //}
 
 
-        [HttpPost("meals/{mealId}/fovarite")]
+        [HttpPost("{chefId}/meals/{mealId}/fovarite")]
         [Authorize(Roles = "Chef")]
         public async Task<IActionResult> AddMealToFovariteChef(int mealId)
         {
@@ -127,7 +127,7 @@ namespace Cooking_School_ASP.NET_.Controllers
             return Ok(result.Dto);
         }
 
-        [HttpDelete("meals/{mealId}/fovarite")]
+        [HttpDelete("{chefId}/meals/{mealId}/fovarite")]
         [Authorize(Roles = "Chef")]
         public async Task<IActionResult> DeleteMealFromFovariteChef(int mealId)
         {
@@ -144,7 +144,7 @@ namespace Cooking_School_ASP.NET_.Controllers
 
         }
 
-        [HttpPost("~/api/chefs/{chefId}/favorite")]
+        [HttpPost("{chefId}/favorite")]
         [Authorize(Roles = "Trainee")]
         public async Task<IActionResult> FavoriteChef(int chefId)
         {
@@ -159,7 +159,7 @@ namespace Cooking_School_ASP.NET_.Controllers
         }
 
 
-        [HttpDelete("~/api/chefs/{chefId}/favorite")]
+        [HttpDelete("{chefId}/favorite")]
         [Authorize(Roles = "Trainee")]
         public async Task<IActionResult> UnFavoriteChef(int traineeId, int chefId)
         {

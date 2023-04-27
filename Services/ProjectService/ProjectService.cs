@@ -1,19 +1,11 @@
 ﻿using AutoMapper;
-using Backend_Controller_Burhan.Models;
 using Cooking_School_ASP.NET.Dtos;
-using Cooking_School_ASP.NET.Dtos.ChefDto;
 using Cooking_School_ASP.NET.Dtos.CookClassDto;
-using Cooking_School_ASP.NET.Dtos.CourseDto;
-using Cooking_School_ASP.NET.Dtos.ProjectDto;
-using Cooking_School_ASP.NET.Dtos.TraineeDto;
 using Cooking_School_ASP.NET.IRepository;
 using Cooking_School_ASP.NET.Models;
 using Cooking_School_ASP.NET.ModelUsed;
-using Cooking_School_ASP.NET.Repository;
 using Cooking_School_ASP.NET.Services.FilesService;
-using Cooking_School_ASP.NET_.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Runtime.ConstrainedExecution;
 
 namespace Cooking_School_ASP.NET.Services.ProjectService
 {
@@ -28,9 +20,9 @@ namespace Cooking_School_ASP.NET.Services.ProjectService
             _unitOfWork = unitOfWork;
             _fileService = fileService;
         }
-        public async Task<ResponsDto<ProjectDTO>> CreateProject(CreateProjectDto createProjectDto, int chefId)
+        public async Task<ResponsDto<ProjectDTO>> CreateProject(CreateProjectDto createProjectDto, int cookClassId)
         {
-            if (await _unitOfWork.CookClasses.Get(x => x.Id == createProjectDto.CookClassId) is not null)
+            if (await _unitOfWork.CookClasses.Get(x => x.Id == cookClassId) is null)
             {
                 return new ResponsDto<ProjectDTO>()
                 {
@@ -38,7 +30,7 @@ namespace Cooking_School_ASP.NET.Services.ProjectService
                     StatusCode = System.Net.HttpStatusCode.BadRequest
                 };
             }
-            if (await _unitOfWork.Users.Get(x => x.Id == chefId) is not null)
+            if (await _unitOfWork.Users.Get(x => x.Id == cookClassId) is null)
             {
                 return new ResponsDto<ProjectDTO>()
                 {
@@ -47,12 +39,13 @@ namespace Cooking_School_ASP.NET.Services.ProjectService
                 };
             }
             var project = _mapper.Map<Project>(createProjectDto);
+            project.CookClassId = cookClassId;
             await _unitOfWork.Projects.Insert(project);
             await _unitOfWork.Save();
             foreach (var file in createProjectDto.Files)
             {
                 BlobResponse res = await _fileService.UploadAsync(file);
-                if (res.error == false)
+                if (res.error == true)
                 {
                     return new ResponsDto<ProjectDTO>()
                     {
@@ -64,6 +57,7 @@ namespace Cooking_School_ASP.NET.Services.ProjectService
                 projectFile.ProjectId = project.Id;
                 projectFile.ContentPath = res.Blob.Uri; ;
                 await _unitOfWork.ProjectFiles.Insert(projectFile);
+                await _unitOfWork.Save();
             }
             var projectDto = _mapper.Map<ProjectDTO>(project);
             return new ResponsDto<ProjectDTO>()
@@ -72,7 +66,7 @@ namespace Cooking_School_ASP.NET.Services.ProjectService
             };
         }
 
-        public async Task<ResponsDto<ProjectDTO>> DeleteProject(int projectId, int classId)
+        public async Task<ResponsDto<ProjectDTO>> DeleteProject(int projectId)
         {
             if (await _unitOfWork.Projects.Get(x => x.Id == projectId) is null)
             {
@@ -106,18 +100,18 @@ namespace Cooking_School_ASP.NET.Services.ProjectService
             };
         }
 
-        public async Task<ResponsDto<ProjectDTO>> GetAllProject(RequestParam requestParams)
+        public async Task<ResponsDto<ProjectDTO>> GetAllProjectOfCookClass(RequestParam requestParams, int cookClassId)
         {
             if (requestParams == null)
             {
-                var projects = await _unitOfWork.Projects.GetAll();
+                var projects = await _unitOfWork.Projects.GetAll(x => x.CookClassId == cookClassId);
                 var projectDto = _mapper.Map<IList<ProjectDTO>>(projects);
                 return new ResponsDto<ProjectDTO>
                 {
                     ListDto = projectDto
                 };
             }
-            var projectsPag = await _unitOfWork.Projects.GetPagedList(requestParams, include: x => x.Include(s => s.SubmitedFiles));
+            var projectsPag = await _unitOfWork.Projects.GetPagedList(requestParams, include: x => x.Include(s => s.ProjectFiles));
             var projectDtoPag = _mapper.Map<IList<ProjectDTO>>(projectsPag);
             return new ResponsDto<ProjectDTO>
             {
@@ -127,7 +121,7 @@ namespace Cooking_School_ASP.NET.Services.ProjectService
 
         public async Task<ResponsDto<ProjectDTO>> GetProjectById(int projectId)
         {
-            var project = await _unitOfWork.Projects.Get(x => x.Id == projectId);
+            var project = await _unitOfWork.Projects.Get(x => x.Id == projectId, include: x => x.Include(s => s.ProjectFiles));
             if (project == null)
             {
                 return new ResponsDto<ProjectDTO>
@@ -178,7 +172,7 @@ namespace Cooking_School_ASP.NET.Services.ProjectService
             foreach (var file in updateProjectDto.Files)
             {
                 var resDelete = await _fileService.DeleteBlob(file.FileName);
-                if (resDelete.error == false)
+                if (resDelete.error == true)
                 {
                     return new ResponsDto<ProjectDTO>()
                     {
@@ -187,7 +181,7 @@ namespace Cooking_School_ASP.NET.Services.ProjectService
                 }
                 var res = await _fileService.UploadAsync(file);
 
-                if (res.error == false)
+                if (res.error == true)
                 {
                     return new ResponsDto<ProjectDTO>()
                     {

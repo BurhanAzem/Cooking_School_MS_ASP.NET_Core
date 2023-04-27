@@ -10,5 +10,6 @@ namespace Cooking_School_ASP.NET.Dtos.CookClassDto
         [StringLength(maximumLength: 250, ErrorMessage = "Description Is Too Long")]
         public string ?Description { get; set; }
         public decimal ?Price { get; set; }
+        public string? CourseLevel { get; set; }
     }
 }

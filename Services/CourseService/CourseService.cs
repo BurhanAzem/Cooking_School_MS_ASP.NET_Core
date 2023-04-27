@@ -3,7 +3,8 @@ using Cooking_School_ASP.NET.Dtos;
 using Cooking_School_ASP.NET.Dtos.ChefDto;
 using Cooking_School_ASP.NET.Dtos.CookClassDto;
 using Cooking_School_ASP.NET.Dtos.CourseDto;
-using Cooking_School_ASP.NET.Dtos.ProjectDto;
+using Cooking_School_ASP.NET.Dtos.ProjectFileDto;
+using Cooking_School_ASP.NET.Dtos.TraineeDto;
 using Cooking_School_ASP.NET.IRepository;
 using Cooking_School_ASP.NET.Models;
 using Cooking_School_ASP.NET.ModelUsed;
@@ -33,6 +34,20 @@ namespace Cooking_School_ASP.NET.Services.CourseService
                 };
             }
             var course = _mapper.Map<Course>(createCourseDto);
+            Levels level;
+            try
+            {
+                level = (Levels)Enum.Parse(typeof(Levels), createCourseDto.CourseLevel);
+            }
+            catch (Exception ex)
+            {
+                return new ResponsDto<CourseDTO>
+                {
+                    Exception = new Exception($"Failed, Invaild Input Level"),
+                    StatusCode = System.Net.HttpStatusCode.BadRequest
+                };
+            }
+            course.CourseLevel = level;
             await _unitOfWork.Courses.Insert(course);
             await _unitOfWork.Save();
             var courseDto = _mapper.Map<CourseDTO>(course);

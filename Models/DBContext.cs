@@ -90,6 +90,13 @@ namespace Cooking_School_ASP.NET.Models
             g => (Levels)Enum.Parse(typeof(Levels), g));
 
             builder
+            .Entity<Course>()
+            .Property(c => c.CourseLevel)
+            .HasConversion(
+            g => g.ToString(),
+            g => (Levels)Enum.Parse(typeof(Levels), g));
+
+            builder
             .Entity<SubmitedFile>()
             .Property(c => c.status)
             .HasConversion(

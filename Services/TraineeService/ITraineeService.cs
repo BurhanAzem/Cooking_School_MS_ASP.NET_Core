@@ -1,6 +1,7 @@
 ﻿using Cooking_School_ASP.NET.Dtos;
 using Cooking_School_ASP.NET.Dtos.ApplicationDto;
 using Cooking_School_ASP.NET.Dtos.ChefDto;
+using Cooking_School_ASP.NET.Dtos.CookClassDto;
 using Cooking_School_ASP.NET.Dtos.TraineeDto;
 using Cooking_School_ASP.NET.Dtos.UserDto;
 using Cooking_School_ASP.NET.Models;
@@ -17,6 +18,7 @@ namespace Cooking_School_ASP.NET.Services.TraineeService
         Task<ResponsDto<TraineeDTO>> UpdateUser(int id, UpdateTraineeDto updateTraineeDto);
         Task<ResponsDto<TraineeDTO>> GetUserById(int id);
         Task<ResponsDto<TraineeDTO>> GetAllUsers(RequestParam requestParams = null);
+        Task<ResponsDto<CookClassDTO>> GetAllCookClassesForTrainee(int traineeId, RequestParam requestParam = null);
         Task<ResponsDto<TraineeDTO>> DeleteUser(int traineeId);
 
 

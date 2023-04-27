@@ -21,6 +21,8 @@ using System.Net.Http;
 using Cooking_School_ASP.NET.Dtos.AdminDto;
 using Cooking_School_ASP.NET.Services.AuthenticationServices;
 using Cooking_School_ASP.NET.Services.RefreshService;
+using Cooking_School_ASP.NET.Dtos;
+using Cooking_School_ASP.NET.Services.CookClassService;
 
 namespace Cooking_School_ASP.NET_.Controllers
 {
@@ -33,14 +35,16 @@ namespace Cooking_School_ASP.NET_.Controllers
         private readonly IAuthenticationServices _authenticationServices;
         private readonly IRefreshTokenService _refreshTokenService;
         private readonly ITraineeService _traineeService;
+        private readonly ICookClassService _cookClassService;
         private readonly IMapper _mapper;
-        public TraineeController(ILogger<TraineeController> logger, IAuthenticationServices authentication, ITraineeService traineeService, IMapper mapper, IRefreshTokenService refreshTokenService)
+        public TraineeController(ILogger<TraineeController> logger, IAuthenticationServices authentication, ITraineeService traineeService, IMapper mapper, IRefreshTokenService refreshTokenService, ICookClassService cookClassService)
         {
             _logger = logger;
             _authenticationServices = authentication;
             _traineeService = traineeService;
             _mapper = mapper;
             _refreshTokenService = refreshTokenService;
+            _cookClassService = cookClassService;
         }
 
         [HttpPost("login")]
@@ -126,6 +130,22 @@ namespace Cooking_School_ASP.NET_.Controllers
             return Accepted(new TokenRequest { Token = token, RefreshToken = newRefreshToken.Token });
         }
 
+
+
+        [HttpGet("{traineeId}/cook-classes")]
+        [Authorize(Roles = "Trainee")]
+        public async Task<IActionResult> GetAllCookClasses([FromQuery] RequestParam requestParam = null)
+        {
+            var trainee = await _authenticationServices.GetCurrentUser(HttpContext);
+            var result = await _traineeService.GetAllCookClassesForTrainee(trainee.Id, requestParam);
+            if (result.Exception is not null)
+            {
+                var code = result.StatusCode;
+                throw new StatusCodeException(code.Value, result.Exception);
+            }
+            return Ok(result.ListDto);
+        }
+
         [HttpPut("{traineeId}")]
         [Authorize(Roles = "Trainee")]
         public async Task<IActionResult> UpdateTrainee(int traineeId, [FromForm] UpdateTraineeDto updateTraineeDto)
@@ -158,7 +178,7 @@ namespace Cooking_School_ASP.NET_.Controllers
 
 
 
-        [HttpPost("meals/{mealId}/fovarite")]
+        [HttpPost("{traineeId}/meals/{mealId}/fovarite")]
         [Authorize(Roles = "Trainee")]
         public async Task<IActionResult> AddMealToFovariteTrainee(int mealId)
         {
@@ -174,7 +194,7 @@ namespace Cooking_School_ASP.NET_.Controllers
 
 
 
-        [HttpDelete("meals/{mealId}/fovarite")]
+        [HttpDelete("{traineeId}/meals/{mealId}/fovarite")]
         [Authorize(Roles = "Trainee")]
         public async Task<IActionResult> DeleteMealFromFovariteTrainee(int mealId)
         {

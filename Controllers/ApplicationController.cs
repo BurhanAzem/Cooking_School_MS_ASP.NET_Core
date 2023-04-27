@@ -30,7 +30,7 @@ namespace Cooking_School_ASP.NET.Controllers
             _authenticationService = authenticationService;
         }
 
-        [HttpGet("applications")]
+        [HttpGet("")]
         [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> GetAllApplicationsToChef(int chefId)
         {
@@ -52,9 +52,9 @@ namespace Cooking_School_ASP.NET.Controllers
         }
 
 
-        [HttpPost("~/api/cook-classes/{classsId}/applications/{applicationId}/accept")]
+        [HttpPost("{applicationId}/accept")]
         [Authorize(Roles = "Administrator, Chef")]
-        public async Task<IActionResult> AcceptApplication(int applicationId,[FromForm] RequestParam requestParams = null)
+        public async Task<IActionResult> AcceptApplication(int applicationId)
         {
             _logger.LogInformation($"Attempt To Accept Application {nameof(Application)}");
             var user = await _authenticationService.GetCurrentUser(HttpContext);
@@ -73,7 +73,7 @@ namespace Cooking_School_ASP.NET.Controllers
         }
         
 
-        [HttpPost("~/api/cook-classes/{classsId}/applications/{applicationId}/reject")]
+        [HttpPost("{applicationId}/reject")]
         [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> RejectApplication(int applicationId)
         {

@@ -38,7 +38,7 @@ namespace Cooking_School_ASP.NET.Controllers
                 return BadRequest(ModelState);
             }
             var chef = await _authenticationServices.GetCurrentUser(HttpContext);
-            var result = await _projectService.CreateProject(projectDto, chef.Id);
+            var result = await _projectService.CreateProject(projectDto, classId);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;
@@ -48,7 +48,7 @@ namespace Cooking_School_ASP.NET.Controllers
         }
 
 
-        [HttpPut("~/api/cook-classes/{classId}/projects/{projectId}")]
+        [HttpPut("{projectId}")]
         [Authorize(Roles = "Chef")]
         public async Task<IActionResult> UpdateProject([FromBody] UpdateProjectDto projectDto, int projectId)
         {
@@ -67,12 +67,12 @@ namespace Cooking_School_ASP.NET.Controllers
             return Ok(result.Dto);
         }
 
-        [HttpDelete("~/api/cook-classes/{classId}/projects/{projectId}")]
+        [HttpDelete("{projectId}")]
         [Authorize(Roles = "Chef")]
-        public async Task<IActionResult> DeleteProject(int classId, int projectId)
+        public async Task<IActionResult> DeleteProject(int projectId)
         {
             _logger.LogInformation($"Attempt Delete for {nameof(Project)} ");
-            var result = await _projectService.DeleteProject(projectId, classId);
+            var result = await _projectService.DeleteProject(projectId);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;
@@ -81,17 +81,17 @@ namespace Cooking_School_ASP.NET.Controllers
             return Ok(result.Dto);
         }
 
-        [HttpGet("~/api/courses/{coursesId}/cook-classes/{cookclassId}/projects")]
+        [HttpGet("~/api/cook-classes/{cookClassId}/projects")]
         [Authorize(Roles = "Chef, Trainee")]
-        public async Task<IActionResult> GetAllProjectTrainee([FromQuery] RequestParam requestParams)
+        public async Task<IActionResult> GetAllProjectTrainee(int cookClassId, [FromQuery] RequestParam requestParams)
         {
             _logger.LogInformation($"Attempt GetAll of {nameof(Project)} ");
-            var result = await _projectService.GetAllProject(requestParams);
+            var result = await _projectService.GetAllProjectOfCookClass(requestParams, cookClassId);
             return Ok(result.ListDto);
         }
 
 
-        [HttpGet("~/api/courses/{coursesId}/cook-classes/{cookclassId}/projects/{projectId}")]
+        [HttpGet("{projectId}")]
         [Authorize(Roles = "Chef, Trainee")]
         public async Task<IActionResult> GetProjectById(int projectId)
         {
