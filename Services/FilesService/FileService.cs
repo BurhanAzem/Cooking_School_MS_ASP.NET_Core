@@ -1,10 +1,6 @@
 ﻿using Azure.Storage;
 using Azure.Storage.Blobs;
 using Cooking_School_ASP.NET.ModelUsed;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.Configuration;
-using System.Reflection.Metadata;
-using System.Runtime.ConstrainedExecution;
 
 namespace Cooking_School_ASP.NET.Services.FilesService
 {
@@ -49,7 +45,7 @@ namespace Cooking_School_ASP.NET.Services.FilesService
         {
             BlobResponse response = new();
             BlobClient client = _filesContainer.GetBlobClient(blob.FileName);
-            
+
             await using (Stream? data = blob.OpenReadStream())
             {
                 await client.UploadAsync(data);
@@ -60,14 +56,14 @@ namespace Cooking_School_ASP.NET.Services.FilesService
             response.Blob.Uri = client.Uri.AbsoluteUri;
             response.Blob.Name = client.Name;
 
-            return response;    
+            return response;
         }
 
         public async Task<BlobFile?> DownloadAsync(string blobFileName)
         {
             BlobClient file = _filesContainer.GetBlobClient(blobFileName);
-            
-            if(await file.ExistsAsync())
+
+            if (await file.ExistsAsync())
             {
                 var data = await file.OpenReadAsync();
                 Stream blobContent = data;

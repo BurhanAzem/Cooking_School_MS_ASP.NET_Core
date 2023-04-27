@@ -237,7 +237,7 @@ namespace Cooking_School_ASP.NET.Services.ChefService
             chef.Created = DateTime.Now;
 
             var res = await _fileService.UploadAsync(createChefDto.Cv);
-            if (res.error == false)
+            if (res.error == true)
             {
                 return new ResponsDto<ChefDTO>()
                 {

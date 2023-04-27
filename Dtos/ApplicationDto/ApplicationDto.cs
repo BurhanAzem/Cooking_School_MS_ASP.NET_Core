@@ -8,8 +8,10 @@ namespace Cooking_School_ASP.NET.Dtos.ApplicationDto
     public class ApplicationDTO : CreateApplicationDto
     {
         public int Id { get; set; }
-        public CookClassDTO CookClass { get; set; }
-        public TraineeDTO Trainee { get; set; }
+        public string status { get; set; }
+        public DateTime DateOfAppaly { get; set; }
+        public CookClassDTO? CookClass { get; set; }
+        public TraineeDTO? Trainee { get; set; }
 
     }
 }

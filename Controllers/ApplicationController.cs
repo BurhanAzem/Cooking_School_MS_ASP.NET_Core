@@ -109,21 +109,22 @@ namespace Cooking_School_ASP.NET.Controllers
                 var code = result.StatusCode;
                 throw new StatusCodeException(code.Value, result.Exception);
             }
-            return Ok(result.Dto);
+            return Ok(result.ListDto);
         }
 
 
         [HttpPost("~api/cook-classes/{classId}/applications")]
-        [Authorize(Roles = "Administrator, Chef")]
-        public async Task<IActionResult> ApplayTraineeToclass([FromBody] CreateApplicationDto applicationDto, int classId)
+        [Authorize(Roles = "Administrator, Trainee")]
+        public async Task<IActionResult> ApplayTraineeToclass(int classId)
         {
+            var trainee = await _authenticationService.GetCurrentUser(HttpContext);
             _logger.LogInformation($"Attempt Sinup for {nameof(Application)} ");
             if (!ModelState.IsValid)
             {
                 _logger.LogError($"Invalid POST attempt for {nameof(Application)}");
                 return BadRequest(ModelState);
             }
-            var result = await _applicationSevice.CreateApplication(applicationDto);
+            var result = await _applicationSevice.CreateApplication(trainee.Id, classId);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;

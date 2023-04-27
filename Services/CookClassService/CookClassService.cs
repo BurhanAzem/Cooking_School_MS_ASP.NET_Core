@@ -84,16 +84,16 @@ namespace Cooking_School_ASP.NET.Services.CookClassService
             var cookclasses = await _unitOfWork.CookClasses.GetPagedList(requestParam, include: q => q.Include(x => ((CookClass)x).ClassDays));
             var cookclassesDto = _mapper.Map<List<CookClassDTO>>(cookclasses);
             int i = 0;
-            //foreach (var cookClass in cookclasses)
-            //{
-            //    List<string> classDays = new List<string>();
-            //    foreach(var day in cookClass.ClassDays)
-            //    {
-            //        classDays.Add(day.Day.ToString());
-            //    }
-            //    cookclassesDto[i].ClassDays = classDays;
-            //    i++;
-            //}
+            foreach (var cookClass in cookclasses)
+            {
+                List<string> classDays = new List<string>();
+                foreach (var day in cookClass.ClassDays)
+                {
+                    classDays.Add(day.Day.ToString());
+                }
+                cookclassesDto[i].ClassDays = classDays;
+                i++;
+            }
             return new ResponsDto<CookClassDTO>()
             {
                 ListDto = cookclassesDto
@@ -105,18 +105,16 @@ namespace Cooking_School_ASP.NET.Services.CookClassService
             var cookclasses = await _unitOfWork.CookClasses.GetPagedList(requestParam, x => x.ChefId == chefId, include: q => q.Include(x => ((CookClass)x).ClassDays));
             var cookclassesDto = _mapper.Map<List<CookClassDTO>>(cookclasses);
             int i = 0;
-            //foreach (var cookClass in cookclasses)
-            //{
-            //    List<string> classDays = new List<string>();
-            //    foreach (var day in cookClass.ClassDays)
-            //    {
-            //        classDays.Add(day.Day.ToString());
-            //    }
-            //    ClassDaysDTO classDaysDto = new ClassDaysDTO();
-            //    classDaysDto.Days = classDays;
-            //    cookclassesDto[i].ClassDays = classDaysDto;
-            //    i++;
-            //}
+            foreach (var cookClass in cookclasses)
+            {
+                List<string> classDays = new List<string>();
+                foreach (var day in cookClass.ClassDays)
+                {
+                    classDays.Add(day.Day.ToString());
+                }
+                cookclassesDto[i].ClassDays = classDays;
+                i++;
+            }
             return new ResponsDto<CookClassDTO>()
             {
                 ListDto = cookclassesDto

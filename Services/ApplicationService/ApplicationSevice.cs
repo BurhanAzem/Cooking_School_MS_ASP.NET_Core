@@ -43,25 +43,28 @@ namespace Cooking_School_ASP.NET.Services.ApplicationService
             await _unitOfWork.Save();
             return new ResponsDto<ApplicationDTO>();
         }
-        public async Task<ResponsDto<ApplicationDTO>> CreateApplication(CreateApplicationDto applicationDto)
+        public async Task<ResponsDto<ApplicationDTO>> CreateApplication(int traineeId, int classId)
         {
-            if (await _unitOfWork.CookClasses.Get(x => x.Id == applicationDto.CookClassId) is not null)
+            if (await _unitOfWork.CookClasses.Get(x => x.Id == classId) is null)
             {
                 return new ResponsDto<ApplicationDTO>()
                 {
-                    Exception = new Exception($"Failed, CookClass {applicationDto.CookClassId} Entered Not Exist"),
+                    Exception = new Exception($"Failed, CookClass {classId} Entered Not Exist"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
                 };
             }
-            if (await _unitOfWork.Users.Get(x => x.Id == applicationDto.TraineeId) is not null)
+            if (await _unitOfWork.Users.Get(x => x.Id == traineeId) is null)
             {
                 return new ResponsDto<ApplicationDTO>()
                 {
-                    Exception = new Exception($"Failed, Trainee {applicationDto.TraineeId} Entered Not Exist"),
+                    Exception = new Exception($"Failed, Trainee {traineeId} Entered Not Exist"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
                 };
             }
-            var application = _mapper.Map<ApplicationT>(applicationDto);
+            var application = new ApplicationT();
+            application.CookClassId = classId;
+            application.DateOfApplay = DateTime.Now;
+            application.TraineeId = traineeId;
             await _unitOfWork.Applications.Insert(application);
             await _unitOfWork.Save();
             var projectDto = _mapper.Map<ApplicationDTO>(application);
