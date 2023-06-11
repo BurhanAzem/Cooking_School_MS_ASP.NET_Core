@@ -1,0 +1,6 @@
+2023-01-27 20:40:52.215 +02:00 [INF] Application Is Starting
+2023-01-27 21:00:43.233 +02:00 [INF] Application Is Starting
+2023-01-27 21:42:42.379 +02:00 [INF] Application Is Starting
+2023-01-27 21:51:28.476 +02:00 [INF] Application Is Starting
+2023-01-27 21:53:01.506 +02:00 [INF] Application Is Starting
+2023-01-27 23:38:00.347 +02:00 [INF] Application Is Starting

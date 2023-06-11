@@ -1,0 +1,15 @@
+C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\bin\Debug\net7.0\Cooking_School.Infrastructure.deps.json
+C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\bin\Debug\net7.0\Cooking_School.Infrastructure.dll
+C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\bin\Debug\net7.0\Cooking_School.Infrastructure.pdb
+C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\bin\Debug\net7.0\Cooking_School.Core.dll
+C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\bin\Debug\net7.0\Cooking_School.Core.pdb
+C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\obj\Debug\net7.0\Cooking_School.Infrastructure.csproj.AssemblyReference.cache
+C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\obj\Debug\net7.0\Cooking_School.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\obj\Debug\net7.0\Cooking_School.Infrastructure.AssemblyInfoInputs.cache
+C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\obj\Debug\net7.0\Cooking_School.Infrastructure.AssemblyInfo.cs
+C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\obj\Debug\net7.0\Cooking_School.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\obj\Debug\net7.0\Cooking_School.Infrastructure.csproj.CopyComplete
+C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\obj\Debug\net7.0\Cooking_School.Infrastructure.dll
+C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\obj\Debug\net7.0\refint\Cooking_School.Infrastructure.dll
+C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\obj\Debug\net7.0\Cooking_School.Infrastructure.pdb
+C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\obj\Debug\net7.0\ref\Cooking_School.Infrastructure.dll

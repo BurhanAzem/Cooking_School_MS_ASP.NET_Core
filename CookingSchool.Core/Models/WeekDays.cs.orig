@@ -1,0 +1,11 @@
+﻿namespace Cooking_School_ASP.NET.Models
+{
+    public enum WeekDays
+    {
+<<<<<<< HEAD
+        Satarday, Sunday, Monday, Tuesday, Wednesday, Thursday, Friday
+=======
+        Saturday, Sunday, Monday, Tuesday, Wednesday, Thursday, Friday
+>>>>>>> second
+    }
+}

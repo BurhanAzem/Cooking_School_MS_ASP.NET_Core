@@ -1,0 +1,5 @@
+C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\obj\Debug\net6.0\Cooking_School.Infrastructure.csproj.AssemblyReference.cache
+C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\obj\Debug\net6.0\Cooking_School.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\obj\Debug\net6.0\Cooking_School.Infrastructure.AssemblyInfoInputs.cache
+C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\obj\Debug\net6.0\Cooking_School.Infrastructure.AssemblyInfo.cs
+C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\obj\Debug\net6.0\Cooking_School.Infrastructure.csproj.CoreCompileInputs.cache
