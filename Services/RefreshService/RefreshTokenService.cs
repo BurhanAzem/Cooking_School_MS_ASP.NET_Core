@@ -1,8 +1,8 @@
-﻿using Cooking_School_ASP.NET.IRepository;
-using Cooking_School_ASP.NET.Models;
+﻿using Cooking_School.Core.IRepository.IUnitOfWork;
+using Cooking_School.Core.Models;
 using System.Security.Cryptography;
 
-namespace Cooking_School_ASP.NET.Services.RefreshService
+namespace Cooking_School.Services.RefreshService
 {
     public class RefreshTokenServicse : IRefreshTokenService
     {

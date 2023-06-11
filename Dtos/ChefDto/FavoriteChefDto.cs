@@ -1,4 +1,4 @@
-﻿namespace Cooking_School_ASP.NET.Dtos.ChefDto
+﻿namespace Cooking_School.Dtos.ChefDto
 {
     public class FavoriteChefDto
     {

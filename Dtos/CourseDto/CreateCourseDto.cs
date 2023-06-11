@@ -1,7 +1,7 @@
 ﻿using Backend_Controller_Burhan.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace Cooking_School_ASP.NET.Dtos.CookClassDto
+namespace Cooking_School.Dtos.CookClassDto
 {
     public class CreateCourseDto
     {

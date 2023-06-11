@@ -1,11 +1,11 @@
 ﻿using Backend_Controller_Burhan.Models;
-using Cooking_School_ASP.NET.Dtos.CookClassDto;
-using Cooking_School_ASP.NET.Dtos.UserDto;
-using Cooking_School_ASP.NET.Models;
-using Cooking_School_ASP.NET_.Models;
+using Cooking_School.Core.Models;
+using Cooking_School.Dtos.CookClassDto;
+using Cooking_School.Dtos.SubmitedFileDto;
+using Cooking_School.Dtos.UserDto;
 using System.ComponentModel.DataAnnotations;
 
-namespace Cooking_School_ASP.NET.Dtos.TraineeDto
+namespace Cooking_School.Dtos.TraineeDto
 {
     public class TraineeDTO : UserDTO
     {
@@ -14,7 +14,7 @@ namespace Cooking_School_ASP.NET.Dtos.TraineeDto
         public int CardN { get; set; }
         public string ImagePath { get; set; }   
         public ICollection<Trainee_Course>? TraineeCourse { get; set; }
-        public ICollection<SubmitedFileDto>? SubmitedFile { get; set; }
+        public ICollection<SubmitedFileDTO>? SubmitedFile { get; set; }
         public  ICollection<FavoriteMeal_Trainee>? FavoriteMealTrainee { get; set; }
         public ICollection<Favorite_Course>? FavoriteCourse { get; set; }
         public ICollection<Favorite_Chef>? FavoriteChef { get; set; }

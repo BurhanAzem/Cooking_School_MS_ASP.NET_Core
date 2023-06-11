@@ -1,8 +1,11 @@
-﻿using Azure.Storage;
+﻿using Azure;
+using Azure.Storage;
 using Azure.Storage.Blobs;
-using Cooking_School_ASP.NET.ModelUsed;
+using Azure.Storage.Blobs.Models;
+using Cooking_School.Core.ModelUsed;
+using System.IO;
 
-namespace Cooking_School_ASP.NET.Services.FilesService
+namespace Cooking_School.Services.FilesService
 {
     public class FileService : IFileService
     {
@@ -41,20 +44,37 @@ namespace Cooking_School_ASP.NET.Services.FilesService
             return files;
         }
 
+
         public async Task<BlobResponse> UploadAsync(IFormFile blob)
         {
             BlobResponse response = new();
-            BlobClient client = _filesContainer.GetBlobClient(blob.FileName);
+
+            // Generate a unique key using Guid
+            string uniqueKey = Guid.NewGuid().ToString();
+
+            // Concatenate the unique key with the original filename
+            string fileName = $"{uniqueKey}_{blob.FileName}";
+
+            BlobClient client = _filesContainer.GetBlobClient(fileName);
 
             await using (Stream? data = blob.OpenReadStream())
             {
-                await client.UploadAsync(data);
-            }
+                try
+                {
+                    await client.UploadAsync(data, overwrite: true);
 
-            response.Status = $"File {blob.FileName} Uploaded Sucessfully";
-            response.error = false;
-            response.Blob.Uri = client.Uri.AbsoluteUri;
-            response.Blob.Name = client.Name;
+                    response.Status = $"File {fileName} Uploaded Successfully";
+                    response.error = false;
+                    response.Blob.Uri = client.Uri.AbsoluteUri;
+                    response.Blob.Name = client.Name;
+                }
+                catch (RequestFailedException ex) when (ex.Status == 409) // BlobAlreadyExists
+                {
+                    response.Status = $"File {fileName} already exists.";
+                    response.error = true;
+                    // Handle the duplicate upload case as needed
+                }
+            }
 
             return response;
         }

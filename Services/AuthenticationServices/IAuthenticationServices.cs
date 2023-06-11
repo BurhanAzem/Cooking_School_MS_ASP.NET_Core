@@ -1,9 +1,8 @@
 ﻿using Backend_Controller_Burhan.Models;
-using Cooking_School_ASP.NET.Dtos.UserDto;
-using Cooking_School_ASP.NET.Models;
-using Cooking_School_ASP.NET.ModelUsed;
+using Cooking_School.Core.Models;
+using Cooking_School.Dtos.UserDto;
 
-namespace Cooking_School_ASP.NET.Services.AuthenticationServices
+namespace Cooking_School.Services.AuthenticationServices
 {
     public interface IAuthenticationServices
     {

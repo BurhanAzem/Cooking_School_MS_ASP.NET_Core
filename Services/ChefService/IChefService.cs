@@ -1,10 +1,10 @@
-﻿using Cooking_School_ASP.NET.Dtos;
+﻿using Cooking_School.Core.Models;
+using Cooking_School.Core.ModelUsed;
+using Cooking_School.Dtos;
+using Cooking_School.Dtos.ChefDto;
 using Cooking_School_ASP.NET.Dtos.ChefDto;
-using Cooking_School_ASP.NET.Dtos.TraineeDto;
-using Cooking_School_ASP.NET.Models;
-using Cooking_School_ASP.NET.ModelUsed;
 
-namespace Cooking_School_ASP.NET.Services.ChefService
+namespace Cooking_School.Services.ChefService
 {
     public interface IChefService
     {

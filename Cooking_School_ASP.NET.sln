@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cooking_School_ASP.NET", "Cooking_School_ASP.NET.csproj", "{74F3020A-1B16-4E57-875D-F4F764354004}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cooking_School", "Cooking_School.csproj", "{74F3020A-1B16-4E57-875D-F4F764354004}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cooking_School.Core", "..\CookingSchool.Core\Cooking_School.Core.csproj", "{9CF91F72-38A1-415E-84B2-51836E899057}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cooking_School.Infrastructure", "..\CookingSchool.Infrastructure\Cooking_School.Infrastructure.csproj", "{FF787697-E01C-4EEA-937F-67BDBE8612A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{74F3020A-1B16-4E57-875D-F4F764354004}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74F3020A-1B16-4E57-875D-F4F764354004}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74F3020A-1B16-4E57-875D-F4F764354004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CF91F72-38A1-415E-84B2-51836E899057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CF91F72-38A1-415E-84B2-51836E899057}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CF91F72-38A1-415E-84B2-51836E899057}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CF91F72-38A1-415E-84B2-51836E899057}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF787697-E01C-4EEA-937F-67BDBE8612A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF787697-E01C-4EEA-937F-67BDBE8612A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF787697-E01C-4EEA-937F-67BDBE8612A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF787697-E01C-4EEA-937F-67BDBE8612A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

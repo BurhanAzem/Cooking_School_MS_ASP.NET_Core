@@ -1,30 +1,26 @@
 ﻿using AutoMapper;
 using Backend_Controller_Burhan.Models;
 using Cooking_School_ASP.NET.Dtos.ChefDto;
-using Cooking_School_ASP.NET.Dtos.TraineeDto;
 using Cooking_School_ASP.NET.Dtos;
-using Cooking_School_ASP.NET.IRepository;
-using Cooking_School_ASP.NET.Models;
-using Cooking_School_ASP.NET.Hash;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
-using Cooking_School_ASP.NET.Dtos.CourseDto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
-using Cooking_School_ASP.NET.Dtos.ApplicationDto;
-using Cooking_School_ASP.NET.Dtos.ProjectFileDto;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
-using Cooking_School_ASP.NET.Dtos.AdminDto;
-using Cooking_School_ASP.NET.ModelUsed;
-using Microsoft.AspNetCore.Hosting.Server;
-using Cooking_School_ASP.NET.Services.FilesService;
-using Cooking_School_ASP.NET.Dtos.CookClassDto;
-using Cooking_School_ASP.NET_.Models;
 
-namespace Cooking_School_ASP.NET.Services.ChefService
+using Microsoft.AspNetCore.Hosting.Server;
+using Cooking_School.Core.IRepository.IUnitOfWork;
+using Cooking_School.Core.Hash;
+using Cooking_School.Services.FilesService;
+using Cooking_School.Dtos.ChefDto;
+using Cooking_School.Core.ModelUsed;
+using Cooking_School.Core.Models;
+using Cooking_School.Dtos;
+
+namespace Cooking_School.Services.ChefService
 {
     public class ChefService : IChefService
     {
@@ -84,7 +80,8 @@ namespace Cooking_School_ASP.NET.Services.ChefService
                     StatusCode = System.Net.HttpStatusCode.BadRequest
                 };
             }
-            var fileName = chef.CvPath.Split('/')[0];
+            var splitedPath = chef.CvPath.Split('/');
+            string fileName = splitedPath[splitedPath.Length - 1];
 
             var res = await _fileService.DeleteBlob(fileName);
             if (res.error == true)
@@ -135,7 +132,7 @@ namespace Cooking_School_ASP.NET.Services.ChefService
             if (requestParams == null)
             {
                 var favorite_Chefs = await _unitOfWork.Favorite_Chefs.GetAll();
-                var chefs = await _unitOfWork.Users.GetAll(x => x.Discriminator == "Chef");
+                var chefs = await _unitOfWork.Chefs.GetAll();
                 var sortedFavorite_Chefs = from favoriteChef in favorite_Chefs
                                            group favoriteChef by favoriteChef.ChefId into g
                                            orderby g.Count()
@@ -296,7 +293,7 @@ namespace Cooking_School_ASP.NET.Services.ChefService
 
         public async Task<ResponsDto<ChefDTO>> UpdateUser(int id, UpdateChefDto UpdatechefDto)
         {
-            Chef chef = (Chef)await _unitOfWork.Users.Get(x => x.Id == id);
+            var chef = await _unitOfWork.Chefs.Get(x => x.Id == id);
             if (chef is null)
                 return new ResponsDto<ChefDTO>
                 {
@@ -317,10 +314,11 @@ namespace Cooking_School_ASP.NET.Services.ChefService
             if (UpdatechefDto.PhoneNumber != null) { chef.PhoneNumber = (int)UpdatechefDto.PhoneNumber; }
             if (UpdatechefDto.Cv is not null)
             {
-                string fileName = UpdatechefDto.Cv.FileName;
+                var splitedPath = chef.CvPath.Split('/');
+                string fileName = splitedPath[splitedPath.Length - 1];
 
-                var resDelete = await _fileService.DeleteBlob(UpdatechefDto.Cv.FileName);
-                if (resDelete.error == false)
+                var resDelete = await _fileService.DeleteBlob(fileName);
+                if (resDelete.error == true)
                 {
                     return new ResponsDto<ChefDTO>()
                     {
@@ -329,7 +327,7 @@ namespace Cooking_School_ASP.NET.Services.ChefService
                 }
                 var res = await _fileService.UploadAsync(UpdatechefDto.Cv);
 
-                if (res.error == false)
+                if (res.error == true)
                 {
                     return new ResponsDto<ChefDTO>()
                     {

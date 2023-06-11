@@ -1,8 +1,8 @@
-﻿using Cooking_School_ASP.NET.Dtos.AdminDto;
-using Cooking_School_ASP.NET.Dtos.TraineeDto;
-using Cooking_School_ASP.NET.ModelUsed;
+﻿using Cooking_School.Core.ModelUsed;
+using Cooking_School.Dtos;
+using Cooking_School.Dtos.AdminDto;
 
-namespace Cooking_School_ASP.NET.Services.AdminService
+namespace Cooking_School.Services.AdminService
 {
     public interface IAdminService
     {

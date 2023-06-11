@@ -1,16 +1,16 @@
 ﻿using Cooking_School_ASP.NET.Dtos;
-using Cooking_School_ASP.NET.Dtos.CookClassDto;
-using Cooking_School_ASP.NET.Models;
-using Cooking_School_ASP.NET.ModelUsed;
-using Cooking_School_ASP.NET_.Controllers;
-using Cooking_School_ASP.NET.Services.ProjectService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Web.WebPages;
-using Cooking_School_ASP.NET.Services.AuthenticationServices;
+using Cooking_School.Services.AuthenticationServices;
+using Cooking_School.Services.ProjectService;
+using Cooking_School.Dtos.CookClassDto;
+using Cooking_School.Core.ModelUsed;
+using Cooking_School.Core.Models;
+using Cooking_School.Services.SubmitedFileService;
 
-namespace Cooking_School_ASP.NET.Controllers
+namespace Cooking_School.Controllers
 {
     [Route("api/projects")]
     [ApiController]
@@ -20,11 +20,13 @@ namespace Cooking_School_ASP.NET.Controllers
         private readonly ILogger<TraineeController> _logger;
         private readonly IProjectService _projectService;
         private readonly IAuthenticationServices _authenticationServices;
-        public ProjectController(ILogger<TraineeController> logger, IProjectService projectService, IAuthenticationServices authenticationServices)
+        private readonly IProjectFileService _submitedFileService;
+        public ProjectController(ILogger<TraineeController> logger, IProjectService projectService, IAuthenticationServices authenticationServices, IProjectFileService submitedFileService)
         {
             _logger = logger;
             _projectService = projectService;
             _authenticationServices = authenticationServices;
+            _submitedFileService = submitedFileService;
         }
 
         [HttpPost("~/api/cook-classes/{classId}/projects")]
@@ -66,6 +68,26 @@ namespace Cooking_School_ASP.NET.Controllers
             }
             return Ok(result.Dto);
         }
+
+        [HttpPost("~/api/trainees/{traineeId}/projects/{projectId}/evaluate")]
+        [Authorize(Roles = "Chef")]
+        public async Task<IActionResult> EvaluateTraineeProject(int projectId, int traineeId, [FromHeader] decimal mark)
+        {
+            _logger.LogInformation($"Attempt To Evaluate Id of {nameof(ProjectTraineeFile)}");
+            if (mark < 0 && mark > 100)
+            {
+                _logger.LogInformation($"Mark Out of Range");
+                return BadRequest("Mark Out of Range");
+            }
+            var result = await _projectService.EvaluateTraineeProject(mark, projectId, traineeId);
+            if (result.Exception is not null)
+            {
+                var code = result.StatusCode;
+                throw new StatusCodeException(code.Value, result.Exception);
+            }
+            return Ok("Done");
+        }
+
 
         [HttpDelete("{projectId}")]
         [Authorize(Roles = "Chef")]

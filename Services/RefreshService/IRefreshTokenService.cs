@@ -1,6 +1,5 @@
-﻿using Cooking_School_ASP.NET.Models;
-
-namespace Cooking_School_ASP.NET.Services.RefreshService
+﻿using Cooking_School.Core.Models;
+namespace Cooking_School.Services.RefreshService
 {
     public interface IRefreshTokenService
     {

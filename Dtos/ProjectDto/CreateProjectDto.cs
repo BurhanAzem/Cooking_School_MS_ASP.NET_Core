@@ -1,9 +1,8 @@
 ﻿using Backend_Controller_Burhan.Models;
-using Cooking_School_ASP.NET_.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Cooking_School_ASP.NET.Dtos.CookClassDto
+namespace Cooking_School.Dtos.CookClassDto
 {
     public class CreateProjectDto
     {

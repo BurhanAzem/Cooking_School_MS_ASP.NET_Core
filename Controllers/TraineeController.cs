@@ -1,14 +1,7 @@
 ﻿using AutoMapper;
-using Backend_Controller_Burhan.Models;
-using Cooking_School_ASP.NET.Dtos.ChefDto;
-using Cooking_School_ASP.NET.Dtos.TraineeDto;
-using Cooking_School_ASP.NET.Dtos.UserDto;
-using Cooking_School_ASP.NET.Models;
-using Cooking_School_ASP.NET.ModelUsed;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
-using Cooking_School_ASP.NET.Services.TraineeService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -18,13 +11,16 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Web.WebPages;
 using System.Net.Http;
-using Cooking_School_ASP.NET.Dtos.AdminDto;
-using Cooking_School_ASP.NET.Services.AuthenticationServices;
-using Cooking_School_ASP.NET.Services.RefreshService;
-using Cooking_School_ASP.NET.Dtos;
-using Cooking_School_ASP.NET.Services.CookClassService;
+using Cooking_School.Services.CookClassService;
+using Cooking_School.Services.TraineeService;
+using Cooking_School.Services.RefreshService;
+using Cooking_School.Services.AuthenticationServices;
+using Cooking_School.Dtos.UserDto;
+using Cooking_School.Core.ModelUsed;
+using Cooking_School.Dtos.TraineeDto;
+using Cooking_School.Core.Models;
 
-namespace Cooking_School_ASP.NET_.Controllers
+namespace Cooking_School.Controllers
 {
     [Route("api/trainees")]
     [ApiController]
@@ -128,22 +124,6 @@ namespace Cooking_School_ASP.NET_.Controllers
             newRefreshToken.UserId = user.Id;
             await SetRefreshToken(newRefreshToken);
             return Accepted(new TokenRequest { Token = token, RefreshToken = newRefreshToken.Token });
-        }
-
-
-
-        [HttpGet("{traineeId}/cook-classes")]
-        [Authorize(Roles = "Trainee")]
-        public async Task<IActionResult> GetAllCookClasses([FromQuery] RequestParam requestParam = null)
-        {
-            var trainee = await _authenticationServices.GetCurrentUser(HttpContext);
-            var result = await _traineeService.GetAllCookClassesForTrainee(trainee.Id, requestParam);
-            if (result.Exception is not null)
-            {
-                var code = result.StatusCode;
-                throw new StatusCodeException(code.Value, result.Exception);
-            }
-            return Ok(result.ListDto);
         }
 
         [HttpPut("{traineeId}")]

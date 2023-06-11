@@ -1,17 +1,16 @@
 ﻿using AutoMapper;
+using Cooking_School.Core.IRepository.IUnitOfWork;
+using Cooking_School.Core.Models;
+using Cooking_School.Core.ModelUsed;
+using Cooking_School.Dtos;
+using Cooking_School.Dtos.CookClassDto;
+using Cooking_School.Dtos.CourseDto;
 using Cooking_School_ASP.NET.Dtos;
 using Cooking_School_ASP.NET.Dtos.ChefDto;
-using Cooking_School_ASP.NET.Dtos.CookClassDto;
-using Cooking_School_ASP.NET.Dtos.CourseDto;
-using Cooking_School_ASP.NET.Dtos.ProjectFileDto;
-using Cooking_School_ASP.NET.Dtos.TraineeDto;
-using Cooking_School_ASP.NET.IRepository;
-using Cooking_School_ASP.NET.Models;
-using Cooking_School_ASP.NET.ModelUsed;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cooking_School_ASP.NET.Services.CourseService
+namespace Cooking_School.Services.CourseService
 {
     public class CourseService : ICourseService
     {

@@ -1,7 +1,8 @@
-﻿using Cooking_School_ASP.NET.Dtos.CookClassDto;
-using Cooking_School_ASP.NET.Models;
+﻿using Cooking_School.Core.Models;
+using Cooking_School.Dtos.CookClassDto;
 
-namespace Cooking_School_ASP.NET.Dtos.CourseDto
+
+namespace Cooking_School.Dtos.CourseDto
 {
     public class CourseDTO : CreateCourseDto
     {

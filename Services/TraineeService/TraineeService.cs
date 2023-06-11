@@ -1,26 +1,16 @@
 ﻿using AutoMapper;
-using Backend_Controller_Burhan.Models;
-using Cooking_School_ASP.NET.Dtos;
-using Cooking_School_ASP.NET.Dtos.TraineeDto;
-using Cooking_School_ASP.NET.Dtos.UserDto;
-using Cooking_School_ASP.NET.IRepository;
-using Cooking_School_ASP.NET.Models;
-using Cooking_School_ASP.NET.Repository;
-using Cooking_School_ASP.NET.Hash;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
-using System.Drawing;
-using Cooking_School_ASP.NET.Dtos.ChefDto;
-using Cooking_School_ASP.NET.Dtos.AdminDto;
-using System.Data;
-using Cooking_School_ASP.NET.ModelUsed;
-using Cooking_School_ASP.NET.Services.FilesService;
-using Cooking_School_ASP.NET.Dtos.CookClassDto;
-using Cooking_School_ASP.NET_.Models;
-using System.Collections.Generic;
 
-namespace Cooking_School_ASP.NET.Services.TraineeService
+using Cooking_School.Core.IRepository.IUnitOfWork;
+using Cooking_School.Core.Hash;
+using Cooking_School.Services.FilesService;
+using Cooking_School.Core.ModelUsed;
+using Cooking_School.Dtos.TraineeDto;
+using Cooking_School.Core.Models;
+using Cooking_School.Dtos.CookClassDto;
+using Cooking_School.Dtos;
+
+namespace Cooking_School.Services.TraineeService
 {
     public class TraineeService : ITraineeService
     {
@@ -104,7 +94,7 @@ namespace Cooking_School_ASP.NET.Services.TraineeService
             {
                 var course = await _unitOfWork.Courses.Get(x => x.Id == cookclass.CourseId);
                 var trainee = await _unitOfWork.Trainees.Get(x => x.Id == traineeId);
-                if(course.CourseLevel == trainee.Level)
+                if (course.CourseLevel == trainee.Level)
                 {
                     cookClassesForTrainee.Add(cookclass);
                 }
@@ -137,7 +127,7 @@ namespace Cooking_School_ASP.NET.Services.TraineeService
                 {
                     ListDto = traineesDto,
                 };
-            }                                                                                              
+            }
             var traineesPag = await _unitOfWork.Trainees.GetPagedList(requestParams, x => x.Discriminator == Convert.ToString(Roles.Trainee), include: x => x.Include(s => ((Trainee)s).TraineeCourses));
             var traineeDtoPag = _mapper.Map<IList<TraineeDTO>>(traineesPag);
             return new ResponsDto<TraineeDTO>

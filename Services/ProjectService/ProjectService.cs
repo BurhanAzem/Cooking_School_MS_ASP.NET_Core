@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
+using Cooking_School.Core.IRepository.IUnitOfWork;
+using Cooking_School.Core.Models;
+using Cooking_School.Core.ModelUsed;
+using Cooking_School.Dtos;
+using Cooking_School.Dtos.CookClassDto;
+using Cooking_School.Services.FilesService;
 using Cooking_School_ASP.NET.Dtos;
-using Cooking_School_ASP.NET.Dtos.CookClassDto;
-using Cooking_School_ASP.NET.IRepository;
-using Cooking_School_ASP.NET.Models;
-using Cooking_School_ASP.NET.ModelUsed;
-using Cooking_School_ASP.NET.Services.FilesService;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cooking_School_ASP.NET.Services.ProjectService
+namespace Cooking_School.Services.ProjectService
 {
     public class ProjectService : IProjectService
     {
@@ -55,7 +56,7 @@ namespace Cooking_School_ASP.NET.Services.ProjectService
                 }
                 ProjectFile projectFile = new ProjectFile();
                 projectFile.ProjectId = project.Id;
-                projectFile.ContentPath = res.Blob.Uri; ;
+                projectFile.FilePath = res.Blob.Uri; ;
                 await _unitOfWork.ProjectFiles.Insert(projectFile);
                 await _unitOfWork.Save();
             }
@@ -63,6 +64,31 @@ namespace Cooking_School_ASP.NET.Services.ProjectService
             return new ResponsDto<ProjectDTO>()
             {
                 Dto = projectDto,
+            };
+        }
+
+        public async Task<ResponsDto<string>> EvaluateTraineeProject(decimal mark, int projectId, int traineeId)
+        {
+            var projectTrainee = await _unitOfWork.ProjectTrainees.Get(x => x.TraineeId == traineeId && x.ProjectId == projectId);
+            if (projectTrainee is null)
+            {
+                return new ResponsDto<string>()
+                {
+                    StatusCode = System.Net.HttpStatusCode.BadRequest,
+                    Exception = new Exception("Failed, This projectTrainee Is Not Exist")
+
+                };
+            }
+            else
+            {
+                projectTrainee.Evalution = mark;
+            }
+
+            _unitOfWork.ProjectTrainees.Update(projectTrainee);
+            await _unitOfWork.Save();
+            return new ResponsDto<string>()
+            {
+                Message = "Done"
             };
         }
 
@@ -80,7 +106,7 @@ namespace Cooking_School_ASP.NET.Services.ProjectService
             _unitOfWork.ProjectFiles.DeleteRange(projectFiles);
             foreach (var file in projectFiles)
             {
-                var fileName = file.ContentPath.Split('/')[0];
+                var fileName = file.FilePath.Split('/')[0];
 
                 var res = await _fileService.DeleteBlob(fileName);
                 if (res.error == true)
@@ -190,7 +216,7 @@ namespace Cooking_School_ASP.NET.Services.ProjectService
                     };
                 }
                 ProjectFile projectFile = new ProjectFile();
-                projectFile.ContentPath = res.Blob.Uri;
+                projectFile.FilePath = res.Blob.Uri;
                 projectFile.ProjectId = projectFile.ProjectId;
                 projectFile.Created = DateTime.Now;
 

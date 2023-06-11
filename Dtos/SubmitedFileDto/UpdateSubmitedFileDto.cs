@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Cooking_School_ASP.NET.Dtos.CookClassDto
+namespace Cooking_School.Dtos.SubmitedFileDto
 {
     public class UpdateSubmitedFileDto
     {

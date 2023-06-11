@@ -1,17 +1,14 @@
-﻿using Cooking_School_ASP.NET.Models;
-using Cooking_School_ASP.NET.ModelUsed;
+﻿using Cooking_School.Core.Models;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection.Metadata;
 
-namespace Cooking_School_ASP.NET.Dtos.CookClassDto
+namespace Cooking_School.Dtos.SubmitedFileDto
 {
-    public class SubmitedFileDto
+    public class SubmitedFileDTO
     {
         public int Id { get; set; }
-        public Trainee Trainee { get; set; }
         public DateTime SubmitedDate { get; set; }
-        public int TraineeId { get; set; }
-        [Required]
-        public int ProjectId { get; set; }
+        public int ProjectTraineeId { get; set; }
+        public string FilePath { get; set; }
     }
 }

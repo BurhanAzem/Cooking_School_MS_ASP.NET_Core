@@ -1,20 +1,17 @@
-﻿using Cooking_School_ASP.NET.Dtos;
-using Cooking_School_ASP.NET.Dtos.ApplicationDto;
-using Cooking_School_ASP.NET.Dtos.CookClassDto;
-using Cooking_School_ASP.NET.Models;
-using Cooking_School_ASP.NET.ModelUsed;
-using Cooking_School_ASP.NET.Services.ApplicationService;
-using Cooking_School_ASP.NET.Services.AuthenticationServices;
-using Cooking_School_ASP.NET_.Controllers;
-using Cooking_School_ASP.NET_.Models;
+﻿using Cooking_School.Core.Models;
+using Cooking_School.Core.ModelUsed;
+using Cooking_School.Services.ApplicationService;
+using Cooking_School.Services.AuthenticationServices;
+using Cooking_School_ASP.NET.Dtos;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace Cooking_School_ASP.NET.Controllers
+namespace Cooking_School.Controllers
 {
     [Route("api/applications")]
     [ApiController]
@@ -30,7 +27,7 @@ namespace Cooking_School_ASP.NET.Controllers
             _authenticationService = authenticationService;
         }
 
-        [HttpGet("")]
+        [HttpGet("~/api/chefs/{chefId}/applications")]
         [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> GetAllApplicationsToChef(int chefId)
         {
@@ -54,16 +51,21 @@ namespace Cooking_School_ASP.NET.Controllers
 
         [HttpPost("{applicationId}/accept")]
         [Authorize(Roles = "Administrator, Chef")]
-        public async Task<IActionResult> AcceptApplication(int applicationId)
+        public async Task<IActionResult> AcceptApplication(int applicationId, [FromQuery] int traineeId)
         {
             _logger.LogInformation($"Attempt To Accept Application {nameof(Application)}");
-            var user = await _authenticationService.GetCurrentUser(HttpContext);
-            if (user.Id < 0)
+            var user = HttpContext.User;
+            if (user.IsInRole("Trainee"))
             {
-                _logger.LogInformation($"Invalid Attempt To Accept Application {nameof(Application)} - {user.Id}");
+                var trainee = await _authenticationService.GetCurrentUser(HttpContext);
+                traineeId = trainee.Id;
+            }
+            if (traineeId < 0)
+            {
+                _logger.LogInformation($"Invalid Attempt To Accept Application {nameof(Application)} - {traineeId}");
                 return BadRequest();
             }
-            var result = await _applicationSevice.AcceptApplication(user.Id);
+            var result = await _applicationSevice.AcceptApplication(traineeId);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;
@@ -75,16 +77,21 @@ namespace Cooking_School_ASP.NET.Controllers
 
         [HttpPost("{applicationId}/reject")]
         [Authorize(Roles = "Administrator, Chef")]
-        public async Task<IActionResult> RejectApplication(int applicationId)
+        public async Task<IActionResult> RejectApplication(int applicationId, [FromQuery] int traineeId)
         {
             _logger.LogInformation($"Attempt To Reject Application {nameof(Application)}");
-            var res = await _authenticationService.GetCurrentUser(HttpContext);
-            if (res.Id < 0)
+            var user = HttpContext.User;
+            if (user.IsInRole("Trainee"))
+            {
+                var trainee = await _authenticationService.GetCurrentUser(HttpContext);
+                traineeId = trainee.Id;
+            }
+            if (traineeId < 0)
             {
                 _logger.LogInformation($"Invalid Reject To Accept Application {nameof(Application)}");
                 return BadRequest();
             }
-            var result = await _applicationSevice.RejectApplication(res.Id);
+            var result = await _applicationSevice.RejectApplication(traineeId);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;
@@ -93,7 +100,7 @@ namespace Cooking_School_ASP.NET.Controllers
             return Ok("Done");
         }
 
-        [HttpGet("~api/cook-classes/{classId}/applications")]
+        [HttpGet("~/api/cook-classes/{classId}/applications")]
         [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> GetAllApplicationToClass(int classId)
         {
@@ -113,18 +120,25 @@ namespace Cooking_School_ASP.NET.Controllers
         }
 
 
-        [HttpPost("~api/cook-classes/{classId}/applications")]
+        [HttpPost("~/api/cook-classes/{classId}/applications")]
         [Authorize(Roles = "Administrator, Trainee")]
-        public async Task<IActionResult> ApplayTraineeToclass(int classId)
+        public async Task<IActionResult> ApplayTraineeToclass(int classId, [FromQuery] int traineeId)
         {
-            var trainee = await _authenticationService.GetCurrentUser(HttpContext);
+            var user = HttpContext.User;
+
+            if (user.IsInRole("Trainee"))
+            {
+                var trainee = await _authenticationService.GetCurrentUser(HttpContext);
+                traineeId = trainee.Id;
+            }
+
             _logger.LogInformation($"Attempt Sinup for {nameof(Application)} ");
             if (!ModelState.IsValid)
             {
                 _logger.LogError($"Invalid POST attempt for {nameof(Application)}");
                 return BadRequest(ModelState);
             }
-            var result = await _applicationSevice.CreateApplication(trainee.Id, classId);
+            var result = await _applicationSevice.CreateApplication(traineeId, classId);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;

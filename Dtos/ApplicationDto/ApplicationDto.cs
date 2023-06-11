@@ -1,9 +1,10 @@
 ﻿using Backend_Controller_Burhan.Models;
+using Cooking_School.Dtos.CookClassDto;
+using Cooking_School.Dtos.TraineeDto;
 using Cooking_School_ASP.NET.Dtos;
-using Cooking_School_ASP.NET.Dtos.CookClassDto;
-using Cooking_School_ASP.NET.Dtos.TraineeDto;
 
-namespace Cooking_School_ASP.NET.Dtos.ApplicationDto
+
+namespace Cooking_School.Dtos.ApplicationDto
 {
     public class ApplicationDTO : CreateApplicationDto
     {

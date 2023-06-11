@@ -1,11 +1,12 @@
-﻿using Cooking_School_ASP.NET.Dtos;
+﻿using Cooking_School.Core.ModelUsed;
+using Cooking_School.Dtos;
+using Cooking_School.Dtos.CookClassDto;
+using Cooking_School.Dtos.CourseDto;
+using Cooking_School_ASP.NET.Dtos;
 using Cooking_School_ASP.NET.Dtos.ChefDto;
-using Cooking_School_ASP.NET.Dtos.CookClassDto;
-using Cooking_School_ASP.NET.Dtos.CourseDto;
-using Cooking_School_ASP.NET.ModelUsed;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Cooking_School_ASP.NET.Services.CourseService
+namespace Cooking_School.Services.CourseService
 {
     public interface ICourseService
     {

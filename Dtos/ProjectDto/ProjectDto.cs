@@ -1,10 +1,8 @@
 ﻿using Backend_Controller_Burhan.Models;
-using Cooking_School_ASP.NET.Dtos.ProjectFileDto;
-using Cooking_School_ASP.NET.Models;
-using Cooking_School_ASP.NET_.Models;
+using Cooking_School.Dtos.SubmitedFileDto;
 using System.ComponentModel.DataAnnotations;
 
-namespace Cooking_School_ASP.NET.Dtos.CookClassDto
+namespace Cooking_School.Dtos.CookClassDto
 {
     public class ProjectDTO
     {
@@ -15,7 +13,7 @@ namespace Cooking_School_ASP.NET.Dtos.CookClassDto
         public DateTime ExpirDate { get; set; }
 
         //public CookClassDTO CookClass { get; set; }
-        public ICollection<ProjectFileDTO> projectFiles { get; set; }
-
+        public ICollection<SubmitedFileDTO> projectFiles { get; set; }
+        
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Cooking_School_ASP.NET.Dtos.UserDto
+namespace Cooking_School.Dtos.UserDto
 {
     public class UpdateUserDto
     {

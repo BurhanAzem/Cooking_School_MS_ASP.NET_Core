@@ -1,23 +1,20 @@
-﻿using Cooking_School_ASP.NET.Models;
-using Cooking_School_ASP.NET.Dtos.ChefDto;
-using Cooking_School_ASP.NET.Dtos.TraineeDto;
-using Cooking_School_ASP.NET.Dtos.UserDto;
+﻿using Cooking_School_ASP.NET.Dtos.ChefDto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Cooking_School_ASP.NET.ModelUsed;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using System.Web.WebPages;
-using Cooking_School_ASP.NET.Dtos.AdminDto;
-using Cooking_School_ASP.NET.Services.AuthenticationServices;
-using Cooking_School_ASP.NET.Services.ChefService;
-using Cooking_School_ASP.NET.Services.RefreshService;
-using Cooking_School_ASP.NET.Dtos;
+using Cooking_School.Services.AuthenticationServices;
+using Cooking_School.Services.RefreshService;
+using Cooking_School.Services.ChefService;
+using Cooking_School.Dtos.UserDto;
+using Cooking_School.Core.ModelUsed;
+using Cooking_School.Core.Models;
 
-namespace Cooking_School_ASP.NET_.Controllers
+namespace Cooking_School.Controllers
 {
     [Route("api/chefs")]
     [ApiController]
@@ -139,9 +136,6 @@ namespace Cooking_School_ASP.NET_.Controllers
                 throw new StatusCodeException(code.Value, result.Exception);
             }
             return Ok(result.Dto);
-
-
-
         }
 
         [HttpPost("{chefId}/favorite")]
@@ -161,10 +155,10 @@ namespace Cooking_School_ASP.NET_.Controllers
 
         [HttpDelete("{chefId}/favorite")]
         [Authorize(Roles = "Trainee")]
-        public async Task<IActionResult> UnFavoriteChef(int traineeId, int chefId)
+        public async Task<IActionResult> UnFavoriteChef(int chefId)
         {
-            var user = await _authenticationServices.GetCurrentUser(HttpContext);
-            var result = await _chefService.UnFavoriteChef(chefId, user.Id);
+            var trainee = await _authenticationServices.GetCurrentUser(HttpContext);
+            var result = await _chefService.UnFavoriteChef(chefId, trainee.Id);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;

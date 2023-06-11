@@ -1,22 +1,20 @@
 ﻿using Backend_Controller_Burhan.Models;
-using Cooking_School_ASP.NET.Dtos.UserDto;
-using Cooking_School_ASP.NET.IRepository;
-using Cooking_School_ASP.NET.Models;
-using Cooking_School_ASP.NET.Hash;
+using Cooking_School.Dtos.UserDto;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Cooking_School_ASP.NET.Dtos.TraineeDto;
-using Cooking_School_ASP.NET.ModelUsed;
 using System.Security.Cryptography;
 using Azure.Core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Cooking_School.Core.IRepository.IUnitOfWork;
+using Cooking_School.Core.Hash;
+using Cooking_School.Core.Models;
 
-namespace Cooking_School_ASP.NET.Services.AuthenticationServices
+namespace Cooking_School.Services.AuthenticationServices
 {
     public class AuthenticationServices : IAuthenticationServices
     {

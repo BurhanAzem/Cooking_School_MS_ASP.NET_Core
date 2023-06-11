@@ -1,14 +1,13 @@
 ﻿using Backend_Controller_Burhan.Models;
-using Cooking_School_ASP.NET.ModelUsed;
-using Cooking_School_ASP.NET.Services.AuthenticationServices;
-using Cooking_School_ASP.NET.Services.CourseService;
-using Cooking_School_ASP.NET_.Controllers;
+using Cooking_School.Core.ModelUsed;
+using Cooking_School.Services.AuthenticationServices;
+using Cooking_School.Services.CourseService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Web.WebPages;
 
-namespace Cooking_School_ASP.NET.Controllers
+namespace Cooking_School.Controllers
 {
     [Route("api/courses")]
     [ApiController]
@@ -26,7 +25,7 @@ namespace Cooking_School_ASP.NET.Controllers
 
 
 
-        [HttpPost("~/api/courses/{courseId}/favorite")]
+        [HttpPost("{courseId}/favorite")]
         [Authorize(Roles = "Trainee")]
         public async Task<IActionResult> FavoriteCourse(int courseId)
         {
@@ -41,7 +40,7 @@ namespace Cooking_School_ASP.NET.Controllers
         }
 
 
-        [HttpDelete("~/api/courses/{courseId}/favorite")]
+        [HttpDelete("{courseId}/favorite")]
         [Authorize(Roles = "Trainee")]
         public async Task<IActionResult> UnFavoriteCourse(int courseId)
         {

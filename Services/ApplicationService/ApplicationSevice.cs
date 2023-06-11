@@ -1,17 +1,15 @@
 ﻿using AutoMapper;
 using Backend_Controller_Burhan.Models;
+using Cooking_School.Core.IRepository.IUnitOfWork;
+using Cooking_School.Core.Models;
+using Cooking_School.Core.ModelUsed;
+using Cooking_School.Dtos;
+using Cooking_School.Dtos.ApplicationDto;
 using Cooking_School_ASP.NET.Dtos;
-using Cooking_School_ASP.NET.Dtos.ApplicationDto;
-using Cooking_School_ASP.NET.Dtos.CookClassDto;
-using Cooking_School_ASP.NET.Dtos.ProjectFileDto;
-using Cooking_School_ASP.NET.Dtos.ProjectFileDto;
-using Cooking_School_ASP.NET.IRepository;
-using Cooking_School_ASP.NET.Models;
-using Cooking_School_ASP.NET.ModelUsed;
 using Microsoft.EntityFrameworkCore;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace Cooking_School_ASP.NET.Services.ApplicationService
+namespace Cooking_School.Services.ApplicationService
 {
     public class ApplicationSevice : IApplicationSevice
     {
@@ -74,10 +72,21 @@ namespace Cooking_School_ASP.NET.Services.ApplicationService
             };
         }
 
+        public async Task<ResponsDto<ApplicationDTO>> GetAllApplications()
+        {
+            var applications = await _unitOfWork.Applications.GetAll();
+
+            var applicationsDto = _mapper.Map<IList<ApplicationDTO>>(applications);
+            return new ResponsDto<ApplicationDTO>()
+            {
+                ListDto = applicationsDto
+            };
+        }
+
         public async Task<ResponsDto<ApplicationDTO>> GetAllApplicationsToChef(int cheefId)
         {
             var cookClasses = await _unitOfWork.CookClasses.GetAll(x => x.Id == cheefId);
-            
+
             if (cookClasses is null)
             {
                 return new ResponsDto<ApplicationDTO>()

@@ -1,16 +1,14 @@
-﻿using Cooking_School_ASP.NET.Controllers;
-using Cooking_School_ASP.NET.Dtos;
-using Cooking_School_ASP.NET.Dtos.CookClassDto;
-using Cooking_School_ASP.NET.Dtos.TraineeDto;
-using Cooking_School_ASP.NET.ModelUsed;
-using Cooking_School_ASP.NET.Services.AuthenticationServices;
-using Cooking_School_ASP.NET.Services.CookClassService;
+﻿using Cooking_School.Core.ModelUsed;
+using Cooking_School.Dtos.CookClassDto;
+using Cooking_School.Services.AuthenticationServices;
+using Cooking_School.Services.CookClassService;
+using Cooking_School.Services.TraineeService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Web.WebPages;
 
-namespace Cooking_School_ASP.NET_.Controllers
+namespace Cooking_School.Controllers
 {
     [Route("api/cook-classes")]
     [ApiController]
@@ -19,15 +17,16 @@ namespace Cooking_School_ASP.NET_.Controllers
         private readonly ILogger<CookClassController> _logger;
         private readonly ICookClassService _cookClassService;
         private readonly IAuthenticationServices _authenticationServices;
-
-        public CookClassController(ILogger<CookClassController> logger, ICookClassService cookClassService, IAuthenticationServices authenticationServices)
+        private readonly ITraineeService _traineeService;
+        public CookClassController(ILogger<CookClassController> logger, ICookClassService cookClassService, IAuthenticationServices authenticationServices, ITraineeService traineeService)
         {
             _logger = logger;
             _cookClassService = cookClassService;
             _authenticationServices = authenticationServices;
+            _traineeService = traineeService;
         }
         ///pi/chefs/{chefId}/cook-classes
-        [HttpPost("~/api/cook-classes")]
+        [HttpPost("")]
         [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> CreateClass([FromBody] CreateCookClassDto classDto)
         {
@@ -47,7 +46,7 @@ namespace Cooking_School_ASP.NET_.Controllers
             return Ok(result.Dto);
         }
 
-        [HttpPut("~/api/cook-classes/{classId}")]
+        [HttpPut("{classId}")]
         [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> UpdateClass(int classId, [FromBody] UpdateCookClassDto classDto)
         {
@@ -66,7 +65,24 @@ namespace Cooking_School_ASP.NET_.Controllers
             return Ok(result.Dto);
         }
 
-        [HttpDelete("~/api/cook-classes/{classId}")]
+
+        [HttpGet("~/api/trainees/{traineeId}/cook-classes")]
+        [Authorize(Roles = "Trainee")]
+        public async Task<IActionResult> GetAllCookClassesForTrainee([FromQuery] RequestParam requestParam = null)
+        {
+            var trainee = await _authenticationServices.GetCurrentUser(HttpContext);
+            var result = await _traineeService.GetAllCookClassesForTrainee(trainee.Id, requestParam);
+            if (result.Exception is not null)
+            {
+                var code = result.StatusCode;
+                throw new StatusCodeException(code.Value, result.Exception);
+            }
+            return Ok(result.ListDto);
+        }
+
+
+
+        [HttpDelete("{classId}")]
         [Authorize(Roles = "Administrator, Chef")]
         public async Task<IActionResult> DleteClass(int classId)
         {
@@ -85,7 +101,7 @@ namespace Cooking_School_ASP.NET_.Controllers
             return Ok(result.Dto);
         }
 
-        [HttpGet("~/api/cook-classes")]
+        [HttpGet("")]
         [Authorize(Roles = "Chef")]
         public async Task<IActionResult> GetAllCookClasses([FromQuery]RequestParam requestParam)
         {

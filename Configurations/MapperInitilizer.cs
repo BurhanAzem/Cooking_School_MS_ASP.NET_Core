@@ -1,16 +1,17 @@
 ﻿using AutoMapper;
 using Backend_Controller_Burhan.Models;
+using Cooking_School.Core.Models;
+using Cooking_School.Dtos.AdminDto;
+using Cooking_School.Dtos.ApplicationDto;
+using Cooking_School.Dtos.ChefDto;
+using Cooking_School.Dtos.CookClassDto;
+using Cooking_School.Dtos.CourseDto;
+using Cooking_School.Dtos.SubmitedFileDto;
+using Cooking_School.Dtos.TraineeDto;
+using Cooking_School.Dtos.UserDto;
 using Cooking_School_ASP.NET.Dtos;
-using Cooking_School_ASP.NET.Dtos.AdminDto;
-using Cooking_School_ASP.NET.Dtos.ApplicationDto;
 using Cooking_School_ASP.NET.Dtos.ChefDto;
-using Cooking_School_ASP.NET.Dtos.CookClassDto;
-using Cooking_School_ASP.NET.Dtos.CourseDto;
-using Cooking_School_ASP.NET.Dtos.ProjectFileDto;
-using Cooking_School_ASP.NET.Dtos.TraineeDto;
-using Cooking_School_ASP.NET.Dtos.UserDto;
-using Cooking_School_ASP.NET.Models;
-using Cooking_School_ASP.NET_.Models;
+
 using System.Runtime;
 
 namespace Cooking_School_ASP.NET.Configurations
@@ -65,10 +66,10 @@ namespace Cooking_School_ASP.NET.Configurations
             CreateMap<CreateProjectDto, Project>()
                 .ForMember(t => t.Created, option => option.Ignore());
 
-            CreateMap<ProjectFileDTO, ProjectFile>().ReverseMap();
+            CreateMap<SubmitedFileDTO, ProjectFile>().ReverseMap();
 
-            CreateMap<SubmitedFileDto, SubmitedFile>().ReverseMap();
-            CreateMap<CreateSubmitedFileDto, SubmitedFile>()
+            CreateMap<SubmitedFileDTO, ProjectTraineeFile>().ReverseMap();
+            CreateMap<CreateSubmitedFileDto, ProjectTraineeFile>()
                 .ForMember(t => t.Created, option => option.Ignore());
 
             CreateMap<User, UserDTO>().ReverseMap();

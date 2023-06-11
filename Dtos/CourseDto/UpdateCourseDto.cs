@@ -1,7 +1,6 @@
-﻿using Cooking_School_ASP.NET.Dtos.CourseDto;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Cooking_School_ASP.NET.Dtos.CookClassDto
+namespace Cooking_School.Dtos.CookClassDto
 {
     public class UpdateCourseDto
     {

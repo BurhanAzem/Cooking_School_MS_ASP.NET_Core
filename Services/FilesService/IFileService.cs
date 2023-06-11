@@ -1,6 +1,6 @@
-﻿using Cooking_School_ASP.NET.ModelUsed;
+﻿using Cooking_School.Core.ModelUsed;
 
-namespace Cooking_School_ASP.NET.Services.FilesService
+namespace Cooking_School.Services.FilesService
 {
     public interface IFileService
     {

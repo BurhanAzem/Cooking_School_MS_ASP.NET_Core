@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
 using Backend_Controller_Burhan.Models;
+using Cooking_School.Core.IRepository.IUnitOfWork;
+using Cooking_School.Core.Models;
+using Cooking_School.Core.ModelUsed;
+using Cooking_School.Dtos;
+using Cooking_School.Dtos.CookClassDto;
 using Cooking_School_ASP.NET.Dtos;
-using Cooking_School_ASP.NET.Dtos.CookClassDto;
-using Cooking_School_ASP.NET.Dtos.TraineeDto;
-using Cooking_School_ASP.NET.IRepository;
-using Cooking_School_ASP.NET.Models;
-using Cooking_School_ASP.NET.ModelUsed;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cooking_School_ASP.NET.Services.CookClassService
+namespace Cooking_School.Services.CookClassService
 {
     public class CookClassService : ICookClassService
     {
@@ -137,9 +137,9 @@ namespace Cooking_School_ASP.NET.Services.CookClassService
             if (updateCookClassDto.CourseId != 0) { cookClass.CourseId = (int)updateCookClassDto.CourseId; }
             if (updateCookClassDto.EndingAt != null) { cookClass.EndingAt = (TimeOnly)updateCookClassDto.EndingAt; }
             if (updateCookClassDto.StartingAt != null) { cookClass.StartingAt = (TimeOnly)updateCookClassDto.StartingAt; }
-            if(updateCookClassDto.ClassDays != null)
+            if (updateCookClassDto.ClassDays != null)
             {
-                var classDays = await _unitOfWork.ClassDays.GetAll(x => x.Id == cookClassId); 
+                var classDays = await _unitOfWork.ClassDays.GetAll(x => x.Id == cookClassId);
                 _unitOfWork.ClassDays.DeleteRange(classDays);
                 List<ClassDays> classDaysUpdated = new List<ClassDays>();
                 foreach (var day in updateCookClassDto.ClassDays)
@@ -155,7 +155,7 @@ namespace Cooking_School_ASP.NET.Services.CookClassService
                 await _unitOfWork.ClassDays.InsertRange(classDaysUpdated);
                 await _unitOfWork.Save();
             }
-            
+
 
             cookClass.Updated = DateTime.Now;
             _unitOfWork.CookClasses.Update(cookClass);

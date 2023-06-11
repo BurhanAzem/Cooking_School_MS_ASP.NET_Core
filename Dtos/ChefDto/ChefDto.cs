@@ -1,8 +1,8 @@
 ﻿using Backend_Controller_Burhan.Models;
-using Cooking_School_ASP.NET.Dtos.UserDto;
-using Cooking_School_ASP.NET.Models;
+using Cooking_School.Core.Models;
+using Cooking_School.Dtos.UserDto;
 
-namespace Cooking_School_ASP.NET.Dtos.ChefDto
+namespace Cooking_School.Dtos.ChefDto
 {
     public class ChefDTO : UserDTO
     {

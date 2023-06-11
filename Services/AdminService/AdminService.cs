@@ -1,14 +1,13 @@
 ﻿using AutoMapper;
-using Cooking_School_ASP.NET.Dtos.AdminDto;
-using Cooking_School_ASP.NET.Dtos.ChefDto;
-using Cooking_School_ASP.NET.Dtos.CookClassDto;
-using Cooking_School_ASP.NET.Dtos.TraineeDto;
-using Cooking_School_ASP.NET.Hash;
-using Cooking_School_ASP.NET.IRepository;
-using Cooking_School_ASP.NET.Models;
-using Cooking_School_ASP.NET.ModelUsed;
 
-namespace Cooking_School_ASP.NET.Services.AdminService
+using Cooking_School.Core.IRepository.IUnitOfWork;
+using Cooking_School.Core.Hash;
+using Cooking_School.Dtos.AdminDto;
+using Cooking_School.Core.Models;
+using Cooking_School.Core.ModelUsed;
+using Cooking_School.Dtos;
+
+namespace Cooking_School.Services.AdminService
 {
     public class AdminService : IAdminService
     {
