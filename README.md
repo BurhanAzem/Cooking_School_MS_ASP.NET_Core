@@ -1,8 +1,6 @@
 # Cooking_School_MS_ASP.NET_Core
 ![Architecture ](https://github.com/BurhanAzem/Cooking_School_MS_ASP.NET_Core/assets/104472357/8f1040a7-6b42-4480-a62a-be71064aae37)
 ![DB-Model](https://github.com/BurhanAzem/Cooking_School_MS_ASP.NET_Core/assets/104472357/d3a0a6f0-a2ef-41cf-a314-a1bb29640203)
-![trainee](https://github.com/BurhanAzem/Cooking_School_MS_ASP.NET_Core/assets/104472357/8bbd623e-9935-4ed7-be01-3437ddc2286c)
-![Admin](https://github.com/BurhanAzem/Cooking_School_MS_ASP.NET_Core/assets/104472357/c57110c8-b696-4690-a866-8b358c1667cd)
 
 Here, I will represent the most important aspects of my backend project for a Cooking School application  #ASP.NET Core Web API:
 
@@ -42,3 +40,7 @@ I utilized pre-built Dashboard templates (HTML, CSS, JS) and customized them to 
 
 I would love to take feedback from professionals who share a passion for backend development and the technologies used in this project.
 #BackendDevelopment #CookingSchool #ASPNETCoreWebAPI #Authentication #Authorization #DatabaseDesign #CloudStorage #Documentation #Logging #FrontEndDevelopment #SoftwareEngineering
+
+
+![trainee](https://github.com/BurhanAzem/Cooking_School_MS_ASP.NET_Core/assets/104472357/8bbd623e-9935-4ed7-be01-3437ddc2286c)
+![Admin](https://github.com/BurhanAzem/Cooking_School_MS_ASP.NET_Core/assets/104472357/c57110c8-b696-4690-a866-8b358c1667cd)
