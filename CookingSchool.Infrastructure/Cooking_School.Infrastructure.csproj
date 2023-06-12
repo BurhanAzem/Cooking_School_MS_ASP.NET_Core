@@ -16,4 +16,8 @@
     <ProjectReference Include="..\CookingSchool.Core\Cooking_School.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="logs\" />
+  </ItemGroup>
+
 </Project>
