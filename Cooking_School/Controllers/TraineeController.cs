@@ -15,9 +15,9 @@ using Cooking_School.Services.CookClassService;
 using Cooking_School.Services.TraineeService;
 using Cooking_School.Services.RefreshService;
 using Cooking_School.Services.AuthenticationServices;
-using Cooking_School.Dtos.UserDto;
+using Cooking_School.Services.Dtos.UserDto;
 using Cooking_School.Core.ModelUsed;
-using Cooking_School.Dtos.TraineeDto;
+using Cooking_School.Services.Dtos.TraineeDto;
 using Cooking_School.Core.Models;
 
 namespace Cooking_School.Controllers

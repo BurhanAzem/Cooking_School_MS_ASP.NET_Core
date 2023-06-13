@@ -10,7 +10,7 @@ using System.Web.WebPages;
 using Cooking_School.Services.AuthenticationServices;
 using Cooking_School.Services.RefreshService;
 using Cooking_School.Services.ChefService;
-using Cooking_School.Dtos.UserDto;
+using Cooking_School.Services.Dtos.UserDto;
 using Cooking_School.Core.ModelUsed;
 using Cooking_School.Core.Models;
 

@@ -1,10 +1,9 @@
 ﻿using Cooking_School.Core.Models;
 using Cooking_School.Core.ModelUsed;
-using Cooking_School.Dtos.ChefDto;
+using Cooking_School.Services.Dtos.ChefDto;
 using Cooking_School.Services.AdminService;
 using Cooking_School.Services.ChefService;
 using Cooking_School_ASP.NET.Dtos;
-using Cooking_School_ASP.NET.Dtos.ChefDto;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

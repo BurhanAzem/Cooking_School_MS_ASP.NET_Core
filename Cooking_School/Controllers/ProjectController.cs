@@ -5,10 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 using System.Web.WebPages;
 using Cooking_School.Services.AuthenticationServices;
 using Cooking_School.Services.ProjectService;
-using Cooking_School.Dtos.CookClassDto;
+using Cooking_School.Services.Dtos.CookClassDto;
 using Cooking_School.Core.ModelUsed;
 using Cooking_School.Core.Models;
 using Cooking_School.Services.SubmitedFileService;
+using Cooking_School.Services.Dtos.ProjectDto;
 
 namespace Cooking_School.Controllers
 {

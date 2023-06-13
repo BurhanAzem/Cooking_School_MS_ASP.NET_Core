@@ -1,6 +1,6 @@
 ﻿using Cooking_School.Core.Models;
 using Cooking_School.Core.ModelUsed;
-using Cooking_School.Dtos.CookClassDto;
+using Cooking_School.Services.Dtos.CookClassDto;
 using Cooking_School.Services.AuthenticationServices;
 using Cooking_School.Services.CourseService;
 using Cooking_School_ASP.NET.Dtos;

@@ -13,9 +13,9 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Cooking_School.Services.AdminService;
 using Cooking_School.Services.AuthenticationServices;
 using Cooking_School.Services.RefreshService;
-using Cooking_School.Dtos.AdminDto;
+using Cooking_School.Services.Dtos.AdminDto;
 using Cooking_School.Core.ModelUsed;
-using Cooking_School.Dtos.UserDto;
+using Cooking_School.Services.Dtos.UserDto;
 using Cooking_School.Core.Models;
 
 namespace Cooking_School.Controllers
