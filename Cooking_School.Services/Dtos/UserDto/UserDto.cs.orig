@@ -1,0 +1,11 @@
+﻿namespace Cooking_School_ASP.NET.Dtos.UserDto
+{
+<<<<<<< HEAD
+    public class UserDto : CreateUserDto
+=======
+    public class UserDTO : CreateUserDto
+>>>>>>> second
+    {
+        public int Id { get; set; }
+    }
+}

@@ -24,7 +24,6 @@ namespace Cooking_School.Core.IRepository.IUnitOfWork
         IGenericRepository<FavoriteMeal_Trainee> FavoriteMeal_Trainees { get; }  
         IGenericRepository<Favorite_Chef> Favorite_Chefs { get; }
         IGenericRepository<Favorite_Course> Favorite_Courses { get; }
-
         Task Save();
 
     }

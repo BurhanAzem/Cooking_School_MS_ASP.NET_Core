@@ -1,0 +1,29 @@
+﻿using Backend_Controller_Burhan.Models;
+<<<<<<< HEAD
+=======
+using Cooking_School_ASP.NET.Dtos.CookClassDto;
+>>>>>>> second
+using Cooking_School_ASP.NET.Models;
+using Cooking_School_ASP.NET_.Models;
+using System.ComponentModel.DataAnnotations;
+
+namespace Cooking_School_ASP.NET.Dtos.TraineeDto
+{
+<<<<<<< HEAD
+    public class TraineeDto : CreateTraineeDto
+    {
+        public int Id { get; set; }
+        public ICollection<Trainee_Course>? TraineeCourse { get; set; }
+        public ICollection<ProjectFile>? ProjectFile { get; set; }
+=======
+    public class TraineeDTO : CreateTraineeDto
+    {
+        public int Id { get; set; }
+        public ICollection<Trainee_Course>? TraineeCourse { get; set; }
+        public ICollection<SubmitedFileDto>? ProjectFile { get; set; }
+>>>>>>> second
+        public  ICollection<FavoriteMeal_Trainee>? FavoriteMealTrainee { get; set; }
+        public ICollection<Favorite_Course>? FavoriteCourse { get; set; }
+        public ICollection<Favorite_Chef>? FavoriteChef { get; set; }
+    }
+}

@@ -1,0 +1,12 @@
+2023-06-13 09:26:59.785 +03:00  INF  User profile is available. Using 'C:\Users\lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-13 09:27:00.094 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-06-13 09:27:00.094 +03:00  INF  Hosting environment: Development
+2023-06-13 09:27:00.094 +03:00  INF  Content root path: C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School
+2023-06-13 09:27:00.151 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/index.html - -
+2023-06-13 09:27:00.609 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - -
+2023-06-13 09:27:00.616 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/index.html - - - 200 - text/html;charset=utf-8 464.0712ms
+2023-06-13 09:27:00.616 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 5.9820ms
+2023-06-13 09:27:00.752 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_vs/browserLink - -
+2023-06-13 09:27:00.912 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 160.5525ms
+2023-06-13 09:27:01.248 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - -
+2023-06-13 09:27:01.449 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 201.1256ms

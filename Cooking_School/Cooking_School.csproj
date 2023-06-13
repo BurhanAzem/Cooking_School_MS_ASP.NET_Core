@@ -48,6 +48,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CookingSchool.Core\Cooking_School.Core.csproj" />
     <ProjectReference Include="..\CookingSchool.Infrastructure\Cooking_School.Infrastructure.csproj" />
+    <ProjectReference Include="..\Cooking_School.Services\Cooking_School.Services.csproj" />
   </ItemGroup>
 
 </Project>

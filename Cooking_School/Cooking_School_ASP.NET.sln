@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cooking_School.Core", "..\C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cooking_School.Infrastructure", "..\CookingSchool.Infrastructure\Cooking_School.Infrastructure.csproj", "{FF787697-E01C-4EEA-937F-67BDBE8612A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cooking_School.Services", "..\Cooking_School.Services\Cooking_School.Services.csproj", "{9FF13E88-3486-47C4-9DF3-58E8E4EC73EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{FF787697-E01C-4EEA-937F-67BDBE8612A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF787697-E01C-4EEA-937F-67BDBE8612A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF787697-E01C-4EEA-937F-67BDBE8612A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FF13E88-3486-47C4-9DF3-58E8E4EC73EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FF13E88-3486-47C4-9DF3-58E8E4EC73EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FF13E88-3486-47C4-9DF3-58E8E4EC73EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FF13E88-3486-47C4-9DF3-58E8E4EC73EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
