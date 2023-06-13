@@ -1,6 +1,6 @@
 # Cooking_School_MS_ASP.NET_Core
 ![Architecture ](https://github.com/BurhanAzem/Cooking_School_MS_ASP.NET_Core/assets/104472357/f3f00a71-f899-4688-84bc-5ff7e94a3452)
-![Uploading DB-Model.png…]()
+![DB-Model](https://github.com/BurhanAzem/Cooking_School_MS_ASP.NET_Core/assets/104472357/9d96d6e3-3b6e-4186-9258-82b771cc988f)
 
 
 Here, I will represent the most important aspects of my backend project for a Cooking School application  #ASP.NET Core Web API:
