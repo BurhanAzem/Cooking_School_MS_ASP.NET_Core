@@ -8,7 +8,7 @@ namespace Cooking_School.Core.Models
     {
         [ForeignKey(nameof(ProjectTrainee))]
         public int ProjectTraineeId { get; set; }
-        public virtual ProjectTrainee ProjectTrainee { get; set; }
+        public ProjectTrainee ProjectTrainee { get; set; }
         public string FilePath { get; set; }
 
     }
