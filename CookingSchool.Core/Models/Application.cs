@@ -12,7 +12,7 @@ namespace Cooking_School.Core.Models
 
         [ForeignKey(nameof(Trainee))]
         public int TraineeId { get; set; }
-        public virtual Trainee Trainee { get; set; }
+        public Trainee Trainee { get; set; }
 
         [ForeignKey(nameof(CookClass))]
         public int CookClassId { get; set; }    
