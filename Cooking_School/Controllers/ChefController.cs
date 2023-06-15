@@ -1,5 +1,4 @@
-﻿using Cooking_School_ASP.NET.Dtos.ChefDto;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;

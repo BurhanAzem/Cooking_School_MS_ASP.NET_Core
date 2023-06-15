@@ -1,0 +1,607 @@
+2023-06-15 10:23:29.430 +03:00  INF  User profile is available. Using 'C:\Users\lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-15 10:23:29.944 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-06-15 10:23:29.945 +03:00  INF  Hosting environment: Development
+2023-06-15 10:23:29.945 +03:00  INF  Content root path: C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School
+2023-06-15 10:23:30.015 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/index.html - -
+2023-06-15 10:23:30.781 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - -
+2023-06-15 10:23:30.782 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/index.html - - - 200 - text/html;charset=utf-8 768.3753ms
+2023-06-15 10:23:30.788 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 6.3444ms
+2023-06-15 10:23:31.162 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_vs/browserLink - -
+2023-06-15 10:23:31.343 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 165.8177ms
+2023-06-15 10:23:45.001 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - -
+2023-06-15 10:23:45.179 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 178.2872ms
+2023-06-15 10:24:09.391 +03:00  INF  Request starting HTTP/2 POST https://localhost:44359/api/admins/login application/json-patch+json 35
+2023-06-15 10:24:09.400 +03:00  INF  CORS policy execution successful.
+2023-06-15 10:24:09.534 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.AdminController.Login (Cooking_School)'
+2023-06-15 10:24:09.561 +03:00  INF  Route matched with {action = "Login", controller = "Admin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Cooking_School.Services.Dtos.UserDto.UserLoginDto) on controller Cooking_School.Controllers.AdminController (Cooking_School).
+2023-06-15 10:24:09.782 +03:00  INF  Login Attempt for adminLoginDto 
+2023-06-15 10:24:10.615 +03:00  WRN  The foreign key property 'Favorite_Chef.ChefId1' was created in shadow state because a conflicting property with the simple name 'ChefId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2023-06-15 10:24:10.661 +03:00  WRN  No store type was specified for the decimal property 'Salary' on entity type 'Chef'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-15 10:24:10.662 +03:00  WRN  No store type was specified for the decimal property 'Price' on entity type 'Course'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-15 10:24:10.662 +03:00  WRN  No store type was specified for the decimal property 'Evalution' on entity type 'ProjectTrainee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-15 10:24:12.530 +03:00  INF  Executed DbCommand (74ms) [Parameters=[@__userLoginDto_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE @__userLoginDto_Id_0 = [u].[Id]
+2023-06-15 10:24:12.753 +03:00  INF  Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE @__userId_0 = [u].[Id]
+2023-06-15 10:24:12.916 +03:00  INF  Executed DbCommand (5ms) [Parameters=[@__refreshToken_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ExpirationDate], [r].[IssuedDate], [r].[Token], [r].[UserId]
+FROM [RefreshTokens] AS [r]
+WHERE [r].[UserId] = @__refreshToken_UserId_0
+2023-06-15 10:24:13.093 +03:00  INF  Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [RefreshTokens]
+OUTPUT 1
+WHERE [Id] = @p0;
+2023-06-15 10:24:13.180 +03:00  INF  Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([ExpirationDate], [IssuedDate], [Token], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2023-06-15 10:24:13.209 +03:00  INF  Executing AcceptedResult, writing value of type 'Cooking_School.Core.ModelUsed.TokenRequest'.
+2023-06-15 10:24:13.259 +03:00  INF  Executed action Cooking_School.Controllers.AdminController.Login (Cooking_School) in 3692.1466ms
+2023-06-15 10:24:13.260 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.AdminController.Login (Cooking_School)'
+2023-06-15 10:24:13.267 +03:00  INF  Request finished HTTP/2 POST https://localhost:44359/api/admins/login application/json-patch+json 35 - 202 751 application/json;+charset=utf-8 3877.4052ms
+2023-06-15 10:24:34.940 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/api/admin/trainees - -
+2023-06-15 10:24:35.023 +03:00  INF  Executed DbCommand (5ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-15 10:24:35.108 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.AdminTraineeController.GetAllTrainees (Cooking_School)'
+2023-06-15 10:24:35.118 +03:00  INF  Route matched with {action = "GetAllTrainees", controller = "AdminTrainee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllTrainees(Cooking_School.Core.ModelUsed.RequestParam) on controller Cooking_School.Controllers.AdminTraineeController (Cooking_School).
+2023-06-15 10:24:35.323 +03:00  INF  Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[Discriminator] = N'Trainee' AND [u].[Discriminator] = N'Trainee'
+2023-06-15 10:24:35.351 +03:00  WRN  The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-06-15 10:24:35.352 +03:00  WRN  The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-06-15 10:24:35.480 +03:00  INF  Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Address], [t].[BirthDate], [t].[Created], [t].[Deleted], [t].[Discriminator], [t].[Email], [t].[FirstName], [t].[LastName], [t].[PasswordHashed], [t].[PasswordSlot], [t].[PhoneNumber], [t].[Updated], [t].[CardN], [t].[ImagePath], [t].[Level], [t0].[Id], [t0].[AdminId], [t0].[ChefId], [t0].[CourseId], [t0].[Created], [t0].[Deleted], [t0].[Total_Mark], [t0].[TraineeId], [t0].[Updated]
+FROM (
+    SELECT [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CardN], [u].[ImagePath], [u].[Level]
+    FROM [Users] AS [u]
+    WHERE [u].[Discriminator] = N'Trainee' AND [u].[Discriminator] = N'Trainee'
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [Trainee_Courses] AS [t0] ON [t].[Id] = [t0].[TraineeId]
+ORDER BY [t].[Id]
+2023-06-15 10:24:35.649 +03:00  INF  Executed action Cooking_School.Controllers.AdminTraineeController.GetAllTrainees (Cooking_School) in 530.2817ms
+2023-06-15 10:24:35.651 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.AdminTraineeController.GetAllTrainees (Cooking_School)'
+2023-06-15 10:24:35.838 +03:00  ERR  An unhandled exception has occurred while executing the request.AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+StaticPagedList`1 -> IList`1
+X.PagedList.StaticPagedList`1[[Cooking_School.Core.Models.Trainee, Cooking_School.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.IList`1[[Cooking_School.Services.Dtos.TraineeDto.TraineeDTO, Cooking_School.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Trainee -> TraineeDTO
+Cooking_School.Core.Models.Trainee -> Cooking_School.Services.Dtos.TraineeDto.TraineeDTO
+   at lambda_method352(Closure, Trainee, TraineeDTO, ResolutionContext)
+   at lambda_method351(Closure, Object, IList`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method351(Closure, Object, IList`1, ResolutionContext)
+   at Cooking_School.Services.TraineeService.TraineeService.GetAllUsers(RequestParam requestParams) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School.Services\Services\TraineeService\TraineeService.cs:line 133
+   at Cooking_School.Controllers.AdminTraineeController.GetAllTrainees(RequestParam requestParams) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School\Controllers\AdminTraineeController.cs:line 31
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ValidationToken.InvokeAsync(HttpContext context, IUnitOfWork unitOfWork) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ValidationToken.cs:line 40
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ErrorHandlingMiddlewareExtensions.Invoke(HttpContext context) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ErrorHandlingMiddlewareExtensions.cs:line 23
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2023-06-15 10:24:35.940 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/api/admin/trainees - - - 500 - text/plain;+charset=utf-8 999.9917ms
+2023-06-15 10:24:47.070 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/api/admin/trainees?PageNumber=1&PageSize=11 - -
+2023-06-15 10:24:47.092 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-15 10:24:47.098 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.AdminTraineeController.GetAllTrainees (Cooking_School)'
+2023-06-15 10:24:47.098 +03:00  INF  Route matched with {action = "GetAllTrainees", controller = "AdminTrainee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllTrainees(Cooking_School.Core.ModelUsed.RequestParam) on controller Cooking_School.Controllers.AdminTraineeController (Cooking_School).
+2023-06-15 10:24:47.111 +03:00  INF  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[Discriminator] = N'Trainee' AND [u].[Discriminator] = N'Trainee'
+2023-06-15 10:24:47.121 +03:00  INF  Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Address], [t].[BirthDate], [t].[Created], [t].[Deleted], [t].[Discriminator], [t].[Email], [t].[FirstName], [t].[LastName], [t].[PasswordHashed], [t].[PasswordSlot], [t].[PhoneNumber], [t].[Updated], [t].[CardN], [t].[ImagePath], [t].[Level], [t0].[Id], [t0].[AdminId], [t0].[ChefId], [t0].[CourseId], [t0].[Created], [t0].[Deleted], [t0].[Total_Mark], [t0].[TraineeId], [t0].[Updated]
+FROM (
+    SELECT [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CardN], [u].[ImagePath], [u].[Level]
+    FROM [Users] AS [u]
+    WHERE [u].[Discriminator] = N'Trainee' AND [u].[Discriminator] = N'Trainee'
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [Trainee_Courses] AS [t0] ON [t].[Id] = [t0].[TraineeId]
+ORDER BY [t].[Id]
+2023-06-15 10:24:47.183 +03:00  INF  Executed action Cooking_School.Controllers.AdminTraineeController.GetAllTrainees (Cooking_School) in 84.645ms
+2023-06-15 10:24:47.184 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.AdminTraineeController.GetAllTrainees (Cooking_School)'
+2023-06-15 10:24:47.319 +03:00  ERR  An unhandled exception has occurred while executing the request.AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+StaticPagedList`1 -> IList`1
+X.PagedList.StaticPagedList`1[[Cooking_School.Core.Models.Trainee, Cooking_School.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.IList`1[[Cooking_School.Services.Dtos.TraineeDto.TraineeDTO, Cooking_School.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Trainee -> TraineeDTO
+Cooking_School.Core.Models.Trainee -> Cooking_School.Services.Dtos.TraineeDto.TraineeDTO
+   at lambda_method352(Closure, Trainee, TraineeDTO, ResolutionContext)
+   at lambda_method351(Closure, Object, IList`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method351(Closure, Object, IList`1, ResolutionContext)
+   at Cooking_School.Services.TraineeService.TraineeService.GetAllUsers(RequestParam requestParams) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School.Services\Services\TraineeService\TraineeService.cs:line 133
+   at Cooking_School.Controllers.AdminTraineeController.GetAllTrainees(RequestParam requestParams) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School\Controllers\AdminTraineeController.cs:line 31
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ValidationToken.InvokeAsync(HttpContext context, IUnitOfWork unitOfWork) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ValidationToken.cs:line 40
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ErrorHandlingMiddlewareExtensions.Invoke(HttpContext context) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ErrorHandlingMiddlewareExtensions.cs:line 23
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2023-06-15 10:24:47.323 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/api/admin/trainees?PageNumber=1&PageSize=11 - - - 500 - text/plain;+charset=utf-8 252.7833ms
+2023-06-15 10:28:47.191 +03:00  INF  User profile is available. Using 'C:\Users\lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-15 10:28:47.665 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-06-15 10:28:47.666 +03:00  INF  Hosting environment: Development
+2023-06-15 10:28:47.666 +03:00  INF  Content root path: C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School
+2023-06-15 10:28:47.731 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/index.html - -
+2023-06-15 10:28:48.365 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - -
+2023-06-15 10:28:48.370 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/index.html - - - 200 - text/html;charset=utf-8 641.7549ms
+2023-06-15 10:28:48.376 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 6.4939ms
+2023-06-15 10:28:48.608 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_vs/browserLink - -
+2023-06-15 10:28:48.746 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 137.7076ms
+2023-06-15 10:28:49.447 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - -
+2023-06-15 10:28:49.877 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 429.6537ms
+2023-06-15 10:29:01.620 +03:00  INF  Request starting HTTP/2 POST https://localhost:44359/api/admins/login application/json-patch+json 35
+2023-06-15 10:29:01.634 +03:00  INF  CORS policy execution successful.
+2023-06-15 10:29:01.803 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.AdminController.Login (Cooking_School)'
+2023-06-15 10:29:01.841 +03:00  INF  Route matched with {action = "Login", controller = "Admin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Cooking_School.Services.Dtos.UserDto.UserLoginDto) on controller Cooking_School.Controllers.AdminController (Cooking_School).
+2023-06-15 10:29:02.056 +03:00  INF  Executed action Cooking_School.Controllers.AdminController.Login (Cooking_School) in 209.3342ms
+2023-06-15 10:29:02.059 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.AdminController.Login (Cooking_School)'
+2023-06-15 10:29:02.126 +03:00  ERR  An unhandled exception has occurred while executing the request.System.ArgumentException: Expression of type 'Cooking_School.Dtos.UserDto.UserDTO' cannot be used for assignment to type 'Cooking_School.Dtos.TraineeDto.TraineeDTO'
+   at System.Linq.Expressions.Expression.Assign(Expression left, Expression right)
+   at AutoMapper.Execution.TypeMapPlanBuilder.CreatePropertyMapFunc(MemberMap memberMap, Expression destination, MemberInfo destinationMember)
+   at AutoMapper.Execution.TypeMapPlanBuilder.TryPropertyMap(PropertyMap propertyMap)
+   at AutoMapper.Execution.TypeMapPlanBuilder.CreateAssignmentFunc(Expression createDestination)
+   at AutoMapper.Execution.TypeMapPlanBuilder.CreateMapperLambda()
+   at AutoMapper.TypeMap.CreateMapperLambda(IGlobalConfiguration configuration)
+   at AutoMapper.TypeMap.Seal(IGlobalConfiguration configuration)
+   at AutoMapper.MapperConfiguration.<.ctor>g__Seal|20_0()
+   at AutoMapper.MapperConfiguration..ctor(MapperConfigurationExpression configurationExpression)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.<>c.<AddAutoMapperClasses>b__12_2(IServiceProvider sp)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.CreateServiceAccessor(Type serviceType)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.<>c.<AddAutoMapperClasses>b__12_3(IServiceProvider sp)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitDisposeCache(ServiceCallSite transientCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass2_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method30(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ValidationToken.InvokeAsync(HttpContext context, IUnitOfWork unitOfWork) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ValidationToken.cs:line 40
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ErrorHandlingMiddlewareExtensions.Invoke(HttpContext context) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ErrorHandlingMiddlewareExtensions.cs:line 23
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2023-06-15 10:29:02.199 +03:00  INF  Request finished HTTP/2 POST https://localhost:44359/api/admins/login application/json-patch+json 35 - 500 - text/plain;+charset=utf-8 579.5315ms
+2023-06-15 10:29:37.254 +03:00  INF  Request starting HTTP/2 POST https://localhost:44359/api/admins/login application/json-patch+json 35
+2023-06-15 10:29:37.284 +03:00  INF  CORS policy execution successful.
+2023-06-15 10:29:37.293 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.AdminController.Login (Cooking_School)'
+2023-06-15 10:29:37.294 +03:00  INF  Route matched with {action = "Login", controller = "Admin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Cooking_School.Services.Dtos.UserDto.UserLoginDto) on controller Cooking_School.Controllers.AdminController (Cooking_School).
+2023-06-15 10:29:37.304 +03:00  INF  Executed action Cooking_School.Controllers.AdminController.Login (Cooking_School) in 10.2658ms
+2023-06-15 10:29:37.304 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.AdminController.Login (Cooking_School)'
+2023-06-15 10:29:37.343 +03:00  ERR  An unhandled exception has occurred while executing the request.System.ArgumentException: Expression of type 'Cooking_School.Dtos.UserDto.UserDTO' cannot be used for assignment to type 'Cooking_School.Dtos.TraineeDto.TraineeDTO'
+   at System.Linq.Expressions.Expression.Assign(Expression left, Expression right)
+   at AutoMapper.Execution.TypeMapPlanBuilder.CreatePropertyMapFunc(MemberMap memberMap, Expression destination, MemberInfo destinationMember)
+   at AutoMapper.Execution.TypeMapPlanBuilder.TryPropertyMap(PropertyMap propertyMap)
+   at AutoMapper.Execution.TypeMapPlanBuilder.CreateAssignmentFunc(Expression createDestination)
+   at AutoMapper.Execution.TypeMapPlanBuilder.CreateMapperLambda()
+   at AutoMapper.TypeMap.CreateMapperLambda(IGlobalConfiguration configuration)
+   at AutoMapper.TypeMap.Seal(IGlobalConfiguration configuration)
+   at AutoMapper.MapperConfiguration.<.ctor>g__Seal|20_0()
+   at AutoMapper.MapperConfiguration..ctor(MapperConfigurationExpression configurationExpression)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.<>c.<AddAutoMapperClasses>b__12_2(IServiceProvider sp)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.CreateServiceAccessor(Type serviceType)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.<>c.<AddAutoMapperClasses>b__12_3(IServiceProvider sp)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitDisposeCache(ServiceCallSite transientCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass2_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method30(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ValidationToken.InvokeAsync(HttpContext context, IUnitOfWork unitOfWork) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ValidationToken.cs:line 40
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ErrorHandlingMiddlewareExtensions.Invoke(HttpContext context) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ErrorHandlingMiddlewareExtensions.cs:line 23
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2023-06-15 10:29:37.347 +03:00  INF  Request finished HTTP/2 POST https://localhost:44359/api/admins/login application/json-patch+json 35 - 500 - text/plain;+charset=utf-8 92.5746ms
+2023-06-15 10:29:54.834 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/api/admin/trainees?PageNumber=1&PageSize=1 - -
+2023-06-15 10:29:54.854 +03:00  INF  Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Administrator)
+2023-06-15 10:29:54.859 +03:00  INF  AuthenticationScheme: Bearer was challenged.
+2023-06-15 10:29:54.860 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/api/admin/trainees?PageNumber=1&PageSize=1 - - - 401 - - 25.2704ms
+2023-06-15 10:30:04.164 +03:00  INF  Request starting HTTP/2 POST https://localhost:44359/api/admins/login application/json-patch+json 35
+2023-06-15 10:30:04.165 +03:00  INF  CORS policy execution successful.
+2023-06-15 10:30:04.167 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.AdminController.Login (Cooking_School)'
+2023-06-15 10:30:04.168 +03:00  INF  Route matched with {action = "Login", controller = "Admin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Cooking_School.Services.Dtos.UserDto.UserLoginDto) on controller Cooking_School.Controllers.AdminController (Cooking_School).
+2023-06-15 10:30:04.175 +03:00  INF  Executed action Cooking_School.Controllers.AdminController.Login (Cooking_School) in 7.24ms
+2023-06-15 10:30:04.176 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.AdminController.Login (Cooking_School)'
+2023-06-15 10:30:04.218 +03:00  ERR  An unhandled exception has occurred while executing the request.System.ArgumentException: Expression of type 'Cooking_School.Dtos.UserDto.UserDTO' cannot be used for assignment to type 'Cooking_School.Dtos.TraineeDto.TraineeDTO'
+   at System.Linq.Expressions.Expression.Assign(Expression left, Expression right)
+   at AutoMapper.Execution.TypeMapPlanBuilder.CreatePropertyMapFunc(MemberMap memberMap, Expression destination, MemberInfo destinationMember)
+   at AutoMapper.Execution.TypeMapPlanBuilder.TryPropertyMap(PropertyMap propertyMap)
+   at AutoMapper.Execution.TypeMapPlanBuilder.CreateAssignmentFunc(Expression createDestination)
+   at AutoMapper.Execution.TypeMapPlanBuilder.CreateMapperLambda()
+   at AutoMapper.TypeMap.CreateMapperLambda(IGlobalConfiguration configuration)
+   at AutoMapper.TypeMap.Seal(IGlobalConfiguration configuration)
+   at AutoMapper.MapperConfiguration.<.ctor>g__Seal|20_0()
+   at AutoMapper.MapperConfiguration..ctor(MapperConfigurationExpression configurationExpression)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.<>c.<AddAutoMapperClasses>b__12_2(IServiceProvider sp)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.CreateServiceAccessor(Type serviceType)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.<>c.<AddAutoMapperClasses>b__12_3(IServiceProvider sp)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitDisposeCache(ServiceCallSite transientCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass2_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method30(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ValidationToken.InvokeAsync(HttpContext context, IUnitOfWork unitOfWork) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ValidationToken.cs:line 40
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ErrorHandlingMiddlewareExtensions.Invoke(HttpContext context) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ErrorHandlingMiddlewareExtensions.cs:line 23
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2023-06-15 10:30:04.221 +03:00  INF  Request finished HTTP/2 POST https://localhost:44359/api/admins/login application/json-patch+json 35 - 500 - text/plain;+charset=utf-8 56.7986ms
+2023-06-15 10:31:38.702 +03:00  INF  User profile is available. Using 'C:\Users\lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-15 10:31:38.996 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-06-15 10:31:39.002 +03:00  INF  Hosting environment: Development
+2023-06-15 10:31:39.003 +03:00  INF  Content root path: C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School
+2023-06-15 10:31:39.042 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/index.html - -
+2023-06-15 10:31:39.471 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/index.html - - - 200 - text/html;charset=utf-8 429.5306ms
+2023-06-15 10:31:39.471 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - -
+2023-06-15 10:31:39.482 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 10.1058ms
+2023-06-15 10:31:39.693 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_vs/browserLink - -
+2023-06-15 10:31:39.831 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 137.3040ms
+2023-06-15 10:31:40.484 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - -
+2023-06-15 10:31:40.832 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 348.0241ms
+2023-06-15 10:31:56.509 +03:00  INF  Request starting HTTP/2 POST https://localhost:44359/api/admins/login application/json-patch+json 35
+2023-06-15 10:31:56.516 +03:00  INF  CORS policy execution successful.
+2023-06-15 10:31:56.639 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.AdminController.Login (Cooking_School)'
+2023-06-15 10:31:56.663 +03:00  INF  Route matched with {action = "Login", controller = "Admin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Cooking_School.Services.Dtos.UserDto.UserLoginDto) on controller Cooking_School.Controllers.AdminController (Cooking_School).
+2023-06-15 10:31:56.898 +03:00  INF  Login Attempt for adminLoginDto 
+2023-06-15 10:31:57.763 +03:00  WRN  The foreign key property 'Favorite_Chef.ChefId1' was created in shadow state because a conflicting property with the simple name 'ChefId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2023-06-15 10:31:57.807 +03:00  WRN  No store type was specified for the decimal property 'Salary' on entity type 'Chef'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-15 10:31:57.808 +03:00  WRN  No store type was specified for the decimal property 'Price' on entity type 'Course'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-15 10:31:57.808 +03:00  WRN  No store type was specified for the decimal property 'Evalution' on entity type 'ProjectTrainee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-15 10:31:59.779 +03:00  INF  Executed DbCommand (68ms) [Parameters=[@__userLoginDto_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE @__userLoginDto_Id_0 = [u].[Id]
+2023-06-15 10:32:00.015 +03:00  INF  Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE @__userId_0 = [u].[Id]
+2023-06-15 10:32:00.196 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@__refreshToken_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ExpirationDate], [r].[IssuedDate], [r].[Token], [r].[UserId]
+FROM [RefreshTokens] AS [r]
+WHERE [r].[UserId] = @__refreshToken_UserId_0
+2023-06-15 10:32:00.376 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [RefreshTokens]
+OUTPUT 1
+WHERE [Id] = @p0;
+2023-06-15 10:32:00.447 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([ExpirationDate], [IssuedDate], [Token], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2023-06-15 10:32:00.471 +03:00  INF  Executing AcceptedResult, writing value of type 'Cooking_School.Core.ModelUsed.TokenRequest'.
+2023-06-15 10:32:00.510 +03:00  INF  Executed action Cooking_School.Controllers.AdminController.Login (Cooking_School) in 3843.1799ms
+2023-06-15 10:32:00.511 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.AdminController.Login (Cooking_School)'
+2023-06-15 10:32:00.516 +03:00  INF  Request finished HTTP/2 POST https://localhost:44359/api/admins/login application/json-patch+json 35 - 202 751 application/json;+charset=utf-8 4006.8707ms
+2023-06-15 10:32:15.217 +03:00  INF  Request starting HTTP/2 POST https://localhost:44359/api/admins/refresh-token - 0
+2023-06-15 10:32:15.328 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-15 10:32:15.329 +03:00  INF  CORS policy execution successful.
+2023-06-15 10:32:15.396 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.AdminController.RefreshToken (Cooking_School)'
+2023-06-15 10:32:15.402 +03:00  INF  Route matched with {action = "RefreshToken", controller = "Admin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken() on controller Cooking_School.Controllers.AdminController (Cooking_School).
+2023-06-15 10:32:15.416 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@__Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__Email_0
+2023-06-15 10:32:15.428 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ExpirationDate], [r].[IssuedDate], [r].[Token], [r].[UserId]
+FROM [RefreshTokens] AS [r]
+WHERE [r].[UserId] = @__userId_0
+2023-06-15 10:32:15.435 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE @__userId_0 = [u].[Id]
+2023-06-15 10:32:15.439 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__refreshToken_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ExpirationDate], [r].[IssuedDate], [r].[Token], [r].[UserId]
+FROM [RefreshTokens] AS [r]
+WHERE [r].[UserId] = @__refreshToken_UserId_0
+2023-06-15 10:32:15.442 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [RefreshTokens]
+OUTPUT 1
+WHERE [Id] = @p0;
+2023-06-15 10:32:15.447 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([ExpirationDate], [IssuedDate], [Token], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2023-06-15 10:32:15.448 +03:00  INF  Executing AcceptedResult, writing value of type 'Cooking_School.Core.ModelUsed.TokenRequest'.
+2023-06-15 10:32:15.450 +03:00  INF  Executed action Cooking_School.Controllers.AdminController.RefreshToken (Cooking_School) in 47.8546ms
+2023-06-15 10:32:15.450 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.AdminController.RefreshToken (Cooking_School)'
+2023-06-15 10:32:15.451 +03:00  INF  Request finished HTTP/2 POST https://localhost:44359/api/admins/refresh-token - 0 - 202 751 application/json;+charset=utf-8 234.3240ms
+2023-06-15 10:32:23.307 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/api/admins/favorite-meals - -
+2023-06-15 10:32:23.330 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-15 10:32:23.343 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.AdminController.GetAllFavoriteMeals (Cooking_School)'
+2023-06-15 10:32:23.346 +03:00  INF  Route matched with {action = "GetAllFavoriteMeals", controller = "Admin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllFavoriteMeals() on controller Cooking_School.Controllers.AdminController (Cooking_School).
+2023-06-15 10:32:23.353 +03:00  INF  Attempt GetAllFavoriteMeals of Meal
+2023-06-15 10:32:23.987 +03:00  INF  Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[ChefId], [f].[Created], [f].[Deleted], [f].[MealId], [f].[Updated], [f].[UserId]
+FROM [FavoriteMeal_chefs] AS [f]
+2023-06-15 10:32:23.996 +03:00  INF  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[Id], [f].[AdminId], [f].[ChefId], [f].[Created], [f].[Deleted], [f].[MealId], [f].[TraineeId], [f].[Updated]
+FROM [FavoriteMeal_Trainees] AS [f]
+2023-06-15 10:32:24.003 +03:00  INF  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Cooking_School.Core.ModelUsed.Meal, Cooking_School.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-15 10:32:24.005 +03:00  INF  Executed action Cooking_School.Controllers.AdminController.GetAllFavoriteMeals (Cooking_School) in 658.5843ms
+2023-06-15 10:32:24.005 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.AdminController.GetAllFavoriteMeals (Cooking_School)'
+2023-06-15 10:32:24.005 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/api/admins/favorite-meals - - - 200 2 application/json;+charset=utf-8 698.4048ms
+2023-06-15 10:32:33.966 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/api/admin/chefs?PageNumber=1&PageSize=1 - -
+2023-06-15 10:32:33.990 +03:00  INF  Executed DbCommand (23ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-15 10:32:33.993 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.AdminChefController.GetAllChefs (Cooking_School)'
+2023-06-15 10:32:33.999 +03:00  INF  Route matched with {action = "GetAllChefs", controller = "AdminChef"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllChefs(Cooking_School.Core.ModelUsed.RequestParam) on controller Cooking_School.Controllers.AdminChefController (Cooking_School).
+2023-06-15 10:32:34.103 +03:00  INF  Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[Discriminator] = N'Chef'
+2023-06-15 10:32:34.110 +03:00  WRN  The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-06-15 10:32:34.112 +03:00  WRN  The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-06-15 10:32:34.121 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary]
+FROM [Users] AS [u]
+WHERE [u].[Discriminator] = N'Chef'
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2023-06-15 10:32:34.217 +03:00  INF  Executed action Cooking_School.Controllers.AdminChefController.GetAllChefs (Cooking_School) in 218.1622ms
+2023-06-15 10:32:34.218 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.AdminChefController.GetAllChefs (Cooking_School)'
+2023-06-15 10:32:34.363 +03:00  ERR  An unhandled exception has occurred while executing the request.AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+StaticPagedList`1 -> IList`1
+X.PagedList.StaticPagedList`1[[Cooking_School.Core.Models.Chef, Cooking_School.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.IList`1[[Cooking_School.Services.Dtos.ChefDto.ChefDTO, Cooking_School.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Chef -> ChefDTO
+Cooking_School.Core.Models.Chef -> Cooking_School.Services.Dtos.ChefDto.ChefDTO
+   at lambda_method367(Closure, Chef, ChefDTO, ResolutionContext)
+   at lambda_method366(Closure, Object, IList`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method366(Closure, Object, IList`1, ResolutionContext)
+   at Cooking_School.Services.ChefService.ChefService.GetAllUser(RequestParam requestParams) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School.Services\Services\ChefService\ChefService.cs:line 183
+   at Cooking_School.Controllers.AdminChefController.GetAllChefs(RequestParam requestParams) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School\Controllers\AdminChefController.cs:line 93
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ValidationToken.InvokeAsync(HttpContext context, IUnitOfWork unitOfWork) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ValidationToken.cs:line 40
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ErrorHandlingMiddlewareExtensions.Invoke(HttpContext context) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ErrorHandlingMiddlewareExtensions.cs:line 23
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2023-06-15 10:32:34.404 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/api/admin/chefs?PageNumber=1&PageSize=1 - - - 500 - text/plain;+charset=utf-8 437.5715ms
+2023-06-15 10:40:50.283 +03:00  INF  User profile is available. Using 'C:\Users\lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-15 10:40:50.596 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-06-15 10:40:50.603 +03:00  INF  Hosting environment: Development
+2023-06-15 10:40:50.603 +03:00  INF  Content root path: C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School
+2023-06-15 10:40:50.636 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/index.html - -
+2023-06-15 10:40:51.025 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - -
+2023-06-15 10:40:51.027 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/index.html - - - 200 - text/html;charset=utf-8 392.2803ms
+2023-06-15 10:40:51.033 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 3.9348ms
+2023-06-15 10:40:51.192 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_vs/browserLink - -
+2023-06-15 10:40:51.260 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 68.4645ms
+2023-06-15 10:40:51.744 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - -
+2023-06-15 10:40:52.060 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 316.2855ms
+2023-06-15 10:41:06.064 +03:00  INF  Request starting HTTP/2 POST https://localhost:44359/api/admins/login application/json-patch+json 35
+2023-06-15 10:41:06.072 +03:00  INF  CORS policy execution successful.
+2023-06-15 10:41:06.179 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.AdminController.Login (Cooking_School)'
+2023-06-15 10:41:06.213 +03:00  INF  Route matched with {action = "Login", controller = "Admin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Cooking_School.Services.Dtos.UserDto.UserLoginDto) on controller Cooking_School.Controllers.AdminController (Cooking_School).
+2023-06-15 10:41:06.448 +03:00  INF  Login Attempt for adminLoginDto 
+2023-06-15 10:41:07.306 +03:00  WRN  The foreign key property 'Favorite_Chef.ChefId1' was created in shadow state because a conflicting property with the simple name 'ChefId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2023-06-15 10:41:07.338 +03:00  WRN  No store type was specified for the decimal property 'Salary' on entity type 'Chef'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-15 10:41:07.338 +03:00  WRN  No store type was specified for the decimal property 'Price' on entity type 'Course'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-15 10:41:07.339 +03:00  WRN  No store type was specified for the decimal property 'Evalution' on entity type 'ProjectTrainee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-15 10:41:09.415 +03:00  INF  Executed DbCommand (85ms) [Parameters=[@__userLoginDto_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE @__userLoginDto_Id_0 = [u].[Id]
+2023-06-15 10:41:09.727 +03:00  INF  Executed DbCommand (15ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE @__userId_0 = [u].[Id]
+2023-06-15 10:41:09.908 +03:00  INF  Executed DbCommand (5ms) [Parameters=[@__refreshToken_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ExpirationDate], [r].[IssuedDate], [r].[Token], [r].[UserId]
+FROM [RefreshTokens] AS [r]
+WHERE [r].[UserId] = @__refreshToken_UserId_0
+2023-06-15 10:41:10.094 +03:00  INF  Executed DbCommand (9ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [RefreshTokens]
+OUTPUT 1
+WHERE [Id] = @p0;
+2023-06-15 10:41:10.175 +03:00  INF  Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([ExpirationDate], [IssuedDate], [Token], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2023-06-15 10:41:10.210 +03:00  INF  Executing AcceptedResult, writing value of type 'Cooking_School.Core.ModelUsed.TokenRequest'.
+2023-06-15 10:41:10.264 +03:00  INF  Executed action Cooking_School.Controllers.AdminController.Login (Cooking_School) in 4045.7582ms
+2023-06-15 10:41:10.267 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.AdminController.Login (Cooking_School)'
+2023-06-15 10:41:10.273 +03:00  INF  Request finished HTTP/2 POST https://localhost:44359/api/admins/login application/json-patch+json 35 - 202 751 application/json;+charset=utf-8 4209.3967ms
+2023-06-15 10:41:26.921 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/api/admin/chefs?PageNumber=1&PageSize=1 - -
+2023-06-15 10:41:27.008 +03:00  INF  Executed DbCommand (8ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-15 10:41:27.069 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.AdminChefController.GetAllChefs (Cooking_School)'
+2023-06-15 10:41:27.074 +03:00  INF  Route matched with {action = "GetAllChefs", controller = "AdminChef"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllChefs(Cooking_School.Core.ModelUsed.RequestParam) on controller Cooking_School.Controllers.AdminChefController (Cooking_School).
+2023-06-15 10:41:27.230 +03:00  INF  Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[Discriminator] = N'Chef'
+2023-06-15 10:41:27.240 +03:00  WRN  The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-06-15 10:41:27.242 +03:00  WRN  The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-06-15 10:41:27.252 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary]
+FROM [Users] AS [u]
+WHERE [u].[Discriminator] = N'Chef'
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2023-06-15 10:41:27.275 +03:00  INF  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Cooking_School.Services.Dtos.ChefDto.ChefDTO, Cooking_School.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-15 10:41:27.293 +03:00  INF  Executed action Cooking_School.Controllers.AdminChefController.GetAllChefs (Cooking_School) in 218.8976ms
+2023-06-15 10:41:27.293 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.AdminChefController.GetAllChefs (Cooking_School)'
+2023-06-15 10:41:27.294 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/api/admin/chefs?PageNumber=1&PageSize=1 - - - 200 334 application/json;+charset=utf-8 373.3646ms

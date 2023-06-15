@@ -1,18 +1,17 @@
 ﻿using AutoMapper;
 using Backend_Controller_Burhan.Models;
 using Cooking_School.Core.Models;
-using Cooking_School.Dtos.AdminDto;
-using Cooking_School.Dtos.ApplicationDto;
-using Cooking_School.Dtos.ChefDto;
-using Cooking_School.Dtos.CookClassDto;
-using Cooking_School.Dtos.CourseDto;
-using Cooking_School.Dtos.SubmitedFileDto;
-using Cooking_School.Dtos.TraineeDto;
-using Cooking_School.Dtos.UserDto;
-using Cooking_School_ASP.NET.Dtos;
-using Cooking_School_ASP.NET.Dtos.ChefDto;
+using Cooking_School.Services.Dtos.AdminDto;
+using Cooking_School.Services.Dtos.ChefDto;
+using Cooking_School.Services.Dtos.ApplicationDto;
+using Cooking_School.Services.Dtos.CookClassDto;
+using Cooking_School.Services.Dtos.CourseDto;
+using Cooking_School.Services.Dtos.SubmitedFileDto;
+using Cooking_School.Services.Dtos.TraineeDto;
+using Cooking_School.Services.Dtos.UserDto;
 
 using System.Runtime;
+using Cooking_School.Services.Dtos.ProjectDto;
 
 namespace Cooking_School_ASP.NET.Configurations
 {

@@ -2,7 +2,6 @@
 using Cooking_School.Core.ModelUsed;
 using Cooking_School.Services.ApplicationService;
 using Cooking_School.Services.AuthenticationServices;
-using Cooking_School_ASP.NET.Dtos;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
