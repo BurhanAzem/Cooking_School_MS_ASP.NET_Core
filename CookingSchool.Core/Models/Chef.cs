@@ -9,8 +9,8 @@ namespace Cooking_School.Core.Models
         public string CvPath { get; set; }
         public decimal Salary { get; set; }
         public int FavoriteN { get; set; } = 0;
-        public virtual ICollection<CookClass> CookClasses { get; set; }
-        public virtual ICollection<Favorite_Chef> FavoriteChef { get; set; }
-        public virtual ICollection<FavoriteMeal_chef> FavoriteMealchef { get; set; }
+        public ICollection<CookClass> CookClasses { get; set; }
+        public ICollection<Favorite_Chef> FavoriteChef { get; set; }
+        public ICollection<FavoriteMeal_chef> FavoriteMealchef { get; set; }
     }
 }
