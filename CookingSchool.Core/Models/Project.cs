@@ -11,7 +11,7 @@ namespace Cooking_School.Core.Models
         public string ProjectName { get; set; }
         public string? Description { get; set; }
         public DateTime ExpirDate { get; set; }
-        public virtual ICollection<ProjectTrainee> ProjectTrainees { get; set; }
-        public virtual ICollection<ProjectFile> ProjectFiles { get; set; }
+        public ICollection<ProjectTrainee> ProjectTrainees { get; set; }
+        public ICollection<ProjectFile> ProjectFiles { get; set; }
     }
 }
