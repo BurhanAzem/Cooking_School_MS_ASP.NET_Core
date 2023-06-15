@@ -11,11 +11,11 @@ namespace Cooking_School.Core.Models
     {
         [ForeignKey(nameof(Trainee))]
         public int TraineeId { get; set; }
-        public virtual Trainee Trainee { get; set; }
+        public Trainee Trainee { get; set; }
 
         [ForeignKey(nameof(Project))]
         public int ProjectId { get; set; }
-        public virtual Project Project { get; set; }
+        public Project Project { get; set; }
         public decimal? Evalution { get; set; }
         public status_project status { get; set; } = status_project.notSubmited;
     }
