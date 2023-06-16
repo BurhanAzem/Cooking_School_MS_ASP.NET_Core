@@ -105,7 +105,7 @@ namespace Cooking_School.Controllers
 
         [HttpGet("~/api/cook-classes/{cookClassId}/projects")]
         [Authorize(Roles = "Chef, Trainee")]
-        public async Task<IActionResult> GetAllProjectTrainee(int cookClassId, [FromQuery] RequestParam requestParams)
+        public async Task<IActionResult> GetAllProjectOfCookClass(int cookClassId, [FromQuery] RequestParam requestParams)
         {
             _logger.LogInformation($"Attempt GetAll of {nameof(Project)} ");
             var result = await _projectService.GetAllProjectOfCookClass(requestParams, cookClassId);

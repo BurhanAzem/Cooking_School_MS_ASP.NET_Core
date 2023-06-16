@@ -31,11 +31,11 @@ namespace Cooking_School.Services.ProjectService
                     StatusCode = System.Net.HttpStatusCode.BadRequest
                 };
             }
-            if (await _unitOfWork.Users.Get(x => x.Id == cookClassId) is null)
+            if (await _unitOfWork.Projects.Get(x => x.ProjectName == createProjectDto.ProjectName) is not null)
             {
                 return new ResponsDto<ProjectDTO>()
                 {
-                    Exception = new Exception("Failed, Chef Entered Not Exist"),
+                    Exception = new Exception("Failed, project already Exist"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest
                 };
             }
@@ -130,14 +130,14 @@ namespace Cooking_School.Services.ProjectService
         {
             if (requestParams == null)
             {
-                var projects = await _unitOfWork.Projects.GetAll(x => x.CookClassId == cookClassId);
+                var projects = await _unitOfWork.Projects.GetAll(x => x.CookClassId == cookClassId, include: x => x.Include(s => s.ProjectFiles));
                 var projectDto = _mapper.Map<IList<ProjectDTO>>(projects);
                 return new ResponsDto<ProjectDTO>
                 {
                     ListDto = projectDto
                 };
             }
-            var projectsPag = await _unitOfWork.Projects.GetPagedList(requestParams, include: x => x.Include(s => s.ProjectFiles));
+            var projectsPag = await _unitOfWork.Projects.GetPagedList(requestParams, x => x.CookClassId == cookClassId, include: x => x.Include(s => s.ProjectFiles));
             var projectDtoPag = _mapper.Map<IList<ProjectDTO>>(projectsPag);
             return new ResponsDto<ProjectDTO>
             {

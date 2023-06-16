@@ -177,14 +177,20 @@ namespace Cooking_School.Services.ProjectTraineeFileService
         public async Task<ResponsDto<SubmitedFileDTO>> UploadProjectTraineeFile(CreateSubmitedFileDto submitedFilesDto)
         {
             var projectTrainee = await _unitOfWork.ProjectTrainees.Get(x => x.TraineeId == submitedFilesDto.TraineeId && x.ProjectId == submitedFilesDto.ProjectId);
-            if(projectTrainee == null)
+            if(projectTrainee is not null)
             {
                 return new ResponsDto<SubmitedFileDTO>()
                 {
-                    Exception= new Exception("this ProjectTrinee not exist"),
+                    Exception= new Exception("this ProjectTrinee exist"),
                     StatusCode = System.Net.HttpStatusCode.BadRequest 
                 };
             }
+            ProjectTrainee projectTrainee1 = new ProjectTrainee();
+            projectTrainee1.ProjectId = submitedFilesDto.ProjectId;
+            projectTrainee1.TraineeId = (int)submitedFilesDto.TraineeId;
+            projectTrainee1.Created = DateTime.Now;
+            await _unitOfWork.ProjectTrainees.Insert(projectTrainee1);
+            await _unitOfWork.Save();
 
             foreach (var file in submitedFilesDto.Files)
             {
@@ -204,17 +210,17 @@ namespace Cooking_School.Services.ProjectTraineeFileService
                 }
                 ProjectTraineeFile submitedFile = new ProjectTraineeFile();
                 submitedFile.FilePath = res.Blob.Uri;
-                submitedFile.ProjectTraineeId = projectTrainee.Id;
+                submitedFile.ProjectTraineeId = projectTrainee1.Id;
                 submitedFile.Created = DateTime.Now;
 
-                var project = await _unitOfWork.Projects.Get(x => x.Id == projectTrainee.ProjectId);
-                if (projectTrainee.Created > project.ExpirDate)
+                var project = await _unitOfWork.Projects.Get(x => x.Id == projectTrainee1.ProjectId);
+                if (projectTrainee1.Created > project.ExpirDate)
                 {
-                    projectTrainee.status = status_project.submitedLate;
+                    projectTrainee1.status = status_project.submitedLate;
                 }
                 else
                 {
-                    projectTrainee.status = status_project.submited;
+                    projectTrainee1.status = status_project.submited;
                 }
                 await _unitOfWork.ProjectTraineeFiles.Insert(submitedFile);
                 await _unitOfWork.Save();

@@ -25,6 +25,7 @@ using Cooking_School.Services.FilesService;
 using Cooking_School.Infrastructure.MiddlewareHandlingEx;
 using Cooking_School.Infrastructure.ServiceExtensions;
 using Cooking_School.Infrastructure.Repository;
+using Cooking_School.Services.ProjectTraineeFileService;
 
 var builder = WebApplication.CreateBuilder(args);
 var logger = new LoggerConfiguration()
@@ -105,6 +106,7 @@ builder.Services.AddScoped<IProjectFileService, ProjectFileService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<ICourseService, CourseService>();
 builder.Services.AddScoped<IProjectFileService, ProjectFileService>();
+builder.Services.AddScoped<IProjectTraineeFileService, ProjectTraineeFileService>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IApplicationSevice, ApplicationSevice>();
 builder.Services.AddScoped<IRefreshTokenService, RefreshTokenServicse>();

@@ -1,0 +1,1087 @@
+2023-06-17 00:53:07.109 +03:00  INF  User profile is available. Using 'C:\Users\lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-17 00:53:07.550 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-06-17 00:53:07.551 +03:00  INF  Hosting environment: Development
+2023-06-17 00:53:07.551 +03:00  INF  Content root path: C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School
+2023-06-17 00:53:07.607 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger - -
+2023-06-17 00:53:07.910 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/index.html - -
+2023-06-17 00:53:07.920 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger - - - 301 - - 315.0935ms
+2023-06-17 00:53:08.191 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/index.html - - - 200 - text/html;charset=utf-8 280.9353ms
+2023-06-17 00:53:08.199 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/swagger-ui-bundle.js - -
+2023-06-17 00:53:08.199 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/swagger-ui.css - -
+2023-06-17 00:53:08.202 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/swagger-ui-standalone-preset.js - -
+2023-06-17 00:53:08.202 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - -
+2023-06-17 00:53:08.207 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 4.4702ms
+2023-06-17 00:53:08.239 +03:00  INF  Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2023-06-17 00:53:08.243 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/swagger-ui.css - - - 200 143943 text/css 43.8522ms
+2023-06-17 00:53:08.420 +03:00  INF  Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2023-06-17 00:53:08.427 +03:00  INF  Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2023-06-17 00:53:08.434 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/swagger-ui-standalone-preset.js - - - 200 339486 text/javascript 231.5364ms
+2023-06-17 00:53:08.482 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/swagger-ui-bundle.js - - - 200 1096145 text/javascript 284.6165ms
+2023-06-17 00:53:08.539 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_vs/browserLink - -
+2023-06-17 00:53:08.682 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 143.1872ms
+2023-06-17 00:53:09.364 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - -
+2023-06-17 00:53:09.482 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/favicon-32x32.png - -
+2023-06-17 00:53:09.483 +03:00  INF  Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2023-06-17 00:53:09.483 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/favicon-32x32.png - - - 200 628 image/png 1.7595ms
+2023-06-17 00:53:09.562 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 197.7866ms
+2023-06-17 00:54:35.484 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/cook-classes/1/projects multipart/form-data;+boundary=--------------------------518539010716433779899472 213166
+2023-06-17 00:54:36.131 +03:00  WRN  The foreign key property 'Favorite_Chef.ChefId1' was created in shadow state because a conflicting property with the simple name 'ChefId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2023-06-17 00:54:36.153 +03:00  WRN  No store type was specified for the decimal property 'Salary' on entity type 'Chef'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-17 00:54:36.154 +03:00  WRN  No store type was specified for the decimal property 'Price' on entity type 'Course'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-17 00:54:36.154 +03:00  WRN  No store type was specified for the decimal property 'Evalution' on entity type 'ProjectTrainee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-17 00:54:37.915 +03:00  INF  Executed DbCommand (70ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 00:54:38.251 +03:00  INF  Failed to validate the token.Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/16/2023 12:37:41 PM', Current time: '6/16/2023 9:54:38 PM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+
+2023-06-17 00:54:38.279 +03:00  INF  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/16/2023 12:37:41 PM', Current time: '6/16/2023 9:54:38 PM'.
+2023-06-17 00:54:38.287 +03:00  INF  Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Chef)
+2023-06-17 00:54:38.292 +03:00  INF  AuthenticationScheme: Bearer was challenged.
+2023-06-17 00:54:38.297 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/cook-classes/1/projects multipart/form-data;+boundary=--------------------------518539010716433779899472 213166 - 401 - - 2812.8960ms
+2023-06-17 00:55:01.767 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/chefs/login application/json 38
+2023-06-17 00:55:01.801 +03:00  INF  Failed to validate the token.Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/16/2023 6:49:52 AM', Current time: '6/16/2023 9:55:01 PM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+
+2023-06-17 00:55:01.801 +03:00  INF  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/16/2023 6:49:52 AM', Current time: '6/16/2023 9:55:01 PM'.
+2023-06-17 00:55:01.804 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ChefController.LogIn (Cooking_School)'
+2023-06-17 00:55:01.828 +03:00  INF  Route matched with {action = "LogIn", controller = "Chef"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] LogIn(Cooking_School.Services.Dtos.UserDto.UserLoginDto) on controller Cooking_School.Controllers.ChefController (Cooking_School).
+2023-06-17 00:55:02.082 +03:00  INF  Login Attempt for chefDto 
+2023-06-17 00:55:02.133 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@__userLoginDto_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE @__userLoginDto_Id_0 = [u].[Id]
+2023-06-17 00:55:02.266 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE @__userId_0 = [u].[Id]
+2023-06-17 00:55:02.301 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__refreshToken_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ExpirationDate], [r].[IssuedDate], [r].[Token], [r].[UserId]
+FROM [RefreshTokens] AS [r]
+WHERE [r].[UserId] = @__refreshToken_UserId_0
+2023-06-17 00:55:02.390 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [RefreshTokens]
+OUTPUT 1
+WHERE [Id] = @p0;
+2023-06-17 00:55:02.451 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([ExpirationDate], [IssuedDate], [Token], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2023-06-17 00:55:02.473 +03:00  INF  Executing AcceptedResult, writing value of type 'Cooking_School.Core.ModelUsed.TokenRequest'.
+2023-06-17 00:55:02.505 +03:00  INF  Executed action Cooking_School.Controllers.ChefController.LogIn (Cooking_School) in 673.8234ms
+2023-06-17 00:55:02.506 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ChefController.LogIn (Cooking_School)'
+2023-06-17 00:55:02.508 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/chefs/login application/json 38 - 202 729 application/json;+charset=utf-8 741.1378ms
+2023-06-17 00:55:36.550 +03:00  INF  Request starting HTTP/1.1 GET https://localhost:44359/api/cook-classes/1/projects?PageNumber=10&PageSize=10 - -
+2023-06-17 00:55:36.570 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 00:55:36.582 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School)'
+2023-06-17 00:55:36.587 +03:00  INF  Route matched with {action = "GetAllProjectOfCookClass", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProjectOfCookClass(Int32, Cooking_School.Core.ModelUsed.RequestParam) on controller Cooking_School.Controllers.ProjectController (Cooking_School).
+2023-06-17 00:55:36.601 +03:00  INF  Attempt GetAll of Project 
+2023-06-17 00:55:36.645 +03:00  INF  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Projects] AS [p]
+2023-06-17 00:55:36.659 +03:00  WRN  The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-06-17 00:55:36.659 +03:00  WRN  The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-06-17 00:55:36.729 +03:00  INF  Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CookClassId], [t].[Created], [t].[Deleted], [t].[Description], [t].[ExpirDate], [t].[ProjectName], [t].[Updated], [p0].[Id], [p0].[Created], [p0].[Deleted], [p0].[FilePath], [p0].[ProjectId], [p0].[Updated]
+FROM (
+    SELECT [p].[Id], [p].[CookClassId], [p].[Created], [p].[Deleted], [p].[Description], [p].[ExpirDate], [p].[ProjectName], [p].[Updated]
+    FROM [Projects] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [ProjectFiles] AS [p0] ON [t].[Id] = [p0].[ProjectId]
+ORDER BY [t].[Id]
+2023-06-17 00:55:36.746 +03:00  INF  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Cooking_School.Services.Dtos.ProjectDto.ProjectDTO, Cooking_School.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-17 00:55:36.752 +03:00  INF  Executed action Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School) in 165.0671ms
+2023-06-17 00:55:36.752 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School)'
+2023-06-17 00:55:36.752 +03:00  INF  Request finished HTTP/1.1 GET https://localhost:44359/api/cook-classes/1/projects?PageNumber=10&PageSize=10 - - - 200 2 application/json;+charset=utf-8 202.2233ms
+2023-06-17 00:55:49.538 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/cook-classes/6/projects multipart/form-data;+boundary=--------------------------495410291537454121179400 213166
+2023-06-17 00:55:49.543 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 00:55:49.545 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectController.CreateProject (Cooking_School)'
+2023-06-17 00:55:49.550 +03:00  INF  Route matched with {action = "CreateProject", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateProject(Cooking_School.Services.Dtos.CookClassDto.CreateProjectDto, Int32) on controller Cooking_School.Controllers.ProjectController (Cooking_School).
+2023-06-17 00:55:49.610 +03:00  INF  Attempt Sinup for projectDto 
+2023-06-17 00:55:49.621 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@__Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__Email_0
+2023-06-17 00:55:49.633 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__cookClassId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[AdminId], [c].[ChefId], [c].[CourseId], [c].[Created], [c].[Deleted], [c].[EndingAt], [c].[StartingAt], [c].[TraineeId], [c].[Updated]
+FROM [CookClasses] AS [c]
+WHERE [c].[Id] = @__cookClassId_0
+2023-06-17 00:55:49.659 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@__cookClassId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__cookClassId_0
+2023-06-17 00:55:49.705 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Projects] ([CookClassId], [Created], [Deleted], [Description], [ExpirDate], [ProjectName], [Updated])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-06-17 00:56:39.486 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/cook-classes/6/projects multipart/form-data;+boundary=--------------------------075593303075376390427700 213166
+2023-06-17 00:56:40.482 +03:00  INF  Executed DbCommand (16ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 00:56:40.487 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectController.CreateProject (Cooking_School)'
+2023-06-17 00:56:40.488 +03:00  INF  Route matched with {action = "CreateProject", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateProject(Cooking_School.Services.Dtos.CookClassDto.CreateProjectDto, Int32) on controller Cooking_School.Controllers.ProjectController (Cooking_School).
+2023-06-17 00:56:40.489 +03:00  INF  Executed action Cooking_School.Controllers.ProjectController.CreateProject (Cooking_School) in 50938.8834ms
+2023-06-17 00:56:40.490 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectController.CreateProject (Cooking_School)'
+2023-06-17 00:56:41.450 +03:00  ERR  An unhandled exception has occurred while executing the request.System.NullReferenceException: Object reference not set to an instance of an object.
+   at Cooking_School.Services.ProjectService.ProjectService.CreateProject(CreateProjectDto createProjectDto, Int32 cookClassId) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School.Services\Services\ProjectService\ProjectService.cs:line 46
+   at Cooking_School.Controllers.ProjectController.CreateProject(CreateProjectDto projectDto, Int32 classId) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School\Controllers\ProjectController.cs:line 43
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ValidationToken.InvokeAsync(HttpContext context, IUnitOfWork unitOfWork) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ValidationToken.cs:line 40
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ErrorHandlingMiddlewareExtensions.Invoke(HttpContext context) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ErrorHandlingMiddlewareExtensions.cs:line 23
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2023-06-17 00:56:41.461 +03:00  INF  Attempt Sinup for projectDto 
+2023-06-17 00:56:41.483 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__Email_0
+2023-06-17 00:56:41.485 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__cookClassId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[AdminId], [c].[ChefId], [c].[CourseId], [c].[Created], [c].[Deleted], [c].[EndingAt], [c].[StartingAt], [c].[TraineeId], [c].[Updated]
+FROM [CookClasses] AS [c]
+WHERE [c].[Id] = @__cookClassId_0
+2023-06-17 00:56:41.487 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@__cookClassId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__cookClassId_0
+2023-06-17 00:56:41.492 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Projects] ([CookClassId], [Created], [Deleted], [Description], [ExpirDate], [ProjectName], [Updated])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-06-17 00:56:41.494 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/cook-classes/6/projects multipart/form-data;+boundary=--------------------------495410291537454121179400 213166 - 500 - text/plain;+charset=utf-8 51956.1116ms
+2023-06-17 00:56:42.566 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ProjectFiles] ([Created], [Deleted], [FilePath], [ProjectId], [Updated])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2023-06-17 00:56:45.182 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ProjectFiles] ([Created], [Deleted], [FilePath], [ProjectId], [Updated])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2023-06-17 00:56:45.186 +03:00  INF  Executing OkObjectResult, writing value of type 'Cooking_School.Services.Dtos.ProjectDto.ProjectDTO'.
+2023-06-17 00:56:45.191 +03:00  INF  Executed action Cooking_School.Controllers.ProjectController.CreateProject (Cooking_School) in 4702.8478ms
+2023-06-17 00:56:45.191 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectController.CreateProject (Cooking_School)'
+2023-06-17 00:56:45.193 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/cook-classes/6/projects multipart/form-data;+boundary=--------------------------075593303075376390427700 213166 - 200 501 application/json;+charset=utf-8 5706.8297ms
+2023-06-17 00:56:45.234 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/cook-classes/6/projects multipart/form-data;+boundary=--------------------------030767960692504496579525 213166
+2023-06-17 00:56:45.237 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 00:56:45.237 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectController.CreateProject (Cooking_School)'
+2023-06-17 00:56:45.237 +03:00  INF  Route matched with {action = "CreateProject", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateProject(Cooking_School.Services.Dtos.CookClassDto.CreateProjectDto, Int32) on controller Cooking_School.Controllers.ProjectController (Cooking_School).
+2023-06-17 00:56:45.244 +03:00  INF  Attempt Sinup for projectDto 
+2023-06-17 00:56:45.246 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@__Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__Email_0
+2023-06-17 00:56:45.247 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@__cookClassId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[AdminId], [c].[ChefId], [c].[CourseId], [c].[Created], [c].[Deleted], [c].[EndingAt], [c].[StartingAt], [c].[TraineeId], [c].[Updated]
+FROM [CookClasses] AS [c]
+WHERE [c].[Id] = @__cookClassId_0
+2023-06-17 00:56:45.248 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@__cookClassId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__cookClassId_0
+2023-06-17 00:56:45.250 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Projects] ([CookClassId], [Created], [Deleted], [Description], [ExpirDate], [ProjectName], [Updated])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2023-06-17 00:56:45.495 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ProjectFiles] ([Created], [Deleted], [FilePath], [ProjectId], [Updated])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2023-06-17 00:56:48.213 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ProjectFiles] ([Created], [Deleted], [FilePath], [ProjectId], [Updated])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2023-06-17 00:56:48.213 +03:00  INF  Executing OkObjectResult, writing value of type 'Cooking_School.Services.Dtos.ProjectDto.ProjectDTO'.
+2023-06-17 00:56:48.214 +03:00  INF  Executed action Cooking_School.Controllers.ProjectController.CreateProject (Cooking_School) in 2976.6345ms
+2023-06-17 00:56:48.214 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectController.CreateProject (Cooking_School)'
+2023-06-17 00:56:48.214 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/cook-classes/6/projects multipart/form-data;+boundary=--------------------------030767960692504496579525 213166 - 200 501 application/json;+charset=utf-8 2980.6528ms
+2023-06-17 00:56:59.782 +03:00  INF  Request starting HTTP/1.1 GET https://localhost:44359/api/cook-classes/6/projects?PageNumber=10&PageSize=10 - -
+2023-06-17 00:56:59.784 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 00:56:59.785 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School)'
+2023-06-17 00:56:59.785 +03:00  INF  Route matched with {action = "GetAllProjectOfCookClass", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProjectOfCookClass(Int32, Cooking_School.Core.ModelUsed.RequestParam) on controller Cooking_School.Controllers.ProjectController (Cooking_School).
+2023-06-17 00:56:59.786 +03:00  INF  Attempt GetAll of Project 
+2023-06-17 00:56:59.789 +03:00  INF  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Projects] AS [p]
+2023-06-17 00:56:59.799 +03:00  INF  Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CookClassId], [t].[Created], [t].[Deleted], [t].[Description], [t].[ExpirDate], [t].[ProjectName], [t].[Updated], [p0].[Id], [p0].[Created], [p0].[Deleted], [p0].[FilePath], [p0].[ProjectId], [p0].[Updated]
+FROM (
+    SELECT [p].[Id], [p].[CookClassId], [p].[Created], [p].[Deleted], [p].[Description], [p].[ExpirDate], [p].[ProjectName], [p].[Updated]
+    FROM [Projects] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [ProjectFiles] AS [p0] ON [t].[Id] = [p0].[ProjectId]
+ORDER BY [t].[Id]
+2023-06-17 00:56:59.799 +03:00  INF  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Cooking_School.Services.Dtos.ProjectDto.ProjectDTO, Cooking_School.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-17 00:56:59.799 +03:00  INF  Executed action Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School) in 14.2128ms
+2023-06-17 00:56:59.799 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School)'
+2023-06-17 00:56:59.800 +03:00  INF  Request finished HTTP/1.1 GET https://localhost:44359/api/cook-classes/6/projects?PageNumber=10&PageSize=10 - - - 200 2 application/json;+charset=utf-8 17.9015ms
+2023-06-17 00:57:08.883 +03:00  INF  Request starting HTTP/1.1 GET https://localhost:44359/api/cook-classes/6/projects?PageNumber=10&PageSize=10 - -
+2023-06-17 00:57:08.885 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 00:57:08.886 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School)'
+2023-06-17 00:57:08.886 +03:00  INF  Route matched with {action = "GetAllProjectOfCookClass", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProjectOfCookClass(Int32, Cooking_School.Core.ModelUsed.RequestParam) on controller Cooking_School.Controllers.ProjectController (Cooking_School).
+2023-06-17 00:57:08.886 +03:00  INF  Attempt GetAll of Project 
+2023-06-17 00:57:08.887 +03:00  INF  Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Projects] AS [p]
+2023-06-17 00:57:08.892 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CookClassId], [t].[Created], [t].[Deleted], [t].[Description], [t].[ExpirDate], [t].[ProjectName], [t].[Updated], [p0].[Id], [p0].[Created], [p0].[Deleted], [p0].[FilePath], [p0].[ProjectId], [p0].[Updated]
+FROM (
+    SELECT [p].[Id], [p].[CookClassId], [p].[Created], [p].[Deleted], [p].[Description], [p].[ExpirDate], [p].[ProjectName], [p].[Updated]
+    FROM [Projects] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [ProjectFiles] AS [p0] ON [t].[Id] = [p0].[ProjectId]
+ORDER BY [t].[Id]
+2023-06-17 00:57:08.892 +03:00  INF  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Cooking_School.Services.Dtos.ProjectDto.ProjectDTO, Cooking_School.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-17 00:57:08.893 +03:00  INF  Executed action Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School) in 7.0688ms
+2023-06-17 00:57:08.893 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School)'
+2023-06-17 00:57:08.893 +03:00  INF  Request finished HTTP/1.1 GET https://localhost:44359/api/cook-classes/6/projects?PageNumber=10&PageSize=10 - - - 200 2 application/json;+charset=utf-8 10.2576ms
+2023-06-17 00:57:35.059 +03:00  INF  Request starting HTTP/1.1 GET https://localhost:44359/api/projects/1011 - -
+2023-06-17 00:57:35.062 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 00:57:35.062 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectController.GetProjectById (Cooking_School)'
+2023-06-17 00:57:35.065 +03:00  INF  Route matched with {action = "GetProjectById", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProjectById(Int32) on controller Cooking_School.Controllers.ProjectController (Cooking_School).
+2023-06-17 00:57:35.067 +03:00  INF  Attempt GetBy Id of Project
+2023-06-17 00:57:35.081 +03:00  INF  Executed DbCommand (5ms) [Parameters=[@__projectId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CookClassId], [t].[Created], [t].[Deleted], [t].[Description], [t].[ExpirDate], [t].[ProjectName], [t].[Updated], [p0].[Id], [p0].[Created], [p0].[Deleted], [p0].[FilePath], [p0].[ProjectId], [p0].[Updated]
+FROM (
+    SELECT TOP(1) [p].[Id], [p].[CookClassId], [p].[Created], [p].[Deleted], [p].[Description], [p].[ExpirDate], [p].[ProjectName], [p].[Updated]
+    FROM [Projects] AS [p]
+    WHERE [p].[Id] = @__projectId_0
+) AS [t]
+LEFT JOIN [ProjectFiles] AS [p0] ON [t].[Id] = [p0].[ProjectId]
+ORDER BY [t].[Id]
+2023-06-17 00:57:35.084 +03:00  INF  Executing OkObjectResult, writing value of type 'Cooking_School.Services.Dtos.ProjectDto.ProjectDTO'.
+2023-06-17 00:57:35.085 +03:00  INF  Executed action Cooking_School.Controllers.ProjectController.GetProjectById (Cooking_School) in 19.1516ms
+2023-06-17 00:57:35.085 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectController.GetProjectById (Cooking_School)'
+2023-06-17 00:57:35.085 +03:00  INF  Request finished HTTP/1.1 GET https://localhost:44359/api/projects/1011 - - - 200 501 application/json;+charset=utf-8 25.3914ms
+2023-06-17 00:57:42.353 +03:00  INF  Request starting HTTP/1.1 GET https://localhost:44359/api/cook-classes/6/projects?PageNumber=10&PageSize=10 - -
+2023-06-17 00:57:42.362 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 00:57:42.362 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School)'
+2023-06-17 00:57:42.362 +03:00  INF  Route matched with {action = "GetAllProjectOfCookClass", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProjectOfCookClass(Int32, Cooking_School.Core.ModelUsed.RequestParam) on controller Cooking_School.Controllers.ProjectController (Cooking_School).
+2023-06-17 00:57:42.363 +03:00  INF  Attempt GetAll of Project 
+2023-06-17 00:57:42.364 +03:00  INF  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Projects] AS [p]
+2023-06-17 00:57:42.369 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CookClassId], [t].[Created], [t].[Deleted], [t].[Description], [t].[ExpirDate], [t].[ProjectName], [t].[Updated], [p0].[Id], [p0].[Created], [p0].[Deleted], [p0].[FilePath], [p0].[ProjectId], [p0].[Updated]
+FROM (
+    SELECT [p].[Id], [p].[CookClassId], [p].[Created], [p].[Deleted], [p].[Description], [p].[ExpirDate], [p].[ProjectName], [p].[Updated]
+    FROM [Projects] AS [p]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [ProjectFiles] AS [p0] ON [t].[Id] = [p0].[ProjectId]
+ORDER BY [t].[Id]
+2023-06-17 00:57:42.370 +03:00  INF  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Cooking_School.Services.Dtos.ProjectDto.ProjectDTO, Cooking_School.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-17 00:57:42.371 +03:00  INF  Executed action Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School) in 8.0657ms
+2023-06-17 00:57:42.371 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School)'
+2023-06-17 00:57:42.371 +03:00  INF  Request finished HTTP/1.1 GET https://localhost:44359/api/cook-classes/6/projects?PageNumber=10&PageSize=10 - - - 200 2 application/json;+charset=utf-8 17.5113ms
+2023-06-17 00:59:38.552 +03:00  INF  User profile is available. Using 'C:\Users\lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-17 00:59:38.779 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-06-17 00:59:38.785 +03:00  INF  Hosting environment: Development
+2023-06-17 00:59:38.785 +03:00  INF  Content root path: C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School
+2023-06-17 00:59:38.813 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/index.html - -
+2023-06-17 00:59:39.135 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/index.html - - - 200 - text/html;charset=utf-8 322.0477ms
+2023-06-17 00:59:39.390 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - -
+2023-06-17 00:59:39.395 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 4.4883ms
+2023-06-17 00:59:39.459 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_vs/browserLink - -
+2023-06-17 00:59:39.498 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 39.7518ms
+2023-06-17 00:59:40.317 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - -
+2023-06-17 00:59:40.462 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 144.9054ms
+2023-06-17 00:59:41.287 +03:00  INF  Request starting HTTP/1.1 GET https://localhost:44359/api/cook-classes/6/projects?PageNumber=10&PageSize=10 - -
+2023-06-17 00:59:41.817 +03:00  WRN  The foreign key property 'Favorite_Chef.ChefId1' was created in shadow state because a conflicting property with the simple name 'ChefId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2023-06-17 00:59:41.844 +03:00  WRN  No store type was specified for the decimal property 'Salary' on entity type 'Chef'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-17 00:59:41.845 +03:00  WRN  No store type was specified for the decimal property 'Price' on entity type 'Course'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-17 00:59:41.845 +03:00  WRN  No store type was specified for the decimal property 'Evalution' on entity type 'ProjectTrainee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-17 00:59:42.531 +03:00  INF  Executed DbCommand (37ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 00:59:42.747 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School)'
+2023-06-17 00:59:42.769 +03:00  INF  Route matched with {action = "GetAllProjectOfCookClass", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProjectOfCookClass(Int32, Cooking_School.Core.ModelUsed.RequestParam) on controller Cooking_School.Controllers.ProjectController (Cooking_School).
+2023-06-17 00:59:42.925 +03:00  INF  Attempt GetAll of Project 
+2023-06-17 00:59:42.978 +03:00  INF  Executed DbCommand (7ms) [Parameters=[@__cookClassId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Projects] AS [p]
+WHERE [p].[CookClassId] = @__cookClassId_0
+2023-06-17 00:59:43.001 +03:00  WRN  The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-06-17 00:59:43.002 +03:00  WRN  The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-06-17 00:59:43.069 +03:00  INF  Executed DbCommand (7ms) [Parameters=[@__cookClassId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CookClassId], [t].[Created], [t].[Deleted], [t].[Description], [t].[ExpirDate], [t].[ProjectName], [t].[Updated], [p0].[Id], [p0].[Created], [p0].[Deleted], [p0].[FilePath], [p0].[ProjectId], [p0].[Updated]
+FROM (
+    SELECT [p].[Id], [p].[CookClassId], [p].[Created], [p].[Deleted], [p].[Description], [p].[ExpirDate], [p].[ProjectName], [p].[Updated]
+    FROM [Projects] AS [p]
+    WHERE [p].[CookClassId] = @__cookClassId_0
+    ORDER BY (SELECT 1)
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t]
+LEFT JOIN [ProjectFiles] AS [p0] ON [t].[Id] = [p0].[ProjectId]
+ORDER BY [t].[Id]
+2023-06-17 00:59:43.088 +03:00  INF  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Cooking_School.Services.Dtos.ProjectDto.ProjectDTO, Cooking_School.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-17 00:59:43.129 +03:00  INF  Executed action Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School) in 356.4161ms
+2023-06-17 00:59:43.130 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School)'
+2023-06-17 00:59:43.132 +03:00  INF  Request finished HTTP/1.1 GET https://localhost:44359/api/cook-classes/6/projects?PageNumber=10&PageSize=10 - - - 200 2 application/json;+charset=utf-8 1845.3855ms
+2023-06-17 00:59:46.895 +03:00  INF  Request starting HTTP/1.1 GET https://localhost:44359/api/cook-classes/6/projects?PageNumber=10&PageSize=10 - -
+2023-06-17 00:59:46.947 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 00:59:46.953 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School)'
+2023-06-17 00:59:46.953 +03:00  INF  Route matched with {action = "GetAllProjectOfCookClass", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProjectOfCookClass(Int32, Cooking_School.Core.ModelUsed.RequestParam) on controller Cooking_School.Controllers.ProjectController (Cooking_School).
+2023-06-17 00:59:46.955 +03:00  INF  Attempt GetAll of Project 
+2023-06-17 00:59:46.957 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__cookClassId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Projects] AS [p]
+WHERE [p].[CookClassId] = @__cookClassId_0
+2023-06-17 00:59:46.964 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@__cookClassId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CookClassId], [t].[Created], [t].[Deleted], [t].[Description], [t].[ExpirDate], [t].[ProjectName], [t].[Updated], [p0].[Id], [p0].[Created], [p0].[Deleted], [p0].[FilePath], [p0].[ProjectId], [p0].[Updated]
+FROM (
+    SELECT [p].[Id], [p].[CookClassId], [p].[Created], [p].[Deleted], [p].[Description], [p].[ExpirDate], [p].[ProjectName], [p].[Updated]
+    FROM [Projects] AS [p]
+    WHERE [p].[CookClassId] = @__cookClassId_0
+    ORDER BY (SELECT 1)
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t]
+LEFT JOIN [ProjectFiles] AS [p0] ON [t].[Id] = [p0].[ProjectId]
+ORDER BY [t].[Id]
+2023-06-17 00:59:46.965 +03:00  INF  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Cooking_School.Services.Dtos.ProjectDto.ProjectDTO, Cooking_School.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-17 00:59:46.967 +03:00  INF  Executed action Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School) in 13.4927ms
+2023-06-17 00:59:46.967 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School)'
+2023-06-17 00:59:46.967 +03:00  INF  Request finished HTTP/1.1 GET https://localhost:44359/api/cook-classes/6/projects?PageNumber=10&PageSize=10 - - - 200 2 application/json;+charset=utf-8 72.3010ms
+2023-06-17 01:04:07.352 +03:00  INF  User profile is available. Using 'C:\Users\lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-17 01:04:07.554 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-06-17 01:04:07.560 +03:00  INF  Hosting environment: Development
+2023-06-17 01:04:07.560 +03:00  INF  Content root path: C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School
+2023-06-17 01:04:07.586 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/index.html - -
+2023-06-17 01:04:07.882 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/index.html - - - 200 - text/html;charset=utf-8 297.4155ms
+2023-06-17 01:04:08.100 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - -
+2023-06-17 01:04:08.106 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 2.9523ms
+2023-06-17 01:04:08.163 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_vs/browserLink - -
+2023-06-17 01:04:08.202 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 38.9925ms
+2023-06-17 01:04:08.853 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - -
+2023-06-17 01:04:09.013 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 160.2779ms
+2023-06-17 01:04:11.847 +03:00  INF  Request starting HTTP/1.1 GET https://localhost:44359/api/cook-classes/6/projects?PageNumber=10&PageSize=10 - -
+2023-06-17 01:04:12.400 +03:00  WRN  The foreign key property 'Favorite_Chef.ChefId1' was created in shadow state because a conflicting property with the simple name 'ChefId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2023-06-17 01:04:12.427 +03:00  WRN  No store type was specified for the decimal property 'Salary' on entity type 'Chef'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-17 01:04:12.427 +03:00  WRN  No store type was specified for the decimal property 'Price' on entity type 'Course'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-17 01:04:12.427 +03:00  WRN  No store type was specified for the decimal property 'Evalution' on entity type 'ProjectTrainee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-17 01:04:13.130 +03:00  INF  Executed DbCommand (42ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 01:04:13.386 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School)'
+2023-06-17 01:04:13.401 +03:00  INF  Route matched with {action = "GetAllProjectOfCookClass", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProjectOfCookClass(Int32, Cooking_School.Core.ModelUsed.RequestParam) on controller Cooking_School.Controllers.ProjectController (Cooking_School).
+2023-06-17 01:04:13.542 +03:00  INF  Attempt GetAll of Project 
+2023-06-17 01:04:13.606 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@__cookClassId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Projects] AS [p]
+WHERE [p].[CookClassId] = @__cookClassId_0
+2023-06-17 01:04:13.630 +03:00  WRN  The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-06-17 01:04:13.630 +03:00  WRN  The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-06-17 01:04:13.694 +03:00  INF  Executed DbCommand (5ms) [Parameters=[@__cookClassId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CookClassId], [t].[Created], [t].[Deleted], [t].[Description], [t].[ExpirDate], [t].[ProjectName], [t].[Updated], [p0].[Id], [p0].[Created], [p0].[Deleted], [p0].[FilePath], [p0].[ProjectId], [p0].[Updated]
+FROM (
+    SELECT [p].[Id], [p].[CookClassId], [p].[Created], [p].[Deleted], [p].[Description], [p].[ExpirDate], [p].[ProjectName], [p].[Updated]
+    FROM [Projects] AS [p]
+    WHERE [p].[CookClassId] = @__cookClassId_0
+    ORDER BY (SELECT 1)
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t]
+LEFT JOIN [ProjectFiles] AS [p0] ON [t].[Id] = [p0].[ProjectId]
+ORDER BY [t].[Id]
+2023-06-17 01:04:13.709 +03:00  INF  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Cooking_School.Services.Dtos.ProjectDto.ProjectDTO, Cooking_School.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-17 01:04:13.748 +03:00  INF  Executed action Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School) in 344.1239ms
+2023-06-17 01:04:13.749 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School)'
+2023-06-17 01:04:13.752 +03:00  INF  Request finished HTTP/1.1 GET https://localhost:44359/api/cook-classes/6/projects?PageNumber=10&PageSize=10 - - - 200 2 application/json;+charset=utf-8 1905.5445ms
+2023-06-17 01:04:30.016 +03:00  INF  Request starting HTTP/1.1 GET https://localhost:44359/api/cook-classes/1/projects?PageNumber=10&PageSize=10 - -
+2023-06-17 01:04:30.061 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 01:04:30.065 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School)'
+2023-06-17 01:04:30.066 +03:00  INF  Route matched with {action = "GetAllProjectOfCookClass", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProjectOfCookClass(Int32, Cooking_School.Core.ModelUsed.RequestParam) on controller Cooking_School.Controllers.ProjectController (Cooking_School).
+2023-06-17 01:04:30.067 +03:00  INF  Attempt GetAll of Project 
+2023-06-17 01:04:30.069 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@__cookClassId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Projects] AS [p]
+WHERE [p].[CookClassId] = @__cookClassId_0
+2023-06-17 01:04:30.075 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@__cookClassId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CookClassId], [t].[Created], [t].[Deleted], [t].[Description], [t].[ExpirDate], [t].[ProjectName], [t].[Updated], [p0].[Id], [p0].[Created], [p0].[Deleted], [p0].[FilePath], [p0].[ProjectId], [p0].[Updated]
+FROM (
+    SELECT [p].[Id], [p].[CookClassId], [p].[Created], [p].[Deleted], [p].[Description], [p].[ExpirDate], [p].[ProjectName], [p].[Updated]
+    FROM [Projects] AS [p]
+    WHERE [p].[CookClassId] = @__cookClassId_0
+    ORDER BY (SELECT 1)
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t]
+LEFT JOIN [ProjectFiles] AS [p0] ON [t].[Id] = [p0].[ProjectId]
+ORDER BY [t].[Id]
+2023-06-17 01:04:30.076 +03:00  INF  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Cooking_School.Services.Dtos.ProjectDto.ProjectDTO, Cooking_School.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-17 01:04:30.077 +03:00  INF  Executed action Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School) in 11.4807ms
+2023-06-17 01:04:30.077 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School)'
+2023-06-17 01:04:30.078 +03:00  INF  Request finished HTTP/1.1 GET https://localhost:44359/api/cook-classes/1/projects?PageNumber=10&PageSize=10 - - - 200 2 application/json;+charset=utf-8 61.3005ms
+2023-06-17 01:05:16.114 +03:00  INF  Request starting HTTP/1.1 GET https://localhost:44359/api/cook-classes/6/projects - -
+2023-06-17 01:05:16.152 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 01:05:16.160 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School)'
+2023-06-17 01:05:16.160 +03:00  INF  Route matched with {action = "GetAllProjectOfCookClass", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProjectOfCookClass(Int32, Cooking_School.Core.ModelUsed.RequestParam) on controller Cooking_School.Controllers.ProjectController (Cooking_School).
+2023-06-17 01:05:16.162 +03:00  INF  Attempt GetAll of Project 
+2023-06-17 01:05:16.163 +03:00  INF  Executed DbCommand (0ms) [Parameters=[@__cookClassId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Projects] AS [p]
+WHERE [p].[CookClassId] = @__cookClassId_0
+2023-06-17 01:05:16.166 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@__cookClassId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CookClassId], [t].[Created], [t].[Deleted], [t].[Description], [t].[ExpirDate], [t].[ProjectName], [t].[Updated], [p0].[Id], [p0].[Created], [p0].[Deleted], [p0].[FilePath], [p0].[ProjectId], [p0].[Updated]
+FROM (
+    SELECT [p].[Id], [p].[CookClassId], [p].[Created], [p].[Deleted], [p].[Description], [p].[ExpirDate], [p].[ProjectName], [p].[Updated]
+    FROM [Projects] AS [p]
+    WHERE [p].[CookClassId] = @__cookClassId_0
+    ORDER BY (SELECT 1)
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t]
+LEFT JOIN [ProjectFiles] AS [p0] ON [t].[Id] = [p0].[ProjectId]
+ORDER BY [t].[Id]
+2023-06-17 01:05:16.179 +03:00  INF  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Cooking_School.Services.Dtos.ProjectDto.ProjectDTO, Cooking_School.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-17 01:05:16.189 +03:00  INF  Executed action Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School) in 29.3789ms
+2023-06-17 01:05:16.189 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School)'
+2023-06-17 01:05:16.190 +03:00  INF  Request finished HTTP/1.1 GET https://localhost:44359/api/cook-classes/6/projects - - - 200 1143 application/json;+charset=utf-8 75.6875ms
+2023-06-17 01:05:37.563 +03:00  INF  Request starting HTTP/1.1 GET https://localhost:44359/api/cook-classes/6/projects?PageNumber=1&PageSize=10 - -
+2023-06-17 01:05:37.568 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 01:05:37.594 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School)'
+2023-06-17 01:05:37.594 +03:00  INF  Route matched with {action = "GetAllProjectOfCookClass", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProjectOfCookClass(Int32, Cooking_School.Core.ModelUsed.RequestParam) on controller Cooking_School.Controllers.ProjectController (Cooking_School).
+2023-06-17 01:05:37.596 +03:00  INF  Attempt GetAll of Project 
+2023-06-17 01:05:37.596 +03:00  INF  Executed DbCommand (0ms) [Parameters=[@__cookClassId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Projects] AS [p]
+WHERE [p].[CookClassId] = @__cookClassId_0
+2023-06-17 01:05:37.600 +03:00  INF  Executed DbCommand (0ms) [Parameters=[@__cookClassId_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CookClassId], [t].[Created], [t].[Deleted], [t].[Description], [t].[ExpirDate], [t].[ProjectName], [t].[Updated], [p0].[Id], [p0].[Created], [p0].[Deleted], [p0].[FilePath], [p0].[ProjectId], [p0].[Updated]
+FROM (
+    SELECT [p].[Id], [p].[CookClassId], [p].[Created], [p].[Deleted], [p].[Description], [p].[ExpirDate], [p].[ProjectName], [p].[Updated]
+    FROM [Projects] AS [p]
+    WHERE [p].[CookClassId] = @__cookClassId_0
+    ORDER BY (SELECT 1)
+    OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY
+) AS [t]
+LEFT JOIN [ProjectFiles] AS [p0] ON [t].[Id] = [p0].[ProjectId]
+ORDER BY [t].[Id]
+2023-06-17 01:05:37.600 +03:00  INF  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Cooking_School.Services.Dtos.ProjectDto.ProjectDTO, Cooking_School.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-17 01:05:37.601 +03:00  INF  Executed action Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School) in 6.252ms
+2023-06-17 01:05:37.601 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectController.GetAllProjectOfCookClass (Cooking_School)'
+2023-06-17 01:05:37.601 +03:00  INF  Request finished HTTP/1.1 GET https://localhost:44359/api/cook-classes/6/projects?PageNumber=1&PageSize=10 - - - 200 1143 application/json;+charset=utf-8 38.8970ms
+2023-06-17 01:06:18.465 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------688116263120294182528307 22826
+2023-06-17 01:06:18.476 +03:00  INF  Executed DbCommand (7ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 01:06:18.481 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.UploudProjectTraineeFile (Cooking_School)'
+2023-06-17 01:06:18.485 +03:00  INF  Route matched with {action = "UploudProjectTraineeFile", controller = "ProjectTraineeFile"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploudProjectTraineeFile(Cooking_School.Services.Dtos.SubmitedFileDto.CreateSubmitedFileDto) on controller Cooking_School.Controllers.ProjectTraineeFileController (Cooking_School).
+2023-06-17 01:06:18.490 +03:00  INF  Executed action Cooking_School.Controllers.ProjectTraineeFileController.UploudProjectTraineeFile (Cooking_School) in 4.8206ms
+2023-06-17 01:06:18.491 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.UploudProjectTraineeFile (Cooking_School)'
+2023-06-17 01:06:18.550 +03:00  ERR  An unhandled exception has occurred while executing the request.System.InvalidOperationException: Unable to resolve service for type 'Cooking_School.Services.ProjectTraineeFileService.IProjectTraineeFileService' while attempting to activate 'Cooking_School.Controllers.ProjectTraineeFileController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method69(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ValidationToken.InvokeAsync(HttpContext context, IUnitOfWork unitOfWork) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ValidationToken.cs:line 40
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ErrorHandlingMiddlewareExtensions.Invoke(HttpContext context) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ErrorHandlingMiddlewareExtensions.cs:line 23
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2023-06-17 01:06:18.589 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------688116263120294182528307 22826 - 500 - text/plain;+charset=utf-8 123.8321ms
+2023-06-17 01:08:25.476 +03:00  INF  User profile is available. Using 'C:\Users\lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-17 01:08:25.714 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-06-17 01:08:25.715 +03:00  INF  Hosting environment: Development
+2023-06-17 01:08:25.715 +03:00  INF  Content root path: C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School
+2023-06-17 01:08:25.743 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/index.html - -
+2023-06-17 01:08:26.059 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/index.html - - - 200 - text/html;charset=utf-8 316.1427ms
+2023-06-17 01:08:26.065 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - -
+2023-06-17 01:08:26.076 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 6.1822ms
+2023-06-17 01:08:26.379 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_vs/browserLink - -
+2023-06-17 01:08:26.424 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 44.1743ms
+2023-06-17 01:08:27.167 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - -
+2023-06-17 01:08:27.289 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 122.0925ms
+2023-06-17 01:08:27.675 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------069928079707708332957146 22826
+2023-06-17 01:08:28.249 +03:00  WRN  The foreign key property 'Favorite_Chef.ChefId1' was created in shadow state because a conflicting property with the simple name 'ChefId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2023-06-17 01:08:28.273 +03:00  WRN  No store type was specified for the decimal property 'Salary' on entity type 'Chef'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-17 01:08:28.274 +03:00  WRN  No store type was specified for the decimal property 'Price' on entity type 'Course'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-17 01:08:28.274 +03:00  WRN  No store type was specified for the decimal property 'Evalution' on entity type 'ProjectTrainee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-17 01:08:29.027 +03:00  INF  Executed DbCommand (44ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 01:08:29.252 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.UploudProjectTraineeFile (Cooking_School)'
+2023-06-17 01:08:29.272 +03:00  INF  Route matched with {action = "UploudProjectTraineeFile", controller = "ProjectTraineeFile"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploudProjectTraineeFile(Cooking_School.Services.Dtos.SubmitedFileDto.CreateSubmitedFileDto) on controller Cooking_School.Controllers.ProjectTraineeFileController (Cooking_School).
+2023-06-17 01:08:29.428 +03:00  INF  Attempt To Uploud of ProjectTraineeFile
+2023-06-17 01:08:29.446 +03:00  INF  Executed DbCommand (7ms) [Parameters=[@__submitedFilesDto_TraineeId_0='?' (DbType = Int32), @__submitedFilesDto_ProjectId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[AdminId], [p].[ChefId], [p].[Created], [p].[Deleted], [p].[Evalution], [p].[ProjectId], [p].[TraineeId], [p].[Updated], [p].[status]
+FROM [ProjectTrainees] AS [p]
+WHERE [p].[TraineeId] = @__submitedFilesDto_TraineeId_0 AND [p].[ProjectId] = @__submitedFilesDto_ProjectId_1
+2023-06-17 01:08:29.496 +03:00  INF  Executed action Cooking_School.Controllers.ProjectTraineeFileController.UploudProjectTraineeFile (Cooking_School) in 221.6944ms
+2023-06-17 01:08:29.496 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.UploudProjectTraineeFile (Cooking_School)'
+2023-06-17 01:08:29.652 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------069928079707708332957146 22826 - 400 - application/json 1976.8267ms
+2023-06-17 01:08:43.025 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------778547117572437659398778 22826
+2023-06-17 01:08:43.070 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 01:08:43.076 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.UploudProjectTraineeFile (Cooking_School)'
+2023-06-17 01:08:43.076 +03:00  INF  Route matched with {action = "UploudProjectTraineeFile", controller = "ProjectTraineeFile"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploudProjectTraineeFile(Cooking_School.Services.Dtos.SubmitedFileDto.CreateSubmitedFileDto) on controller Cooking_School.Controllers.ProjectTraineeFileController (Cooking_School).
+2023-06-17 01:08:43.079 +03:00  INF  Attempt To Uploud of ProjectTraineeFile
+2023-06-17 01:08:43.082 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@__submitedFilesDto_TraineeId_0='?' (DbType = Int32), @__submitedFilesDto_ProjectId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[AdminId], [p].[ChefId], [p].[Created], [p].[Deleted], [p].[Evalution], [p].[ProjectId], [p].[TraineeId], [p].[Updated], [p].[status]
+FROM [ProjectTrainees] AS [p]
+WHERE [p].[TraineeId] = @__submitedFilesDto_TraineeId_0 AND [p].[ProjectId] = @__submitedFilesDto_ProjectId_1
+2023-06-17 01:08:43.103 +03:00  INF  Executed action Cooking_School.Controllers.ProjectTraineeFileController.UploudProjectTraineeFile (Cooking_School) in 26.4625ms
+2023-06-17 01:08:43.103 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.UploudProjectTraineeFile (Cooking_School)'
+2023-06-17 01:08:43.180 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------778547117572437659398778 22826 - 400 - application/json 154.9522ms
+2023-06-17 01:08:48.500 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------128010844724657286165911 22826
+2023-06-17 01:08:48.511 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 01:08:48.514 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.UploudProjectTraineeFile (Cooking_School)'
+2023-06-17 01:08:48.514 +03:00  INF  Route matched with {action = "UploudProjectTraineeFile", controller = "ProjectTraineeFile"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploudProjectTraineeFile(Cooking_School.Services.Dtos.SubmitedFileDto.CreateSubmitedFileDto) on controller Cooking_School.Controllers.ProjectTraineeFileController (Cooking_School).
+2023-06-17 01:08:48.516 +03:00  INF  Attempt To Uploud of ProjectTraineeFile
+2023-06-17 01:08:48.520 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@__submitedFilesDto_TraineeId_0='?' (DbType = Int32), @__submitedFilesDto_ProjectId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[AdminId], [p].[ChefId], [p].[Created], [p].[Deleted], [p].[Evalution], [p].[ProjectId], [p].[TraineeId], [p].[Updated], [p].[status]
+FROM [ProjectTrainees] AS [p]
+WHERE [p].[TraineeId] = @__submitedFilesDto_TraineeId_0 AND [p].[ProjectId] = @__submitedFilesDto_ProjectId_1
+2023-06-17 01:08:48.542 +03:00  INF  Executed action Cooking_School.Controllers.ProjectTraineeFileController.UploudProjectTraineeFile (Cooking_School) in 28.1751ms
+2023-06-17 01:08:48.543 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.UploudProjectTraineeFile (Cooking_School)'
+2023-06-17 01:08:48.632 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------128010844724657286165911 22826 - 400 - application/json 132.8547ms
+2023-06-17 01:08:56.322 +03:00  INF  Request starting HTTP/1.1 GET https://localhost:44359/api/admin/trainees?PageNumber=1&PageSize=1 - -
+2023-06-17 01:08:56.326 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 01:08:56.329 +03:00  INF  Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Administrator)
+2023-06-17 01:08:56.335 +03:00  INF  AuthenticationScheme: Bearer was forbidden.
+2023-06-17 01:08:56.336 +03:00  INF  Request finished HTTP/1.1 GET https://localhost:44359/api/admin/trainees?PageNumber=1&PageSize=1 - - - 403 - - 13.9641ms
+2023-06-17 01:09:00.916 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/admins/login application/json 38
+2023-06-17 01:09:00.924 +03:00  INF  Failed to validate the token.Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/9/2023 7:08:00 AM', Current time: '6/16/2023 10:09:00 PM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+
+2023-06-17 01:09:00.938 +03:00  INF  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/9/2023 7:08:00 AM', Current time: '6/16/2023 10:09:00 PM'.
+2023-06-17 01:09:00.938 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.AdminController.Login (Cooking_School)'
+2023-06-17 01:09:00.944 +03:00  INF  Route matched with {action = "Login", controller = "Admin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Cooking_School.Services.Dtos.UserDto.UserLoginDto) on controller Cooking_School.Controllers.AdminController (Cooking_School).
+2023-06-17 01:09:00.969 +03:00  INF  Login Attempt for adminLoginDto 
+2023-06-17 01:09:00.985 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@__userLoginDto_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE @__userLoginDto_Id_0 = [u].[Id]
+2023-06-17 01:09:00.988 +03:00  INF  Executing BadRequestObjectResult, writing value of type 'System.String'.
+2023-06-17 01:09:00.989 +03:00  INF  Executed action Cooking_School.Controllers.AdminController.Login (Cooking_School) in 45.7982ms
+2023-06-17 01:09:00.990 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.AdminController.Login (Cooking_School)'
+2023-06-17 01:09:00.990 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/admins/login application/json 38 - 400 - text/plain;+charset=utf-8 73.8122ms
+2023-06-17 01:09:06.751 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/admins/login application/json 38
+2023-06-17 01:09:06.755 +03:00  INF  Failed to validate the token.Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/9/2023 7:08:00 AM', Current time: '6/16/2023 10:09:06 PM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+
+2023-06-17 01:09:06.756 +03:00  INF  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/9/2023 7:08:00 AM', Current time: '6/16/2023 10:09:06 PM'.
+2023-06-17 01:09:06.756 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.AdminController.Login (Cooking_School)'
+2023-06-17 01:09:06.756 +03:00  INF  Route matched with {action = "Login", controller = "Admin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Cooking_School.Services.Dtos.UserDto.UserLoginDto) on controller Cooking_School.Controllers.AdminController (Cooking_School).
+2023-06-17 01:09:06.759 +03:00  INF  Login Attempt for adminLoginDto 
+2023-06-17 01:09:06.762 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__userLoginDto_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE @__userLoginDto_Id_0 = [u].[Id]
+2023-06-17 01:09:06.864 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE @__userId_0 = [u].[Id]
+2023-06-17 01:09:06.881 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__refreshToken_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ExpirationDate], [r].[IssuedDate], [r].[Token], [r].[UserId]
+FROM [RefreshTokens] AS [r]
+WHERE [r].[UserId] = @__refreshToken_UserId_0
+2023-06-17 01:09:06.975 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [RefreshTokens]
+OUTPUT 1
+WHERE [Id] = @p0;
+2023-06-17 01:09:07.028 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([ExpirationDate], [IssuedDate], [Token], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2023-06-17 01:09:07.043 +03:00  INF  Executing AcceptedResult, writing value of type 'Cooking_School.Core.ModelUsed.TokenRequest'.
+2023-06-17 01:09:07.052 +03:00  INF  Executed action Cooking_School.Controllers.AdminController.Login (Cooking_School) in 296.121ms
+2023-06-17 01:09:07.052 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.AdminController.Login (Cooking_School)'
+2023-06-17 01:09:07.052 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/admins/login application/json 38 - 202 751 application/json;+charset=utf-8 301.2904ms
+2023-06-17 01:09:25.724 +03:00  INF  Request starting HTTP/1.1 GET https://localhost:44359/api/admin/trainees?PageNumber=1&PageSize=1 - -
+2023-06-17 01:09:25.730 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 01:09:25.733 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.AdminTraineeController.GetAllTrainees (Cooking_School)'
+2023-06-17 01:09:25.736 +03:00  INF  Route matched with {action = "GetAllTrainees", controller = "AdminTrainee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllTrainees(Cooking_School.Core.ModelUsed.RequestParam) on controller Cooking_School.Controllers.AdminTraineeController (Cooking_School).
+2023-06-17 01:09:25.789 +03:00  INF  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[Discriminator] = N'Trainee' AND [u].[Discriminator] = N'Trainee'
+2023-06-17 01:09:25.804 +03:00  WRN  The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-06-17 01:09:25.804 +03:00  WRN  The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2023-06-17 01:09:25.881 +03:00  INF  Executed DbCommand (12ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Address], [t].[BirthDate], [t].[Created], [t].[Deleted], [t].[Discriminator], [t].[Email], [t].[FirstName], [t].[LastName], [t].[PasswordHashed], [t].[PasswordSlot], [t].[PhoneNumber], [t].[Updated], [t].[CardN], [t].[ImagePath], [t].[Level], [t0].[Id], [t0].[AdminId], [t0].[ChefId], [t0].[CourseId], [t0].[Created], [t0].[Deleted], [t0].[Total_Mark], [t0].[TraineeId], [t0].[Updated]
+FROM (
+    SELECT [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CardN], [u].[ImagePath], [u].[Level]
+    FROM [Users] AS [u]
+    WHERE [u].[Discriminator] = N'Trainee' AND [u].[Discriminator] = N'Trainee'
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [Trainee_Courses] AS [t0] ON [t].[Id] = [t0].[TraineeId]
+ORDER BY [t].[Id]
+2023-06-17 01:09:25.901 +03:00  INF  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Cooking_School.Services.Dtos.TraineeDto.TraineeDTO, Cooking_School.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-17 01:09:25.915 +03:00  INF  Executed action Cooking_School.Controllers.AdminTraineeController.GetAllTrainees (Cooking_School) in 179.1145ms
+2023-06-17 01:09:25.915 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.AdminTraineeController.GetAllTrainees (Cooking_School)'
+2023-06-17 01:09:25.916 +03:00  INF  Request finished HTTP/1.1 GET https://localhost:44359/api/admin/trainees?PageNumber=1&PageSize=1 - - - 200 407 application/json;+charset=utf-8 191.5163ms
+2023-06-17 01:09:37.001 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------507898873701495117848733 22826
+2023-06-17 01:09:37.004 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 01:09:37.012 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.UploudProjectTraineeFile (Cooking_School)'
+2023-06-17 01:09:37.012 +03:00  INF  Route matched with {action = "UploudProjectTraineeFile", controller = "ProjectTraineeFile"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploudProjectTraineeFile(Cooking_School.Services.Dtos.SubmitedFileDto.CreateSubmitedFileDto) on controller Cooking_School.Controllers.ProjectTraineeFileController (Cooking_School).
+2023-06-17 01:09:37.013 +03:00  INF  Attempt To Uploud of ProjectTraineeFile
+2023-06-17 01:09:37.016 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__submitedFilesDto_TraineeId_0='?' (DbType = Int32), @__submitedFilesDto_ProjectId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[AdminId], [p].[ChefId], [p].[Created], [p].[Deleted], [p].[Evalution], [p].[ProjectId], [p].[TraineeId], [p].[Updated], [p].[status]
+FROM [ProjectTrainees] AS [p]
+WHERE [p].[TraineeId] = @__submitedFilesDto_TraineeId_0 AND [p].[ProjectId] = @__submitedFilesDto_ProjectId_1
+2023-06-17 01:09:37.041 +03:00  INF  Executed action Cooking_School.Controllers.ProjectTraineeFileController.UploudProjectTraineeFile (Cooking_School) in 27.8909ms
+2023-06-17 01:09:37.041 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.UploudProjectTraineeFile (Cooking_School)'
+2023-06-17 01:09:37.130 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------507898873701495117848733 22826 - 400 - application/json 128.4873ms
+2023-06-17 01:13:13.837 +03:00  INF  User profile is available. Using 'C:\Users\lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-17 01:13:14.051 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-06-17 01:13:14.059 +03:00  INF  Hosting environment: Development
+2023-06-17 01:13:14.059 +03:00  INF  Content root path: C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School
+2023-06-17 01:13:14.090 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/index.html - -
+2023-06-17 01:13:14.403 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/index.html - - - 200 - text/html;charset=utf-8 314.7267ms
+2023-06-17 01:13:14.404 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - -
+2023-06-17 01:13:14.414 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 5.3692ms
+2023-06-17 01:13:14.534 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_vs/browserLink - -
+2023-06-17 01:13:14.614 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 79.1674ms
+2023-06-17 01:13:14.951 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - -
+2023-06-17 01:13:15.105 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 153.8980ms
+2023-06-17 01:13:20.793 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------546731038211899721909695 22826
+2023-06-17 01:13:21.285 +03:00  WRN  The foreign key property 'Favorite_Chef.ChefId1' was created in shadow state because a conflicting property with the simple name 'ChefId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2023-06-17 01:13:21.309 +03:00  WRN  No store type was specified for the decimal property 'Salary' on entity type 'Chef'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-17 01:13:21.309 +03:00  WRN  No store type was specified for the decimal property 'Price' on entity type 'Course'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-17 01:13:21.309 +03:00  WRN  No store type was specified for the decimal property 'Evalution' on entity type 'ProjectTrainee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-17 01:13:21.947 +03:00  INF  Executed DbCommand (35ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 01:13:22.154 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.UploudProjectTraineeFile (Cooking_School)'
+2023-06-17 01:13:22.169 +03:00  INF  Route matched with {action = "UploudProjectTraineeFile", controller = "ProjectTraineeFile"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploudProjectTraineeFile(Cooking_School.Services.Dtos.SubmitedFileDto.CreateSubmitedFileDto) on controller Cooking_School.Controllers.ProjectTraineeFileController (Cooking_School).
+2023-06-17 01:13:22.314 +03:00  INF  Attempt To Uploud of ProjectTraineeFile
+2023-06-17 01:13:22.329 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@__submitedFilesDto_TraineeId_0='?' (DbType = Int32), @__submitedFilesDto_ProjectId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[AdminId], [p].[ChefId], [p].[Created], [p].[Deleted], [p].[Evalution], [p].[ProjectId], [p].[TraineeId], [p].[Updated], [p].[status]
+FROM [ProjectTrainees] AS [p]
+WHERE [p].[TraineeId] = @__submitedFilesDto_TraineeId_0 AND [p].[ProjectId] = @__submitedFilesDto_ProjectId_1
+2023-06-17 01:17:39.749 +03:00  INF  User profile is available. Using 'C:\Users\lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-17 01:17:39.972 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-06-17 01:17:39.972 +03:00  INF  Hosting environment: Development
+2023-06-17 01:17:39.973 +03:00  INF  Content root path: C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School
+2023-06-17 01:17:40.003 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/index.html - -
+2023-06-17 01:17:40.316 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/index.html - - - 200 - text/html;charset=utf-8 314.2313ms
+2023-06-17 01:17:40.316 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - -
+2023-06-17 01:17:40.324 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 2.5513ms
+2023-06-17 01:17:40.505 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_vs/browserLink - -
+2023-06-17 01:17:40.565 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 60.3747ms
+2023-06-17 01:17:40.922 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - -
+2023-06-17 01:17:41.116 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 194.1950ms
+2023-06-17 01:17:46.246 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------225497982461963238534805 22826
+2023-06-17 01:17:46.740 +03:00  WRN  The foreign key property 'Favorite_Chef.ChefId1' was created in shadow state because a conflicting property with the simple name 'ChefId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2023-06-17 01:17:46.764 +03:00  WRN  No store type was specified for the decimal property 'Salary' on entity type 'Chef'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-17 01:17:46.764 +03:00  WRN  No store type was specified for the decimal property 'Price' on entity type 'Course'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-17 01:17:46.764 +03:00  WRN  No store type was specified for the decimal property 'Evalution' on entity type 'ProjectTrainee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-17 01:17:47.491 +03:00  INF  Executed DbCommand (35ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 01:17:47.700 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.UploudProjectTraineeFile (Cooking_School)'
+2023-06-17 01:17:47.713 +03:00  INF  Route matched with {action = "UploudProjectTraineeFile", controller = "ProjectTraineeFile"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploudProjectTraineeFile(Cooking_School.Services.Dtos.SubmitedFileDto.CreateSubmitedFileDto) on controller Cooking_School.Controllers.ProjectTraineeFileController (Cooking_School).
+2023-06-17 01:17:47.864 +03:00  INF  Attempt To Uploud of ProjectTraineeFile
+2023-06-17 01:17:47.877 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@__submitedFilesDto_TraineeId_0='?' (DbType = Int32), @__submitedFilesDto_ProjectId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[AdminId], [p].[ChefId], [p].[Created], [p].[Deleted], [p].[Evalution], [p].[ProjectId], [p].[TraineeId], [p].[Updated], [p].[status]
+FROM [ProjectTrainees] AS [p]
+WHERE [p].[TraineeId] = @__submitedFilesDto_TraineeId_0 AND [p].[ProjectId] = @__submitedFilesDto_ProjectId_1
+2023-06-17 01:17:48.027 +03:00  INF  Executed DbCommand (8ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32), @p4='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime2), @p8='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ProjectTrainees] ([AdminId], [ChefId], [Created], [Deleted], [Evalution], [ProjectId], [TraineeId], [Updated], [status])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2023-06-17 01:17:49.087 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@__projectTrainee1_ProjectId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[CookClassId], [p].[Created], [p].[Deleted], [p].[Description], [p].[ExpirDate], [p].[ProjectName], [p].[Updated]
+FROM [Projects] AS [p]
+WHERE [p].[Id] = @__projectTrainee1_ProjectId_0
+2023-06-17 01:17:49.165 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (DbType = DateTime2), @p6='?' (DbType = Int32), @p5='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [ProjectTraineeFiles] ([Created], [Deleted], [FilePath], [ProjectTraineeId], [Updated])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+UPDATE [ProjectTrainees] SET [status] = @p5
+OUTPUT 1
+WHERE [Id] = @p6;
+2023-06-17 01:17:49.555 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@__projectTrainee1_ProjectId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[CookClassId], [p].[Created], [p].[Deleted], [p].[Description], [p].[ExpirDate], [p].[ProjectName], [p].[Updated]
+FROM [Projects] AS [p]
+WHERE [p].[Id] = @__projectTrainee1_ProjectId_0
+2023-06-17 01:17:49.561 +03:00  INF  Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ProjectTraineeFiles] ([Created], [Deleted], [FilePath], [ProjectTraineeId], [Updated])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2023-06-17 01:17:49.566 +03:00  INF  Executing OkObjectResult, writing value of type 'System.String'.
+2023-06-17 01:17:49.570 +03:00  INF  Executed action Cooking_School.Controllers.ProjectTraineeFileController.UploudProjectTraineeFile (Cooking_School) in 1854.6403ms
+2023-06-17 01:17:49.571 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.UploudProjectTraineeFile (Cooking_School)'
+2023-06-17 01:17:49.577 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------225497982461963238534805 22826 - 200 - text/plain;+charset=utf-8 3330.6014ms
+2023-06-17 01:18:01.709 +03:00  INF  Request starting HTTP/1.1 GET https://localhost:44359/api/project-trainee-files/1009 - -
+2023-06-17 01:18:01.752 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 01:18:01.757 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.GetAllProjectTraineeFile (Cooking_School)'
+2023-06-17 01:18:01.760 +03:00  INF  Route matched with {action = "GetAllProjectTraineeFile", controller = "ProjectTraineeFile"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProjectTraineeFile(Int32) on controller Cooking_School.Controllers.ProjectTraineeFileController (Cooking_School).
+2023-06-17 01:18:01.775 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@__prjectId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[AdminId], [p].[ChefId], [p].[Created], [p].[Deleted], [p].[Evalution], [p].[ProjectId], [p].[TraineeId], [p].[Updated], [p].[status]
+FROM [ProjectTrainees] AS [p]
+WHERE [p].[ProjectId] = @__prjectId_0
+2023-06-17 01:18:01.782 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__trine_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Created], [p].[Deleted], [p].[FilePath], [p].[ProjectTraineeId], [p].[Updated]
+FROM [ProjectTraineeFiles] AS [p]
+WHERE [p].[ProjectTraineeId] = @__trine_Id_0
+2023-06-17 01:18:01.792 +03:00  INF  Executing OkObjectResult, writing value of type 'Cooking_School.Services.Dtos.ResponsDto`1[[Cooking_School.Services.Dtos.SubmitedFileDto.SubmitedFileDTO, Cooking_School.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-17 01:18:01.842 +03:00  INF  Executed action Cooking_School.Controllers.ProjectTraineeFileController.GetAllProjectTraineeFile (Cooking_School) in 81.8489ms
+2023-06-17 01:18:01.842 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.GetAllProjectTraineeFile (Cooking_School)'
+2023-06-17 01:18:01.843 +03:00  INF  Request finished HTTP/1.1 GET https://localhost:44359/api/project-trainee-files/1009 - - - 200 472 application/json;+charset=utf-8 133.4905ms
+2023-06-17 01:18:26.709 +03:00  INF  Request starting HTTP/1.1 PUT https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------162369406466474245738471 7676
+2023-06-17 01:18:26.718 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 01:18:26.720 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.UpdateProjectTraineeFile (Cooking_School)'
+2023-06-17 01:18:26.722 +03:00  INF  Route matched with {action = "UpdateProjectTraineeFile", controller = "ProjectTraineeFile"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateProjectTraineeFile(Cooking_School.Services.Dtos.SubmitedFileDto.UpdateSubmitedFileDto) on controller Cooking_School.Controllers.ProjectTraineeFileController (Cooking_School).
+2023-06-17 01:18:26.727 +03:00  INF  Attempt To Update of ProjectTraineeFile
+2023-06-17 01:18:26.737 +03:00  INF  Executed DbCommand (7ms) [Parameters=[@__submitedFilesDto_TraineeId_0='?' (DbType = Int32), @__submitedFilesDto_ProjectId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[AdminId], [p].[ChefId], [p].[Created], [p].[Deleted], [p].[Evalution], [p].[ProjectId], [p].[TraineeId], [p].[Updated], [p].[status]
+FROM [ProjectTrainees] AS [p]
+WHERE [p].[TraineeId] = @__submitedFilesDto_TraineeId_0 AND [p].[ProjectId] = @__submitedFilesDto_ProjectId_1
+2023-06-17 01:18:26.744 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@__projectTrainee_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Created], [p].[Deleted], [p].[FilePath], [p].[ProjectTraineeId], [p].[Updated]
+FROM [ProjectTraineeFiles] AS [p]
+WHERE [p].[ProjectTraineeId] = @__projectTrainee_Id_0
+2023-06-17 01:19:46.931 +03:00  INF  Executed action Cooking_School.Controllers.ProjectTraineeFileController.UpdateProjectTraineeFile (Cooking_School) in 80208.9948ms
+2023-06-17 01:19:46.931 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.UpdateProjectTraineeFile (Cooking_School)'
+2023-06-17 01:19:48.694 +03:00  ERR  An unhandled exception has occurred while executing the request.System.NullReferenceException: Object reference not set to an instance of an object.
+   at Cooking_School.Services.ProjectTraineeFileService.ProjectTraineeFileService.UpdateProjectTraineeFile(UpdateSubmitedFileDto submitedFilesDto) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School.Services\Services\ProjectTraineeFileService\ProjectTraineeFileService.cs:line 150
+   at Cooking_School.Controllers.ProjectTraineeFileController.UpdateProjectTraineeFile(UpdateSubmitedFileDto submitedFilesDto) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School\Controllers\ProjectTraineeFileController.cs:line 80
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ValidationToken.InvokeAsync(HttpContext context, IUnitOfWork unitOfWork) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ValidationToken.cs:line 40
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ErrorHandlingMiddlewareExtensions.Invoke(HttpContext context) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ErrorHandlingMiddlewareExtensions.cs:line 23
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2023-06-17 01:19:48.729 +03:00  INF  Request finished HTTP/1.1 PUT https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------162369406466474245738471 7676 - 500 - text/plain;+charset=utf-8 82020.0261ms
+2023-06-17 01:19:51.610 +03:00  INF  Request starting HTTP/1.1 PUT https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------133069465899089219775519 7676
+2023-06-17 01:19:51.613 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 01:19:51.614 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.UpdateProjectTraineeFile (Cooking_School)'
+2023-06-17 01:19:51.614 +03:00  INF  Route matched with {action = "UpdateProjectTraineeFile", controller = "ProjectTraineeFile"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateProjectTraineeFile(Cooking_School.Services.Dtos.SubmitedFileDto.UpdateSubmitedFileDto) on controller Cooking_School.Controllers.ProjectTraineeFileController (Cooking_School).
+2023-06-17 01:19:51.615 +03:00  INF  Attempt To Update of ProjectTraineeFile
+2023-06-17 01:19:51.616 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@__submitedFilesDto_TraineeId_0='?' (DbType = Int32), @__submitedFilesDto_ProjectId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[AdminId], [p].[ChefId], [p].[Created], [p].[Deleted], [p].[Evalution], [p].[ProjectId], [p].[TraineeId], [p].[Updated], [p].[status]
+FROM [ProjectTrainees] AS [p]
+WHERE [p].[TraineeId] = @__submitedFilesDto_TraineeId_0 AND [p].[ProjectId] = @__submitedFilesDto_ProjectId_1
+2023-06-17 01:19:51.619 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@__projectTrainee_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Created], [p].[Deleted], [p].[FilePath], [p].[ProjectTraineeId], [p].[Updated]
+FROM [ProjectTraineeFiles] AS [p]
+WHERE [p].[ProjectTraineeId] = @__projectTrainee_Id_0
+2023-06-17 01:19:52.716 +03:00  INF  Executed action Cooking_School.Controllers.ProjectTraineeFileController.UpdateProjectTraineeFile (Cooking_School) in 1102.394ms
+2023-06-17 01:19:52.717 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.UpdateProjectTraineeFile (Cooking_School)'
+2023-06-17 01:19:52.838 +03:00  ERR  An unhandled exception has occurred while executing the request.Azure.RequestFailedException: The specified blob does not exist.
+RequestId:a9cb1866-d01e-001f-09a0-a01f39000000
+Time:2023-06-16T22:19:53.2575035Z
+Status: 404 (The specified blob does not exist.)
+ErrorCode: BlobNotFound
+
+Content:
+﻿<?xml version="1.0" encoding="utf-8"?><Error><Code>BlobNotFound</Code><Message>The specified blob does not exist.
+RequestId:a9cb1866-d01e-001f-09a0-a01f39000000
+Time:2023-06-16T22:19:53.2575035Z</Message></Error>
+
+Headers:
+Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
+x-ms-request-id: a9cb1866-d01e-001f-09a0-a01f39000000
+x-ms-client-request-id: 40a031c7-3dc9-4245-81bc-0d077025aa44
+x-ms-version: 2022-11-02
+x-ms-error-code: BlobNotFound
+Date: Fri, 16 Jun 2023 22:19:52 GMT
+Content-Length: 215
+Content-Type: application/xml
+
+   at Azure.Storage.Blobs.BlobRestClient.DeleteAsync(String snapshot, String versionId, Nullable`1 timeout, String leaseId, Nullable`1 deleteSnapshots, Nullable`1 ifModifiedSince, Nullable`1 ifUnmodifiedSince, String ifMatch, String ifNoneMatch, String ifTags, Nullable`1 blobDeleteType, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.Specialized.BlobBaseClient.DeleteInternal(DeleteSnapshotsOption snapshotsOption, BlobRequestConditions conditions, Boolean async, CancellationToken cancellationToken, String operationName)
+   at Azure.Storage.Blobs.Specialized.BlobBaseClient.DeleteAsync(DeleteSnapshotsOption snapshotsOption, BlobRequestConditions conditions, CancellationToken cancellationToken)
+   at Cooking_School.Services.FilesService.FileService.DeleteBlob(String blobFileName) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School.Services\Services\FilesService\FileService.cs:line 106
+   at Cooking_School.Services.ProjectTraineeFileService.ProjectTraineeFileService.UpdateProjectTraineeFile(UpdateSubmitedFileDto submitedFilesDto) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School.Services\Services\ProjectTraineeFileService\ProjectTraineeFileService.cs:line 139
+   at Cooking_School.Controllers.ProjectTraineeFileController.UpdateProjectTraineeFile(UpdateSubmitedFileDto submitedFilesDto) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School\Controllers\ProjectTraineeFileController.cs:line 80
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ValidationToken.InvokeAsync(HttpContext context, IUnitOfWork unitOfWork) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ValidationToken.cs:line 40
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ErrorHandlingMiddlewareExtensions.Invoke(HttpContext context) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ErrorHandlingMiddlewareExtensions.cs:line 23
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2023-06-17 01:19:52.848 +03:00  INF  Request finished HTTP/1.1 PUT https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------133069465899089219775519 7676 - 500 - text/plain;+charset=utf-8 1237.2046ms
+2023-06-17 01:19:59.247 +03:00  INF  Request starting HTTP/1.1 PUT https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------832489116351146995395287 7676
+2023-06-17 01:19:59.249 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 01:19:59.250 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.UpdateProjectTraineeFile (Cooking_School)'
+2023-06-17 01:19:59.250 +03:00  INF  Route matched with {action = "UpdateProjectTraineeFile", controller = "ProjectTraineeFile"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateProjectTraineeFile(Cooking_School.Services.Dtos.SubmitedFileDto.UpdateSubmitedFileDto) on controller Cooking_School.Controllers.ProjectTraineeFileController (Cooking_School).
+2023-06-17 01:19:59.251 +03:00  INF  Attempt To Update of ProjectTraineeFile
+2023-06-17 01:19:59.253 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@__submitedFilesDto_TraineeId_0='?' (DbType = Int32), @__submitedFilesDto_ProjectId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[AdminId], [p].[ChefId], [p].[Created], [p].[Deleted], [p].[Evalution], [p].[ProjectId], [p].[TraineeId], [p].[Updated], [p].[status]
+FROM [ProjectTrainees] AS [p]
+WHERE [p].[TraineeId] = @__submitedFilesDto_TraineeId_0 AND [p].[ProjectId] = @__submitedFilesDto_ProjectId_1
+2023-06-17 01:19:59.255 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@__projectTrainee_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Created], [p].[Deleted], [p].[FilePath], [p].[ProjectTraineeId], [p].[Updated]
+FROM [ProjectTraineeFiles] AS [p]
+WHERE [p].[ProjectTraineeId] = @__projectTrainee_Id_0
+2023-06-17 01:19:59.554 +03:00  INF  Executed action Cooking_School.Controllers.ProjectTraineeFileController.UpdateProjectTraineeFile (Cooking_School) in 303.9475ms
+2023-06-17 01:19:59.554 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ProjectTraineeFileController.UpdateProjectTraineeFile (Cooking_School)'
+2023-06-17 01:19:59.670 +03:00  ERR  An unhandled exception has occurred while executing the request.Azure.RequestFailedException: The specified blob does not exist.
+RequestId:a9cb31a7-d01e-001f-53a0-a01f39000000
+Time:2023-06-16T22:20:00.1153499Z
+Status: 404 (The specified blob does not exist.)
+ErrorCode: BlobNotFound
+
+Content:
+﻿<?xml version="1.0" encoding="utf-8"?><Error><Code>BlobNotFound</Code><Message>The specified blob does not exist.
+RequestId:a9cb31a7-d01e-001f-53a0-a01f39000000
+Time:2023-06-16T22:20:00.1153499Z</Message></Error>
+
+Headers:
+Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
+x-ms-request-id: a9cb31a7-d01e-001f-53a0-a01f39000000
+x-ms-client-request-id: e47be651-77ad-498b-9b39-f3eed771fe87
+x-ms-version: 2022-11-02
+x-ms-error-code: BlobNotFound
+Date: Fri, 16 Jun 2023 22:19:59 GMT
+Content-Length: 215
+Content-Type: application/xml
+
+   at Azure.Storage.Blobs.BlobRestClient.DeleteAsync(String snapshot, String versionId, Nullable`1 timeout, String leaseId, Nullable`1 deleteSnapshots, Nullable`1 ifModifiedSince, Nullable`1 ifUnmodifiedSince, String ifMatch, String ifNoneMatch, String ifTags, Nullable`1 blobDeleteType, CancellationToken cancellationToken)
+   at Azure.Storage.Blobs.Specialized.BlobBaseClient.DeleteInternal(DeleteSnapshotsOption snapshotsOption, BlobRequestConditions conditions, Boolean async, CancellationToken cancellationToken, String operationName)
+   at Azure.Storage.Blobs.Specialized.BlobBaseClient.DeleteAsync(DeleteSnapshotsOption snapshotsOption, BlobRequestConditions conditions, CancellationToken cancellationToken)
+   at Cooking_School.Services.FilesService.FileService.DeleteBlob(String blobFileName) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School.Services\Services\FilesService\FileService.cs:line 106
+   at Cooking_School.Services.ProjectTraineeFileService.ProjectTraineeFileService.UpdateProjectTraineeFile(UpdateSubmitedFileDto submitedFilesDto) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School.Services\Services\ProjectTraineeFileService\ProjectTraineeFileService.cs:line 139
+   at Cooking_School.Controllers.ProjectTraineeFileController.UpdateProjectTraineeFile(UpdateSubmitedFileDto submitedFilesDto) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School\Controllers\ProjectTraineeFileController.cs:line 80
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ValidationToken.InvokeAsync(HttpContext context, IUnitOfWork unitOfWork) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ValidationToken.cs:line 40
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ErrorHandlingMiddlewareExtensions.Invoke(HttpContext context) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ErrorHandlingMiddlewareExtensions.cs:line 23
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2023-06-17 01:19:59.674 +03:00  INF  Request finished HTTP/1.1 PUT https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------832489116351146995395287 7676 - 500 - text/plain;+charset=utf-8 427.2679ms
+2023-06-17 01:21:12.762 +03:00  INF  Request starting HTTP/1.1 PUT https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------184014185107305296150991 7676
+2023-06-17 01:21:12.769 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 01:21:12.776 +03:00  INF  Failed to validate the token.Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/16/2023 10:15:02 PM', Current time: '6/16/2023 10:21:12 PM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+
+2023-06-17 01:21:12.777 +03:00  INF  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/16/2023 10:15:02 PM', Current time: '6/16/2023 10:21:12 PM'.
+2023-06-17 01:21:12.778 +03:00  INF  Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Trainee|Chef)
+2023-06-17 01:21:12.783 +03:00  INF  AuthenticationScheme: Bearer was challenged.
+2023-06-17 01:21:12.784 +03:00  INF  Request finished HTTP/1.1 PUT https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------184014185107305296150991 7676 - 401 - - 22.4793ms
+2023-06-17 01:21:14.967 +03:00  INF  Request starting HTTP/1.1 PUT https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------046618514136219592563597 7676
+2023-06-17 01:21:14.970 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-17 01:21:14.971 +03:00  INF  Failed to validate the token.Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/16/2023 10:15:02 PM', Current time: '6/16/2023 10:21:14 PM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+
+2023-06-17 01:21:14.971 +03:00  INF  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/16/2023 10:15:02 PM', Current time: '6/16/2023 10:21:14 PM'.
+2023-06-17 01:21:14.971 +03:00  INF  Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Trainee|Chef)
+2023-06-17 01:21:14.971 +03:00  INF  AuthenticationScheme: Bearer was challenged.
+2023-06-17 01:21:14.972 +03:00  INF  Request finished HTTP/1.1 PUT https://localhost:44359/api/project-trainee-files multipart/form-data;+boundary=--------------------------046618514136219592563597 7676 - 401 - - 4.7232ms
