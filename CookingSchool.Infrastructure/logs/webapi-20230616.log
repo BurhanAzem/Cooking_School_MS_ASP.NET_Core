@@ -3551,3 +3551,741 @@ FROM [CookClasses] AS [c]
 LEFT JOIN [Applications] AS [a] ON [c].[Id] = [a].[CookClassId]
 WHERE [c].[Id] = @__cheefId_0
 ORDER BY [c].[Id]
+2023-06-16 11:29:33.742 +03:00  INF  User profile is available. Using 'C:\Users\lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-16 11:29:33.967 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-06-16 11:29:33.972 +03:00  INF  Hosting environment: Development
+2023-06-16 11:29:33.972 +03:00  INF  Content root path: C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School
+2023-06-16 11:29:33.998 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/index.html - -
+2023-06-16 11:29:34.347 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - -
+2023-06-16 11:29:34.348 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/index.html - - - 200 - text/html;charset=utf-8 351.1733ms
+2023-06-16 11:29:34.353 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 3.0953ms
+2023-06-16 11:29:34.666 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_vs/browserLink - -
+2023-06-16 11:29:34.741 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 74.8238ms
+2023-06-16 11:29:35.185 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - -
+2023-06-16 11:29:35.215 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/favicon-32x32.png - -
+2023-06-16 11:29:35.241 +03:00  INF  Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2023-06-16 11:29:35.241 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/favicon-32x32.png - - - 200 628 image/png 25.6711ms
+2023-06-16 11:29:35.398 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 212.2452ms
+2023-06-16 11:29:38.013 +03:00  INF  Request starting HTTP/1.1 GET https://localhost:44359/api/chefs/3/applications - -
+2023-06-16 11:29:38.819 +03:00  WRN  The foreign key property 'Favorite_Chef.ChefId1' was created in shadow state because a conflicting property with the simple name 'ChefId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2023-06-16 11:29:38.850 +03:00  WRN  No store type was specified for the decimal property 'Salary' on entity type 'Chef'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-16 11:29:38.850 +03:00  WRN  No store type was specified for the decimal property 'Price' on entity type 'Course'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-16 11:29:38.851 +03:00  WRN  No store type was specified for the decimal property 'Evalution' on entity type 'ProjectTrainee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-16 11:29:39.666 +03:00  INF  Executed DbCommand (55ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-16 11:29:39.948 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ApplicationController.GetAllApplicationsToChef (Cooking_School)'
+2023-06-16 11:29:39.966 +03:00  INF  Route matched with {action = "GetAllApplicationsToChef", controller = "Application"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllApplicationsToChef(Int32) on controller Cooking_School.Controllers.ApplicationController (Cooking_School).
+2023-06-16 11:29:40.062 +03:00  INF  Attempt To GetAll Application
+2023-06-16 11:29:40.079 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@__Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__Email_0
+2023-06-16 11:29:40.276 +03:00  INF  Executed DbCommand (7ms) [Parameters=[@__cheefId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[AdminId], [c].[ChefId], [c].[CourseId], [c].[Created], [c].[Deleted], [c].[EndingAt], [c].[StartingAt], [c].[TraineeId], [c].[Updated], [a].[Id], [a].[CookClassId], [a].[Created], [a].[DateOfApplay], [a].[Deleted], [a].[TraineeId], [a].[Updated], [a].[status]
+FROM [CookClasses] AS [c]
+LEFT JOIN [Applications] AS [a] ON [c].[Id] = [a].[CookClassId]
+WHERE [c].[ChefId] = @__cheefId_0
+ORDER BY [c].[Id]
+2023-06-16 11:29:48.511 +03:00  INF  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Cooking_School.Services.Dtos.ApplicationDto.ApplicationDTO, Cooking_School.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-16 11:29:48.590 +03:00  INF  Executed action Cooking_School.Controllers.ApplicationController.GetAllApplicationsToChef (Cooking_School) in 8621.0288ms
+2023-06-16 11:29:48.591 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ApplicationController.GetAllApplicationsToChef (Cooking_School)'
+2023-06-16 11:29:48.594 +03:00  INF  Request finished HTTP/1.1 GET https://localhost:44359/api/chefs/3/applications - - - 200 757 application/json;+charset=utf-8 10580.5380ms
+2023-06-16 11:45:12.138 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/applications/1/accept - 0
+2023-06-16 11:45:12.196 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-16 11:45:12.201 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ApplicationController.AcceptApplication (Cooking_School)'
+2023-06-16 11:45:12.204 +03:00  INF  Route matched with {action = "AcceptApplication", controller = "Application"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AcceptApplication(Int32, Int32) on controller Cooking_School.Controllers.ApplicationController (Cooking_School).
+2023-06-16 11:45:12.207 +03:00  INF  Attempt To Accept Application Application
+2023-06-16 11:45:12.216 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@__applicationId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[CookClassId], [a].[Created], [a].[DateOfApplay], [a].[Deleted], [a].[TraineeId], [a].[Updated], [a].[status]
+FROM [Applications] AS [a]
+WHERE [a].[Id] = @__applicationId_0
+2023-06-16 11:45:12.255 +03:00  INF  Executed action Cooking_School.Controllers.ApplicationController.AcceptApplication (Cooking_School) in 50.1195ms
+2023-06-16 11:45:12.256 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ApplicationController.AcceptApplication (Cooking_School)'
+2023-06-16 11:45:12.378 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/applications/1/accept - 0 - 400 - application/json 240.1149ms
+2023-06-16 11:45:25.732 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/applications/1/reject application/json 109
+2023-06-16 11:45:25.747 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-16 11:45:25.756 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ApplicationController.RejectApplication (Cooking_School)'
+2023-06-16 11:45:25.758 +03:00  INF  Route matched with {action = "RejectApplication", controller = "Application"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RejectApplication(Int32, Int32) on controller Cooking_School.Controllers.ApplicationController (Cooking_School).
+2023-06-16 11:45:25.761 +03:00  INF  Attempt To Reject Application Application
+2023-06-16 11:45:25.765 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__applicationId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[CookClassId], [a].[Created], [a].[DateOfApplay], [a].[Deleted], [a].[TraineeId], [a].[Updated], [a].[status]
+FROM [Applications] AS [a]
+WHERE [a].[Id] = @__applicationId_0
+2023-06-16 11:45:25.796 +03:00  INF  Executed action Cooking_School.Controllers.ApplicationController.RejectApplication (Cooking_School) in 37.4809ms
+2023-06-16 11:45:25.796 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ApplicationController.RejectApplication (Cooking_School)'
+2023-06-16 11:45:25.881 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/applications/1/reject application/json 109 - 400 - application/json 148.9442ms
+2023-06-16 11:56:03.044 +03:00  INF  User profile is available. Using 'C:\Users\lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-16 11:56:03.420 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-06-16 11:56:03.421 +03:00  INF  Hosting environment: Development
+2023-06-16 11:56:03.421 +03:00  INF  Content root path: C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School
+2023-06-16 11:56:03.485 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/index.html - -
+2023-06-16 11:56:03.991 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/index.html - - - 200 - text/html;charset=utf-8 507.5030ms
+2023-06-16 11:56:04.007 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - -
+2023-06-16 11:56:04.014 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 3.5206ms
+2023-06-16 11:56:04.734 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_vs/browserLink - -
+2023-06-16 11:56:04.780 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 46.1314ms
+2023-06-16 11:56:05.799 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - -
+2023-06-16 11:56:06.014 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 215.1674ms
+2023-06-16 11:56:06.298 +03:00  INF  Request starting HTTP/1.1 GET https://localhost:44359/api/chefs/3/applications - -
+2023-06-16 11:56:07.230 +03:00  WRN  The foreign key property 'Favorite_Chef.ChefId1' was created in shadow state because a conflicting property with the simple name 'ChefId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2023-06-16 11:56:07.275 +03:00  WRN  No store type was specified for the decimal property 'Salary' on entity type 'Chef'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-16 11:56:07.276 +03:00  WRN  No store type was specified for the decimal property 'Price' on entity type 'Course'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-16 11:56:07.276 +03:00  WRN  No store type was specified for the decimal property 'Evalution' on entity type 'ProjectTrainee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-16 11:56:10.124 +03:00  INF  Executed DbCommand (67ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-16 11:56:10.540 +03:00  INF  Failed to validate the token.Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/16/2023 8:45:47 AM', Current time: '6/16/2023 8:56:10 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+
+2023-06-16 11:56:10.575 +03:00  INF  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/16/2023 8:45:47 AM', Current time: '6/16/2023 8:56:10 AM'.
+2023-06-16 11:56:10.584 +03:00  INF  Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Administrator|Chef)
+2023-06-16 11:56:10.592 +03:00  INF  AuthenticationScheme: Bearer was challenged.
+2023-06-16 11:56:10.598 +03:00  INF  Request finished HTTP/1.1 GET https://localhost:44359/api/chefs/3/applications - - - 401 - - 4299.6691ms
+2023-06-16 11:56:19.369 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/chefs/login application/json 38
+2023-06-16 11:56:19.376 +03:00  INF  Failed to validate the token.Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/16/2023 6:49:52 AM', Current time: '6/16/2023 8:56:19 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+
+2023-06-16 11:56:19.376 +03:00  INF  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/16/2023 6:49:52 AM', Current time: '6/16/2023 8:56:19 AM'.
+2023-06-16 11:56:19.378 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ChefController.LogIn (Cooking_School)'
+2023-06-16 11:56:19.401 +03:00  INF  Route matched with {action = "LogIn", controller = "Chef"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] LogIn(Cooking_School.Services.Dtos.UserDto.UserLoginDto) on controller Cooking_School.Controllers.ChefController (Cooking_School).
+2023-06-16 11:56:19.701 +03:00  INF  Login Attempt for chefDto 
+2023-06-16 11:56:19.761 +03:00  INF  Executed DbCommand (7ms) [Parameters=[@__userLoginDto_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE @__userLoginDto_Id_0 = [u].[Id]
+2023-06-16 11:56:19.900 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE @__userId_0 = [u].[Id]
+2023-06-16 11:56:19.932 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__refreshToken_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ExpirationDate], [r].[IssuedDate], [r].[Token], [r].[UserId]
+FROM [RefreshTokens] AS [r]
+WHERE [r].[UserId] = @__refreshToken_UserId_0
+2023-06-16 11:56:20.045 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [RefreshTokens]
+OUTPUT 1
+WHERE [Id] = @p0;
+2023-06-16 11:56:20.112 +03:00  INF  Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([ExpirationDate], [IssuedDate], [Token], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2023-06-16 11:56:20.137 +03:00  INF  Executing AcceptedResult, writing value of type 'Cooking_School.Core.ModelUsed.TokenRequest'.
+2023-06-16 11:56:20.172 +03:00  INF  Executed action Cooking_School.Controllers.ChefController.LogIn (Cooking_School) in 767.0562ms
+2023-06-16 11:56:20.175 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ChefController.LogIn (Cooking_School)'
+2023-06-16 11:56:20.176 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/chefs/login application/json 38 - 202 729 application/json;+charset=utf-8 807.1162ms
+2023-06-16 11:56:47.334 +03:00  INF  Request starting HTTP/1.1 GET https://localhost:44359/api/chefs/3/applications - -
+2023-06-16 11:56:47.355 +03:00  INF  Executed DbCommand (6ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-16 11:56:47.369 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ApplicationController.GetAllApplicationsToChef (Cooking_School)'
+2023-06-16 11:56:47.376 +03:00  INF  Route matched with {action = "GetAllApplicationsToChef", controller = "Application"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllApplicationsToChef(Int32) on controller Cooking_School.Controllers.ApplicationController (Cooking_School).
+2023-06-16 11:56:47.380 +03:00  INF  Attempt To GetAll Application
+2023-06-16 11:56:47.395 +03:00  INF  Executed DbCommand (5ms) [Parameters=[@__Email_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__Email_0
+2023-06-16 11:56:47.501 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@__cheefId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[AdminId], [c].[ChefId], [c].[CourseId], [c].[Created], [c].[Deleted], [c].[EndingAt], [c].[StartingAt], [c].[TraineeId], [c].[Updated], [a].[Id], [a].[CookClassId], [a].[Created], [a].[DateOfApplay], [a].[Deleted], [a].[TraineeId], [a].[Updated], [a].[status]
+FROM [CookClasses] AS [c]
+LEFT JOIN [Applications] AS [a] ON [c].[Id] = [a].[CookClassId]
+WHERE [c].[ChefId] = @__cheefId_0
+ORDER BY [c].[Id]
+2023-06-16 11:56:47.531 +03:00  INF  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Cooking_School.Services.Dtos.ApplicationDto.ApplicationDTO, Cooking_School.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-06-16 11:56:47.548 +03:00  INF  Executed action Cooking_School.Controllers.ApplicationController.GetAllApplicationsToChef (Cooking_School) in 172.1234ms
+2023-06-16 11:56:47.548 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ApplicationController.GetAllApplicationsToChef (Cooking_School)'
+2023-06-16 11:56:47.548 +03:00  INF  Request finished HTTP/1.1 GET https://localhost:44359/api/chefs/3/applications - - - 200 259 application/json;+charset=utf-8 213.9376ms
+2023-06-16 11:57:07.763 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/applications/1/accept - 0
+2023-06-16 11:57:07.773 +03:00  INF  Executed DbCommand (8ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-16 11:57:07.780 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ApplicationController.AcceptApplication (Cooking_School)'
+2023-06-16 11:57:07.783 +03:00  INF  Route matched with {action = "AcceptApplication", controller = "Application"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AcceptApplication(Int32) on controller Cooking_School.Controllers.ApplicationController (Cooking_School).
+2023-06-16 11:57:07.785 +03:00  INF  Attempt To Accept Application Application
+2023-06-16 11:57:07.796 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__applicationId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[CookClassId], [a].[Created], [a].[DateOfApplay], [a].[Deleted], [a].[TraineeId], [a].[Updated], [a].[status]
+FROM [Applications] AS [a]
+WHERE [a].[Id] = @__applicationId_0
+2023-06-16 11:57:07.880 +03:00  INF  Executed DbCommand (22ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime2), @p6='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = Int32), @p10='?' (DbType = Int32), @p11='?' (DbType = DateTime2), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Applications] SET [CookClassId] = @p0, [Created] = @p1, [DateOfApplay] = @p2, [Deleted] = @p3, [TraineeId] = @p4, [Updated] = @p5, [status] = @p6
+OUTPUT 1
+WHERE [Id] = @p7;
+INSERT INTO [Trainee_Courses] ([AdminId], [ChefId], [CourseId], [Created], [Deleted], [Total_Mark], [TraineeId], [Updated])
+OUTPUT INSERTED.[Id]
+VALUES (@p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2023-06-16 11:57:07.900 +03:00  ERR  An exception occurred in the database while saving changes for context type 'Cooking_School.Core.Models.DBContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Trainee_Courses_Courses_CourseId". The conflict occurred in database "CookingSchool_DB", table "dbo.Courses", column 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:d10d81ff-c124-4a17-b8d8-7f41f96db249
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Trainee_Courses_Courses_CourseId". The conflict occurred in database "CookingSchool_DB", table "dbo.Courses", column 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:d10d81ff-c124-4a17-b8d8-7f41f96db249
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+
+2023-06-16 11:57:08.066 +03:00  INF  Executed action Cooking_School.Controllers.ApplicationController.AcceptApplication (Cooking_School) in 283.1888ms
+2023-06-16 11:57:08.067 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ApplicationController.AcceptApplication (Cooking_School)'
+2023-06-16 11:57:08.226 +03:00  ERR  An unhandled exception has occurred while executing the request.Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Trainee_Courses_Courses_CourseId". The conflict occurred in database "CookingSchool_DB", table "dbo.Courses", column 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:d10d81ff-c124-4a17-b8d8-7f41f96db249
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Cooking_School.Infrastructure.Repository.UnitOfWork.Save() in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\Repository\UnitofWork.cs:line 63
+   at Cooking_School.Services.ApplicationService.ApplicationSevice.AcceptApplication(Int32 applicationId) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School.Services\Services\ApplicationService\ApplicationSevice.cs:line 40
+   at Cooking_School.Controllers.ApplicationController.AcceptApplication(Int32 applicationId) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School\Controllers\ApplicationController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ValidationToken.InvokeAsync(HttpContext context, IUnitOfWork unitOfWork) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ValidationToken.cs:line 40
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ErrorHandlingMiddlewareExtensions.Invoke(HttpContext context) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ErrorHandlingMiddlewareExtensions.cs:line 23
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2023-06-16 11:57:08.259 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/applications/1/accept - 0 - 500 - text/plain;+charset=utf-8 495.8582ms
+2023-06-16 11:59:00.317 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/applications/1/accept - 0
+2023-06-16 11:59:00.320 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-16 11:59:00.322 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ApplicationController.AcceptApplication (Cooking_School)'
+2023-06-16 11:59:00.323 +03:00  INF  Route matched with {action = "AcceptApplication", controller = "Application"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AcceptApplication(Int32) on controller Cooking_School.Controllers.ApplicationController (Cooking_School).
+2023-06-16 11:59:00.324 +03:00  INF  Attempt To Accept Application Application
+2023-06-16 11:59:00.327 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__applicationId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[CookClassId], [a].[Created], [a].[DateOfApplay], [a].[Deleted], [a].[TraineeId], [a].[Updated], [a].[status]
+FROM [Applications] AS [a]
+WHERE [a].[Id] = @__applicationId_0
+2023-06-16 11:59:00.335 +03:00  INF  Executed DbCommand (6ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime2), @p6='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = Int32), @p10='?' (DbType = Int32), @p11='?' (DbType = DateTime2), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Applications] SET [CookClassId] = @p0, [Created] = @p1, [DateOfApplay] = @p2, [Deleted] = @p3, [TraineeId] = @p4, [Updated] = @p5, [status] = @p6
+OUTPUT 1
+WHERE [Id] = @p7;
+INSERT INTO [Trainee_Courses] ([AdminId], [ChefId], [CourseId], [Created], [Deleted], [Total_Mark], [TraineeId], [Updated])
+OUTPUT INSERTED.[Id]
+VALUES (@p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2023-06-16 11:59:00.340 +03:00  ERR  An exception occurred in the database while saving changes for context type 'Cooking_School.Core.Models.DBContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Trainee_Courses_Courses_CourseId". The conflict occurred in database "CookingSchool_DB", table "dbo.Courses", column 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:d10d81ff-c124-4a17-b8d8-7f41f96db249
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Trainee_Courses_Courses_CourseId". The conflict occurred in database "CookingSchool_DB", table "dbo.Courses", column 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:d10d81ff-c124-4a17-b8d8-7f41f96db249
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+
+2023-06-16 11:59:00.428 +03:00  INF  Executed action Cooking_School.Controllers.ApplicationController.AcceptApplication (Cooking_School) in 105.1814ms
+2023-06-16 11:59:00.429 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ApplicationController.AcceptApplication (Cooking_School)'
+2023-06-16 11:59:00.549 +03:00  ERR  An unhandled exception has occurred while executing the request.Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Trainee_Courses_Courses_CourseId". The conflict occurred in database "CookingSchool_DB", table "dbo.Courses", column 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:d10d81ff-c124-4a17-b8d8-7f41f96db249
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Cooking_School.Infrastructure.Repository.UnitOfWork.Save() in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\Repository\UnitofWork.cs:line 63
+   at Cooking_School.Services.ApplicationService.ApplicationSevice.AcceptApplication(Int32 applicationId) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School.Services\Services\ApplicationService\ApplicationSevice.cs:line 40
+   at Cooking_School.Controllers.ApplicationController.AcceptApplication(Int32 applicationId) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School\Controllers\ApplicationController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ValidationToken.InvokeAsync(HttpContext context, IUnitOfWork unitOfWork) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ValidationToken.cs:line 40
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ErrorHandlingMiddlewareExtensions.Invoke(HttpContext context) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ErrorHandlingMiddlewareExtensions.cs:line 23
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2023-06-16 11:59:00.552 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/applications/1/accept - 0 - 500 - text/plain;+charset=utf-8 236.0003ms
+2023-06-16 11:59:01.593 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/applications/1/accept - 0
+2023-06-16 11:59:01.595 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-16 11:59:01.596 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ApplicationController.AcceptApplication (Cooking_School)'
+2023-06-16 11:59:01.596 +03:00  INF  Route matched with {action = "AcceptApplication", controller = "Application"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AcceptApplication(Int32) on controller Cooking_School.Controllers.ApplicationController (Cooking_School).
+2023-06-16 11:59:01.596 +03:00  INF  Attempt To Accept Application Application
+2023-06-16 11:59:01.598 +03:00  INF  Executed DbCommand (1ms) [Parameters=[@__applicationId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[CookClassId], [a].[Created], [a].[DateOfApplay], [a].[Deleted], [a].[TraineeId], [a].[Updated], [a].[status]
+FROM [Applications] AS [a]
+WHERE [a].[Id] = @__applicationId_0
+2023-06-16 11:59:01.603 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime2), @p6='?' (Size = 4000), @p8='?' (DbType = Int32), @p9='?' (DbType = Int32), @p10='?' (DbType = Int32), @p11='?' (DbType = DateTime2), @p12='?' (DbType = Int32), @p13='?' (DbType = Int32), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [Applications] SET [CookClassId] = @p0, [Created] = @p1, [DateOfApplay] = @p2, [Deleted] = @p3, [TraineeId] = @p4, [Updated] = @p5, [status] = @p6
+OUTPUT 1
+WHERE [Id] = @p7;
+INSERT INTO [Trainee_Courses] ([AdminId], [ChefId], [CourseId], [Created], [Deleted], [Total_Mark], [TraineeId], [Updated])
+OUTPUT INSERTED.[Id]
+VALUES (@p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+2023-06-16 11:59:01.608 +03:00  ERR  An exception occurred in the database while saving changes for context type 'Cooking_School.Core.Models.DBContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Trainee_Courses_Courses_CourseId". The conflict occurred in database "CookingSchool_DB", table "dbo.Courses", column 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:d10d81ff-c124-4a17-b8d8-7f41f96db249
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Trainee_Courses_Courses_CourseId". The conflict occurred in database "CookingSchool_DB", table "dbo.Courses", column 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:d10d81ff-c124-4a17-b8d8-7f41f96db249
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+
+2023-06-16 11:59:01.702 +03:00  INF  Executed action Cooking_School.Controllers.ApplicationController.AcceptApplication (Cooking_School) in 105.7393ms
+2023-06-16 11:59:01.702 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ApplicationController.AcceptApplication (Cooking_School)'
+2023-06-16 11:59:01.849 +03:00  ERR  An unhandled exception has occurred while executing the request.Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Trainee_Courses_Courses_CourseId". The conflict occurred in database "CookingSchool_DB", table "dbo.Courses", column 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:d10d81ff-c124-4a17-b8d8-7f41f96db249
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Cooking_School.Infrastructure.Repository.UnitOfWork.Save() in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\Repository\UnitofWork.cs:line 63
+   at Cooking_School.Services.ApplicationService.ApplicationSevice.AcceptApplication(Int32 applicationId) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School.Services\Services\ApplicationService\ApplicationSevice.cs:line 40
+   at Cooking_School.Controllers.ApplicationController.AcceptApplication(Int32 applicationId) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School\Controllers\ApplicationController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ValidationToken.InvokeAsync(HttpContext context, IUnitOfWork unitOfWork) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ValidationToken.cs:line 40
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ErrorHandlingMiddlewareExtensions.Invoke(HttpContext context) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ErrorHandlingMiddlewareExtensions.cs:line 23
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2023-06-16 11:59:01.853 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/applications/1/accept - 0 - 500 - text/plain;+charset=utf-8 260.1639ms
+2023-06-16 11:59:29.920 +03:00  INF  User profile is available. Using 'C:\Users\lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-16 11:59:30.148 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-06-16 11:59:30.148 +03:00  INF  Hosting environment: Development
+2023-06-16 11:59:30.149 +03:00  INF  Content root path: C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School
+2023-06-16 11:59:30.184 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/index.html - -
+2023-06-16 11:59:30.536 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - -
+2023-06-16 11:59:30.536 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/index.html - - - 200 - text/html;charset=utf-8 352.4847ms
+2023-06-16 11:59:30.543 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 6.0098ms
+2023-06-16 11:59:30.705 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_vs/browserLink - -
+2023-06-16 11:59:30.765 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 59.0680ms
+2023-06-16 11:59:31.199 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - -
+2023-06-16 11:59:31.395 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 196.4015ms
+2023-06-16 11:59:39.668 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/applications/1/accept - 0
+2023-06-16 11:59:40.417 +03:00  WRN  The foreign key property 'Favorite_Chef.ChefId1' was created in shadow state because a conflicting property with the simple name 'ChefId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2023-06-16 11:59:40.460 +03:00  WRN  No store type was specified for the decimal property 'Salary' on entity type 'Chef'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-16 11:59:40.460 +03:00  WRN  No store type was specified for the decimal property 'Price' on entity type 'Course'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-16 11:59:40.460 +03:00  WRN  No store type was specified for the decimal property 'Evalution' on entity type 'ProjectTrainee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-16 11:59:41.575 +03:00  INF  Executed DbCommand (49ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-16 11:59:41.902 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ApplicationController.AcceptApplication (Cooking_School)'
+2023-06-16 11:59:41.927 +03:00  INF  Route matched with {action = "AcceptApplication", controller = "Application"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AcceptApplication(Int32) on controller Cooking_School.Controllers.ApplicationController (Cooking_School).
+2023-06-16 11:59:42.076 +03:00  INF  Attempt To Accept Application Application
+2023-06-16 11:59:42.094 +03:00  INF  Executed DbCommand (7ms) [Parameters=[@__applicationId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[CookClassId], [a].[Created], [a].[DateOfApplay], [a].[Deleted], [a].[TraineeId], [a].[Updated], [a].[status]
+FROM [Applications] AS [a]
+WHERE [a].[Id] = @__applicationId_0
+2023-06-16 11:59:42.267 +03:00  INF  Executed DbCommand (7ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime2), @p6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Applications] SET [CookClassId] = @p0, [Created] = @p1, [DateOfApplay] = @p2, [Deleted] = @p3, [TraineeId] = @p4, [Updated] = @p5, [status] = @p6
+OUTPUT 1
+WHERE [Id] = @p7;
+2023-06-16 11:59:42.379 +03:00  INF  Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Trainee_Courses] ([AdminId], [ChefId], [CourseId], [Created], [Deleted], [Total_Mark], [TraineeId], [Updated])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2023-06-16 11:59:42.414 +03:00  ERR  An exception occurred in the database while saving changes for context type 'Cooking_School.Core.Models.DBContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Trainee_Courses_Courses_CourseId". The conflict occurred in database "CookingSchool_DB", table "dbo.Courses", column 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:e4d41a66-c3ae-4955-a322-2640ab88b06c
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Trainee_Courses_Courses_CourseId". The conflict occurred in database "CookingSchool_DB", table "dbo.Courses", column 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:e4d41a66-c3ae-4955-a322-2640ab88b06c
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+
+2023-06-16 11:59:42.565 +03:00  INF  Executed action Cooking_School.Controllers.ApplicationController.AcceptApplication (Cooking_School) in 634.4362ms
+2023-06-16 11:59:42.567 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ApplicationController.AcceptApplication (Cooking_School)'
+2023-06-16 11:59:42.750 +03:00  ERR  An unhandled exception has occurred while executing the request.Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Trainee_Courses_Courses_CourseId". The conflict occurred in database "CookingSchool_DB", table "dbo.Courses", column 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:e4d41a66-c3ae-4955-a322-2640ab88b06c
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Cooking_School.Infrastructure.Repository.UnitOfWork.Save() in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\Repository\UnitofWork.cs:line 63
+   at Cooking_School.Services.ApplicationService.ApplicationSevice.AcceptApplication(Int32 applicationId) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School.Services\Services\ApplicationService\ApplicationSevice.cs:line 41
+   at Cooking_School.Controllers.ApplicationController.AcceptApplication(Int32 applicationId) in C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School\Controllers\ApplicationController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ValidationToken.InvokeAsync(HttpContext context, IUnitOfWork unitOfWork) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ValidationToken.cs:line 40
+   at Cooking_School.Infrastructure.MiddlewareHandlingEx.ErrorHandlingMiddlewareExtensions.Invoke(HttpContext context) in C:\Desktop\workspace1\Cooking_School_ASP.NET\CookingSchool.Infrastructure\MiddlewareHandlingEx\ErrorHandlingMiddlewareExtensions.cs:line 23
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+2023-06-16 11:59:42.782 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/applications/1/accept - 0 - 500 - text/plain;+charset=utf-8 3114.0531ms
+2023-06-16 12:00:54.593 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/applications/1/accept - 0
+2023-06-16 12:00:54.650 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-16 12:00:54.657 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ApplicationController.AcceptApplication (Cooking_School)'
+2023-06-16 12:00:54.658 +03:00  INF  Route matched with {action = "AcceptApplication", controller = "Application"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AcceptApplication(Int32) on controller Cooking_School.Controllers.ApplicationController (Cooking_School).
+2023-06-16 12:00:54.659 +03:00  INF  Attempt To Accept Application Application
+2023-06-16 12:00:54.663 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@__applicationId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[CookClassId], [a].[Created], [a].[DateOfApplay], [a].[Deleted], [a].[TraineeId], [a].[Updated], [a].[status]
+FROM [Applications] AS [a]
+WHERE [a].[Id] = @__applicationId_0
+2023-06-16 12:00:54.697 +03:00  INF  Executed DbCommand (6ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime2), @p6='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Applications] SET [CookClassId] = @p0, [Created] = @p1, [DateOfApplay] = @p2, [Deleted] = @p3, [TraineeId] = @p4, [Updated] = @p5, [status] = @p6
+OUTPUT 1
+WHERE [Id] = @p7;
+2023-06-16 12:04:32.501 +03:00  INF  User profile is available. Using 'C:\Users\lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-16 12:04:32.725 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-06-16 12:04:32.730 +03:00  INF  Hosting environment: Development
+2023-06-16 12:04:32.730 +03:00  INF  Content root path: C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School
+2023-06-16 12:04:32.755 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/index.html - -
+2023-06-16 12:04:33.130 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - -
+2023-06-16 12:04:33.130 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/index.html - - - 200 - text/html;charset=utf-8 354.9547ms
+2023-06-16 12:04:33.138 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 3.4060ms

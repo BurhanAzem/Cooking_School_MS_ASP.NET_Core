@@ -50,21 +50,12 @@ namespace Cooking_School.Controllers
 
         [HttpPost("{applicationId}/accept")]
         [Authorize(Roles = "Administrator, Chef")]
-        public async Task<IActionResult> AcceptApplication(int applicationId, [FromQuery] int traineeId)
+        public async Task<IActionResult> AcceptApplication(int applicationId)
         {
             _logger.LogInformation($"Attempt To Accept Application {nameof(Application)}");
             var user = HttpContext.User;
-            if (user.IsInRole("Trainee"))
-            {
-                var trainee = await _authenticationService.GetCurrentUser(HttpContext);
-                traineeId = trainee.Id;
-            }
-            if (traineeId < 0)
-            {
-                _logger.LogInformation($"Invalid Attempt To Accept Application {nameof(Application)} - {traineeId}");
-                return BadRequest();
-            }
-            var result = await _applicationSevice.AcceptApplication(traineeId);
+
+            var result = await _applicationSevice.AcceptApplication(applicationId);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;
@@ -76,21 +67,11 @@ namespace Cooking_School.Controllers
 
         [HttpPost("{applicationId}/reject")]
         [Authorize(Roles = "Administrator, Chef")]
-        public async Task<IActionResult> RejectApplication(int applicationId, [FromQuery] int traineeId)
+        public async Task<IActionResult> RejectApplication(int applicationId)
         {
             _logger.LogInformation($"Attempt To Reject Application {nameof(Application)}");
             var user = HttpContext.User;
-            if (user.IsInRole("Trainee"))
-            {
-                var trainee = await _authenticationService.GetCurrentUser(HttpContext);
-                traineeId = trainee.Id;
-            }
-            if (traineeId < 0)
-            {
-                _logger.LogInformation($"Invalid Reject To Accept Application {nameof(Application)}");
-                return BadRequest();
-            }
-            var result = await _applicationSevice.RejectApplication(traineeId);
+            var result = await _applicationSevice.RejectApplication(applicationId);
             if (result.Exception is not null)
             {
                 var code = result.StatusCode;

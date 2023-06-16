@@ -32,9 +32,13 @@ namespace Cooking_School.Services.ApplicationService
             }
             application.status = status_apply.accepted;
             _unitOfWork.Applications.Update(application);
+            await _unitOfWork.Save();
+
+            var cookClass = await _unitOfWork.CookClasses.Get(x => x.Id == application.CookClassId);
+
             Trainee_Course trainee_Course = new Trainee_Course();
             trainee_Course.TraineeId = application.TraineeId;
-            trainee_Course.CourseId = application.CookClassId;
+            trainee_Course.CourseId = cookClass.CourseId;
             trainee_Course.Created = DateTime.Now;
             await _unitOfWork.Trainee_Courses.Insert(trainee_Course);
             await _unitOfWork.Save();
@@ -99,6 +103,7 @@ namespace Cooking_School.Services.ApplicationService
             {
                 foreach (var application in cookClass.Applications)
                 {
+                    application.CookClass = null;
                     applications.Add(application);
                 }
             }
@@ -127,7 +132,7 @@ namespace Cooking_School.Services.ApplicationService
                 };
 
             applications = cookClass.Applications.ToList();
-
+            applications.ForEach(application => { application.CookClass = null; });
             var applicationsDto = _mapper.Map<IList<ApplicationDTO>>(applications);
             return new ResponsDto<ApplicationDTO>()
             {
