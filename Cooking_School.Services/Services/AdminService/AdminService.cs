@@ -21,7 +21,7 @@ namespace Cooking_School.Services.AdminService
             _mapper = mapper;
             _hash = hash;
         }
-        public async Task<IList<Meal>> GetAllFavoriteMeals(IList<Meal> meals)
+        public async Task<ResponsDto<FavoriteMealDto>> GetAllFavoriteMeals(IList<Meal> meals)
         {
             var favoriteMeal_Chef = await _unitOfWork.FavoriteMeal_Chefs.GetAll();
             var favoriteMeal_Trainee = await _unitOfWork.FavoriteMeal_Trainees.GetAll();
@@ -36,7 +36,32 @@ namespace Cooking_School.Services.AdminService
                 var meal = meals.FirstOrDefault(x => x.idMeal == f.MealId);
                 FavoriteMeal.Add(meal);
             }
-            return FavoriteMeal;
+
+            Dictionary<Meal, int> myDictionary = new Dictionary<Meal, int>();
+            foreach(var meal in FavoriteMeal)
+            {
+                if (myDictionary.ContainsKey(meal))
+                {
+                    myDictionary[meal]++;
+
+                }
+                else
+                {
+                    myDictionary.Add(meal, 1);
+                }
+            }
+            IList<FavoriteMealDto> FavoriteMealDto = new List<FavoriteMealDto>();
+            foreach (KeyValuePair<Meal, int> meal in myDictionary)
+            {
+                FavoriteMealDto favoriteMeal = new FavoriteMealDto();
+                favoriteMeal.Meal = meal.Key;
+                favoriteMeal.Number_of_Favorite = meal.Value;
+                FavoriteMealDto.Add(favoriteMeal);
+            }
+            return new ResponsDto<FavoriteMealDto>
+            {
+                ListDto = FavoriteMealDto
+            };
         }
 
         public async Task<ResponsDto<AdminDTO>> GetUserById(int adminId)

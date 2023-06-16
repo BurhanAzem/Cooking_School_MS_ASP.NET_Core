@@ -41,6 +41,13 @@ namespace Cooking_School.Services.ChefService
 
         public async Task<ResponsDto<ChefDTO>> AddMealToFovarite(int idMeal, User currentUser)
         {
+            var meal = _unitOfWork.FavoriteMeal_Chefs.Get(x => x.MealId ==  idMeal);
+            if(meal is not null)
+            {
+                return new ResponsDto<ChefDTO>
+                {
+                };
+            }
             FavoriteMeal_chef favoritMeal = new FavoriteMeal_chef();
             favoritMeal.ChefId = currentUser.Id;
             favoritMeal.MealId = idMeal;

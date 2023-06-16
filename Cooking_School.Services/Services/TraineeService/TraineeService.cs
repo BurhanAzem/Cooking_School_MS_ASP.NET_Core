@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Cooking_School.Services.Dtos;
 using Cooking_School.Services.Dtos.TraineeDto;
 using Cooking_School.Services.Dtos.CookClassDto;
+using Cooking_School.Services.Dtos.ChefDto;
 
 namespace Cooking_School.Services.TraineeService
 {
@@ -31,6 +32,13 @@ namespace Cooking_School.Services.TraineeService
 
         public async Task<ResponsDto<TraineeDTO>> AddMealToFovarite(int idMeal, User currentUser)
         {
+            var meal = _unitOfWork.FavoriteMeal_Trainees.Get(x => x.MealId == idMeal);
+            if (meal is not null)
+            {
+                return new ResponsDto<TraineeDTO>
+                {
+                };
+            }
             FavoriteMeal_Trainee favoritMeal = new FavoriteMeal_Trainee();
             favoritMeal.TraineeId = currentUser.Id;
             favoritMeal.MealId = idMeal;
@@ -70,7 +78,8 @@ namespace Cooking_School.Services.TraineeService
                     StatusCode = System.Net.HttpStatusCode.BadRequest
                 };
             }
-            var fileName = trainee.ImagePath.Split('/')[0];
+            var splitedPath = trainee.ImagePath.Split('/');
+            string fileName = splitedPath[splitedPath.Length - 1];
 
             var res = await _fileService.DeleteBlob(fileName);
             if (res.error == true)

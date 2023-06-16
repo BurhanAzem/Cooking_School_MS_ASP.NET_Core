@@ -10,6 +10,6 @@ namespace Cooking_School.Services.AdminService
         Task<ResponsDto<AdminDTO>> UpdateUser(int adminId, UpdateAdminDto updateAdminDto);
         Task<ResponsDto<AdminDTO>> LogOut(string token);
         Task<ResponsDto<AdminDTO>> GetUserById(int adminId);
-        Task<IList<Meal>> GetAllFavoriteMeals(IList<Meal> meals);
+        Task<ResponsDto<FavoriteMealDto>> GetAllFavoriteMeals(IList<Meal> meals);
     }
 }

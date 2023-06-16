@@ -184,6 +184,23 @@ namespace Cooking_School.Services.CourseService
             if (updateCourseDto.CourseName is not null) { course.CourseName = updateCourseDto.CourseName; }
             if (updateCourseDto.Description is not null) { course.Description = updateCourseDto.Description; }
             if (updateCourseDto.Price != 0) { course.Price = (decimal)updateCourseDto.Price; }
+            if (updateCourseDto.CourseLevel is not null) 
+            {
+                Levels level;
+                try
+                {
+                    level = (Levels)Enum.Parse(typeof(Levels), updateCourseDto.CourseLevel);
+                    course.CourseLevel = level;
+                }
+                catch (Exception ex)
+                {
+                    return new ResponsDto<CourseDTO>
+                    {
+                        Exception = new Exception($"Failed, Invaild Input Level"),
+                        StatusCode = System.Net.HttpStatusCode.BadRequest
+                    };
+                }
+            }
             //var updateCourse = _mapper.Map<Course>(updateCourseDto);
             course.Updated = DateTime.Now;
             _unitOfWork.Courses.Update(course);

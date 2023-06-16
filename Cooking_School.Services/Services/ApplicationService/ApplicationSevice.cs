@@ -84,7 +84,7 @@ namespace Cooking_School.Services.ApplicationService
 
         public async Task<ResponsDto<ApplicationDTO>> GetAllApplicationsToChef(int cheefId)
         {
-            var cookClasses = await _unitOfWork.CookClasses.GetAll(x => x.Id == cheefId);
+            var cookClasses = await _unitOfWork.CookClasses.GetAll(x => x.ChefId == cheefId, include: x => x.Include(s => ((CookClass)s).Applications));
 
             if (cookClasses is null)
             {
@@ -112,7 +112,19 @@ namespace Cooking_School.Services.ApplicationService
         public async Task<ResponsDto<ApplicationDTO>> GetAllApplicationToClass(int classId)
         {
             CookClass cookClass = await _unitOfWork.CookClasses.Get(x => x.Id == classId, include: x => x.Include(s => s.Applications));
+            if (cookClass is null)
+                return new ResponsDto<ApplicationDTO>()
+                {
+                    Exception = new Exception("cookClass dose not exist"),
+                    StatusCode = System.Net.HttpStatusCode.BadRequest
+                };
+
             List<ApplicationT> applications = new List<ApplicationT>();
+            if(cookClass.Applications is null)
+                return new ResponsDto<ApplicationDTO>()
+                {
+                    ListDto = null
+                };
 
             applications = cookClass.Applications.ToList();
 

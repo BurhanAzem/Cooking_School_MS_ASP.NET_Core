@@ -12,6 +12,7 @@ using Cooking_School.Services.Dtos.UserDto;
 
 using System.Runtime;
 using Cooking_School.Services.Dtos.ProjectDto;
+using Cooking_School.Core.ModelUsed;
 
 namespace Cooking_School_ASP.NET.Configurations
 {
@@ -86,6 +87,7 @@ namespace Cooking_School_ASP.NET.Configurations
             .ForMember(t => t.Created, option => option.Ignore());
             CreateMap<Admin, AdminDTO>().ReverseMap();
             CreateMap<Admin, UpdateAdminDto>();
+
         }
     }
 }

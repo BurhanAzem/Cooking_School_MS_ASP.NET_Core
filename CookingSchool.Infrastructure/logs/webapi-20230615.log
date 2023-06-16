@@ -605,3 +605,194 @@ OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
 2023-06-15 10:41:27.293 +03:00  INF  Executed action Cooking_School.Controllers.AdminChefController.GetAllChefs (Cooking_School) in 218.8976ms
 2023-06-15 10:41:27.293 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.AdminChefController.GetAllChefs (Cooking_School)'
 2023-06-15 10:41:27.294 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/api/admin/chefs?PageNumber=1&PageSize=1 - - - 200 334 application/json;+charset=utf-8 373.3646ms
+2023-06-15 10:50:30.064 +03:00  INF  User profile is available. Using 'C:\Users\lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-15 10:50:30.523 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-06-15 10:50:30.524 +03:00  INF  Hosting environment: Development
+2023-06-15 10:50:30.524 +03:00  INF  Content root path: C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School
+2023-06-15 10:50:30.580 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/index.html - -
+2023-06-15 10:50:31.167 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/index.html - - - 200 - text/html;charset=utf-8 588.4370ms
+2023-06-15 10:50:31.167 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - -
+2023-06-15 10:50:31.179 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 5.8552ms
+2023-06-15 10:50:31.564 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_vs/browserLink - -
+2023-06-15 10:50:31.680 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 116.1777ms
+2023-06-15 10:50:32.299 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - -
+2023-06-15 10:50:32.580 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 280.6085ms
+2023-06-15 10:50:35.073 +03:00  INF  Request starting HTTP/1.1 GET https://localhost:44359/api/project-trainee-files/projectId - -
+2023-06-15 10:50:36.043 +03:00  WRN  The foreign key property 'Favorite_Chef.ChefId1' was created in shadow state because a conflicting property with the simple name 'ChefId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2023-06-15 10:50:36.101 +03:00  WRN  No store type was specified for the decimal property 'Salary' on entity type 'Chef'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-15 10:50:36.102 +03:00  WRN  No store type was specified for the decimal property 'Price' on entity type 'Course'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-15 10:50:36.102 +03:00  WRN  No store type was specified for the decimal property 'Evalution' on entity type 'ProjectTrainee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-15 10:50:38.412 +03:00  INF  Executed DbCommand (82ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-15 10:50:38.865 +03:00  INF  Failed to validate the token.Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/11/2023 7:27:44 AM', Current time: '6/15/2023 7:50:38 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+
+2023-06-15 10:50:38.974 +03:00  INF  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/11/2023 7:27:44 AM', Current time: '6/15/2023 7:50:38 AM'.
+2023-06-15 10:50:38.995 +03:00  INF  Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Trainee|Chef)
+2023-06-15 10:50:39.005 +03:00  INF  AuthenticationScheme: Bearer was challenged.
+2023-06-15 10:50:39.014 +03:00  INF  Request finished HTTP/1.1 GET https://localhost:44359/api/project-trainee-files/projectId - - - 401 - - 3940.9816ms
+2023-06-15 10:50:55.445 +03:00  INF  Request starting HTTP/1.1 POST https://localhost:44359/api/admins/login application/json 37
+2023-06-15 10:50:55.455 +03:00  INF  Failed to validate the token.Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/9/2023 7:08:00 AM', Current time: '6/15/2023 7:50:55 AM'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+
+2023-06-15 10:50:55.455 +03:00  INF  Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '6/9/2023 7:08:00 AM', Current time: '6/15/2023 7:50:55 AM'.
+2023-06-15 10:50:55.458 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.AdminController.Login (Cooking_School)'
+2023-06-15 10:50:55.498 +03:00  INF  Route matched with {action = "Login", controller = "Admin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Cooking_School.Services.Dtos.UserDto.UserLoginDto) on controller Cooking_School.Controllers.AdminController (Cooking_School).
+2023-06-15 10:50:55.857 +03:00  INF  Login Attempt for adminLoginDto 
+2023-06-15 10:50:55.986 +03:00  INF  Executed DbCommand (18ms) [Parameters=[@__userLoginDto_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE @__userLoginDto_Id_0 = [u].[Id]
+2023-06-15 10:50:56.210 +03:00  INF  Executed DbCommand (9ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE @__userId_0 = [u].[Id]
+2023-06-15 10:50:56.279 +03:00  INF  Executed DbCommand (16ms) [Parameters=[@__refreshToken_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ExpirationDate], [r].[IssuedDate], [r].[Token], [r].[UserId]
+FROM [RefreshTokens] AS [r]
+WHERE [r].[UserId] = @__refreshToken_UserId_0
+2023-06-15 10:50:56.494 +03:00  INF  Executed DbCommand (18ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [RefreshTokens]
+OUTPUT 1
+WHERE [Id] = @p0;
+2023-06-15 10:50:56.611 +03:00  INF  Executed DbCommand (24ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([ExpirationDate], [IssuedDate], [Token], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2023-06-15 10:50:56.647 +03:00  INF  Executing AcceptedResult, writing value of type 'Cooking_School.Core.ModelUsed.TokenRequest'.
+2023-06-15 10:50:56.701 +03:00  INF  Executed action Cooking_School.Controllers.AdminController.Login (Cooking_School) in 1193.9665ms
+2023-06-15 10:50:56.702 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.AdminController.Login (Cooking_School)'
+2023-06-15 10:50:56.704 +03:00  INF  Request finished HTTP/1.1 POST https://localhost:44359/api/admins/login application/json 37 - 202 751 application/json;+charset=utf-8 1258.7391ms
+2023-06-15 10:51:24.014 +03:00  INF  Request starting HTTP/1.1 GET https://localhost:44359/api/project-trainee-files/projectId - -
+2023-06-15 10:51:24.036 +03:00  INF  Executed DbCommand (3ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-15 10:51:24.055 +03:00  INF  Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Trainee|Chef)
+2023-06-15 10:51:24.057 +03:00  INF  AuthenticationScheme: Bearer was forbidden.
+2023-06-15 10:51:24.058 +03:00  INF  Request finished HTTP/1.1 GET https://localhost:44359/api/project-trainee-files/projectId - - - 403 - - 43.8453ms
+2023-06-15 10:51:30.094 +03:00  INF  Request starting HTTP/1.1 GET https://localhost:44359/api/project-trainee-files/projectId - -
+2023-06-15 10:51:30.104 +03:00  INF  Executed DbCommand (8ms) [Parameters=[@__token_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[Id], [b].[Created], [b].[Deleted], [b].[Invalid_Token], [b].[Updated]
+FROM [BlackLists] AS [b]
+WHERE [b].[Invalid_Token] = @__token_0
+2023-06-15 10:51:30.107 +03:00  INF  Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Trainee|Chef)
+2023-06-15 10:51:30.108 +03:00  INF  AuthenticationScheme: Bearer was forbidden.
+2023-06-15 10:51:30.108 +03:00  INF  Request finished HTTP/1.1 GET https://localhost:44359/api/project-trainee-files/projectId - - - 403 - - 14.6899ms
+2023-06-15 10:53:04.335 +03:00  INF  Request starting HTTP/2 POST https://localhost:44359/api/chefs/login application/json-patch+json 35
+2023-06-15 10:53:04.338 +03:00  INF  CORS policy execution successful.
+2023-06-15 10:53:04.339 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.ChefController.LogIn (Cooking_School)'
+2023-06-15 10:53:04.352 +03:00  INF  Route matched with {action = "LogIn", controller = "Chef"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] LogIn(Cooking_School.Services.Dtos.UserDto.UserLoginDto) on controller Cooking_School.Controllers.ChefController (Cooking_School).
+2023-06-15 10:53:04.452 +03:00  INF  Login Attempt for chefDto 
+2023-06-15 10:53:04.459 +03:00  INF  Executed DbCommand (5ms) [Parameters=[@__userLoginDto_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE @__userLoginDto_Id_0 = [u].[Id]
+2023-06-15 10:53:04.491 +03:00  INF  Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE @__userId_0 = [u].[Id]
+2023-06-15 10:53:04.497 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@__refreshToken_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ExpirationDate], [r].[IssuedDate], [r].[Token], [r].[UserId]
+FROM [RefreshTokens] AS [r]
+WHERE [r].[UserId] = @__refreshToken_UserId_0
+2023-06-15 10:53:04.518 +03:00  INF  Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([ExpirationDate], [IssuedDate], [Token], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2023-06-15 10:53:04.521 +03:00  INF  Executing AcceptedResult, writing value of type 'Cooking_School.Core.ModelUsed.TokenRequest'.
+2023-06-15 10:53:04.522 +03:00  INF  Executed action Cooking_School.Controllers.ChefController.LogIn (Cooking_School) in 169.9243ms
+2023-06-15 10:53:04.522 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.ChefController.LogIn (Cooking_School)'
+2023-06-15 10:53:04.523 +03:00  INF  Request finished HTTP/2 POST https://localhost:44359/api/chefs/login application/json-patch+json 35 - 202 729 application/json;+charset=utf-8 188.3673ms
+2023-06-15 11:12:43.070 +03:00  INF  User profile is available. Using 'C:\Users\lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-15 11:12:44.117 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-06-15 11:12:44.118 +03:00  INF  Hosting environment: Development
+2023-06-15 11:12:44.118 +03:00  INF  Content root path: C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School
+2023-06-15 11:12:44.305 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/index.html - -
+2023-06-15 11:12:45.158 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/index.html - - - 200 - text/html;charset=utf-8 855.9787ms
+2023-06-15 11:12:45.162 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - -
+2023-06-15 11:12:45.186 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 23.0292ms
+2023-06-15 11:12:45.479 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_vs/browserLink - -
+2023-06-15 11:12:45.783 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 303.7432ms
+2023-06-15 11:12:46.403 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - -
+2023-06-15 11:12:46.646 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 243.0358ms
+2023-06-15 13:11:53.439 +03:00  INF  User profile is available. Using 'C:\Users\lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-06-15 13:11:54.019 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-06-15 13:11:54.020 +03:00  INF  Hosting environment: Development
+2023-06-15 13:11:54.020 +03:00  INF  Content root path: C:\Desktop\workspace1\Cooking_School_ASP.NET\Cooking_School
+2023-06-15 13:11:54.083 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/index.html - -
+2023-06-15 13:11:54.733 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - -
+2023-06-15 13:11:54.736 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/index.html - - - 200 - text/html;charset=utf-8 653.7351ms
+2023-06-15 13:11:54.748 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 8.2605ms
+2023-06-15 13:11:55.311 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/_vs/browserLink - -
+2023-06-15 13:11:55.442 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 131.0643ms
+2023-06-15 13:11:56.340 +03:00  INF  Request starting HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - -
+2023-06-15 13:11:56.668 +03:00  INF  Request finished HTTP/2 GET https://localhost:44359/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 328.2549ms
+2023-06-15 13:12:41.887 +03:00  INF  Request starting HTTP/2 POST https://localhost:44359/api/admins/login application/json-patch+json 35
+2023-06-15 13:12:41.897 +03:00  INF  CORS policy execution successful.
+2023-06-15 13:12:42.072 +03:00  INF  Executing endpoint 'Cooking_School.Controllers.AdminController.Login (Cooking_School)'
+2023-06-15 13:12:42.110 +03:00  INF  Route matched with {action = "Login", controller = "Admin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Cooking_School.Services.Dtos.UserDto.UserLoginDto) on controller Cooking_School.Controllers.AdminController (Cooking_School).
+2023-06-15 13:12:42.428 +03:00  INF  Login Attempt for adminLoginDto 
+2023-06-15 13:12:43.505 +03:00  WRN  The foreign key property 'Favorite_Chef.ChefId1' was created in shadow state because a conflicting property with the simple name 'ChefId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2023-06-15 13:12:43.545 +03:00  WRN  No store type was specified for the decimal property 'Salary' on entity type 'Chef'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-15 13:12:43.546 +03:00  WRN  No store type was specified for the decimal property 'Price' on entity type 'Course'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-15 13:12:43.546 +03:00  WRN  No store type was specified for the decimal property 'Evalution' on entity type 'ProjectTrainee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2023-06-15 13:12:46.128 +03:00  INF  Executed DbCommand (94ms) [Parameters=[@__userLoginDto_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE @__userLoginDto_Id_0 = [u].[Id]
+2023-06-15 13:12:46.425 +03:00  INF  Executed DbCommand (11ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Address], [u].[BirthDate], [u].[Created], [u].[Deleted], [u].[Discriminator], [u].[Email], [u].[FirstName], [u].[LastName], [u].[PasswordHashed], [u].[PasswordSlot], [u].[PhoneNumber], [u].[Updated], [u].[CvPath], [u].[FavoriteN], [u].[Salary], [u].[CardN], [u].[ImagePath], [u].[Level]
+FROM [Users] AS [u]
+WHERE @__userId_0 = [u].[Id]
+2023-06-15 13:12:46.639 +03:00  INF  Executed DbCommand (4ms) [Parameters=[@__refreshToken_UserId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ExpirationDate], [r].[IssuedDate], [r].[Token], [r].[UserId]
+FROM [RefreshTokens] AS [r]
+WHERE [r].[UserId] = @__refreshToken_UserId_0
+2023-06-15 13:12:46.870 +03:00  INF  Executed DbCommand (11ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [RefreshTokens]
+OUTPUT 1
+WHERE [Id] = @p0;
+2023-06-15 13:12:46.986 +03:00  INF  Executed DbCommand (10ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([ExpirationDate], [IssuedDate], [Token], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2023-06-15 13:12:47.021 +03:00  INF  Executing AcceptedResult, writing value of type 'Cooking_School.Core.ModelUsed.TokenRequest'.
+2023-06-15 13:12:47.075 +03:00  INF  Executed action Cooking_School.Controllers.AdminController.Login (Cooking_School) in 4959.4426ms
+2023-06-15 13:12:47.076 +03:00  INF  Executed endpoint 'Cooking_School.Controllers.AdminController.Login (Cooking_School)'
+2023-06-15 13:12:47.084 +03:00  INF  Request finished HTTP/2 POST https://localhost:44359/api/admins/login application/json-patch+json 35 - 202 751 application/json;+charset=utf-8 5199.8678ms
+2023-06-15 13:13:22.216 +03:00  INF  Request starting HTTP/2 POST https://localhost:44359/api/admins/refresh-token - 0
+2023-06-15 13:13:22.218 +03:00  INF  CORS policy execution successful.
+2023-06-15 13:13:22.241 +03:00  INF  Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2023-06-15 13:13:22.253 +03:00  INF  AuthenticationScheme: Bearer was challenged.
+2023-06-15 13:13:22.255 +03:00  INF  Request finished HTTP/2 POST https://localhost:44359/api/admins/refresh-token - 0 - 401 - - 39.8185ms
